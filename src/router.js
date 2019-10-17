@@ -39,12 +39,6 @@ let router = new Router({
       meta: { layout: "no-sidebar" },
       component: () => import("@/views/Guest/Privacy")
     },
-    {
-      path: "/project",
-      name: "ProjectHome",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Nodes/Projects/Home")
-    },
   ]
 });
 
