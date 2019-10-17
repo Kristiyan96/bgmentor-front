@@ -11,7 +11,6 @@
       label="Search"
       prepend-inner-icon="search"
     ></v-text-field>
-    <ProjectSelect />
     <v-spacer />
     <Alerts />
     <v-tooltip bottom open-delay="1000">
@@ -74,12 +73,10 @@ import store from "@/store";
 import { CREATE_ALERT, LOGOUT, TOGGLE_NOTIFICATIONS } from "@/store/actions.type";
 import { TOGGLE_RESIZABLE, TOGGLE_SIDEBAR } from "@/store/mutations.type";
 import Alerts from "./Alerts";
-import ProjectSelect from "@/components/ProjectSelect";
 
 export default {
   components: {
-    Alerts,
-    ProjectSelect
+    Alerts
   },
   data() {
     return {
