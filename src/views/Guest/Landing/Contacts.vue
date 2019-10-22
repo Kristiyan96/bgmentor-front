@@ -15,11 +15,11 @@
             </tr>
             <tr>
               <td><v-icon>mdi-city</v-icon></td>
-              <td>София, ул. Св. Кирил и Методии 27</td>
+              <td>София, ул. "Св. Св. Кирил и Методии 27"</td>
             </tr>
           </table>
         </v-col>
-        <v-col md="4" sm="5" xs="12">
+        <v-col md="4" sm="12" xs="12">
           <v-card
             :raised="active"
             @mouseover="active = true"
@@ -67,12 +67,12 @@ h2
 .mapouter
   position:relative
   text-align:right
-  height:500px
-  width:600px
+  max-height:500px
+  max-width:600px
 .gmap_canvas
   overflow: hidden
   background: none !important
-  height:500px
+  max-height:500px
   width:100%
 table
   width: 100%
