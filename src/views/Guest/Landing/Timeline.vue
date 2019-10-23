@@ -162,10 +162,11 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.timeline
+  background: white
+  padding: 50px 0px
 h2
   margin-bottom: 50px
-.timeline
-  margin-bottom: 200px
 .grade-picker
   display: flex
   justify-content: center

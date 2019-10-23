@@ -32,8 +32,6 @@ export default {
 
 <style scoped lang="sass">
 .body
-  padding-top: 70px
-
   section.initial
     min-height: calc(100vh - 70px)
     div.initial

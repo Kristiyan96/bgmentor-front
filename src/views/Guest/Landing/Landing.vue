@@ -35,10 +35,12 @@ export default {
 
 <style scoped lang="sass">
 .landing
-  min-height: calc(100vh - 68px)
+  background: white
+  margin: 0px !important
+  min-height: 100vh
   .action
-    margin-left: 10vw
-    margin-top: 30vh
+    padding-left: 10vw
+    padding-top: 30vh
 h1
   font-size: 2em
 </style>

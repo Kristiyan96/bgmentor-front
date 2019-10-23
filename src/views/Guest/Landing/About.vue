@@ -106,7 +106,7 @@ export default {
 
 <style scoped lang="sass">
 .about
-  margin-bottom: 200px
+  padding: 50px 0px
 .about-us
   text-align: justify
 </style>
