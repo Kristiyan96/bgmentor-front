@@ -7,11 +7,14 @@
           <table>
             <tr>
               <td><v-icon>mdi-phone</v-icon></td>
-              <td><a href="tel:+359897802497">089 780 2497<a/></td>
+              <td><a href="tel:359897802497">089 780 2497<a/></td>
             </tr>
             <tr>
               <td><v-icon>mdi-email</v-icon></td>
-              <td>bgmentor@abv.bg <br> bgmentor@gmail.com</td>
+              <td>
+                <a href="mailto:bgmentor@abv.bg">bgmentor@abv.bg</a><br> 
+                <a href="mailto:sofia.bgmentor@gmail.com">sofia.bgmentor@gmail.com</a>
+              </td>
             </tr>
             <tr>
               <td><v-icon>mdi-city</v-icon></td>
