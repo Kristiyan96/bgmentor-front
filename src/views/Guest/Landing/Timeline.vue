@@ -5,6 +5,8 @@
       <v-row class="grade-picker">
         <v-btn-toggle
           v-model="grade"
+          borderless
+          dense
           tile
           color="primary accent-3"
           group
@@ -13,13 +15,13 @@
             7-ми клас
           </v-btn>
 
-          <v-btn value="eight">
+          <!-- <v-btn value="eight">
             8-ми клас
           </v-btn>
 
           <v-btn value="nine">
             9-ти клас
-          </v-btn>
+          </v-btn> -->
 
           <v-btn value="ten">
             10-ти клас
@@ -28,19 +30,17 @@
       </v-row>
       <v-row align-content="center">
         <v-col lg="6" md="8" sm="10" xs="12" offset-lg="3" offset-md="2" offset-sm="1">
-          <v-timeline>
+          <v-timeline dense>
             <v-timeline-item
               v-for="(range, i) in material[grade]"
               :key="i"
               :color="range.color"
               small
             >
-              <template v-slot:opposite>
-                <span
-                  :class="`headline font-weight-bold ${range.color}--text`"
-                  v-text="range.year"
-                ></span>
-              </template>
+              <span
+                :class="`font-weight-bold ${range.color}--text`"
+                v-text="range.year"
+              ></span>
               <div class="py-4">
                 <h2 :class="`headline font-weight-light mb-4 ${range.color}--text`">{{ range.title }}</h2>
                 <div>
