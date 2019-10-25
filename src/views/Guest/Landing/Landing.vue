@@ -24,7 +24,7 @@
       <v-row>
         <img class="bg-image-small" src="@/assets/images/bg.png"/>
       </v-row>
-      <v-row class="main-small justify-center">
+      <v-row class="main-small justify-center text-center">
         <h1 class="mt-3 mb-3">Групово и индивидуално <br>обучение по математика</h1>
         <v-btn 
           class="primary" 
