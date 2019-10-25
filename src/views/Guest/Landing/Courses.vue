@@ -7,13 +7,13 @@
           <table>
             <tr>
               <td><v-icon>mdi-phone</v-icon></td>
-              <td><a color="primary" href="tel:+359897802497">089 780 2497</a></td>
+              <td><a href="tel:+359897802497">089 780 2497</a></td>
             </tr>
             <tr>
               <td><v-icon>mdi-email</v-icon></td>
               <td>
-                <a color="primary" href="mailto:bgmentor@abv.bg">bgmentor@abv.bg</a><br> 
-                <a color="primary" href="mailto:sofia.bgmentor@gmail.com">sofia.bgmentor@gmail.com</a>
+                <a href="mailto:bgmentor@abv.bg">bgmentor@abv.bg</a><br> 
+                <a href="mailto:sofia.bgmentor@gmail.com">sofia.bgmentor@gmail.com</a>
               </td>
             </tr>
             <tr>
@@ -54,36 +54,11 @@
 export default {
   data() {
     return {
-      active: false
     }
   }
 };
 </script>
 
 <style scoped lang="sass">
-h2
-  margin-bottom: 50px
-.contacts
-  background: #ECEFF1
-  padding: 50px 0px
-.mapouter
-  position:relative
-  text-align:right
-  max-height:500px
-  max-width:600px
-.gmap_canvas
-  overflow: hidden
-  background: none !important
-  max-height:500px
-  width:100%
-  iframe
-    min-width: 100%
-table
-  width: 100%
-  padding-top: 50px
-  td
-    padding: 10px
-a
-  font-weight: bold
-  text-decoration: none
+
 </style>

@@ -8,7 +8,7 @@
         Privacy
       </v-btn>
       <v-flex primary lighten-2 py-3 class="text-center" white--text xs12>
-        &copy;{{ new Date().getFullYear() }} <strong>BgMentor</strong>
+        &copy;{{ new Date().getFullYear() }} <strong>Бг Ментор</strong>
       </v-flex>
     </v-layout>
   </v-footer>

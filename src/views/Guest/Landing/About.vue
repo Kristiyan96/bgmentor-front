@@ -20,11 +20,13 @@
       <v-row>
         <v-col md="4" sm="5" xs="12" offset-md="2" offset-sm="1">
           <v-card
+            height="100%"
             :raised="active1"
             @mouseover="active1 = true"
             @mouseleave="active1 = false"
             shaped
             flat
+            outlined
             class="mx-auto"
           >
             <v-list-item>
@@ -54,11 +56,13 @@
         </v-col>
         <v-col md="4" sm="5" xs="12">
           <v-card
+            height="100%"
             :raised="active2"
             @mouseover="active2 = true"
             @mouseleave="active2 = false"
             shaped
             flat
+            outlined
             class="mx-auto"
           >
             <v-list-item>
@@ -106,6 +110,7 @@ export default {
 
 <style scoped lang="sass">
 .about
+  background-color: #ECEFF1
   padding: 50px 0px
 .about-us
   text-align: justify
