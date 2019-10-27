@@ -22,7 +22,8 @@
     </v-container>
     <v-container class="hidden-md-and-up">
       <v-row>
-        <img class="bg-image-small" src="@/assets/images/bg.png"/>
+        <div class="image" :style="cssProps"></div>
+        <!-- <img class="bg-image-small" src="@/assets/images/bg.png"/> -->
       </v-row>
       <v-row class="main-small justify-center text-center">
         <h1 class="mt-3 mb-3">Групово и индивидуално <br>обучение по математика</h1>
@@ -44,7 +45,11 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      cssProps: {
+        backgroundImage: `url(${require('@/assets/images/bg.png')})`
+      }
+    }
   }
 };
 </script>
@@ -66,4 +71,11 @@ export default {
     width: 100%
 h1
   font-size: 2em
+.hidden-md-and-up
+  h1
+    width: 100% !important
+  .image
+    width: 100%
+    height: 400px
+    background-size: 100% 100%
 </style>
