@@ -51,11 +51,10 @@
         </v-slide-group>
       </v-row>
       <v-row align-content="center">
-        <v-col class="col-md-5 col-sm-6 col-xs-12 offset-md-2 offset-sm-1">
+        <div class="col-sm-6 col-md-5 offset-sm-1 offset-md-2">
           <v-card
             flat
             outlined
-            class="mx-auto"
             :raised="active1"
             :elevation="active1 ? 3 : 0"
             @mouseover="active1 = true"
@@ -78,12 +77,11 @@
               <b>Цена:</b> {{info['group'][grade].price}}<br>
             </v-card-text>
           </v-card>
-        </v-col>
-        <v-col class="col-md-3 col-sm-4 col-xs-12">
+        </div>
+        <div class="col-sm-4 col-md-3">
           <v-card
             flat
             outlined
-            class="mx-auto"
             :raised="active2"
             :elevation="active2 ? 3 : 0"
             @mouseover="active2 = true"
@@ -95,7 +93,7 @@
               Записването става на място (ул. Кирил и Методий 27). Можете да запазите място като се обадите на мобилния ни номер <a color="primary" href="tel:+359897802497">089 780 2497</a> Можете да се включите по всяко време!
             </v-card-text>
           </v-card>
-        </v-col>
+        </div>
       </v-row>
     </v-container>
   </section>
