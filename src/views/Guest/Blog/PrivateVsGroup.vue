@@ -86,8 +86,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.card-text
-  text-align: justify
 h1, h3
   color: #6aaaff
 </style>
