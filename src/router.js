@@ -39,7 +39,20 @@ let router = new Router({
       meta: { layout: "no-sidebar" },
       component: () => import("@/views/Guest/Privacy")
     },
-  ]
+    {
+      path: "/частно-или-групово",
+      name: "Частно или Групово",
+      meta: { layout: "no-sidebar" },
+      component: () => import("@/views/Guest/Blog/PrivateVsGroup")
+    },
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 });
 
 export default router;

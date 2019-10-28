@@ -2,7 +2,7 @@
   <v-app-bar app flat hide-on-scroll short color="white">
     <v-toolbar-title>
       <span class="title ml-3 mr-5 white--grey">
-        <img src="@/assets/images/logo.png" height="40px"/>
+        <a href="/"><img src="@/assets/images/logo.png" height="40px"/></a>
       </span>
     </v-toolbar-title>
     <Alerts :position="['top']"/>
