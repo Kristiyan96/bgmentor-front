@@ -1,5 +1,5 @@
 <template>
-  <section class="timeline">
+  <section class="timeline" id="timeline">
     <h2 class="text-center">Курсове 2019/2020</h2>
     <v-container>
       <v-row class="justify-center mb-2">
@@ -51,9 +51,15 @@
         </v-slide-group>
       </v-row>
       <v-row align-content="center">
-        <v-col md="5" sm="6" xs="12" offset-md="2" offset-sm="1">
+        <v-col class="col-md-5 col-sm-6 col-xs-12 offset-md-2 offset-sm-1">
           <v-card
+            flat
+            outlined
             class="mx-auto"
+            :raised="active1"
+            :elevation="active1 ? 3 : 0"
+            @mouseover="active1 = true"
+            @mouseleave="active1 = false"
           >
             <v-card-subtitle class="pb-0 grey--text pl-2">Информация</v-card-subtitle>
 
@@ -71,28 +77,17 @@
               </ul>
               <b>Цена:</b> {{info['group'][grade].price}}<br>
             </v-card-text>
-
-            <!-- <v-card-actions>
-              <v-btn
-                class="white--text px-5"
-                depressed
-                color="purple"
-                rounded
-              >
-                Запиши се
-              </v-btn>
-              <v-btn
-                color="purple"
-                text
-              >
-                Сподели
-              </v-btn>
-            </v-card-actions> -->
           </v-card>
         </v-col>
-        <v-col md="3" sm="4" xs="12">
+        <v-col class="col-md-3 col-sm-4 col-xs-12">
           <v-card
+            flat
+            outlined
             class="mx-auto"
+            :raised="active2"
+            :elevation="active2 ? 3 : 0"
+            @mouseover="active2 = true"
+            @mouseleave="active2 = false"
           >
             <v-card-subtitle class="pb-0 grey--text pl-2">Записване</v-card-subtitle>
 
@@ -110,6 +105,8 @@
 export default {
   data() {
     return {
+      active1: false,
+      active2: false,
       grade: "7",
       lesson: "group",
       grades: {
@@ -166,7 +163,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.timeline
+#timeline
   background: white
   padding: 50px 0px
 h2

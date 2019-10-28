@@ -22,6 +22,7 @@
           <v-card
             height="100%"
             :raised="active1"
+            :elevation="active1 ? 3 : 0"
             @mouseover="active1 = true"
             @mouseleave="active1 = false"
             shaped
@@ -58,6 +59,7 @@
           <v-card
             height="100%"
             :raised="active2"
+            :elevation="active2 ? 3 : 0"
             @mouseover="active2 = true"
             @mouseleave="active2 = false"
             shaped

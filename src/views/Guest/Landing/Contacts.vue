@@ -25,6 +25,7 @@
         <v-col class="col-lg-4 col-md-4 col-sm-10">
           <v-card
             :raised="active"
+            :elevation="active ? 3 : 0"
             @mouseover="active = true"
             @mouseleave="active = false"
             shaped

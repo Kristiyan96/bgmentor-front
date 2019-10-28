@@ -9,8 +9,8 @@
             rounded 
             x-large
             depressed
-            href="#contacts"
-            v-smooth-scroll="{ offset: -70}"
+            href="#timeline"
+            v-smooth-scroll
           >
             Прегледай курсовете
           </v-btn>
@@ -22,8 +22,7 @@
     </v-container>
     <v-container class="hidden-md-and-up">
       <v-row>
-        <div class="image" :style="cssProps"></div>
-        <!-- <img class="bg-image-small" src="@/assets/images/bg.png"/> -->
+        <img class="bg-image-small" src="@/assets/images/bg.png"/>
       </v-row>
       <v-row class="main-small justify-center text-center">
         <h1 class="mt-3 mb-3">Групово и индивидуално <br>обучение по математика</h1>
@@ -32,8 +31,8 @@
           rounded 
           x-large
           depressed
-          href="#contacts"
-          v-smooth-scroll="{ offset: -70}"
+          href="#timeline"
+          v-smooth-scroll
         >
           Прегледай курсовете
         </v-btn>
@@ -74,8 +73,8 @@ h1
 .hidden-md-and-up
   h1
     width: 100% !important
-  .image
+  .bg-image-small
     width: 100%
-    height: 400px
-    background-size: 100% 100%
+    max-height: 50vh
+    object-fit: contain
 </style>
