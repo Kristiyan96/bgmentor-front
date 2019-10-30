@@ -272,4 +272,6 @@ h2
   flex-direction: column
   .signup
     flex-grow: 1
+.grade-picker .v-item-group
+  max-width: 100%
 </style>

@@ -45,7 +45,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" text @click="dialog = false">Затоври</v-btn>
+          <v-btn color="grey darken-1" text @click="dialog = false">Затвори</v-btn>
           <v-btn color="blue darken-1" text @click="submit">Изпрати</v-btn>
         </v-card-actions>
       </v-card>
@@ -65,7 +65,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" text @click="dialog = false">Затоври</v-btn>
+          <v-btn color="grey darken-1" text @click="dialog = false">Затвори</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
