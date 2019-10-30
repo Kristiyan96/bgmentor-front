@@ -27,7 +27,6 @@
             @mouseleave="active1 = false"
             shaped
             flat
-            outlined
             class="mx-auto"
           >
             <v-list-item>
@@ -64,7 +63,6 @@
             @mouseleave="active2 = false"
             shaped
             flat
-            outlined
             class="mx-auto"
           >
             <v-list-item>
