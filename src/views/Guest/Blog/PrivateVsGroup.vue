@@ -24,7 +24,7 @@
 
           <v-divider />
           <h3 class="mt-5 mb-2">Групово обучение</h3><br>
-          <div class="text-center"><img src="@/assets/images/bg.png" height="300px"/></div>
+          <div class="text-center"><img src="@/assets/images/bg.png"/></div>
           <h4>Ползите от груповото обучение</h4>
           <ul>
             <li>Идеално за бързо обучаващите се.</li>
@@ -123,4 +123,7 @@ export default {
 <style scoped lang="sass">
 h1, h3
   color: #6aaaff
+img
+  max-width: 100%
+  max-height: 300px
 </style>

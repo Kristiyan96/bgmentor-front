@@ -109,7 +109,7 @@ export default {
           value: "7"
         },
         {
-          text: "8-ти",
+          text: "8-ми",
           value: "8"
         },
         {
