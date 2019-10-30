@@ -79,7 +79,7 @@
             </v-card-text>
           </v-card>
         </div>
-        <div class="col-sm-4 col-md-3 flex">
+        <div class="col-sm-4 col-md-3">
           <v-card
             class="signup"
             flat
@@ -114,7 +114,7 @@
             </v-card-text>
             <v-card-actions>
               <v-btn
-                class="white--text"
+                class="white--text px-5"
                 outlined
                 rounded
                 style="border: 1px solid white;"
@@ -152,7 +152,7 @@
         <div class="col-sm-4 col-md-3">
           <v-card
             height="100%"
-            class="how-to-choose"
+            class="how-to-choose d-flex flex-column"
             flat
             :raised="active2"
             :elevation="active2 ? 3 : 0"
@@ -161,12 +161,12 @@
           >
             <v-card-title class="pb-0 pl-2 mb-3 white--text">Как да изберем?</v-card-title>
 
-            <v-card-text class="white--text">
+            <v-card-text class="white--text flex-grow-1">
               Прегледайте нашата статия, в която помагаме с избора между частни и групови уроци.
             </v-card-text>
             <v-card-actions>
               <v-btn
-                class="white--text"
+                class="white--text px-5"
                 outlined
                 rounded
                 style="border: 1px solid white;"
@@ -267,11 +267,6 @@ h2
   justify-content: center
 .how-to-choose
   background: #4FC3F7
-.flex
-  display: flex
-  flex-direction: column
-  .signup
-    flex-grow: 1
 .grade-picker .v-item-group
   max-width: 100%
 </style>

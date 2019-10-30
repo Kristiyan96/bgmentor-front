@@ -4,7 +4,8 @@
       color="primary" 
       class="px-5" 
       rounded 
-      depressed 
+      depressed
+      outlined
       @click="openDialog"
     >
       Проявявам интерес
