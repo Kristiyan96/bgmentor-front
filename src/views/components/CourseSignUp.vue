@@ -105,7 +105,7 @@ export default {
           value: "6"
         },
         {
-          text: "7-ти",
+          text: "7-ми",
           value: "7"
         },
         {
