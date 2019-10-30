@@ -4,16 +4,16 @@
       <v-flex xs12 md-6>
         <h2><strong>Terms and Conditions</strong></h2>
 
-        <p>Welcome to DayLogs!</p>
+        <p>Welcome to "Bg Mentor"!</p>
 
         <p>
           These terms and conditions outline the rules and regulations for the use
-          of Moonhythe's Website, located at www.daylogs.app.
+          of Moonhythe's Website, located at www."Bg Mentor".app.
         </p>
 
         <p>
           By accessing this website we assume you accept these terms and
-          conditions. Do not continue to use DayLogs if you do not agree to take
+          conditions. Do not continue to use "Bg Mentor" if you do not agree to take
           all of the terms and conditions stated on this page.
         </p>
 
@@ -36,7 +36,7 @@
         <h3><strong>Cookies</strong></h3>
 
         <p>
-          We employ the use of cookies. By accessing DayLogs, you agreed to use
+          We employ the use of cookies. By accessing "Bg Mentor", you agreed to use
           cookies in agreement with the Moonhythe's Privacy Policy.
         </p>
 
@@ -51,18 +51,18 @@
 
         <p>
           Unless otherwise stated, Moonhythe and/or its licensors own the
-          intellectual property rights for all material on DayLogs. All intellectual
-          property rights are reserved. You may access this from DayLogs for your
+          intellectual property rights for all material on "Bg Mentor". All intellectual
+          property rights are reserved. You may access this from "Bg Mentor" for your
           own personal use subjected to restrictions set in these terms and
           conditions.
         </p>
 
         <p>You must not:</p>
         <ul>
-          <li>Republish material from DayLogs</li>
-          <li>Sell, rent or sub-license material from DayLogs</li>
-          <li>Reproduce, duplicate or copy material from DayLogs</li>
-          <li>Redistribute content from DayLogs</li>
+          <li>Republish material from "Bg Mentor"</li>
+          <li>Sell, rent or sub-license material from "Bg Mentor"</li>
+          <li>Reproduce, duplicate or copy material from "Bg Mentor"</li>
+          <li>Redistribute content from "Bg Mentor"</li>
         </ul>
 
         <p>This Agreement shall begin on the date hereof.</p>
