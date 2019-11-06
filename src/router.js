@@ -28,6 +28,12 @@ let router = new Router({
       component: () => import("@/views/User/Signup")
     },
     {
+      path: "/password",
+      name: "ResetPassword",
+      meta: { layout: "no-sidebar" },
+      component: () => import("@/views/User/ResetPassword")
+    },
+    {
       path: "/terms",
       name: "Terms",
       meta: { layout: "no-sidebar" },
@@ -44,6 +50,21 @@ let router = new Router({
       name: "Частно или Групово",
       meta: { layout: "no-sidebar" },
       component: () => import("@/views/Guest/Blog/PrivateVsGroup")
+    },
+    {
+      path: "/home",
+      name: "Home",
+      component: () => import("@/views/User/Home")
+    },
+    {
+      path: "/reports",
+      name: "Reports",
+      component: () => import("@/views/User/Reports")
+    },
+    {
+      path: "/billing",
+      name: "Billing",
+      component: () => import("@/views/User/Billing")
     },
   ],
   scrollBehavior (to, from, savedPosition) {

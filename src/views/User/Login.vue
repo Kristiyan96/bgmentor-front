@@ -3,7 +3,7 @@
     <v-flex xs10 sm6 offset-sm3 md4 offset-md4 class="card-wrapper">
       <v-card>
         <v-card-title class="text-center mb-4">
-          <div class="text-center display-1">Log in</div>
+          <div class="text-center display-1">Вход</div>
         </v-card-title>
 
         <v-card-text>
@@ -11,24 +11,24 @@
             {{ response }}
           </v-alert>
           <form @submit.prevent="submit">
-            <v-text-field type="email" v-model="email" label="Email" outlined
+            <v-text-field type="email" v-model="email" label="Имейл" outlined
               ><font-awesome-icon :icon="['fa', 'at']" slot="prepend-inner"
             /></v-text-field>
             <v-text-field
               type="password"
               v-model="password"
-              label="Password"
+              label="Парола"
               outlined
               ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
             /></v-text-field>
             <v-checkbox
               v-model="remember_me"
-              label="Remember me"
+              label="Запомни ме"
               type="checkbox"
             ></v-checkbox>
             <div class="text-center">
               <v-btn large color="primary" @click="submit">
-                Sign In
+                Влез
               </v-btn>
             </div>
             <!-- The following line submits the form when pressing enter -->
@@ -38,8 +38,8 @@
 
         <v-card-actions>
           <v-layout align-space-between justify-space-between row fill-height>
-            <v-btn text rounded to="/password">Forgot password?</v-btn>
-            <v-btn text rounded to="/signup">Register</v-btn>
+            <v-btn text rounded to="/password">Забравена парола?</v-btn>
+            <v-btn text rounded to="/register">Нов акаунт</v-btn>
           </v-layout>
         </v-card-actions>
       </v-card>

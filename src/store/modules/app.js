@@ -44,7 +44,7 @@ const getters = {
     return state.layout3x2;
   },
   sidebar(state, _, rootState) {
-    return state.sidebar && rootState.projects.project.hasOwnProperty('id');
+    return state.sidebar;
   },
   sidebarRight(state) {
     return state.sidebarRight;
@@ -80,7 +80,9 @@ const mutations = {
     state.resizable = !state.resizable;
   },
   [TOGGLE_SIDEBAR](state) {
+    console.log("toggle sidebar");
     state.sidebar = !state.sidebar;
+    console.log(state.sidebar);
   },
   [TOGGLE_NOTIFICATIONS](state, open) {
     state.notificationsOpen = open;

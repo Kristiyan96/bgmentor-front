@@ -49,11 +49,12 @@ const actions = {
     return new Promise(resolve => {
       ApiService.post("login", { user: credentials })
         .then(response => {
-          dispatch(CREATE_ALERT, ["You logged in successfully.", "success"]);
+          dispatch(CREATE_ALERT, ["Влязохте успешно.", "success"]);
           commit(SET_AUTH, [response.headers.authorization, response.data]);
           resolve(response.data);
         })
         .catch(error  => {
+          dispatch(CREATE_ALERT, [error.response.data.error, "warning"]);
           commit(SET_ERROR, error);
         });
     });
@@ -62,7 +63,7 @@ const actions = {
     return new Promise(resolve => {
       ApiService.delete("logout")
         .then(() => {
-          dispatch(CREATE_ALERT, ["You logged out successfully.", "success"]);
+          dispatch(CREATE_ALERT, ["Излязохте успешно.", "success"]);
           commit(PURGE_AUTH);
           resolve();
         })
@@ -79,7 +80,7 @@ const actions = {
           if(response.data == null) {
             commit(PURGE_AUTH);
             router.push('/login');
-            dispatch(CREATE_ALERT, ["Please, log in first"]);
+            dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
           } else {
             commit(SET_AUTH, [response.config.headers.Authorization, response.data]);
           }
@@ -88,12 +89,12 @@ const actions = {
           commit(PURGE_AUTH);
           commit(SET_ERROR, response.data.errors);
           router.push('/login');
-          dispatch(CREATE_ALERT, ["Please, log in first"]);
+          dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
         });
     } else {
       commit(PURGE_AUTH);
       router.push('/login');
-      dispatch(CREATE_ALERT, ["Please, log in first"]);
+      dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
     }
   },
   [REGISTER]({ commit }, user) {

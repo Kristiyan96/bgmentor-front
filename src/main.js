@@ -17,8 +17,8 @@ import vueSmoothScroll from 'vue2-smooth-scroll'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-library.add({ faCheck });
+import { faCheck, faColumns, faBell, faUser, faHome } from "@fortawesome/free-solid-svg-icons";
+library.add({ faCheck, faColumns, faBell, faUser, faHome });
 
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));

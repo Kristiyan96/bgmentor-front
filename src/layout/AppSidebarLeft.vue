@@ -3,50 +3,33 @@
     <v-layout column fill-height align-content-start>
       <v-flex shrink>
         <v-list dense shaped>
-          <v-list-item to="/project">
+          <v-list-item to="/home">
             <v-list-item-action>
               <font-awesome-icon icon="home" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                Home
+                Начало
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/settings/general">
+          <v-list-item to="/reports">
             <v-list-item-action>
-              <font-awesome-icon icon="cog" class="grey--text" />
+              <font-awesome-icon icon="home" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                Project Settings
+                Доклад и отзиви
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-list>
-      </v-flex>
-      <v-flex shrink>
-        <v-layout row align-center>
-          <v-flex xs6>
-            <v-subheader>
-              Favorites
-            </v-subheader>
-          </v-flex>
-        </v-layout>
-      </v-flex>
-      <v-flex class="projects-wrapper white" shrink>
-        <v-list dense class="p-0" shaped>
-          <v-list-item
-            v-for="(node, k) in favorites"
-            :key="k"
-            :to="`/nodes/${node.id}`"
-          >
+          <v-list-item to="/billing">
             <v-list-item-action>
-              <font-awesome-icon icon="folder" class="grey--text" />
+              <font-awesome-icon icon="home" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ node.title }}
+                Плащания
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -77,5 +60,4 @@ export default {
 .projects-wrapper
   max-height: 200px
   overflow-y: auto
-
 </style>

@@ -9,21 +9,13 @@
 
     <v-spacer></v-spacer>
 
-    <!-- <v-btn text color="primary" to="/login">
-      Log in
+    <v-btn text color="primary" to="/login">
+      Вход
     </v-btn>
 
     <v-btn text to="/register">
-      Register
+      Регистрация
     </v-btn>
-
-    <v-btn text>
-      Pricing
-    </v-btn>
-
-    <v-btn text>
-      Features
-    </v-btn> -->
   </v-app-bar>
 </template>
 

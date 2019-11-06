@@ -6,7 +6,7 @@
 
         <p>At "Bg Mentor", accessible from www.bgmentor.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by "Bg Mentor" and how we use it.</p>
 
-        <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at "Bg Mentor"@gmail.com</p>
+        <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at bgmentor@abv.bg</p>
 
         <h2>General Data Protection Regulation (GDPR)</h2>
         <p>We are a Data Controller of your information.</p>
