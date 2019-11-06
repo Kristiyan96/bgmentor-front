@@ -13,7 +13,7 @@ export default {
   methods: {
     attemptConfirmation() {
       this.axios
-        .put("/api/confirmation", {
+        .put("/confirmation", {
           confirmation_token: this.$route.params.key
         })
         .then(response => {
