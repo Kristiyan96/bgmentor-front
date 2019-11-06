@@ -80,9 +80,7 @@ const mutations = {
     state.resizable = !state.resizable;
   },
   [TOGGLE_SIDEBAR](state) {
-    console.log("toggle sidebar");
     state.sidebar = !state.sidebar;
-    console.log(state.sidebar);
   },
   [TOGGLE_NOTIFICATIONS](state, open) {
     state.notificationsOpen = open;

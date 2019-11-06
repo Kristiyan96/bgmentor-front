@@ -3,6 +3,9 @@
 </template>
 
 <script>
+import store from "@/store";
+import { CREATE_ALERT } from "@/store/actions.type";
+
 export default {
   mounted() {
     this.attemptConfirmation();
@@ -21,17 +24,12 @@ export default {
         });
     },
     success(response) {
-      this.$store.commit("ADD_ALERT", [
-        "Your email was confirmed. You could log in now."
-      ]);
+      this.$store.commit("CREATE_ALERT", ["Your email was confirmed. You could log in now.", "success"]);
       this.$router.push("/login");
     },
     failure(message) {
-      this.$store.commit("ADD_ALERT", [
-        "There was a problem with your email.",
-        "danger"
-      ]);
-      this.$router.push("/signup");
+      this.$store.commit("CREATE_ALERT", ["There was a problem with your email.", "warning"]);
+      this.$router.push("/register");
     }
   }
 };

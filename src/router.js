@@ -28,6 +28,12 @@ let router = new Router({
       component: () => import("@/views/User/Signup")
     },
     {
+      path: "/confirm_email/:key",
+      name: "Confirmation",
+      meta: { layout: "no-sidebar" },
+      component: () => import("@/views/User/ConfirmEmail")
+    },
+    {
       path: "/password",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
