@@ -54,7 +54,7 @@ export default {
   props: {
     nextUrl: {
       type: String,
-      default: "/project"
+      default: "/home"
     }
   },
   data() {

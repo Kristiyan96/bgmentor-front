@@ -7,7 +7,7 @@
           <table>
             <tr>
               <td><v-icon>mdi-phone</v-icon></td>
-              <td><a color="primary" href="tel:+359897802497">089 780 2497</a></td>
+              <td><a color="primary" href="tel:+35988 762 7776">088 762 7776</a></td>
             </tr>
             <tr>
               <td><v-icon>mdi-email</v-icon></td>
