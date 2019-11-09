@@ -1,7 +1,7 @@
 <template>
   <v-layout>
-    <v-flex xs10 sm6 offset-sm3 md4 offset-md4 class="card-wrapper">
-      <v-card v-if="!registered">
+    <v-flex xs10 sm6 offset-sm3 md4 offset-md4 offset-xs1 class="card-wrapper">
+      <v-card v-if="!registered" :loading="loading">
         <v-card-title class="text-center mb-4">
           <div class="text-center display-1">Регистрация</div>
         </v-card-title>
@@ -58,7 +58,6 @@
                 color="primary"
                 @click="submit"
                 :disabled="!valid"
-                :loading="loading"
               >
                 Създай профил
               </v-btn>
@@ -67,14 +66,24 @@
         </v-card-text>
       </v-card>
       <v-card v-else class="text-xs-center">
-        <v-card-title>
-          <div class="display-1 text-xs-center">
+        <v-card-title align-center>
+          <div class="display-1 text-xs-center" align-center>
             Готово!
           </div>
         </v-card-title>
         <v-card-text class="text-xs-center">
-          Изпратихме линк на Вашия имейл. Кликнете на него, за да потвърдите регистрацията.
+          Изпратихме линк на Вашият имейл {{user.email}}. Кликнете на него, за да потвърдите регистрацията.
         </v-card-text>
+        <v-card-actions>
+            <v-spacer />
+            <v-btn
+              large
+              color="primary"
+              to="/login"
+            >
+              Вход
+            </v-btn>
+        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
@@ -109,7 +118,18 @@ export default {
   },
   methods: {
     submit() {
-      store.dispatch(REGISTER, this.user);
+      this.loading = true;
+      store.dispatch(REGISTER, this.user)
+        .then(response => {
+          this.registered = true; 
+          this.loading = false; 
+          this.user = response;
+          console.log(response)
+        }).catch(error => { 
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        });
     }
   }
 };

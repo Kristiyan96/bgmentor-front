@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs10 sm6 offset-sm3 md4 offset-md4 class="card-wrapper">
+    <v-flex xs10 sm6 offset-sm3 md4 offset-md4 offset-xs1 class="card-wrapper">
       <v-card>
         <v-card-title class="text-center mb-4">
           <div class="text-center display-1">Вход</div>

@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <v-content dark>
     <Header />
     <SidebarLeft />
     <SidebarRight />
-    <v-content dark>
-      <slot />
-    </v-content>
-  </div>
+    <slot />
+  </v-content>
 </template>
 
 <script>
