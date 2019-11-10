@@ -9,7 +9,7 @@
             rounded 
             x-large
             depressed
-            href="#timeline"
+            href="#courses"
             v-smooth-scroll
           >
             Прегледай курсовете
@@ -31,7 +31,7 @@
           rounded 
           x-large
           depressed
-          href="#timeline"
+          href="#courses"
           v-smooth-scroll
         >
           Прегледай курсовете
@@ -55,7 +55,6 @@ export default {
 
 <style scoped lang="sass">
 .landing
-  padding-top: 64px
   background: white
   margin: 0px !important
   min-height: 100vh

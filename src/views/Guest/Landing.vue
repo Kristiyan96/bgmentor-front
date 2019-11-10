@@ -2,7 +2,7 @@
   <div class="body">
     <Landing />
     <About />
-    <Timeline />
+    <Courses />
     <Calendar />
     <Contacts />
   </div>
@@ -13,7 +13,7 @@ import Landing from "./Landing/Landing";
 import About from "./Landing/About";
 import Calendar from "./Landing/Calendar";
 import Contacts from "./Landing/Contacts";
-import Timeline from "./Landing/Timeline";
+import Courses from "./Landing/Courses";
 
 export default {
   name: "landing",
@@ -22,7 +22,7 @@ export default {
     About,
     Calendar,
     Contacts,
-    Timeline
+    Courses
   },
   data() {
     return {};
