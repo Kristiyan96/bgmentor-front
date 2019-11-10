@@ -1,92 +1,97 @@
 <template>
-  <v-layout>
-    <v-flex xs10 sm6 offset-sm3 md4 offset-md4 offset-xs1 class="card-wrapper">
-      <v-card v-if="!registered" :loading="loading">
-        <v-card-title class="text-center mb-4">
-          <div class="text-center display-1">Регистрация</div>
-        </v-card-title>
-        <v-card-text>
-          <v-alert v-if="errors.length" color="error" class="mb-4" outlined>
-            {{ errors[0] }}
-          </v-alert>
-          <v-form v-model="valid">
-            <v-text-field
-              type="text"
-              v-model="user.name"
-              label="Име"
-              outlined
-              :rules="rules.name"
-              validate-on-blur
-              ><font-awesome-icon :icon="['fa', 'user']" slot="prepend-inner"
-            /></v-text-field>
-            <v-text-field
-              type="email"
-              v-model="user.email"
-              label="Имейл"
-              outlined
-              :rules="rules.email"
-              validate-on-blur
-              ><font-awesome-icon :icon="['fa', 'at']" slot="prepend-inner"
-            /></v-text-field>
-            <v-text-field
-              :rules="rules.password"
-              type="password"
-              v-model="user.password"
-              label="Парола"
-              outlined
-              validate-on-blur
-              ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
-            /></v-text-field>
-            <v-text-field
-              :rules="rules.password_confirmation"
-              type="password"
-              v-model="user.password_confirmation"
-              label="Потвърди парола"
-              outlined
-              validate-on-blur
-              ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
-            /></v-text-field>
-            <v-checkbox v-model="accept" type="checkbox" :rules="rules.accept">
-              <span slot="label">
-                Съгласявам се с
-                <router-link to="/privacy">условията</router-link>
-              </span>
-            </v-checkbox>
-            <div class="text-center">
+  <v-container fluid class="fill-height">
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col xs="10" md="4">
+        <v-card v-if="!registered" :loading="loading">
+          <v-card-title class="text-center mb-4">
+            <div class="text-center display-1">Регистрация</div>
+          </v-card-title>
+          <v-card-text>
+            <v-alert v-if="errors.length" color="error" class="mb-4" outlined>
+              {{ errors[0] }}
+            </v-alert>
+            <v-form v-model="valid">
+              <v-text-field
+                type="text"
+                v-model="user.name"
+                label="Име"
+                outlined
+                :rules="rules.name"
+                validate-on-blur
+                ><font-awesome-icon :icon="['fa', 'user']" slot="prepend-inner"
+              /></v-text-field>
+              <v-text-field
+                type="email"
+                v-model="user.email"
+                label="Имейл"
+                outlined
+                :rules="rules.email"
+                validate-on-blur
+                ><font-awesome-icon :icon="['fa', 'at']" slot="prepend-inner"
+              /></v-text-field>
+              <v-text-field
+                :rules="rules.password"
+                type="password"
+                v-model="user.password"
+                label="Парола"
+                outlined
+                validate-on-blur
+                ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
+              /></v-text-field>
+              <v-text-field
+                :rules="rules.password_confirmation"
+                type="password"
+                v-model="user.password_confirmation"
+                label="Потвърди парола"
+                outlined
+                validate-on-blur
+                ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
+              /></v-text-field>
+              <v-checkbox v-model="accept" type="checkbox" :rules="rules.accept">
+                <span slot="label">
+                  Съгласявам се с
+                  <router-link to="/privacy">условията</router-link>
+                </span>
+              </v-checkbox>
+              <div class="text-center">
+                <v-btn
+                  large
+                  color="primary"
+                  @click="submit"
+                  :disabled="!valid"
+                >
+                  Създай профил
+                </v-btn>
+              </div>
+            </v-form>
+          </v-card-text>
+        </v-card>
+        <v-card v-else class="text-xs-center">
+          <v-card-title align-center>
+            <div class="display-1 text-xs-center" align-center>
+              Готово!
+            </div>
+          </v-card-title>
+          <v-card-text class="text-xs-center">
+            Изпратихме линк на Вашият имейл {{user.email}}. Кликнете на него, за да потвърдите регистрацията.
+          </v-card-text>
+          <v-card-actions>
+              <v-spacer />
               <v-btn
                 large
                 color="primary"
-                @click="submit"
-                :disabled="!valid"
+                to="/login"
               >
-                Създай профил
+                Вход
               </v-btn>
-            </div>
-          </v-form>
-        </v-card-text>
-      </v-card>
-      <v-card v-else class="text-xs-center">
-        <v-card-title align-center>
-          <div class="display-1 text-xs-center" align-center>
-            Готово!
-          </div>
-        </v-card-title>
-        <v-card-text class="text-xs-center">
-          Изпратихме линк на Вашият имейл {{user.email}}. Кликнете на него, за да потвърдите регистрацията.
-        </v-card-text>
-        <v-card-actions>
-            <v-spacer />
-            <v-btn
-              large
-              color="primary"
-              to="/login"
-            >
-              Вход
-            </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -134,12 +139,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.form-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-</style>

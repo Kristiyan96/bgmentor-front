@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-content dark>
     <Header />
     <slot />
     <Footer />
-  </div>
+  </v-content>
 </template>
 
 <script>
