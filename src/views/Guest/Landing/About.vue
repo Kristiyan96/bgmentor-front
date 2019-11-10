@@ -110,7 +110,7 @@ export default {
 
 <style scoped lang="sass">
 .about
-  background-color: #ECEFF1
+  background-color: #f7f9fa
   padding: 50px 0px
 .about-us
   text-align: justify

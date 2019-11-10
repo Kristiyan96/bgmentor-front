@@ -65,7 +65,7 @@ export default {
 h2
   margin-bottom: 50px
 .contacts
-  background: #ECEFF1
+  background: #f7f9fa
   padding: 50px 0px
 .mapouter
   position:relative
