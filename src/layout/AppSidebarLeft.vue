@@ -1,21 +1,11 @@
 <template>
-  <v-navigation-drawer :value="sidebar" clipped app>
+  <v-navigation-drawer :value="sidebar" clipped app stateless>
     <v-layout column fill-height align-content-start>
       <v-flex shrink>
         <v-list dense shaped>
-          <v-list-item to="/home">
+          <v-list-item to="/reports" v-if="current_user.role != 'student'">
             <v-list-item-action>
-              <font-awesome-icon icon="home" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                Начало
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/reports">
-            <v-list-item-action>
-              <font-awesome-icon icon="home" class="grey--text" />
+              <font-awesome-icon icon="file-alt" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
@@ -23,13 +13,43 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/billing">
+          <v-list-item to="/billing" v-if="['teacher', 'guardian'].includes(current_user.role)">
             <v-list-item-action>
-              <font-awesome-icon icon="home" class="grey--text" />
+              <font-awesome-icon icon="dollar-sign" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
                 Плащания
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/interests" v-if="current_user.admin">
+            <v-list-item-action>
+              <font-awesome-icon icon="user-friends" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Нови клиенти
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/groups" v-if="current_user.role == 'teacher'">
+            <v-list-item-action>
+              <font-awesome-icon icon="users" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Групи
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/users" v-if="current_user.role == 'teacher'">
+            <v-list-item-action>
+              <font-awesome-icon icon="users" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Акаунти
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -47,7 +67,7 @@ export default {
     return { };
   },
   computed: {
-    ...mapGetters(["favorites", "sidebar"]),
+    ...mapGetters(["favorites", "sidebar", "current_user"]),
   }
 };
 </script>

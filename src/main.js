@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import ApiService from "./common/api.service";
-// import { CHECK_AUTH } from "@/store/actions.type";
+import { CHECK_AUTH } from "@/store/actions.type";
 
 import vuetify from './plugins/vuetify';
 
@@ -17,8 +17,8 @@ import vueSmoothScroll from 'vue2-smooth-scroll'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCheck, faColumns, faBell, faUser, faHome } from "@fortawesome/free-solid-svg-icons";
-library.add({ faCheck, faColumns, faBell, faUser, faHome });
+import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes } from "@fortawesome/free-solid-svg-icons";
+library.add({ faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes });
 
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
@@ -32,14 +32,14 @@ Vue.prototype.moment = moment;
 Vue.config.productionTip = false;
 ApiService.init();
 
-// // check auth if required
-// router.beforeEach((to, from, next) => {
-//   if(to.meta.requiresAuth) {
-//     Promise.all([store.dispatch(CHECK_AUTH)]).then(next)
-//   } else {
-//     next();
-//   }
-// });
+// check auth if required
+router.beforeEach((to, from, next) => {
+  if(to.meta.requiresAuth) {
+    Promise.all([store.dispatch(CHECK_AUTH)]).then(next)
+  } else {
+    next();
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   let v = new Vue({

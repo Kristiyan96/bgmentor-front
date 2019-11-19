@@ -2,6 +2,7 @@ import ApiService from "@/common/api.service";
 
 import {
   FETCH_MEMBERSHIPS,
+  CREATE_MEMBERSHIP,
   UPDATE_MEMBERSHIP,
   DESTROY_MEMBERSHIP,
   CREATE_ALERT
@@ -15,7 +16,11 @@ import {
 } from "../mutations.type";
 
 const state = {
-  memberships: []
+  memberships: [],
+  new_membership: {
+    user_id: "",
+    group_id: ""
+  }
 }
 
 const getters = {
@@ -39,17 +44,23 @@ const getters = {
 }
 
 const actions = {
-  async [FETCH_MEMBERSHIPS]({ commit, rootState }) {
-    const { data } = await ApiService.query(`/nodes/${rootState.projects.project.id}/memberships`);
+  async [FETCH_MEMBERSHIPS]({ commit, rootState }, group_id) {
+    const { data } = await ApiService.query(`/groups/${group_id}/memberships`);
     commit(SET_MEMBERSHIPS, data);
   },
+  async [CREATE_MEMBERSHIP]({commit, dispatch}, params) {
+    const { data } = await ApiService.post(`/groups/${params.group_id}/memberships`, { membership: params });
+    commit(REMOVE_MEMBERSHIP, "");
+    commit(ADD_MEMBERSHIP, data);
+    dispatch(CREATE_ALERT, ["Membership created", "success"]);
+  },
   async [UPDATE_MEMBERSHIP]({ dispatch, commit, rootState }, params) {
-    const { data } = await ApiService.update(`/nodes/${rootState.projects.project.id}/memberships`, params.id, { membership: params });
+    const { data } = await ApiService.update(`/groups/${params.group_id}/memberships`, { membership: params });
     commit(SET_MEMBERSHIP, data);
     dispatch(CREATE_ALERT, ["Membership updated.", "success"]);
   },
   async [DESTROY_MEMBERSHIP]({ commit, dispatch, rootState }, membership) {
-    await ApiService.delete(`/nodes/${rootState.projects.project.id}/memberships`, membership.id);
+    await ApiService.delete(`/groups/${membership.group_id}/memberships`, membership.id);
     commit(REMOVE_MEMBERSHIP, membership.id);
     dispatch(CREATE_ALERT, ["Member removed.", "success"]);
   }

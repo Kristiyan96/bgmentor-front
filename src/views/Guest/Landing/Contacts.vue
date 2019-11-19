@@ -36,7 +36,7 @@
                 <iframe 
                   height="500" 
                   id="gmap_canvas" 
-                  src="https://maps.google.com/maps?q=%D1%81%D0%BE%D1%84%D0%B8%D1%8F%2C%20%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%20%D0%B8%20%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%B8%D0%B8%2027&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.045412837181!2d23.326595115467185!3d42.70275917916532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x160e33202ab13629!2z0KjQutC-0LvQsCAi0JHQsyDQnNC10L3RgtC-0YAi!5e0!3m2!1sen!2sbg!4v1573422803711!5m2!1sen!2sbg" 
                   frameborder="0" 
                   scrolling="no" 
                   marginheight="0" 
@@ -50,6 +50,7 @@
     </v-container>
   </section>
 </template>
+
 
 <script>
 export default {

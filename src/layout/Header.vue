@@ -1,9 +1,9 @@
 <template>
   <v-app-bar app flat hide-on-scroll short color="white">
     <v-toolbar-title>
-      <span class="title ml-3 mr-5 white--grey">
-        <a href="/"><img src="@/assets/images/logo.png" height="40px"/></a>
-      </span>
+      <v-btn class="title ml-3 mr-5 white--grey" to="/" text>
+        <img src="@/assets/images/logo.png" height="40px"/>
+      </v-btn>
     </v-toolbar-title>
     <Alerts :position="['top']"/>
 
@@ -64,4 +64,6 @@ export default{
 .title.ml-3.mr-5.white--grey
   font-size: 25px !important
   color: #1976d2
+.v-btn.title:before
+  background-color: transparent !important
 </style>

@@ -11,7 +11,7 @@ let router = new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
+      name: "Landing",
       meta: { layout: "no-sidebar" },
       component: require("@/views/Guest/Landing").default
     },
@@ -60,17 +60,38 @@ let router = new Router({
     {
       path: "/home",
       name: "Home",
+      meta: { requiresAuth: true },
       component: () => import("@/views/User/Home")
     },
     {
       path: "/reports",
       name: "Reports",
+      meta: { requiresAuth: true },
       component: () => import("@/views/User/Reports")
     },
     {
       path: "/billing",
       name: "Billing",
+      meta: { requiresAuth: true },
       component: () => import("@/views/User/Billing")
+    },
+    {
+      path: "/interests",
+      name: "Interests",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/User/Interests")
+    },
+    {
+      path: "/groups",
+      name: "Groups",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Groups/Groups")
+    },
+    {
+      path: "/users",
+      name: "Users",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Users/Users")
     },
   ],
   scrollBehavior (to, from, savedPosition) {

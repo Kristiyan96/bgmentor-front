@@ -5,7 +5,7 @@
       justify="center"
     >
       <v-col xs="10" md="4">
-        <v-card>
+        <v-card shaped>
           <v-card-title class="text-center mb-4">
             <div class="text-center display-1">Вход</div>
           </v-card-title>

@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <h2 class="px-3 py-3">Доклад и отзиви</h2>
 </template>
 
 <script>

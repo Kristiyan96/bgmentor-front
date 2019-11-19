@@ -5,7 +5,7 @@
       justify="center"
     >
       <v-col xs="10" md="4">
-        <v-card v-if="!registered" :loading="loading">
+        <v-card v-if="!registered" :loading="loading" shaped>
           <v-card-title class="text-center mb-4">
             <div class="text-center display-1">Регистрация</div>
           </v-card-title>
@@ -70,7 +70,7 @@
           </v-card-text>
         </v-card>
         <v-card v-else class="text-xs-center">
-          <v-card-title align-center>
+          <v-card-title align-center shaped>
             <div class="display-1 text-xs-center" align-center>
               Готово!
             </div>
