@@ -23,3 +23,18 @@ export const SET_USERS = "setUsers";
 export const SET_USER = "setUser";
 export const ADD_USER = "addUser";
 export const REMOVE_USER = "removeUser";
+
+export const SET_MEMBERSHIPS = "setMemberships";
+export const SET_MEMBERSHIP = "setMembership";
+export const ADD_MEMBERSHIP = "addMembership";
+export const REMOVE_MEMBERSHIP = "removeMembership";
+
+export const SET_PAYMENTS = "setPayments";
+export const SET_PAYMENT = "setPayment";
+export const ADD_PAYMENT = "addPayment";
+export const REMOVE_PAYMENT = "removePayment";
+
+export const SET_LESSONS = "setLessons";
+export const SET_LESSON = "setLesson";
+export const ADD_LESSON = "addLesson";
+export const REMOVE_LESSON = "removeLesson";

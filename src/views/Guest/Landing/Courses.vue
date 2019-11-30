@@ -206,7 +206,7 @@ export default {
       },
       lessons: {
         "private": "Частни",
-        "group": "Групови"
+        "group": "Полу-частни"
       },
       info: {
         private: {

@@ -30,15 +30,17 @@
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
                     v-if="filteredUsers.length"
-                    :headers="headers"
+                    :headers="headers[selectedUserType]"
                     :items="filteredUsers"
                     :items-per-page="10"
                     class="elevation-1"
                   >
                     <template v-slot:item="{ item }">
-                      <tr @click="activate(item)">
+                      <tr @click="activate(item)" :class="{active: user && item.id == user.id}">
                         <td>{{ item.name }}</td>
-                        <td>{{ item.grade }}</td>
+                        <td v-if="selectedUserType == 'students'">
+                          {{ item.groups && item.groups.length ? item.groups[0].grade : '' }}
+                        </td>
                       </tr>
                     </template>
                   </v-data-table>
@@ -85,15 +87,30 @@ export default {
       ],
       user: null,
       editing: false,
-      headers: [
-        {
-          text: 'Име',
-          align: 'left',
-          sortable: false,
-          value: 'name',
-        },
-        { text: 'Клас', value: 'grade' },
-      ],
+      headers: {
+        students: [
+          {
+            text: 'Име',
+            align: 'left',
+            value: 'name',
+          },
+          { text: 'Клас', value: 'grade' },
+        ],
+        guardians: [
+          {
+            text: 'Име',
+            align: 'left',
+            value: 'name',
+          },
+        ],
+        teachers: [
+          {
+            text: 'Име',
+            align: 'left',
+            value: 'name',
+          },
+        ]
+      },
       users: []
     }
   },
@@ -112,11 +129,21 @@ export default {
     }
   },
   watch: {
-    users() {
-      if(this.users.length) {
-        this.user = this.users[0];
+    selectedUserType: {
+      immediate: true,
+      handler() {
+        if(this.filteredUsers.length) {
+          this.activate(this.filteredUsers[0]);
+        } else {
+          this.user = null;
+        }
       }
     }
   }
 }
 </script>
+
+<style lang="sass">
+tr.active
+  background: #e3f0ff !important
+</style>

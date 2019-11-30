@@ -49,10 +49,17 @@ const actions = {
     commit(SET_MEMBERSHIPS, data);
   },
   async [CREATE_MEMBERSHIP]({commit, dispatch}, params) {
-    const { data } = await ApiService.post(`/groups/${params.group_id}/memberships`, { membership: params });
-    commit(REMOVE_MEMBERSHIP, "");
-    commit(ADD_MEMBERSHIP, data);
-    dispatch(CREATE_ALERT, ["Membership created", "success"]);
+    let group_id = Array.isArray(params) && params.length ? params[0].group_id : params.group_id;
+
+    return new Promise((resolve, reject) => {
+      ApiService.post(`/groups/${group_id}/memberships`, { membership: params }).then(response => {
+        commit(SET_MEMBERSHIPS, response.data);
+        dispatch(CREATE_ALERT, ["Membership created", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    })
   },
   async [UPDATE_MEMBERSHIP]({ dispatch, commit, rootState }, params) {
     const { data } = await ApiService.update(`/groups/${params.group_id}/memberships`, { membership: params });

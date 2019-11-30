@@ -3,6 +3,16 @@
     <v-layout column fill-height align-content-start>
       <v-flex shrink>
         <v-list dense shaped>
+          <v-list-item to="/calendar">
+            <v-list-item-action>
+              <font-awesome-icon icon="calendar-alt" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Календар
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
           <v-list-item to="/reports" v-if="current_user.role != 'student'">
             <v-list-item-action>
               <font-awesome-icon icon="file-alt" class="grey--text" />
@@ -13,23 +23,13 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/billing" v-if="['teacher', 'guardian'].includes(current_user.role)">
+          <v-list-item to="/payments" v-if="['teacher', 'guardian'].includes(current_user.role)">
             <v-list-item-action>
               <font-awesome-icon icon="dollar-sign" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
                 Плащания
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/interests" v-if="current_user.admin">
-            <v-list-item-action>
-              <font-awesome-icon icon="user-friends" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                Нови клиенти
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -50,6 +50,16 @@
             <v-list-item-content>
               <v-list-item-title>
                 Акаунти
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/interests" v-if="current_user.admin">
+            <v-list-item-action>
+              <font-awesome-icon icon="user-friends" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Заявки
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>

@@ -59,7 +59,7 @@ export default {
   props: {
     nextUrl: {
       type: String,
-      default: "/home"
+      default: "/calendar"
     }
   },
   data() {

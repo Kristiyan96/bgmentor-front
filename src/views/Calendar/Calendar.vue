@@ -14,22 +14,6 @@
           </v-btn>
           <v-toolbar-title>{{ title }}</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-menu bottom right v-if="type == 'day'">
-            <template v-slot:activator="{ on }">
-              <v-btn outlined v-on="on" class="mr-2">
-                <span>{{ view }}</span>
-                <v-icon right>arrow_drop_down</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item @click="view = 'events'">
-                <v-list-item-title>Events</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="view = 'tasks'">
-                <v-list-item-title>Tasks</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
           <v-menu bottom right>
             <template v-slot:activator="{ on }">
               <v-btn outlined v-on="on">
@@ -47,9 +31,6 @@
               <v-list-item @click="type = 'month'">
                 <v-list-item-title>Month</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="type = '4day'">
-                <v-list-item-title>4 days</v-list-item-title>
-              </v-list-item>
             </v-list>
           </v-menu>
         </v-toolbar>
@@ -59,7 +40,12 @@
           ref="calendar"
           v-model="focus"
           color="primary"
+          first-interval="8"
+          interval-count="12"
+          :weekdays="weekdays"
           :events="events"
+          event-start="start_time"
+          event-end="end_time"
           :event-color="getEventColor"
           :event-margin-bottom="3"
           :now="today"
@@ -67,190 +53,87 @@
           @click:event="showEvent"
           @click:more="viewDay"
           @click:date="viewDay"
+          @click:time="newEvent"
           @change="updateRange"
         ></v-calendar>
         <v-menu
           v-model="selectedOpen"
           :close-on-content-click="false"
           :activator="selectedElement"
-          full-width
           offset-x
         >
           <v-card color="grey lighten-4" min-width="350px" flat>
             <v-toolbar :color="selectedEvent.color" dark>
-              <v-btn icon>
+              <v-btn icon @click="eventDialogOpen = true">
                 <v-icon>edit</v-icon>
               </v-btn>
               <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
-                <v-icon>favorite</v-icon>
-              </v-btn>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
+                <font-awesome-icon icon="trash-alt"  />
               </v-btn>
             </v-toolbar>
             <v-card-text>
-              <span v-html="selectedEvent.details"></span>
+              <GroupMemberships :group="selectedEvent.group"/>
             </v-card-text>
             <v-card-actions>
               <v-btn text color="secondary" @click="selectedOpen = false">
-                Cancel
+                Затвори
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
       </v-sheet>
     </v-flex>
+    <LessonDialog
+      :lesson="selectedEvent"
+      :open="eventDialogOpen" 
+      :start="start"
+      :editing="selectedOpen"
+      @closeDialog="eventDialogOpen = false"  
+    />
   </v-layout>
 </template>
 
 <script>
+import LessonDialog from "./LessonDialog";
+import GroupMemberships from "@/views/Groups/GroupMemberships";
+import { mapGetters } from "vuex";
+import { FETCH_LESSONS } from "@/store/actions.type";
+import store from "@/store";
+
 export default {
-  data: () => ({
-    view: "events",
-    today: new Date(),
-    focus: new Date(),
-    type: "week",
-    typeToLabel: {
-      month: "Month",
-      week: "Week",
-      day: "Day",
-      "4day": "4 Days"
-    },
-    start: null,
-    end: null,
-    selectedEvent: {},
-    selectedElement: null,
-    selectedOpen: false,
-    events: [
-      {
-        name: 'Vacation',
-        details: 'Going to the beach!',
-        start: '2018-12-29',
-        end: '2019-01-01',
-        color: 'blue',
+  components: {
+    LessonDialog,
+    GroupMemberships
+  },
+  data() {
+    return {
+      view: "events",
+      today: this.$moment(new Date()).format("YYYY-MM-DD"),
+      focus: this.$moment(new Date()).format("YYYY-MM-DD"),
+      type: "week",
+      typeToLabel: {
+        month: "Month",
+        week: "Week",
+        day: "Day"
       },
-      {
-        name: 'Meeting',
-        details: 'Spending time on how we do not have enough time',
-        start: '2019-01-07 09:00',
-        end: '2019-01-07 09:30',
-        color: 'indigo',
-      },
-      {
-        name: 'Large Event',
-        details: 'This starts in the middle of an event and spans over multiple events',
-        start: '2018-12-31',
-        end: '2019-01-04',
-        color: 'deep-purple',
-      },
-      {
-        name: '3rd to 7th',
-        details: 'Testing',
-        start: '2019-01-03',
-        end: '2019-01-07',
-        color: 'cyan',
-      },
-      {
-        name: 'Big Meeting',
-        details: 'A very important meeting about nothing',
-        start: '2019-01-07 08:00',
-        end: '2019-01-07 11:30',
-        color: 'red',
-      },
-      {
-        name: 'Another Meeting',
-        details: 'Another important meeting about nothing',
-        start: '2019-01-07 10:00',
-        end: '2019-01-07 13:30',
-        color: 'brown',
-      },
-      {
-        name: '7th to 8th',
-        start: '2019-01-07',
-        end: '2019-01-08',
-        color: 'blue',
-      },
-      {
-        name: 'Lunch',
-        details: 'Time to feed',
-        start: '2019-01-07 12:00',
-        end: '2019-01-07 15:00',
-        color: 'deep-orange',
-      },
-      {
-        name: '30th Birthday',
-        details: 'Celebrate responsibly',
-        start: '2019-01-03',
-        color: 'teal',
-      },
-      {
-        name: 'New Year',
-        details: 'Eat chocolate until you pass out',
-        start: '2019-01-01',
-        end: '2019-01-02',
-        color: 'green',
-      },
-      {
-        name: 'Conference',
-        details: 'The best time of my life',
-        start: '2019-01-21',
-        end: '2019-01-28',
-        color: 'grey darken-1',
-      },
-      {
-        name: 'Hackathon',
-        details: 'Code like there is no tommorrow',
-        start: '2019-01-30 23:00',
-        end: '2019-02-01 08:00',
-        color: 'black',
-      },
-      {
-        name: 'event 1',
-        start: '2019-01-14 18:00',
-        end: '2019-01-14 19:00',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 2',
-        start: '2019-01-14 18:00',
-        end: '2019-01-14 19:00',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 5',
-        start: '2019-01-14 18:00',
-        end: '2019-01-14 19:00',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 3',
-        start: '2019-01-14 18:30',
-        end: '2019-01-14 20:30',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 4',
-        start: '2019-01-14 19:00',
-        end: '2019-01-14 20:00',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 6',
-        start: '2019-01-14 21:00',
-        end: '2019-01-14 23:00',
-        color: '#4285F4',
-      },
-      {
-        name: 'event 7',
-        start: '2019-01-14 22:00',
-        end: '2019-01-14 23:00',
-        color: '#4285F4',
-      }
-    ]
-  }),
+      start: null,
+      end: null,
+      selectedEvent: {},
+      selectedElement: null,
+      selectedOpen: false,
+      events: [],
+      weekdays: [1, 2, 3, 4, 5, 6, 0],
+      eventDialogOpen: false,
+      start: null
+    }
+  },
+  mounted() {
+    store.dispatch(FETCH_LESSONS);
+  },
   computed: {
+    ...mapGetters(["lessons"]),
     title() {
       const { start, end } = this;
       if (!start || !end) {
@@ -272,8 +155,6 @@ export default {
         case "month":
           return `${startMonth} ${startYear}`;
         case "week":
-        case "4day":
-          return `${startMonth} ${startDay} ${startYear} - ${suffixMonth} ${endDay} ${suffixYear}`;
         case "day":
           return `${startMonth} ${startDay} ${startYear}`;
       }
@@ -287,6 +168,14 @@ export default {
     }
   },
   methods: {
+    newEvent(props) {
+      if(this.selectedOpen) {
+        this.selectedOpen = false;
+        return;
+      }
+      this.start = props;
+      this.eventDialogOpen = true;
+    },
     viewDay({ date }) {
       this.focus = date;
       this.type = "day";
@@ -328,6 +217,19 @@ export default {
       return d > 3 && d < 21
         ? "th"
         : ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][d % 10];
+    }
+  },
+  watch: {
+    lessons() {
+      this.events = this.lessons.map(l => {
+        return {
+          ...l,
+          start_time: this.$moment(l.start_time).format("YYYY-MM-DD HH:mm"),
+          end_time: this.$moment(l.end_time).format("YYYY-MM-DD HH:mm"),
+          color: 'primary',
+          name: `${l.teacher.name} - ${l.group.name}` 
+        }
+      });
     }
   }
 };

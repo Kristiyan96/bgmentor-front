@@ -70,10 +70,10 @@ let router = new Router({
       component: () => import("@/views/User/Reports")
     },
     {
-      path: "/billing",
-      name: "Billing",
+      path: "/payments",
+      name: "Payments",
       meta: { requiresAuth: true },
-      component: () => import("@/views/User/Billing")
+      component: () => import("@/views/Payments/Payments")
     },
     {
       path: "/interests",
@@ -92,6 +92,12 @@ let router = new Router({
       name: "Users",
       meta: { requiresAuth: true },
       component: () => import("@/views/Users/Users")
+    },
+    {
+      path: "/calendar",
+      name: "Calendar",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Calendar/Calendar")
     },
   ],
   scrollBehavior (to, from, savedPosition) {

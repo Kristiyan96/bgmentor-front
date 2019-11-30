@@ -1,15 +1,12 @@
 import {
-  TOGGLE_NOTIFICATIONS,
-  TOGGLE_INVITATIONS_DIALOG,
-  FETCH_USER_INVITATIONS
+  TOGGLE_NOTIFICATIONS
 } from "../actions.type";
 
 import {
   SET_LAYOUT,
   TOGGLE_RESIZABLE,
   TOGGLE_SIDEBAR,
-  TOGGLE_SIDEBARRIGHT,
-  SET_INVITATIONS_DIALOG
+  TOGGLE_SIDEBARRIGHT
 } from "../mutations.type";
 
 const state = {
@@ -48,9 +45,6 @@ const getters = {
   },
   sidebarRight(state) {
     return state.sidebarRight;
-  },
-  invitationsDialog(state) {
-    return state.invitationsOpen;
   }
 }
 
@@ -63,12 +57,6 @@ const actions = {
       commit(TOGGLE_NOTIFICATIONS, true);
       commit(TOGGLE_SIDEBARRIGHT, true);
     }
-  },
-  [TOGGLE_INVITATIONS_DIALOG]({ commit, dispatch }, open) {
-    if(open) {
-      dispatch(FETCH_USER_INVITATIONS);
-    }
-    commit(SET_INVITATIONS_DIALOG, open);
   }
 }
 
@@ -87,9 +75,6 @@ const mutations = {
   },
   [TOGGLE_SIDEBARRIGHT](state, open) {
     state.sidebarRight = open;
-  },
-  [SET_INVITATIONS_DIALOG](state, open) {
-    state.invitationsOpen = open;
   }
 }
 

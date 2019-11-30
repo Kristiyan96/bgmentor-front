@@ -14,18 +14,20 @@
             <v-text-field label="*Име на потребителя" v-model="form.name"></v-text-field>
           </v-col>
           <v-col cols="12" class="px-0">
-            <v-text-field label="*Имейл" v-model="form.email"></v-text-field>
+            <v-text-field label="*Имейл" :disabled="user != null" v-model="form.email"></v-text-field>
           </v-col>
         </v-row>
       </v-container>
-      <small>*сигнализира задължително поле</small>
     </v-card-text>
     <v-card-actions>
+      <v-btn :disabled="!dirty" depressed @click="reset" text>
+        Върни промените
+      </v-btn>
       <v-spacer></v-spacer>
-      <v-btn color="primary" depressed @click="submit" v-if="!user">
+      <v-btn color="primary" :disabled="!dirty" depressed @click="submit" v-if="!user">
         Създай
       </v-btn>
-      <v-btn color="primary" depressed @click="update" v-else>
+      <v-btn color="primary" :disabled="!dirty" depressed @click="update" v-else>
         Редактирай
       </v-btn>
     </v-card-actions>
@@ -33,6 +35,7 @@
 </template>
 
 <script>
+import {_} from 'vue-underscore';
 import { mapGetters } from "vuex";
 import { CREATE_USER, UPDATE_USER, DESTROY_USER } from "@/store/actions.type";
 import store from "@/store";
@@ -57,34 +60,36 @@ export default {
         email: "",
         group_id: "",
         role: "student"
-      }
+      },
+      user_copy: {}
     }
   },
   methods: {
     submit() {
-      store.dispatch(CREATE_USER, this.form).then(response => {
-        console.log(response);
-      })
+      store.dispatch(CREATE_USER, this.form);
     },
     update() {
-      store.dispatch(UPDATE_USER, this.form).then(response => {
-        console.log(response);
-      })
+      store.dispatch(UPDATE_USER, this.form);
     },
     destroy() {
-      store.dispatch(UPDATE_USER, this.user).then(response => {
-        console.log(response);
-      })
+      store.dispatch(DESTROY_USER, this.user.id);
+    },
+    reset() {
+      this.form = { ...this.user_copy };
     }
   },
   computed: {
     ...mapGetters(["users"]),
+    dirty() {
+      return !_.isEqual(this.form, this.user_copy);
+    }
   },
   watch: {
     user: {
       immediate: true,
       handler() {
         this.form = { ...this.user, role: this.selectedUserType.slice(0, -1) };
+        this.user_copy = { ... this.form };
       }
     }
   }

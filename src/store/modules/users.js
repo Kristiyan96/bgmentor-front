@@ -47,7 +47,6 @@ const actions = {
   },
   async [CREATE_USER]({commit, dispatch}, params) {
     const { data } = await ApiService.post(`/users`, { user: params });
-    commit(REMOVE_USER, "");
     commit(ADD_USER, data);
     dispatch(CREATE_ALERT, ["User added", "success"]);
   },

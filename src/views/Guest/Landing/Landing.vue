@@ -3,7 +3,7 @@
     <v-container class="hidden-sm-and-down">
       <v-row>
         <v-col md="5" sm="5" xs="12" class="col-left">
-          <h1 class="mb-3">Групово и индивидуално <br>обучение по математика</h1>
+          <h1 class="mb-3">Полу-частно и индивидуално <br>обучение по математика</h1>
           <v-btn 
             class="primary mr-2" 
             rounded 
@@ -25,7 +25,7 @@
         <img class="bg-image-small" src="@/assets/images/bg.png"/>
       </v-row>
       <v-row class="main-small justify-center text-center">
-        <h1 class="mt-3 mb-3">Групово и индивидуално <br>обучение по математика</h1>
+        <h1 class="mt-3 mb-3">Полу-частно и индивидуално <br>обучение по математика</h1>
         <v-btn 
           class="primary" 
           rounded 

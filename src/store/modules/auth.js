@@ -11,7 +11,7 @@ import {
   LOGOUT,
   CHECK_AUTH,
   REGISTER,
-  UPDATE_USER,
+  UPDATE_PROFILE,
   CREATE_ALERT
 } from "../actions.type";
 
@@ -108,7 +108,7 @@ const actions = {
         });
     });
   },
-  async [UPDATE_USER]({ commit }, user) { // should be tested when the back-end is rewritten
+  async [UPDATE_PROFILE]({ commit }, user) { // should be tested when the back-end is rewritten
     const { data } = await UserService.update(user);
     commit(SET_AUTH, data.user);
     return data;

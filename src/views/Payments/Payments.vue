@@ -4,31 +4,28 @@
       <v-col xs="12" md="5">
         <v-card class="pb-0">
           <v-card-title>
-            <span class="headline">Групи</span>
-            <v-spacer/>
-            <v-btn text @click="group = null">
-              Нова група
-            </v-btn>
+            <span class="headline">Плащания</span>
           </v-card-title>
           <v-card-text class="px-0 pb-0">
             <v-container class="px-0 pb-0">
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
-                    v-if="groups.length"
+                    v-if="payments.length"
                     :headers="headers"
-                    :items="groups"
+                    :items="payments"
                     :items-per-page="5"
                     class="elevation-1"
                   >
                     <template v-slot:item="{ item }">
-                      <tr @click="activate(item)" :class="{active: group && item.id == group.id}">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.grade }}</td>
+                      <tr @click="activate(item)" :class="{active: payment && item.id == payment.id}">
+                        <td>{{ item.student.name }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td>{{ capitalize(item.month) }}</td>
                       </tr>
                     </template>
                   </v-data-table>
-                  <div v-else class="grey--text px-3">Няма групи</div>
+                  <div v-else class="px-3 grey--text py-3">Няма плащания</div>
                 </v-col>
               </v-row>
             </v-container>
@@ -36,27 +33,25 @@
         </v-card>
       </v-col>
       <v-col xs="12" md="7">
-        <GroupForm :group="group" />
+        <PaymentPreview :payment="payment" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import PaymentPreview from "@/views/Payments/PaymentPreview";
 import { mapGetters } from "vuex";
-import { FETCH_USERS, FETCH_GROUPS, CREATE_GROUP, UPDATE_GROUP, DESTROY_GROUP } from "@/store/actions.type";
+import { FETCH_PAYMENTS } from "@/store/actions.type";
 import store from "@/store";
-
-import GroupForm from "./GroupForm";
 
 export default {
   components: {
-    GroupForm
+    PaymentPreview
   },
   data() {
     return {
-      group: null,
-      editing: false,
+      payment: null,
       headers: [
         {
           text: 'Име',
@@ -64,29 +59,30 @@ export default {
           sortable: false,
           value: 'name',
         },
-        { text: 'Клас', value: 'grade' },
+        { text: 'Сума', value: 'amount' },
+        { text: 'Месец', value: 'month' },
       ],
     }
   },
   mounted() {
-    store.dispatch(FETCH_GROUPS);
-    store.dispatch(FETCH_USERS);
+    store.dispatch(FETCH_PAYMENTS);
   },
   methods: {
-    activate(group) {
-      this.group = group;
+    activate(item) {
+      this.payment = item;
     },
-    destroy(group) {
-      store.dispatch(DESTROY_GROUP, group.id);
+    capitalize(s) {
+      if (typeof s !== 'string') return ''
+      return s.charAt(0).toUpperCase() + s.slice(1)
     }
   },
   computed: {
-    ...mapGetters(["groups"]),
+    ...mapGetters(["payments"]),
   },
   watch: {
-    groups() {
-      if(this.groups.length) {
-        this.group = this.groups[0];
+    payments() {
+      if(this.payments.length) {
+        this.payment = this.payments[0];
       }
     }
   }

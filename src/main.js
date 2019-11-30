@@ -13,17 +13,19 @@ import NoSidebar from "@/layout/NoSidebar";
 import Vue2Filters from "vue2-filters";
 import vSelect from "vue-select";
 import moment from "moment";
-import vueSmoothScroll from 'vue2-smooth-scroll'
+import vueSmoothScroll from 'vue2-smooth-scroll';
+import underscore from 'vue-underscore';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes } from "@fortawesome/free-solid-svg-icons";
-library.add({ faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes });
+import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+library.add({ faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt });
 
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
 Vue.use(require("vue-moment"));
 Vue.use(vueSmoothScroll);
+Vue.use(underscore);
 Vue.component("v-select", vSelect);
 Vue.component("default-layout", Default);
 Vue.component("no-sidebar-layout", NoSidebar);
