@@ -3,7 +3,8 @@
     <Landing />
     <About />
     <Courses />
-    <Calendar />
+    <!-- <Calendar /> -->
+    <Poll />
     <Contacts />
   </div>
 </template>
@@ -11,7 +12,8 @@
 <script>
 import Landing from "./Landing/Landing";
 import About from "./Landing/About";
-import Calendar from "./Landing/Calendar";
+// import Calendar from "./Landing/Calendar";
+import Poll from "./Landing/Poll";
 import Contacts from "./Landing/Contacts";
 import Courses from "./Landing/Courses";
 
@@ -20,7 +22,8 @@ export default {
   components: {
     Landing,
     About,
-    Calendar,
+    // Calendar,
+    Poll,
     Contacts,
     Courses
   },

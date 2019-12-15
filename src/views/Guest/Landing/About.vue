@@ -68,7 +68,7 @@
             <v-list-item>
               <v-list-item-content class="text-center">
                 <v-list-item-title class="headline">Кристиян Цветанов</v-list-item-title>
-                <v-list-item-subtitle>Съосновател</v-list-item-subtitle>
+                <v-list-item-subtitle>Съосновател / Учител</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
 
@@ -93,6 +93,98 @@
           </v-card>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col md="4" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active3"
+            :elevation="active3 ? 3 : 0"
+            @mouseover="active3 = true"
+            @mouseleave="active3 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Светослав Василев</v-list-item-title>
+                <v-list-item-subtitle>Учител по математика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Svetlio.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Следва Приложна математика в СУ. Бивш състезател по математика от СМГ.
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col md="4" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active4"
+            :elevation="active4 ? 3 : 0"
+            @mouseover="active4 = true"
+            @mouseleave="active4 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Климентина Савова</v-list-item-title>
+                <v-list-item-subtitle>Учител по матиматика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Kli.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Следва компютърни науки в СУ. Завършила математическата гимназия в Пловдив. В разширения национален отбор по физика за международното състезание International Young Physics Tournament. 
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col md="4" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active5"
+            :elevation="active5 ? 3 : 0"
+            @mouseover="active5 = true"
+            @mouseleave="active5 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Деница Павлова</v-list-item-title>
+                <v-list-item-subtitle>Учител по матиматика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Deni.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Учи в Софийска Математическа Гимназия. Множество награди и грамоти от състезания по матиматика. 
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </section>
 </template>
@@ -102,7 +194,10 @@ export default {
   data() {
     return {
       active1: false,
-      active2: false
+      active2: false,
+      active3: false,
+      active4: false,
+      active5: false,
     }
   }
 };

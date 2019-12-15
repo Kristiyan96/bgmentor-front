@@ -38,3 +38,6 @@ export const SET_LESSONS = "setLessons";
 export const SET_LESSON = "setLesson";
 export const ADD_LESSON = "addLesson";
 export const REMOVE_LESSON = "removeLesson";
+
+export const SET_VOTES = "setVotes";
+export const ADD_VOTE = "addVote";

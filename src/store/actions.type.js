@@ -38,3 +38,6 @@ export const FETCH_LESSONS = "fetchLessons";
 export const CREATE_LESSON = "createLesson";
 export const UPDATE_LESSON = "updateLesson";
 export const DESTROY_LESSON = "destroyLesson";
+
+export const FETCH_VOTES = "fetchVotes";
+export const CREATE_VOTE = "createVote";
