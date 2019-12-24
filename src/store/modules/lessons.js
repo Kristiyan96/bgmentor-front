@@ -48,9 +48,15 @@ const actions = {
     });
   },
   async [UPDATE_LESSON]({ dispatch, commit, rootState }, params) {
-    const { data } = await ApiService.update(`/lesssons`, { lesson: params });
-    commit(SET_LESSON, data);
-    dispatch(CREATE_ALERT, ["Lesson updated.", "success"]);
+    return new Promise((resolve, reject) => {
+      ApiService.update(`/lessons`, params.id, { lesson: params }).then(response => {
+        commit(SET_LESSON, response.data);
+        dispatch(CREATE_ALERT, ["Lesson updated.", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    });
   },
   async [DESTROY_LESSON]({ commit, dispatch, rootState }, lesson_id) {
     await ApiService.delete(`/lessons`, lesson_id);

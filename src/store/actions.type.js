@@ -41,3 +41,6 @@ export const DESTROY_LESSON = "destroyLesson";
 
 export const FETCH_VOTES = "fetchVotes";
 export const CREATE_VOTE = "createVote";
+
+export const FETCH_ABSENCES = "fetchAbsences";
+export const CREATE_ABSENCE = "createAbsence";

@@ -2,7 +2,7 @@
     <v-dialog v-model="open" persistent max-width="700px">
       <v-card>
         <v-card-title>
-          <span class="headline">{{editing ? 'Редактиране' : 'Нов урок'}}</span>
+          <span class="headline">{{this.lesson.id ? 'Редактиране' : 'Нов урок'}}</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -77,17 +77,12 @@ export default {
       default: false,
       description: "Is the dialog open"
     },
-    editing: {
-      type: Boolean,
-      default: false,
-      description: "Is it in edit mode"
-    }
   },
   data() {
     return {
       form: {
-        start_time: null,
-        end_time: null,
+        start_time: "",
+        end_time: "",
         teacher_id: null,
         group_id: null
       }
@@ -107,9 +102,15 @@ export default {
         start_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.start_time.split(':')[0], this.form.start_time.split(':')[1]),
         end_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.end_time.split(':')[0], this.form.end_time.split(':')[1])
       };
+      if(this.lesson.id) {
+      store.dispatch(UPDATE_LESSON, this.form).then(response => {
+        this.closeDialog();
+      })
+      } else {
       store.dispatch(CREATE_LESSON, this.form).then(response => {
         this.closeDialog();
       })
+      }
     }
   },
   computed: {
@@ -118,7 +119,8 @@ export default {
   watch: {
     open() {
       if(this.open) {
-        if(this.editing) {
+        if(this.lesson.id) {
+          this.form.id = this.lesson.id;
           this.form.start_time = this.lesson.start_time.split(" ")[1];
           this.form.end_time = this.lesson.end_time.split(" ")[1];
           this.form.teacher_id = this.lesson.teacher_id;
@@ -132,7 +134,12 @@ export default {
           }
         }
       } else {
-
+        this.form = {
+          start_time: "",
+          end_time: "",
+          teacher_id: null,
+          group_id: null
+        }
       }
     },
   }

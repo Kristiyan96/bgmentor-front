@@ -97,7 +97,7 @@ let router = new Router({
       path: "/calendar",
       name: "Calendar",
       meta: { requiresAuth: true },
-      component: () => import("@/views/Calendar/Calendar")
+      component: () => import("@/views/Calendar/CalendarWrapper")
     },
   ],
   scrollBehavior (to, from, savedPosition) {

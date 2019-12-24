@@ -41,3 +41,5 @@ export const REMOVE_LESSON = "removeLesson";
 
 export const SET_VOTES = "setVotes";
 export const ADD_VOTE = "addVote";
+
+export const SET_ABSENCES = "setAbsences";
