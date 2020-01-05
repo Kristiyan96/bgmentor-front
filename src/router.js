@@ -13,49 +13,49 @@ let router = new Router({
       path: "/",
       name: "Landing",
       meta: { layout: "no-sidebar" },
-      component: require("@/views/Guest/Landing").default
+      component: require("@/views/Landing/Landing").default
     },
     {
       path: "/login",
       name: "Login",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/User/Login")
+      component: () => import("@/views/Users/Login")
     },
     {
       path: "/register",
       name: "Register",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/User/Signup")
+      component: () => import("@/views/Users/Signup")
     },
     {
       path: "/confirm_email/:key",
       name: "Confirmation",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/User/ConfirmEmail")
+      component: () => import("@/views/Users/ConfirmEmail")
     },
     {
       path: "/password",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/User/ResetPassword")
+      component: () => import("@/views/Users/ResetPassword")
     },
     {
       path: "/terms",
       name: "Terms",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Guest/Terms")
+      component: () => import("@/views/Landing/Terms")
     },
     {
       path: "/privacy",
       name: "Privacy",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Guest/Privacy")
+      component: () => import("@/views/Landing/Privacy")
     },
     {
       path: "/частно-или-групово",
       name: "Частно или Групово",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Guest/Blog/PrivateVsGroup")
+      component: () => import("@/views/Landing/Blog/PrivateVsGroup")
     },
     {
       path: "/home",

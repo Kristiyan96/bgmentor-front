@@ -94,7 +94,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col md="4" sm="3" xs="12">
+        <v-col md="4" sm="3" xs="12" offset-md="2" offset-sm="1">
           <v-card
             height="100%"
             :raised="active3"
@@ -138,7 +138,7 @@
             <v-list-item>
               <v-list-item-content class="text-center">
                 <v-list-item-title class="headline">Климентина Савова</v-list-item-title>
-                <v-list-item-subtitle>Учител по матиматика</v-list-item-subtitle>
+                <v-list-item-subtitle>Учител по математика</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
 
@@ -150,36 +150,6 @@
             <v-card-text>
               <div class="text-center grey--text">
                 Следва компютърни науки в СУ. Завършила математическата гимназия в Пловдив. В разширения национален отбор по физика за международното състезание International Young Physics Tournament. 
-              </div>
-            </v-card-text>
-          </v-card>
-        </v-col>
-        <v-col md="4" sm="3" xs="12">
-          <v-card
-            height="100%"
-            :raised="active5"
-            :elevation="active5 ? 3 : 0"
-            @mouseover="active5 = true"
-            @mouseleave="active5 = false"
-            shaped
-            flat
-            class="mx-auto"
-          >
-            <v-list-item>
-              <v-list-item-content class="text-center">
-                <v-list-item-title class="headline">Деница Павлова</v-list-item-title>
-                <v-list-item-subtitle>Учител по матиматика</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-
-            <v-img
-              src="@/assets/images/Deni.jpg"
-              height="300"
-            ></v-img>
-
-            <v-card-text>
-              <div class="text-center grey--text">
-                Учи в Софийска Математическа Гимназия. Множество награди и грамоти от състезания по матиматика. 
               </div>
             </v-card-text>
           </v-card>

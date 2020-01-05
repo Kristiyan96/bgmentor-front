@@ -3,6 +3,7 @@ import ApiService from "@/common/api.service";
 import {
   FETCH_LESSONS,
   CREATE_LESSON,
+  CREATE_LESSON_WEEKLY,
   UPDATE_LESSON,
   DESTROY_LESSON,
   CREATE_ALERT
@@ -47,6 +48,17 @@ const actions = {
       })
     });
   },
+  async [CREATE_LESSON_WEEKLY]({commit, dispatch}, params) {
+    return new Promise((resolve, reject) => {
+      ApiService.post(`/lessons/${params.id}/create_weekly`, params).then(response => {
+        commit(ADD_LESSON, response.data);
+        dispatch(CREATE_ALERT, ["Lessons created", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    });
+  },
   async [UPDATE_LESSON]({ dispatch, commit, rootState }, params) {
     return new Promise((resolve, reject) => {
       ApiService.update(`/lessons`, params.id, { lesson: params }).then(response => {
@@ -74,7 +86,7 @@ const mutations = {
     state.lessons.splice(idx, 1, lesson);
   },
   [ADD_LESSON](state, lesson) {
-    state.lessons.push(lesson);
+    state.lessons.concat(lesson);
   },
   [REMOVE_LESSON](state, lesson_id) {
     state.lessons = state.lessons.filter(p => p.id != lesson_id)

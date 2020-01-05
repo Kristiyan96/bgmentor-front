@@ -111,10 +111,10 @@ export default {
       this.focus = this.today;
     },
     prev() {
-      this.$refs.calendar.prev();
+      this.$refs.calendar.$refs.calendar.prev();
     },
     next() {
-      this.$refs.calendar.next();
+      this.$refs.calendar.$refs.calendar.next();
     },
     updateRange({ start, end }) {
       this.start = start;

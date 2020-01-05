@@ -34,7 +34,7 @@
     >
       <LessonPreview 
         v-if="selectedElement" 
-        :selectedEvent="selectedEvent"
+        :lesson="selectedEvent"
         :eventDialogOpen="eventDialogOpen"
         @lessonDeleted="lessonDeleted"
         @editLesson="editLesson"
