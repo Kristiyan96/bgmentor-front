@@ -1,9 +1,10 @@
 <template>
   <section class="landing">
     <v-container class="hidden-sm-and-down">
-      <v-row>
-        <v-col md="5" sm="5" xs="12" class="col-left">
-          <h1 class="mb-3">Групово и индивидуално <br>обучение по математика</h1>
+      <v-row class="pl-3">
+        <v-col md="5" sm="5" xs="12" class="col-left pl-5">
+          <h1 class="mb-1">Групово и индивидуално <br>обучение по математика</h1>
+          <h3 class="mb-3 grey--text">Отличаваме се с нашия амбициозен и млад екип - всеки един от нас е не само учител, но и ученик с отличия в математиката. Това ни позволява да видим проблемите на учениците през техните очи и да изберем най-подходящия начин на преподаване.</h3>
           <v-btn 
             class="primary mr-2" 
             rounded 
@@ -62,7 +63,7 @@ export default {
     max-width: 100%
   .col-left
     padding-top: 20vh
-    text-align: center
+    // text-align: justify
   .bg-image
     height: calc(100vh - 64px)
   .bg-image-small
