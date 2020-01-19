@@ -79,7 +79,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["users"]),
     dirty() {
       return !_.isEqual(this.form, this.user_copy);
     }

@@ -99,6 +99,12 @@ let router = new Router({
       meta: { requiresAuth: true },
       component: () => import("@/views/Calendar/CalendarWrapper")
     },
+    {
+      path: "/bugs",
+      name: "Bugs",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Bugs/BugsWrapper")
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {

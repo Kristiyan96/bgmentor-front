@@ -18,8 +18,8 @@ import underscore from 'vue-underscore';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
-library.add({ faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt });
+import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt, faBug } from "@fortawesome/free-solid-svg-icons";
+library.add({ faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt, faBug });
 
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));

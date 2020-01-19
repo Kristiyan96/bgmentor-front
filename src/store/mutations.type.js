@@ -43,3 +43,8 @@ export const SET_VOTES = "setVotes";
 export const ADD_VOTE = "addVote";
 
 export const SET_ABSENCES = "setAbsences";
+
+export const SET_BUGS = "setBugs";
+export const SET_BUG = "setBug";
+export const ADD_BUG = "addBug";
+export const REMOVE_BUG = "removeBug";

@@ -45,3 +45,8 @@ export const CREATE_VOTE          = "createVote";
 
 export const FETCH_ABSENCES       = "fetchAbsences";
 export const CREATE_ABSENCE       = "createAbsence";
+
+export const FETCH_BUGS           = "fetchBugs";
+export const CREATE_BUG           = "createBug";
+export const UPDATE_BUG           = "updateBug";
+export const DESTROY_BUG          = "destroyBug";

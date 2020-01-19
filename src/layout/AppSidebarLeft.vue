@@ -63,6 +63,16 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item to="/bugs" v-if="current_user.admin">
+            <v-list-item-action>
+              <font-awesome-icon icon="bug" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Бъгове
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-flex>
     </v-layout>
