@@ -5,15 +5,24 @@
         <v-card class="pb-0">
           <v-card-title>
             <span class="headline">Плащания</span>
+            <v-spacer></v-spacer>
+            <v-text-field
+              class="pt-0"
+              v-model="search"
+              append-icon="search"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
           </v-card-title>
           <v-card-text class="px-0 pb-0">
             <v-container class="px-0 pb-0">
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
-                    v-if="payments.length"
+                    v-if="filtered_payments.length"
                     :headers="headers"
-                    :items="payments"
+                    :items="filtered_payments"
                     :items-per-page="5"
                     class="elevation-1"
                   >
@@ -52,6 +61,7 @@ export default {
   data() {
     return {
       payment: null,
+      search: "",
       headers: [
         {
           text: 'Име',
@@ -78,6 +88,11 @@ export default {
   },
   computed: {
     ...mapGetters(["payments"]),
+    filtered_payments() {
+      return this.payments.filter(p => 
+        p.student.name.toLowerCase().search(this.search.toLowerCase()) != -1 || 
+        p.month.toLowerCase().search(this.search.toLowerCase()) != -1);
+    }
   },
   watch: {
     payments() {

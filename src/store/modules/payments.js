@@ -36,20 +36,37 @@ const actions = {
     commit(SET_PAYMENTS, data);
   },
   async [CREATE_PAYMENT]({commit, dispatch}, params) {
-    const { data } = await ApiService.post(`/payments`, { payment: params });
-    commit(ADD_PAYMENT, data);
-    dispatch(CREATE_ALERT, ["Payment created", "success"]);
+    return new Promise((resolve, reject) => {
+      ApiService.post(`/payments`, { payment: params }).then(response => {
+        commit(ADD_PAYMENT, data);
+        dispatch(CREATE_ALERT, ["Payment created", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    });
   },
   async [UPDATE_PAYMENT]({ dispatch, commit, rootState }, params) {
-    const { data } = await ApiService.update(`/users/${params.user_id}/payments`, { payment: params });
-    commit(SET_PAYMENT, data);
-    dispatch(CREATE_ALERT, ["Payment updated.", "success"]);
+    return new Promise((resolve, reject) => {
+      ApiService.update(`/payments`, params.id, { payment: params }).then(response => {
+        commit(SET_PAYMENT, response.data);
+        dispatch(CREATE_ALERT, ["Payment updated.", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    });
   },
   async [DESTROY_PAYMENT]({ commit, dispatch, rootState }, payment_id) {
-    // you wiill need to define a rooute for this
-    await ApiService.delete(`/payments`, payment_id);
-    commit(REMOVE_PAYMENT, payment_id);
-    dispatch(CREATE_ALERT, ["Payment removed.", "success"]);
+    return new Promise((resolve, reject) => {
+      ApiService.delete(`/payments`, payment_id).then(response => {
+        commit(REMOVE_PAYMENT, payment_id);
+        dispatch(CREATE_ALERT, ["Payment removed.", "success"]);
+        resolve(response.data);
+      }, error => {
+        reject(error);
+      })
+    });
   }
 }
 

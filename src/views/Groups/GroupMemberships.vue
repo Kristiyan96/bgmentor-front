@@ -31,7 +31,11 @@
     </template>
 
     <template v-slot:item.name="{ item }">
-      {{ item.student.name }}
+      <div style="display: flex">
+        {{ item.student.name }}
+        <v-spacer />
+        <font-awesome-icon icon="check" class="green--text" v-if="item.paid"/>
+      </div>
     </template>
   </v-data-table>
 </template>
