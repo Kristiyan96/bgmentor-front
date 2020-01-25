@@ -88,9 +88,11 @@ export default {
         return {"user_id": u.id, "lesson_id": this.lesson.id}
       });
       store.dispatch(CREATE_ABSENCE, params);
+      this.selectedUsers = [];
     },
     destroyMembership() {
       store.dispatch(DESTROY_MEMBERSHIP, this.selectedUsers);
+      this.selectedUsers = [];
     }
   },
   computed: {
