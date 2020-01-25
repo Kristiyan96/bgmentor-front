@@ -1,18 +1,28 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="600px">
+  <v-dialog v-model="dialog" persistent max-width="600px" scrollable>
     <template v-slot:activator="{ on }">
       <v-btn outlined v-on="on">Добави ученици</v-btn>
     </template>
     <v-card>
       <v-card-title>
         <span class="headline">Ученици</span>
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+          class="pt-0"
+        ></v-text-field>
       </v-card-title>
-      <v-card-text>
+      <v-divider />
+      <v-card-text style="height: 500px;">
         <v-container>
           <v-data-table
             show-select
             :headers="headers"
-            :items="availableStudents"
+            :items="queriedStudents"
             :items-per-page="10"
             v-model="selectedUsers"
           >
@@ -28,6 +38,7 @@
           </v-data-table>
         </v-container>
       </v-card-text>
+      <v-divider />
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="dialog = false">Затвори</v-btn>
@@ -58,6 +69,7 @@ export default {
   data() {
     return {
       dialog: false,
+      search: "",
       headers: [
         {
           text: 'Ученик',
@@ -87,6 +99,9 @@ export default {
     availableStudents() {
       let member_ids = this.memberships.map(m => m.student.id);
       return this.students.filter(s => !member_ids.includes(s.id));
+    },
+    queriedStudents() {
+      return this.availableStudents.filter(s => s.name.toLowerCase().search(this.search.toLowerCase()) != -1);
     }
   }
 }

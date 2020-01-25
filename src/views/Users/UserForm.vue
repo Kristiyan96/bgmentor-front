@@ -67,6 +67,7 @@ export default {
   methods: {
     submit() {
       store.dispatch(CREATE_USER, this.form);
+      this.reset();
     },
     update() {
       store.dispatch(UPDATE_USER, this.form);
