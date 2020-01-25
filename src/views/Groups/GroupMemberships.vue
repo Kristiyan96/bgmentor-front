@@ -21,7 +21,7 @@
               <PaymentDialog :group="group" :memberships="selectedUsers" />
               <v-btn outlined @click="createAbsence" class="ml-2">Отсъства</v-btn>
               <v-spacer />
-              <v-btn color="red" text v-if="!calendar">
+              <v-btn color="red" text v-if="!calendar" @click="destroyMembership">
                 <font-awesome-icon icon="trash-alt" />
               </v-btn>
             </div>
@@ -44,7 +44,7 @@
 import AddMembers from "./GroupAddStudentsDialog";
 import PaymentDialog from "./GroupAddPaymentDialog";
 import { mapGetters } from "vuex";
-import { FETCH_MEMBERSHIPS, CREATE_ABSENCE } from "@/store/actions.type";
+import { FETCH_MEMBERSHIPS, CREATE_ABSENCE, DESTROY_MEMBERSHIP } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
@@ -88,6 +88,9 @@ export default {
         return {"user_id": u.id, "lesson_id": this.lesson.id}
       });
       store.dispatch(CREATE_ABSENCE, params);
+    },
+    destroyMembership() {
+      store.dispatch(DESTROY_MEMBERSHIP, this.selectedUsers);
     }
   },
   computed: {

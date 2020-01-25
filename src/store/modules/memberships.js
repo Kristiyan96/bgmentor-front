@@ -66,10 +66,13 @@ const actions = {
     commit(SET_MEMBERSHIP, data);
     dispatch(CREATE_ALERT, ["Membership updated.", "success"]);
   },
-  async [DESTROY_MEMBERSHIP]({ commit, dispatch, rootState }, membership) {
-    await ApiService.delete(`/groups/${membership.group_id}/memberships`, membership.id);
-    commit(REMOVE_MEMBERSHIP, membership.id);
-    dispatch(CREATE_ALERT, ["Member removed.", "success"]);
+  async [DESTROY_MEMBERSHIP]({ commit, dispatch, rootState }, selected_memberships) {
+    let group_id = selected_memberships[0].group_id;
+    let membership_ids = selected_memberships.map(m => m.id);
+    // membership_ids could be either an array or a number
+    await ApiService.delete(`/groups/${group_id}/memberships`, membership_ids);
+    commit(REMOVE_MEMBERSHIP, membership_ids);
+    dispatch(CREATE_ALERT, ["Member(s) removed.", "success"]);
   }
 }
 
@@ -84,8 +87,13 @@ const mutations = {
   [ADD_MEMBERSHIP](state, membership) {
     state.memberships.push(membership);
   },
-  [REMOVE_MEMBERSHIP](state, membership_id) {
-    state.memberships = state.memberships.filter(m => m.id != membership_id)
+  [REMOVE_MEMBERSHIP](state, membership_ids) {
+    // membership_ids could be either an array or a number
+    if(!Array.isArray(membership_ids)) {
+      membership_ids = [membership_ids];
+    } 
+
+    state.memberships = state.memberships.filter(m => !membership_ids.includes(m.id));
   }
 }
 
