@@ -18,7 +18,7 @@
                     v-if="groups.length"
                     :headers="headers"
                     :items="groups"
-                    :items-per-page="5"
+                    :items-per-page="10"
                     class="elevation-1"
                   >
                     <template v-slot:item="{ item }">

@@ -23,7 +23,7 @@
                     v-if="filtered_payments.length"
                     :headers="headers"
                     :items="filtered_payments"
-                    :items-per-page="5"
+                    :items-per-page="10"
                     class="elevation-1"
                   >
                     <template v-slot:item="{ item }">
