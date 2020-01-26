@@ -15,9 +15,7 @@
                 {{ item.text }}
               </v-btn>
             </v-toolbar-items>
-            
             <v-spacer></v-spacer>
-
             <template v-if="$vuetify.breakpoint.smAndUp">
               <v-btn icon @click="user = null">
                 <v-icon>mdi-plus-circle</v-icon>
@@ -25,6 +23,14 @@
             </template>
           </v-toolbar>
           <v-card-text class="px-0 pb-0">
+            <v-text-field
+              v-model="search"
+              append-icon="search"
+              label="Search users by name"
+              single-line
+              hide-details
+              class="pt-0 px-5"
+            ></v-text-field>
             <v-container class="px-0 pb-0">
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
@@ -32,8 +38,9 @@
                     v-if="filteredUsers.length"
                     :headers="headers[selectedUserType]"
                     :items="filteredUsers"
-                    :items-per-page="10"
-                    class="elevation-1"
+                    hide-default-footer
+                    :items-per-page="filteredUsers.length"
+                    class="elevation-1 table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: user && item.id == user.id}">
@@ -70,6 +77,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       selectedUserType: "students",
       userTypes: [
         {
@@ -125,7 +133,7 @@ export default {
   computed: {
     ...mapGetters(["students", "guardians", "teachers"]),
     filteredUsers() {
-      return this[this.selectedUserType]
+      return this[this.selectedUserType].filter(u => u.name.toLowerCase().search(this.search.toLowerCase()) != -1)
     }
   },
   watch: {

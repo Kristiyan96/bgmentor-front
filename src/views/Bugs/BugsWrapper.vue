@@ -18,8 +18,9 @@
                     v-if="bugs.length"
                     :headers="headers"
                     :items="bugs"
-                    :items-per-page="10"
-                    class="elevation-1"
+                    :items-per-page="bugs.length"
+                    hide-default-footer
+                    class="elevation-1 table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: bug && item.id == bug.id, fixed: item.fixed == true}">

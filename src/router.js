@@ -76,6 +76,12 @@ let router = new Router({
       component: () => import("@/views/Payments/Payments")
     },
     {
+      path: "/pricing",
+      name: "Pricing",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Pricing/Pricing")
+    },
+    {
       path: "/interests",
       name: "Interests",
       meta: { requiresAuth: true },

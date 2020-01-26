@@ -16,6 +16,7 @@ import moment from "moment";
 import vueSmoothScroll from 'vue2-smooth-scroll';
 import underscore from 'vue-underscore';
 
+import '@/assets/styles/table.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faCheck, faColumns, faBell, faUser, faHome, faDollarSign, faFileAlt, faUserFriends, faArchive, faTrashAlt, faUsers, faEdit, faPlusSquare, faTimes, faCalendarAlt, faBug } from "@fortawesome/free-solid-svg-icons";

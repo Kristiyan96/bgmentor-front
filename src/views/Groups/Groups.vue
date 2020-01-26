@@ -18,8 +18,9 @@
                     v-if="groups.length"
                     :headers="headers"
                     :items="groups"
-                    :items-per-page="10"
-                    class="elevation-1"
+                    :items-per-page="groups.length"
+                    hide-default-footer
+                    class="elevation-1 table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: group && item.id == group.id}">

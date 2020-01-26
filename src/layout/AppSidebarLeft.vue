@@ -23,16 +23,37 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/payments" v-if="['teacher', 'guardian'].includes(current_user.role)">
-            <v-list-item-action>
-              <font-awesome-icon icon="dollar-sign" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                Плащания
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <v-list-group
+            v-if="['teacher'].includes(current_user.role)"
+            :value="false"
+          >
+            <font-awesome-icon slot="prependIcon" icon="dollar-sign" class="grey--text pricing-icon" />
+            <template v-slot:activator>
+              <v-list-item-title>Пари</v-list-item-title>
+            </template>
+
+            <v-list-item to="/payments" v-if="['teacher'].includes(current_user.role)">
+              <v-list-item-action>
+                <font-awesome-icon icon="dollar-sign" class="grey--text" />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Плащания
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-list-item to="/pricing" v-if="['teacher'].includes(current_user.role)">
+              <v-list-item-action>
+                <font-awesome-icon icon="dollar-sign" class="grey--text" />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Ценоразпис
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
           <v-list-item to="/groups" v-if="current_user.role == 'teacher'">
             <v-list-item-action>
               <font-awesome-icon icon="users" class="grey--text" />
@@ -100,4 +121,6 @@ export default {
 .projects-wrapper
   max-height: 200px
   overflow-y: auto
+.pricing-icon
+  height: 100%
 </style>
