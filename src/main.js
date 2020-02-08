@@ -57,6 +57,7 @@ library.add({
   faBug,
   faBuilding
 });
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
