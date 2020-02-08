@@ -48,7 +48,7 @@
 import LessonPreview from "./LessonPreview";
 import LessonDialog from "./LessonDialog";
 import { mapGetters } from "vuex";
-import { FETCH_LESSONS, DESTROY_LESSON } from "@/store/actions.type";
+import { FETCH_LESSONS, FETCH_LOCATIONS, DESTROY_LESSON } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
@@ -90,6 +90,7 @@ export default {
   },
   mounted() {
     store.dispatch(FETCH_LESSONS);
+    store.dispatch(FETCH_LOCATIONS);
   },
   methods: {
     updateFocus() {
@@ -118,6 +119,7 @@ export default {
       this.$emit('updateType', 'day');
     },
     newEvent(props) {
+      this.selectedEvent = {...store.state.lessons.new_lesson};
       if(this.selectedOpen) {
         this.selectedOpen = false;
         return;
@@ -134,10 +136,13 @@ export default {
     },
     updateRange(props) {
       this.$emit("updateRange", props);
-    }
+    },
+    getEventColor (event) {
+      return this.locations.find(l => l.id == event.group.location_id).color;
+    },
   },
   computed: {
-    ...mapGetters(["lessons"]),
+    ...mapGetters(["lessons", "locations"]),
   },
   watch: {
     focus: {

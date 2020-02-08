@@ -11,9 +11,7 @@ const ApiService = {
   },
 
   setHeader() {
-    Vue.axios.defaults.headers.common[
-      "Authorization"
-    ] = JwtService.getToken();
+    Vue.axios.defaults.headers.common["Authorization"] = JwtService.getToken();
   },
 
   query(resource, params) {
@@ -51,6 +49,6 @@ export default ApiService;
 
 export const UserService = {
   update(params) {
-    return ApiService.put("profile/update", { user: params} );
+    return ApiService.put("profile/update", { user: params });
   }
-}
+};

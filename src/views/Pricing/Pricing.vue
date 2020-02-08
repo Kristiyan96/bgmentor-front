@@ -4,37 +4,31 @@
       <v-col xs="12" md="5">
         <v-card class="pb-0">
           <v-card-title>
-            <span class="headline">Плащания</span>
-            <v-spacer></v-spacer>
-            <v-text-field
-              class="pt-0"
-              v-model="search"
-              append-icon="search"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
+            <span class="headline">Ценоразпис</span>
+            <v-spacer/>
+            <v-btn icon @click="newPricing">
+              <v-icon>mdi-plus-circle</v-icon>
+            </v-btn>
           </v-card-title>
           <v-card-text class="px-0 pb-0">
             <v-container class="px-0 pb-0">
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
-                    v-if="filtered_payments.length"
+                    v-if="pricings.length"
                     :headers="headers"
-                    :items="filtered_payments"
+                    :items="pricings"
                     :items-per-page="10"
                     class="elevation-1"
                   >
                     <template v-slot:item="{ item }">
-                      <tr @click="activate(item)" :class="{active: payment && item.id == payment.id}">
-                        <td>{{ item.student.name }}</td>
-                        <td>{{ item.amount }}</td>
-                        <td>{{ capitalize(item.month) }}</td>
+                      <tr @click="activate(item)" :class="{active: pricing && item.id == pricing.id}">
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.credit_price }}лв.</td>
                       </tr>
                     </template>
                   </v-data-table>
-                  <div v-else class="px-3 grey--text py-3">Няма плащания</div>
+                  <div v-else class="px-3 grey--text py-3">Няма ценоразписи</div>
                 </v-col>
               </v-row>
             </v-container>
@@ -42,62 +36,62 @@
         </v-card>
       </v-col>
       <v-col xs="12" md="7">
-        <PaymentPreview :payment="payment" />
+        <PricingPreview :pricing="pricing" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import PaymentPreview from "@/views/Payments/PaymentPreview";
+import PricingPreview from "@/views/Pricing/PricingPreview";
 import { mapGetters } from "vuex";
-import { FETCH_PAYMENTS } from "@/store/actions.type";
+import { FETCH_PRICINGS } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
   components: {
-    PaymentPreview
+    PricingPreview
   },
   data() {
     return {
-      payment: null,
-      search: "",
+      pricing: null,
       headers: [
         {
-          text: 'Име',
-          align: 'left',
-          sortable: false,
-          value: 'name',
+          value: 'title',
+          text: 'Име'
         },
-        { text: 'Сума', value: 'amount' },
-        { text: 'Месец', value: 'month' },
+        {
+          value: 'price_credit',
+          text: 'Цена на урок'
+        }
       ],
     }
   },
   mounted() {
-    store.dispatch(FETCH_PAYMENTS);
+    store.dispatch(FETCH_PRICINGS);
   },
   methods: {
     activate(item) {
-      this.payment = item;
+      this.pricing = item;
     },
     capitalize(s) {
       if (typeof s !== 'string') return ''
       return s.charAt(0).toUpperCase() + s.slice(1)
+    },
+    newPricing() {
+      this.pricing = {
+        title: "",
+        credit_price: 0
+      }
     }
   },
   computed: {
-    ...mapGetters(["payments"]),
-    filtered_payments() {
-      return this.payments.filter(p => 
-        p.student.name.toLowerCase().search(this.search.toLowerCase()) != -1 || 
-        p.month.toLowerCase().search(this.search.toLowerCase()) != -1);
-    }
+    ...mapGetters(["pricings"])
   },
   watch: {
-    payments() {
-      if(this.payments.length) {
-        this.payment = this.payments[0];
+    pricings() {
+      if(this.pricings.length) {
+        this.pricing = this.pricings[0];
       }
     }
   }

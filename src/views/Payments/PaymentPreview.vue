@@ -24,10 +24,6 @@
             {{ payment.note }}
           </v-col>
           <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Период</div>
-            {{ capitalize(payment.month) }}
-          </v-col>
-          <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Услуга</div>
             {{ group.lesson_type ? 'Индивидуален урок' : 'Групов урок' }} за {{ group.grade }} клас. Група {{ group.name }}
           </v-col>
@@ -37,14 +33,6 @@
         <v-row v-if="payment">
           <v-col cols="12">
             <v-text-field label="Сума" v-model="form.amount"></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-select
-              :items="monthOptions"
-              v-model="form.month"
-              label="*Месец"
-              required
-            ></v-select>
           </v-col>
           <v-col cols="12">
             <v-text-field label="Забележки" v-model="form.note"></v-text-field>
@@ -85,56 +73,6 @@ export default {
       student: {},
       form: {},
       form_copy: {},
-      monthOptions: [
-        {
-          text: "Януари",
-          value: 'january'
-        },
-        {
-          text: "Февруари",
-          value: 'february'
-        },
-        {
-          text: "Март",
-          value: 'march'
-        },
-        {
-          text: "Април",
-          value: 'april'
-        },
-        {
-          text: "Май",
-          value: 'may'
-        },
-        {
-          text: "Юни",
-          value: 'june'
-        },
-        {
-          text: "Юли",
-          value: 'july'
-        },
-        {
-          text: "Август",
-          value: 'august'
-        },
-        {
-          text: "Септември",
-          value: 'september'
-        },
-        {
-          text: "Октомври",
-          value: 'october'
-        },
-        {
-          text: "Ноември",
-          value: 'november'
-        },
-        {
-          text: "Декември",
-          value: 'december'
-        }
-      ]
     }
   },
   methods: {

@@ -21,7 +21,7 @@ const state = {
     user_id: "",
     group_id: ""
   }
-}
+};
 
 const getters = {
   memberships(state) {
@@ -37,36 +37,50 @@ const getters = {
           return acc;
         }
       }, []);
-    }
+    };
     let members = state.memberships.map(m => m.user);
     return filterUsers(members);
   }
-}
+};
 
 const actions = {
   async [FETCH_MEMBERSHIPS]({ commit, rootState }, group_id) {
     const { data } = await ApiService.query(`/groups/${group_id}/memberships`);
     commit(SET_MEMBERSHIPS, data);
   },
-  async [CREATE_MEMBERSHIP]({commit, dispatch}, params) {
-    let group_id = Array.isArray(params) && params.length ? params[0].group_id : params.group_id;
+  async [CREATE_MEMBERSHIP]({ commit, dispatch }, params) {
+    let group_id =
+      Array.isArray(params) && params.length
+        ? params[0].group_id
+        : params.group_id;
 
     return new Promise((resolve, reject) => {
-      ApiService.post(`/groups/${group_id}/memberships`, { membership: params }).then(response => {
-        commit(SET_MEMBERSHIPS, response.data);
-        dispatch(CREATE_ALERT, ["Membership created", "success"]);
-        resolve(response.data);
-      }, error => {
-        reject(error);
-      })
-    })
+      ApiService.post(`/groups/${group_id}/memberships`, {
+        membership: params
+      }).then(
+        response => {
+          commit(SET_MEMBERSHIPS, response.data);
+          dispatch(CREATE_ALERT, ["Membership created", "success"]);
+          resolve(response.data);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    });
   },
   async [UPDATE_MEMBERSHIP]({ dispatch, commit, rootState }, params) {
-    const { data } = await ApiService.update(`/groups/${params.group_id}/memberships`, { membership: params });
+    const { data } = await ApiService.update(
+      `/groups/${params.group_id}/memberships`,
+      { membership: params }
+    );
     commit(SET_MEMBERSHIP, data);
     dispatch(CREATE_ALERT, ["Membership updated.", "success"]);
   },
-  async [DESTROY_MEMBERSHIP]({ commit, dispatch, rootState }, selected_memberships) {
+  async [DESTROY_MEMBERSHIP](
+    { commit, dispatch, rootState },
+    selected_memberships
+  ) {
     let group_id = selected_memberships[0].group_id;
     let membership_ids = selected_memberships.map(m => m.id);
     // membership_ids could be either an array or a number
@@ -74,7 +88,7 @@ const actions = {
     commit(REMOVE_MEMBERSHIP, membership_ids);
     dispatch(CREATE_ALERT, ["Member(s) removed.", "success"]);
   }
-}
+};
 
 const mutations = {
   [SET_MEMBERSHIPS](state, memberships) {
@@ -89,17 +103,19 @@ const mutations = {
   },
   [REMOVE_MEMBERSHIP](state, membership_ids) {
     // membership_ids could be either an array or a number
-    if(!Array.isArray(membership_ids)) {
+    if (!Array.isArray(membership_ids)) {
       membership_ids = [membership_ids];
-    } 
+    }
 
-    state.memberships = state.memberships.filter(m => !membership_ids.includes(m.id));
+    state.memberships = state.memberships.filter(
+      m => !membership_ids.includes(m.id)
+    );
   }
-}
+};
 
 export default {
   state,
   getters,
   actions,
   mutations
-}
+};

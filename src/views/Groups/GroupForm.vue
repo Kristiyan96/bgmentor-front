@@ -39,6 +39,26 @@
               required
             ></v-select>
           </v-col>
+          <v-col cols="12" sm="6" class="pl-0">
+            <v-select
+              :items="pricings"
+              v-model="form.pricing_id"
+              item-text="title"
+              item-value="id"
+              label="*Ценоразпис"
+              required
+            ></v-select>
+          </v-col>
+          <v-col cols="12" sm="6" class="pl-0">
+            <v-select
+              :items="locations"
+              v-model="form.location_id"
+              item-text="title"
+              item-value="id"
+              label="*Място"
+              required
+            ></v-select>
+          </v-col>
         </v-row>
         <v-row v-if="group">
           <v-col cols="12" class="px-0">
@@ -83,13 +103,7 @@ export default {
   data() {
     return {
       group_copy: {},
-      form: {
-        name: "",
-        grade: "",
-        lesson_type: "",
-        user_id: "",
-        information: ""
-      },
+      form: {},
       gradeOptions: [
         {
           text: "5-ти",
@@ -146,7 +160,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["groups", "teachers"]),
+    ...mapGetters(["groups", "teachers", "pricings", "locations"]),
     dirty() {
       return !_.isEqual(this.form, this.group_copy);
     }

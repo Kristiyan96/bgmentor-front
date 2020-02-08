@@ -13,14 +13,6 @@
             <v-col cols="12" sm="6" class="pl-0">
               <v-text-field label="*Сума" v-model="form.amount"></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6" class="pr-0">
-              <v-select
-                :items="monthOptions"
-                v-model="form.month"
-                label="*Месец"
-                required
-              ></v-select>
-            </v-col>
             <v-col cols="12" class="px-0">
               <v-text-field label="Забележки" v-model="form.note"></v-text-field>
             </v-col>
@@ -38,7 +30,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { CREATE_PAYMENT } from "@/store/actions.type";
+import { CREATE_PAYMENT, FETCH_MEMBERSHIPS } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
@@ -58,61 +50,10 @@ export default {
     return {
       dialog: false,
       form: {
-        month: 0,
         note: "",
         amount: 0,
         membership_ids: []
-      },
-      monthOptions: [
-        {
-          text: "Януари",
-          value: 0
-        },
-        {
-          text: "Февруари",
-          value: 1
-        },
-        {
-          text: "Март",
-          value: 2
-        },
-        {
-          text: "Април",
-          value: 3
-        },
-        {
-          text: "Май",
-          value: 4
-        },
-        {
-          text: "Юни",
-          value: 5
-        },
-        {
-          text: "Юли",
-          value: 6
-        },
-        {
-          text: "Август",
-          value: 7
-        },
-        {
-          text: "Септември",
-          value: 8
-        },
-        {
-          text: "Октомври",
-          value: 9
-        },
-        {
-          text: "Ноември",
-          value: 10
-        },
-        {
-          text: "Декември",
-          value: 11
-        }
-      ]
+      }
     }
   },
   methods: {
@@ -121,11 +62,12 @@ export default {
         return {
           membership_id: m.id, 
           note: this.form.note, 
-          amount: this.form.amount,
-          month: this.form.month
+          amount: this.form.amount
         }
       });
-      store.dispatch(CREATE_PAYMENT, params);
+      store.dispatch(CREATE_PAYMENT, params).then(response => {
+        store.dispatch(FETCH_MEMBERSHIPS, this.group.id);
+      })
       this.dialog = false;
     }
   }

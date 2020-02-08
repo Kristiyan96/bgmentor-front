@@ -111,12 +111,18 @@ let router = new Router({
       meta: { requiresAuth: true },
       component: () => import("@/views/Bugs/BugsWrapper")
     },
+    {
+      path: "/locations",
+      name: "Locations",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Locations/LocationsWrapper")
+    },
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   }
 });

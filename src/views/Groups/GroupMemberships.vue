@@ -19,10 +19,10 @@
           <th :colspan="headers.length">
             <div class="d-flex">
               <PaymentDialog :group="group" :memberships="selectedUsers" />
-              <v-btn outlined @click="createAbsence" class="ml-2">Отсъства</v-btn>
+              <v-btn outlined @click="createAbsence" class="ml-2" v-if="calendar">Отсъства</v-btn>
               <v-spacer />
-              <v-btn color="red" text v-if="!calendar" @click="destroyMembership">
-                <font-awesome-icon icon="trash-alt" />
+              <v-btn outlined color="red" class="ml-2" v-if="!calendar" @click="destroyMembership">
+                Махни от групата
               </v-btn>
             </div>
           </th>
@@ -33,9 +33,11 @@
     <template v-slot:item.name="{ item }">
       <div style="display: flex">
         {{ item.student.name }}
-        <v-spacer />
-        <font-awesome-icon icon="check" class="green--text" v-if="item.paid"/>
       </div>
+    </template>
+
+    <template v-slot:item.credit="{ item }">
+      <span class="pr-4" :class="{'red--text': item.credit < 1}">{{ item.credit }}</span>
     </template>
   </v-data-table>
 </template>
@@ -78,6 +80,11 @@ export default {
           align: 'left',
           sortable: true,
           value: "name"
+        },
+        {
+          text: 'Оставащи посещения',
+          value: 'credit',
+          align: 'right'
         }
       ],
     }

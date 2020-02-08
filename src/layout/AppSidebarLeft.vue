@@ -26,10 +26,11 @@
           <v-list-group
             v-if="['teacher'].includes(current_user.role)"
             :value="false"
+            no-action
           >
             <font-awesome-icon slot="prependIcon" icon="dollar-sign" class="grey--text pricing-icon" />
             <template v-slot:activator>
-              <v-list-item-title>Пари</v-list-item-title>
+              <v-list-item-title>Финанси</v-list-item-title>
             </template>
 
             <v-list-item to="/payments" v-if="['teacher'].includes(current_user.role)">
@@ -81,6 +82,16 @@
             <v-list-item-content>
               <v-list-item-title>
                 Заявки
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/locations" v-if="current_user.admin">
+            <v-list-item-action>
+              <font-awesome-icon icon="building" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Локации
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>

@@ -30,7 +30,6 @@
                       <tr @click="activate(item)" :class="{active: payment && item.id == payment.id}">
                         <td>{{ item.student.name }}</td>
                         <td>{{ item.amount }}</td>
-                        <td>{{ capitalize(item.month) }}</td>
                       </tr>
                     </template>
                   </v-data-table>
@@ -69,8 +68,7 @@ export default {
           sortable: false,
           value: 'name',
         },
-        { text: 'Сума', value: 'amount' },
-        { text: 'Месец', value: 'month' },
+        { text: 'Сума', value: 'amount' }
       ],
     }
   },

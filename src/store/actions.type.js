@@ -1,52 +1,62 @@
-export const FETCH_PROFILE        = "fetchProfile";
-export const CHECK_AUTH           = "checkAuth";
-export const LOGIN                = "login";
-export const LOGOUT               = "logout";
-export const REGISTER             = "register";
-export const UPDATE_PROFILE       = "updateProfile";
+export const FETCH_PROFILE = "fetchProfile";
+export const CHECK_AUTH = "checkAuth";
+export const LOGIN = "login";
+export const LOGOUT = "logout";
+export const REGISTER = "register";
+export const UPDATE_PROFILE = "updateProfile";
 
-export const CREATE_ALERT         = "createAlert";
-export const DESTROY_ALERT        = "destroyAlert";
+export const CREATE_ALERT = "createAlert";
+export const DESTROY_ALERT = "destroyAlert";
 
-export const FETCH_INTERESTS      = "fetchInterests";
-export const ARCHIVE_INTEREST     = "archiveInterest";
-export const CREATE_INTEREST      = "createInterest";
-export const UPDATE_INTEREST      = "updateInterest";
-export const DESTROY_INTEREST     = "destroyInterest";
+export const FETCH_INTERESTS = "fetchInterests";
+export const ARCHIVE_INTEREST = "archiveInterest";
+export const CREATE_INTEREST = "createInterest";
+export const UPDATE_INTEREST = "updateInterest";
+export const DESTROY_INTEREST = "destroyInterest";
 
-export const FETCH_GROUPS         = "fetchGroups";
-export const CREATE_GROUP         = "createGroup";
-export const UPDATE_GROUP         = "updateGroup";
-export const DESTROY_GROUP        = "destroyGroup";
+export const FETCH_GROUPS = "fetchGroups";
+export const CREATE_GROUP = "createGroup";
+export const UPDATE_GROUP = "updateGroup";
+export const DESTROY_GROUP = "destroyGroup";
 
-export const FETCH_USERS          = "fetchUsers";
-export const CREATE_USER          = "createUser";
-export const UPDATE_USER          = "updateUser";
-export const DESTROY_USER         = "destroyUser";
+export const FETCH_USERS = "fetchUsers";
+export const CREATE_USER = "createUser";
+export const UPDATE_USER = "updateUser";
+export const DESTROY_USER = "destroyUser";
 
-export const FETCH_MEMBERSHIPS    = "fetchMemberships";
-export const CREATE_MEMBERSHIP    = "createMembership";
-export const UPDATE_MEMBERSHIP    = "updateMembership";
-export const DESTROY_MEMBERSHIP   = "destroyMembership";
+export const FETCH_MEMBERSHIPS = "fetchMemberships";
+export const CREATE_MEMBERSHIP = "createMembership";
+export const UPDATE_MEMBERSHIP = "updateMembership";
+export const DESTROY_MEMBERSHIP = "destroyMembership";
 
-export const FETCH_PAYMENTS       = "fetchPayments";
-export const CREATE_PAYMENT       = "createPayment";
-export const UPDATE_PAYMENT       = "updatePayment";
-export const DESTROY_PAYMENT      = "destroyPayment";
+export const FETCH_PAYMENTS = "fetchPayments";
+export const CREATE_PAYMENT = "createPayment";
+export const UPDATE_PAYMENT = "updatePayment";
+export const DESTROY_PAYMENT = "destroyPayment";
 
-export const FETCH_LESSONS        = "fetchLessons";
-export const CREATE_LESSON        = "createLesson";
+export const FETCH_LESSONS = "fetchLessons";
+export const CREATE_LESSON = "createLesson";
 export const CREATE_LESSON_WEEKLY = "createLessonWeekly";
-export const UPDATE_LESSON        = "updateLesson";
-export const DESTROY_LESSON       = "destroyLesson";
+export const UPDATE_LESSON = "updateLesson";
+export const DESTROY_LESSON = "destroyLesson";
 
-export const FETCH_VOTES          = "fetchVotes";
-export const CREATE_VOTE          = "createVote";
+export const FETCH_VOTES = "fetchVotes";
+export const CREATE_VOTE = "createVote";
 
-export const FETCH_ABSENCES       = "fetchAbsences";
-export const CREATE_ABSENCE       = "createAbsence";
+export const FETCH_ABSENCES = "fetchAbsences";
+export const CREATE_ABSENCE = "createAbsence";
 
-export const FETCH_BUGS           = "fetchBugs";
-export const CREATE_BUG           = "createBug";
-export const UPDATE_BUG           = "updateBug";
-export const DESTROY_BUG          = "destroyBug";
+export const FETCH_BUGS = "fetchBugs";
+export const CREATE_BUG = "createBug";
+export const UPDATE_BUG = "updateBug";
+export const DESTROY_BUG = "destroyBug";
+
+export const FETCH_PRICINGS = "fetchPricings";
+export const CREATE_PRICING = "createPricing";
+export const UPDATE_PRICING = "updatePricing";
+export const DESTROY_PRICING = "destroyPricing";
+
+export const FETCH_LOCATIONS = "fetchLocations";
+export const CREATE_LOCATION = "createLocation";
+export const UPDATE_LOCATION = "updateLocation";
+export const DESTROY_LOCATION = "destroyLocation";

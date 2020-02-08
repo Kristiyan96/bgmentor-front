@@ -8,35 +8,32 @@ import {
   CREATE_ALERT
 } from "../actions.type";
 
-import {
-  SET_BUGS,
-  SET_BUG,
-  ADD_BUG,
-  REMOVE_BUG
-} from "../mutations.type";
+import { SET_BUGS, SET_BUG, ADD_BUG, REMOVE_BUG } from "../mutations.type";
 
 const state = {
-  bugs: [],
-}
+  bugs: []
+};
 
 const getters = {
   bugs(state) {
     return state.bugs;
   }
-}
+};
 
 const actions = {
   async [FETCH_BUGS]({ commit, rootState }) {
     const { data } = await ApiService.query(`/bugs`);
     commit(SET_BUGS, data);
   },
-  async [CREATE_BUG]({commit, dispatch}, params) {
+  async [CREATE_BUG]({ commit, dispatch }, params) {
     const { data } = await ApiService.post(`/bugs`, { bug: params });
     commit(ADD_BUG, data);
     dispatch(CREATE_ALERT, ["Bug created", "success"]);
   },
   async [UPDATE_BUG]({ dispatch, commit, rootState }, params) {
-    const { data } = await ApiService.update(`/bugs`, params.id, { bug: params });
+    const { data } = await ApiService.update(`/bugs`, params.id, {
+      bug: params
+    });
     commit(SET_BUG, data);
     dispatch(CREATE_ALERT, ["Bug updated.", "success"]);
   },
@@ -45,7 +42,7 @@ const actions = {
     commit(REMOVE_BUG, bug_id);
     dispatch(CREATE_ALERT, ["Bug removed.", "success"]);
   }
-}
+};
 
 const mutations = {
   [SET_BUGS](state, bugs) {
@@ -59,13 +56,13 @@ const mutations = {
     state.bugs.push(bug);
   },
   [REMOVE_BUG](state, bug_id) {
-    state.bugs = state.bugs.filter(b => b.id != bug_id)
+    state.bugs = state.bugs.filter(b => b.id != bug_id);
   }
-}
+};
 
 export default {
   state,
   getters,
   actions,
   mutations
-}
+};

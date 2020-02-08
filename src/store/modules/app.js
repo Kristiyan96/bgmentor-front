@@ -1,6 +1,4 @@
-import {
-  TOGGLE_NOTIFICATIONS
-} from "../actions.type";
+import { TOGGLE_NOTIFICATIONS } from "../actions.type";
 
 import {
   SET_LAYOUT,
@@ -12,30 +10,30 @@ import {
 const state = {
   resizable: false,
   layout2x1: [
-    {"x":0,"y":0,"w":4,"h":1,"i":"left"},
-    {"x":4,"y":0,"w":8,"h":1,"i":"right"},
+    { x: 0, y: 0, w: 4, h: 1, i: "left" },
+    { x: 4, y: 0, w: 8, h: 1, i: "right" }
   ],
   layout3x2: [
-    {"x":0,"y":0,"w":4,"h":2,"i":"1"},
-    {"x":4,"y":0,"w":4,"h":2,"i":"2"},
-    {"x":8,"y":0,"w":4,"h":2,"i":"3"},
-    {"x":0,"y":1,"w":4,"h":3,"i":"4"},
-    {"x":4,"y":1,"w":4,"h":3,"i":"5"},
-    {"x":8,"y":1,"w":4,"h":3,"i":"6"},
+    { x: 0, y: 0, w: 4, h: 2, i: "1" },
+    { x: 4, y: 0, w: 4, h: 2, i: "2" },
+    { x: 8, y: 0, w: 4, h: 2, i: "3" },
+    { x: 0, y: 1, w: 4, h: 3, i: "4" },
+    { x: 4, y: 1, w: 4, h: 3, i: "5" },
+    { x: 8, y: 1, w: 4, h: 3, i: "6" }
   ],
   sidebar: true,
   sidebarRight: false,
   notificationsOpen: false,
   messagesOpen: false,
   invitationsOpen: false
-}
+};
 
 const getters = {
   resizable(state) {
     return state.resizable;
   },
   layout2x1(state) {
-    return state.layout2x1
+    return state.layout2x1;
   },
   layout3x2(state) {
     return state.layout3x2;
@@ -46,11 +44,11 @@ const getters = {
   sidebarRight(state) {
     return state.sidebarRight;
   }
-}
+};
 
 const actions = {
   [TOGGLE_NOTIFICATIONS]({ commit }) {
-    if(state.notificationsOpen) {
+    if (state.notificationsOpen) {
       commit(TOGGLE_NOTIFICATIONS, false);
       commit(TOGGLE_SIDEBARRIGHT, false);
     } else {
@@ -58,7 +56,7 @@ const actions = {
       commit(TOGGLE_SIDEBARRIGHT, true);
     }
   }
-}
+};
 
 const mutations = {
   [SET_LAYOUT](state, layout) {
@@ -76,11 +74,11 @@ const mutations = {
   [TOGGLE_SIDEBARRIGHT](state, open) {
     state.sidebarRight = open;
   }
-}
+};
 
 export default {
   state,
   getters,
   actions,
   mutations
-}
+};

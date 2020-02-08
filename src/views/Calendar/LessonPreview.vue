@@ -37,6 +37,10 @@
       <v-btn text color="secondary" @click="$emit('onClose')">
         Затвори
       </v-btn>
+      <v-spacer />
+      <v-btn depressed color="primary" @click="complete" :disabled="lesson.completed">
+        Проведен
+      </v-btn>
     </v-card-actions>
     <RepeatDialog :lesson="lesson" :open="repeatOpen" @closeDialog="repeatOpen = false"/>
   </v-card>
@@ -45,7 +49,7 @@
 <script>
 import GroupMemberships from "@/views/Groups/GroupMemberships";
 import { mapGetters } from "vuex";
-import { DESTROY_LESSON } from "@/store/actions.type";
+import { UPDATE_LESSON, DESTROY_LESSON, FETCH_MEMBERSHIPS } from "@/store/actions.type";
 import store from "@/store";
 import RepeatIcon from 'vue-ionicons/dist/md-repeat.vue';
 import RepeatDialog from './LessonRepeat';
@@ -78,6 +82,15 @@ export default {
     },
     closeRepeatLesson() {
       this.repeatLesson = false;
+    },
+    complete() {
+      let params = {
+        ... this.lesson,
+        completed: true
+      }
+      store.dispatch(UPDATE_LESSON, params).then(response => {
+        store.dispatch(FETCH_MEMBERSHIPS, this.lesson.group_id);
+      })
     }
   }
 }

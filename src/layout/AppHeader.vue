@@ -31,7 +31,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { CREATE_ALERT, LOGOUT, TOGGLE_NOTIFICATIONS } from "@/store/actions.type";
+import { LOGOUT, TOGGLE_NOTIFICATIONS } from "@/store/actions.type";
 import { TOGGLE_SIDEBAR } from "@/store/mutations.type";
 import Alerts from "./Alerts";
 

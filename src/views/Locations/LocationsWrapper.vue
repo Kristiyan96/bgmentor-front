@@ -4,9 +4,9 @@
       <v-col xs="12" md="5">
         <v-card class="pb-0">
           <v-card-title>
-            <span class="headline">Групи</span>
+            <span class="headline">Локации</span>
             <v-spacer />
-            <v-btn icon @click="group = null">
+            <v-btn icon @click="location = null">
               <v-icon>mdi-plus-circle</v-icon>
             </v-btn>
           </v-card-title>
@@ -15,21 +15,20 @@
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
-                    v-if="groups.length"
+                    v-if="locations.length"
                     :headers="headers"
-                    :items="groups"
-                    :items-per-page="groups.length"
+                    :items="locations"
+                    :items-per-page="locations.length"
                     hide-default-footer
                     class="elevation-1 table-scroll"
                   >
                     <template v-slot:item="{ item }">
-                      <tr @click="activate(item)" :class="{active: group && item.id == group.id}">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.grade }}</td>
+                      <tr @click="activate(item)" :class="{active: location && item.id == location.id, fixed: item.fixed == true}">
+                        <td>{{ item.title }}</td>
                       </tr>
                     </template>
                   </v-data-table>
-                  <div v-else class="grey--text px-3">Няма групи</div>
+                  <div v-else class="px-3 grey--text py-3">Няма локации</div>
                 </v-col>
               </v-row>
             </v-container>
@@ -37,66 +36,61 @@
         </v-card>
       </v-col>
       <v-col xs="12" md="7">
-        <GroupForm :group="group" />
+        <LocationPreview :location="location" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import LocationPreview from "@/views/Locations/LocationPreview";
 import { mapGetters } from "vuex";
-import { FETCH_USERS, FETCH_GROUPS, FETCH_PRICINGS, FETCH_LOCATIONS, CREATE_GROUP, UPDATE_GROUP, DESTROY_GROUP } from "@/store/actions.type";
+import { FETCH_LOCATIONS } from "@/store/actions.type";
 import store from "@/store";
-
-import GroupForm from "./GroupForm";
 
 export default {
   components: {
-    GroupForm
+    LocationPreview
   },
   data() {
     return {
-      group: null,
-      editing: false,
+      location: null,
       headers: [
         {
           text: 'Име',
           align: 'left',
-          sortable: false,
-          value: 'name',
+          value: 'title',
         },
-        { text: 'Клас', value: 'grade' },
-      ],
+      ]
     }
   },
   mounted() {
-    store.dispatch(FETCH_GROUPS);
-    store.dispatch(FETCH_USERS);
-    store.dispatch(FETCH_PRICINGS);
     store.dispatch(FETCH_LOCATIONS);
   },
   methods: {
-    activate(group) {
-      this.group = group;
+    activate(item) {
+      this.location = item;
     },
-    destroy(group) {
-      store.dispatch(DESTROY_GROUP, group.id);
-    }
   },
   computed: {
-    ...mapGetters(["groups"]),
+    ...mapGetters(["locations"]),
   },
   watch: {
-    groups() {
-      if(this.groups.length) {
-        this.group = this.groups[0];
+    locations: {
+      immediate: true,
+      handler() {
+        if(this.locations.length) {
+          this.location = this.locations[0];
+        } else {
+          this.location = null;
+        }
       }
     }
   }
 }
 </script>
 
-<style lang="sass">
-tr.active
-  background: #e3f0ff !important
+<style lang="sass" scoped>
+.fixed
+  background-color: #E8F5E9
 </style>

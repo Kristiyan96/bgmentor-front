@@ -43,8 +43,19 @@ export const SET_VOTES = "setVotes";
 export const ADD_VOTE = "addVote";
 
 export const SET_ABSENCES = "setAbsences";
+export const REMOVE_ABSENCE = "removeAbsence";
 
 export const SET_BUGS = "setBugs";
 export const SET_BUG = "setBug";
 export const ADD_BUG = "addBug";
 export const REMOVE_BUG = "removeBug";
+
+export const SET_PRICINGS = "setPricings";
+export const SET_PRICING = "setPricing";
+export const ADD_PRICING = "addPricing";
+export const REMOVE_PRICING = "removePricing";
+
+export const SET_LOCATIONS = "setLocations";
+export const SET_LOCATION = "setLocation";
+export const ADD_LOCATION = "addLocation";
+export const REMOVE_LOCATION = "removeLocation";
