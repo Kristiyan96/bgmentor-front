@@ -1,6 +1,6 @@
 <template>
   <v-card color="grey lighten-4" min-width="350px" flat>
-    <v-toolbar :color="lesson.color" dark>
+    <v-toolbar :color="color" dark>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon @click="editLesson" v-on="on">
@@ -17,7 +17,7 @@
         </template>
         Repeat event
       </v-tooltip>
-      <v-toolbar-title v-html="lesson.name"></v-toolbar-title>
+      <v-toolbar-title v-html="`${lesson.teacher.name} - ${lesson.group.name}`"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
@@ -61,11 +61,16 @@ export default {
     RepeatDialog
   },
   props: {
-    lesson: {
-      type: Object,
-      default: () => {},
-      description: ""
+    lesson_id: {
+      type: Number,
+      default: null,
+      description: "Id of the selected event"
     },
+    color: {
+      type: String,
+      default: "#1976d2",
+      description: "Location color"
+    }
   },
   data() {
     return {
@@ -78,19 +83,27 @@ export default {
       this.$emit("lessonDeleted");
     },
     editLesson() {
+      this.$emit("onClose");
       this.$emit("editLesson");
     },
     closeRepeatLesson() {
       this.repeatLesson = false;
     },
     complete() {
-      let params = {
+      store.dispatch(UPDATE_LESSON, {
         ... this.lesson,
+        start_time: this.$moment(this.lesson.start_time),
+        end_time: this.$moment(this.lesson.end_time),
         completed: true
-      }
-      store.dispatch(UPDATE_LESSON, params).then(response => {
+      }).then(response => {
         store.dispatch(FETCH_MEMBERSHIPS, this.lesson.group_id);
       })
+    }
+  },
+  computed: {
+    ...mapGetters(["lessons"]),
+    lesson() {
+      return this.lessons ? this.lessons.find(l => l.id == this.lesson_id) : {};
     }
   }
 }

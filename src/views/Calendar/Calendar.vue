@@ -32,9 +32,10 @@
       :activator="selectedElement"
       offset-x
     >
-      <LessonPreview 
-        v-if="selectedElement" 
-        :lesson="selectedEvent"
+      <LessonPreview
+        v-if="selectedElement"
+        :lesson_id="selectedEvent.id"
+        :color="getEventColor(selectedEvent)"
         :eventDialogOpen="eventDialogOpen"
         @lessonDeleted="lessonDeleted"
         @editLesson="editLesson"
@@ -97,7 +98,7 @@ export default {
       this.$emit("updateFocus", this.local_focus);
     },
     getEventColor(event) {
-      return event.color;
+      return event ? event.color : "#fff";
     },
     showEvent({ nativeEvent, event }) {
       const open = () => {
@@ -138,7 +139,8 @@ export default {
       this.$emit("updateRange", props);
     },
     getEventColor (event) {
-      return this.locations.find(l => l.id == event.group.location_id).color;
+      let location = this.locations.find(l => l.id == event.group.location_id);
+      return location ? location.color : '#fff';
     },
   },
   computed: {

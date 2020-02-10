@@ -97,19 +97,29 @@ export default {
       this.$emit("closeDialog");
     },
     save() {
-      this.form = {
-        ...this.form,
-        start_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.start_time.split(':')[0], this.form.start_time.split(':')[1]),
-        end_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.end_time.split(':')[0], this.form.end_time.split(':')[1])
-      };
       if(this.lesson.id) {
-      store.dispatch(UPDATE_LESSON, this.form).then(response => {
-        this.closeDialog();
-      })
+        let [start, end] = [this.$moment(this.lesson.start_time), this.$moment(this.lesson.end_time)];
+        let [new_start, new_end] = [this.form.start_time, this.form.end_time];
+
+        this.form = {
+          ...this.form,
+          start_time: start.hour(new_start.split(":")[0]).minute(new_start.split(":")[1]),
+          end_time: end.hour(new_end.split(":")[0]).minute(new_end.split(":")[1])
+        };
+
+        store.dispatch(UPDATE_LESSON, this.form).then(response => {
+          this.closeDialog();
+        })
       } else {
-      store.dispatch(CREATE_LESSON, this.form).then(response => {
-        this.closeDialog();
-      })
+        this.form = {
+          ...this.form,
+          start_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.start_time.split(':')[0], this.form.start_time.split(':')[1]),
+          end_time: new Date(this.start.year, this.start.month - 1, this.start.day, this.form.end_time.split(':')[0], this.form.end_time.split(':')[1])
+        };
+
+        store.dispatch(CREATE_LESSON, this.form).then(response => {
+          this.closeDialog();
+        })
       }
     }
   },

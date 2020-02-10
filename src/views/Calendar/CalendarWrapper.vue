@@ -14,6 +14,15 @@
           </v-btn>
           <v-toolbar-title>{{ title }}</v-toolbar-title>
           <v-spacer></v-spacer>
+          <v-btn 
+            fab 
+            text 
+            small 
+            @click="filtersDialog = true"
+          >
+            <font-awesome-icon icon="filter"/>
+          </v-btn>
+          <FiltersDialog :open="filtersDialog" @closeDialog="filtersDialog = false"/>
           <v-menu bottom right>
             <template v-slot:activator="{ on }">
               <v-btn outlined v-on="on">
@@ -50,10 +59,12 @@
 
 <script>
 import Calendar from './Calendar';
+import FiltersDialog from './LessonFilterDialog';
 
 export default {
   components: {
-    Calendar
+    Calendar,
+    FiltersDialog
   },
   data() {
     return {
@@ -66,7 +77,8 @@ export default {
         day: "Day"
       },
       start: null,
-      end: null
+      end: null,
+      filtersDialog: false
     }
   },
   computed: {

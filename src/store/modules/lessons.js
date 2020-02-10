@@ -10,6 +10,7 @@ import {
 } from "../actions.type";
 
 import {
+  SET_LESSON_FILTERS,
   SET_LESSONS,
   SET_LESSON,
   ADD_LESSON,
@@ -23,6 +24,11 @@ const state = {
     group_id: null,
     start: null,
     end: null
+  },
+  filters: {
+    user_id: null,
+    group_id: null,
+    office_id: null
   }
 };
 
@@ -87,6 +93,9 @@ const actions = {
 };
 
 const mutations = {
+  [SET_LESSON_FILTERS](state, filters) {
+    state.filters = {...filters};
+  },
   [SET_LESSONS](state, lessons) {
     state.lessons = lessons;
   },
