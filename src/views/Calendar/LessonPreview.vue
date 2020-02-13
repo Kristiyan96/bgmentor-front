@@ -17,7 +17,7 @@
         </template>
         Repeat event
       </v-tooltip>
-      <v-toolbar-title v-html="`${lesson.teacher.name} - ${lesson.group.name}`"></v-toolbar-title>
+      <v-toolbar-title v-html="`${lesson.teacher.name} - ${lesson.group.name}`"/>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">

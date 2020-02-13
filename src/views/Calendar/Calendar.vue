@@ -33,7 +33,7 @@
       offset-x
     >
       <LessonPreview
-        v-if="selectedElement"
+        v-if="selectedEvent && selectedEvent.id"
         :lesson_id="selectedEvent.id"
         :color="getEventColor(selectedEvent)"
         :eventDialogOpen="eventDialogOpen"
@@ -139,8 +139,12 @@ export default {
       this.$emit("updateRange", props);
     },
     getEventColor (event) {
-      let location = this.locations.find(l => l.id == event.group.location_id);
-      return location ? location.color : '#fff';
+      if(event.group) {
+        let location = this.locations.find(l => l.id == event.group.location_id);
+        return location ? location.color : '#fff';
+      } else {
+        return '#fff';
+      }
     },
   },
   computed: {

@@ -13,7 +13,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/reports" v-if="current_user.role != 'student'">
+          <v-list-item to="/reports" v-if="false">
             <v-list-item-action>
               <font-awesome-icon icon="file-alt" class="grey--text" />
             </v-list-item-action>
