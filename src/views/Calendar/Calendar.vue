@@ -164,7 +164,7 @@ export default {
           start_time: this.$moment(l.start_time).format("YYYY-MM-DD HH:mm"),
           end_time: this.$moment(l.end_time).format("YYYY-MM-DD HH:mm"),
           color: 'primary',
-          name: `${l.teacher.name} - ${l.group.name}` 
+          name: `${l.teacher ? l.teacher.name : ''} - ${l.group ? l.group.name : ''}` 
         }
       });
     }

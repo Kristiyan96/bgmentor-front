@@ -104,7 +104,9 @@ const mutations = {
     state.lessons.splice(idx, 1, lesson);
   },
   [ADD_LESSON](state, lesson) {
+    console.log(state.lessons.length);
     state.lessons = state.lessons.concat(lesson);
+    console.log(state.lessons.length);
   },
   [REMOVE_LESSON](state, lesson_id) {
     state.lessons = state.lessons.filter(p => p.id != lesson_id);
