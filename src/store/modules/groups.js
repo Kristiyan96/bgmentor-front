@@ -30,7 +30,10 @@ const state = {
 
 const getters = {
   groups(state) {
-    return state.groups;
+    return state.groups.filter(g => g.lesson_type == 1);
+  },
+  individuals(state) {
+    return state.groups.filter(g => g.lesson_type == 0);
   }
 };
 

@@ -2,9 +2,8 @@
   <div class="body">
     <Landing />
     <About />
-    <Courses />
-    <!-- <Calendar /> -->
-    <Poll />
+    <CoursesMath />
+    <CoursesProgramming />
     <Contacts />
   </div>
 </template>
@@ -12,20 +11,18 @@
 <script>
 import Landing from "./Landing/Landing";
 import About from "./Landing/About";
-// import Calendar from "./Landing/Calendar";
-import Poll from "./Landing/Poll";
 import Contacts from "./Landing/Contacts";
-import Courses from "./Landing/Courses";
+import CoursesMath from "./Landing/CoursesMath";
+import CoursesProgramming from "./Landing/CoursesProgramming";
 
 export default {
   name: "landing",
   components: {
     Landing,
     About,
-    // Calendar,
-    Poll,
     Contacts,
-    Courses
+    CoursesMath,
+    CoursesProgramming
   },
   data() {
     return {};

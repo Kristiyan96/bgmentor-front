@@ -37,7 +37,8 @@ import {
   faCalendarAlt,
   faBug,
   faBuilding,
-  faFilter
+  faFilter,
+  faChalkboard
 } from "@fortawesome/free-solid-svg-icons";
 library.add({
   faCheck,
@@ -57,7 +58,8 @@ library.add({
   faCalendarAlt,
   faBug,
   faBuilding,
-  faFilter
+  faFilter,
+  faChalkboard
 });
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 

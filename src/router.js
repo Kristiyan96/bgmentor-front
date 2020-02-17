@@ -94,6 +94,12 @@ let router = new Router({
       component: () => import("@/views/Groups/Groups")
     },
     {
+      path: "/individuals",
+      name: "Individials",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Groups/Individuals")
+    },
+    {
       path: "/users",
       name: "Users",
       meta: { requiresAuth: true },

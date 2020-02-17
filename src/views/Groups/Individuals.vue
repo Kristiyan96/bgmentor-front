@@ -4,7 +4,7 @@
       <v-col xs="12" md="5">
         <v-card class="pb-0">
           <v-card-title>
-            <span class="headline">Групови уроци</span>
+            <span class="headline">Индивидални уроци</span>
             <v-spacer />
             <v-btn icon @click="group = null">
               <v-icon>mdi-plus-circle</v-icon>
@@ -15,10 +15,10 @@
               <v-row>
                 <v-col cols="12" class="px-0 pb-0">
                   <v-data-table
-                    v-if="groups.length"
+                    v-if="individuals.length"
                     :headers="headers"
-                    :items="groups"
-                    :items-per-page="groups.length"
+                    :items="individuals"
+                    :items-per-page="individuals.length"
                     hide-default-footer
                     class="elevation-1 table-scroll"
                   >
@@ -84,12 +84,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["groups"]),
+    ...mapGetters(["individuals"]),
   },
   watch: {
-    groups() {
-      if(this.groups.length) {
-        this.group = this.groups[0];
+    individuals() {
+      if(this.individuals.length) {
+        this.group = this.individuals[0];
       }
     }
   }
