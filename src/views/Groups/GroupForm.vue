@@ -3,9 +3,7 @@
     <v-card-title>
       <span class="headline">{{group ? 'Редактиране' : 'Нова група'}}</span>
       <v-spacer />
-      <v-btn text @click="destroy">
-        Изтрий
-      </v-btn>
+      <DeleteButton @confirm="destroy" tooltip="Delete group" v-if="group" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -49,7 +47,7 @@
               required
             ></v-select>
           </v-col>
-          <v-col cols="12" sm="6" class="pl-0">
+          <v-col cols="12" sm="6" class="pr-0">
             <v-select
               :items="locations"
               v-model="form.location_id"
@@ -88,10 +86,12 @@ import GroupMemberships from "./GroupMemberships";
 import { mapGetters } from "vuex";
 import { CREATE_GROUP, UPDATE_GROUP, DESTROY_GROUP } from "@/store/actions.type";
 import store from "@/store";
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
   components: {
-    GroupMemberships
+    GroupMemberships,
+    DeleteButton
   },
   props: {
     group: {

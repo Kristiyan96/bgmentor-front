@@ -3,9 +3,7 @@
     <v-card-title>
       <span class="headline">{{location ? 'Редактиране на локация' : 'Нова локация'}}</span>
       <v-spacer />
-      <v-btn text @click="destroy" v-if="location">
-        Изтрий
-      </v-btn>
+      <DeleteButton @confirm="destroy" v-if="location" tooltip="Delete location" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -45,8 +43,12 @@ import {_} from 'vue-underscore';
 import { mapGetters } from "vuex";
 import { CREATE_LOCATION, UPDATE_LOCATION, DESTROY_LOCATION } from "@/store/actions.type";
 import store from "@/store";
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
+  components: {
+    DeleteButton
+  },
   props: {
     location: {
       type: Object,

@@ -3,12 +3,10 @@
     <v-card-title>
       <span class="headline">Разписка</span>
       <v-spacer />
-      <v-btn icon @click="editing = !editing">
+      <v-btn icon @click="editing = !editing" v-if="pricing.id">
         <font-awesome-icon icon="edit" class="grey--text" />
       </v-btn>
-      <v-btn icon @click="remove">
-        <font-awesome-icon icon="trash-alt" class="grey--text" />
-      </v-btn>
+      <DeleteButton @confirm="remove" tooltip="Delete pricing" v-if="pricing.id" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -58,8 +56,12 @@
 import {_} from 'vue-underscore';
 import { UPDATE_PRICING, DESTROY_PRICING, CREATE_PRICING } from "@/store/actions.type";
 import store from "@/store";
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
+  components: {
+    DeleteButton
+  },
   props: {
     pricing: {
       type: Object,

@@ -3,9 +3,7 @@
     <v-card-title>
       <span class="headline">{{user ? 'Редактиране' : 'Нов акаунт'}}</span>
       <v-spacer />
-      <v-btn text @click="destroy">
-        Изтрий
-      </v-btn>
+      <DeleteButton @confirm="destroy" tooltip="Delete user" v-if="user" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -39,8 +37,12 @@ import {_} from 'vue-underscore';
 import { mapGetters } from "vuex";
 import { CREATE_USER, UPDATE_USER, DESTROY_USER } from "@/store/actions.type";
 import store from "@/store";
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
+  components: {
+    DeleteButton
+  },
   props: {
     user: {
       type: Object,

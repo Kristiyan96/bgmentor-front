@@ -6,9 +6,7 @@
       <v-btn icon @click="editing = !editing">
         <font-awesome-icon icon="edit" class="grey--text" />
       </v-btn>
-      <v-btn icon @click="remove">
-        <font-awesome-icon icon="trash-alt" class="grey--text" />
-      </v-btn>
+      <DeleteButton @confirm="remove" tooltip="Delete receipt"/>
     </v-card-title>
     <v-card-text>
       <v-container class="px-0" v-if="!editing">
@@ -26,6 +24,10 @@
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Услуга</div>
             {{ group.lesson_type ? 'Индивидуален урок' : 'Групов урок' }} за {{ group.grade }} клас. Група {{ group.name }}
+          </v-col>
+          <v-col cols="12">
+            <div class="subtitle-1 font-weight-bold">Дата</div>
+            {{ $moment(payment.created_at)}}
           </v-col>
         </v-row>
       </v-container>
@@ -57,8 +59,12 @@ import {_} from 'vue-underscore';
 import { mapGetters } from "vuex";
 import { UPDATE_PAYMENT, DESTROY_PAYMENT } from "@/store/actions.type";
 import store from "@/store";
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
+  components: {
+    DeleteButton
+  },
   props: {
     payment: {
       type: Object,

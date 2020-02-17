@@ -10,8 +10,14 @@
       <v-card-text>
         <v-container>
           <v-row>
+            <v-col cols="12" sm="12" class="pl-0">
+              <v-checkbox
+                v-model="absent"
+                label="Предупредил за отсъствие 24 часа преди урок"
+              ></v-checkbox>
+            </v-col>
             <v-col cols="12" sm="6" class="pl-0">
-              <v-text-field label="*Сума" v-model="form.amount"></v-text-field>
+              <v-text-field label="*Сума" v-model="form.amount" :disabled="absent"></v-text-field>
             </v-col>
             <v-col cols="12" class="px-0">
               <v-text-field label="Забележки" v-model="form.note"></v-text-field>
@@ -49,6 +55,7 @@ export default {
   data() {
     return {
       dialog: false,
+      absent: false,
       form: {
         note: "",
         amount: 0,
@@ -69,6 +76,13 @@ export default {
         store.dispatch(FETCH_MEMBERSHIPS, this.group.id);
       })
       this.dialog = false;
+    }
+  },
+  watch: {
+    absent() {
+      if(this.absent) {
+        this.form.amount = 0;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <v-card color="grey lighten-4" min-width="350px" flat>
-    <v-toolbar :color="color" dark>
+    <v-toolbar :color="color" dark elevation="0">
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon @click="editLesson" v-on="on">
@@ -19,14 +19,7 @@
       </v-tooltip>
       <v-toolbar-title v-html="`${lesson.teacher.name} - ${lesson.group.name}`"/>
       <v-spacer></v-spacer>
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn icon @click="deleteLesson" v-on="on">
-            <font-awesome-icon icon="trash-alt"/>
-          </v-btn>
-        </template>
-        Delete event
-      </v-tooltip>
+      <DeleteButton @confirm="deleteLesson" tooltip="Delete event" />
     </v-toolbar>
     <GroupMemberships 
       :group="lesson.group" 
@@ -53,12 +46,14 @@ import { UPDATE_LESSON, DESTROY_LESSON, FETCH_MEMBERSHIPS } from "@/store/action
 import store from "@/store";
 import RepeatIcon from 'vue-ionicons/dist/md-repeat.vue';
 import RepeatDialog from './LessonRepeat';
+import DeleteButton from '@/views/components/DeleteButton';
 
 export default {
   components: {
     GroupMemberships,
     RepeatIcon,
-    RepeatDialog
+    RepeatDialog,
+    DeleteButton
   },
   props: {
     lesson_id: {

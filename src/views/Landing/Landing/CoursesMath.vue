@@ -61,8 +61,6 @@
             @mouseover="active1 = true"
             @mouseleave="active1 = false"
           >
-            <v-card-title class="pb-0 pb-0 pl-2 mb-3 grey--text">Информация</v-card-title>
-
             <v-card-text class="text--primary">
               <b>Начало:</b> {{info['group'][grade].start}}<br><br>
               <b>График:</b> {{info['group'][grade].when}}<br><br>
@@ -89,10 +87,8 @@
             @mouseover="active2 = true"
             @mouseleave="active2 = false"
           >
-            <v-card-title class="pb-0 pb-0 pl-2 mb-3 grey--text">Записване</v-card-title>
-
             <v-card-text class="text--primary">
-              Записването става на място (ул. Кирил и Методий 27). Можете да запазите място като се обадите на мобилния ни номер <a color="primary" href="tel:+35988 762 7776">088 762 7776</a> или като кликнете на бутона "Запиши се". Можете да се включите по всяко време!
+              <b>Записването</b> става на място (ул. Кирил и Методий 27). Можете да запазите място като се обадите на мобилния ни номер <a color="primary" href="tel:+35988 762 7776">088 762 7776</a> или като кликнете на бутона "Запиши се". Можете да се включите по всяко време!
             </v-card-text>
 
             <v-card-actions>
@@ -138,11 +134,9 @@
             @mouseover="active1 = true"
             @mouseleave="active1 = false"
           >
-            <v-card-title class="pb-0 grey--text pl-2 mb-3">Записване</v-card-title>
-
             <v-card-text class="text--primary">
               <b>Цена:</b> 20лв на учебен час<br><br>
-              Записването става на място (ул. Кирил и Методий 27). Обадете се на мобилния ни номер <a color="primary" href="tel:+359887627776">088 762 7776</a>, за да се разберем за удобно за Вас време.
+              <b>Записването</b> става на място (ул. Кирил и Методий 27). Обадете се на мобилния ни номер <a color="primary" href="tel:+359887627776">088 762 7776</a>, за да се разберем за удобно за Вас време.
             </v-card-text>
             <v-card-actions>
               <CourseSignUp :grade="grade" :lesson="lesson"/>

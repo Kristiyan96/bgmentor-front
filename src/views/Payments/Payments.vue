@@ -87,9 +87,10 @@ export default {
   computed: {
     ...mapGetters(["payments"]),
     filtered_payments() {
-      return this.payments.filter(p => 
+      return this.payments.filter(p =>
+        p.student && ( 
         p.student.name.toLowerCase().search(this.search.toLowerCase()) != -1 || 
-        p.month.toLowerCase().search(this.search.toLowerCase()) != -1);
+        p.month.toLowerCase().search(this.search.toLowerCase()) != -1));
     }
   },
   watch: {
