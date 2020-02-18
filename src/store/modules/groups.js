@@ -29,6 +29,9 @@ const state = {
 };
 
 const getters = {
+  groups_individuals(state) {
+    return state.groups;
+  },
   groups(state) {
     return state.groups.filter(g => g.lesson_type == 1);
   },

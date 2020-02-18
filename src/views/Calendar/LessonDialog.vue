@@ -35,7 +35,7 @@
               </v-col>
               <v-col cols="12" sm="6">
                 <v-select
-                  :items="groups"
+                  :items="groups_individuals"
                   v-model="form.group_id"
                   item-text="name"
                   item-value="id"
@@ -124,7 +124,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["groups", "teachers"]),
+    ...mapGetters(["groups_individuals", "teachers"]),
   },
   watch: {
     open() {
