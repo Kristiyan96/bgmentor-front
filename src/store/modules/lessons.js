@@ -10,7 +10,6 @@ import {
 } from "../actions.type";
 
 import {
-  SET_LESSON_FILTERS,
   SET_LESSONS,
   SET_LESSON,
   ADD_LESSON,
@@ -24,11 +23,6 @@ const state = {
     group_id: null,
     start: null,
     end: null
-  },
-  filters: {
-    user_id: null,
-    group_id: null,
-    office_id: null
   }
 };
 
@@ -39,8 +33,8 @@ const getters = {
 };
 
 const actions = {
-  async [FETCH_LESSONS]({ commit, rootState }) {
-    const { data } = await ApiService.query(`/lessons`);
+  async [FETCH_LESSONS]({ commit, rootState }, query) {
+    const { data } = await ApiService.query(`/lessons`, query);
     commit(SET_LESSONS, data);
   },
   async [CREATE_LESSON]({ commit, dispatch }, params) {
@@ -93,9 +87,6 @@ const actions = {
 };
 
 const mutations = {
-  [SET_LESSON_FILTERS](state, filters) {
-    state.filters = {...filters};
-  },
   [SET_LESSONS](state, lessons) {
     state.lessons = lessons;
   },

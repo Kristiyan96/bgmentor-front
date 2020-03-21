@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer :value="sidebar" clipped app stateless>
+  <v-navigation-drawer :value="sidebar" clipped disable-route-watcher app stateless>
     <v-layout column fill-height align-content-start>
       <v-flex shrink>
         <v-list dense shaped>

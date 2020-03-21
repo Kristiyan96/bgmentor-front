@@ -84,10 +84,10 @@
             flat
             outlined
             height="100%"
-            :raised="active1"
-            :elevation="active1 ? 3 : 0"
-            @mouseover="active1 = true"
-            @mouseleave="active1 = false"
+            :raised="active3"
+            :elevation="active3 ? 3 : 0"
+            @mouseover="active3 = true"
+            @mouseleave="active3 = false"
           >
             <v-card-title class="pb-0 pb-0 pl-2 mb-3 grey--text">
               <img class="mr-5" src="@/assets/images/programmer.svg"/>  
@@ -116,7 +116,8 @@ export default {
   data() {
     return {
       active1: false,
-      active2: false
+      active2: false,
+      active3: false
     }
   }
 };

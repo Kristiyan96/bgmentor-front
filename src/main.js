@@ -6,6 +6,8 @@ import ApiService from "./common/api.service";
 import { CHECK_AUTH } from "@/store/actions.type";
 
 import vuetify from "./plugins/vuetify";
+import i18n from "./plugins/vue-i18n";
+import GAuth from 'vue-google-oauth2';
 
 import Default from "@/layout/Default";
 import NoSidebar from "@/layout/NoSidebar";
@@ -40,6 +42,9 @@ import {
   faFilter,
   faChalkboard
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGoogle
+} from "@fortawesome/free-brands-svg-icons";
 library.add({
   faCheck,
   faColumns,
@@ -59,10 +64,16 @@ library.add({
   faBug,
   faBuilding,
   faFilter,
-  faChalkboard
+  faChalkboard,
+  faGoogle
 });
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
+Vue.use(GAuth, {
+  clientId: '416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com',
+  scope: 'profile email',
+  prompt: 'select_account'
+})
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
 Vue.use(require("vue-moment"));
@@ -90,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     router,
     render: h => h(App),
     vuetify,
+    i18n,
     store
   });
   global.vm = v; //Define you app variable globally

@@ -44,7 +44,7 @@
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: user && item.id == user.id}">
-                        <td>{{ item.name }}</td>
+                        <td><v-btn text :href="`/profiles/${item.id}`">{{ item.name }}</v-btn></td>
                         <td v-if="selectedUserType == 'students'">
                           {{ item.groups && item.groups.length ? item.groups[0].grade : '' }}
                         </td>

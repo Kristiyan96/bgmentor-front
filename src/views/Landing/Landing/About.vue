@@ -17,8 +17,8 @@
           да се справим с всеки проблем. 
         </v-col>
       </v-row>
-      <v-row>
-        <v-col md="4" sm="5" xs="12" offset-md="2" offset-sm="1">
+      <v-row class="center-content">
+        <v-col md="4" sm="5" xs="12">
           <v-card
             height="100%"
             :raised="active1"
@@ -43,7 +43,7 @@
 
             <v-card-text>
               <div class="text-center grey--text">
-                Следва компютърни науки в СУ. Завършил паралелката с най-висок бал в страната - СМГ с немски език
+                Следва компютърни науки във ФМИ. Завършил паралелката с най-висок бал в страната - СМГ с немски език
               </div>
               <br>
               <v-divider />
@@ -93,8 +93,8 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col md="4" sm="3" xs="12" offset-md="2" offset-sm="1">
+      <v-row class="center-content">
+        <v-col md="3" sm="3" xs="12">
           <v-card
             height="100%"
             :raised="active3"
@@ -121,10 +121,13 @@
               <div class="text-center grey--text">
                 Следва Приложна математика в СУ. Бивш състезател по математика от СМГ.
               </div>
+              <br>
+              <v-divider />
+              <br>
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col md="4" sm="3" xs="12">
+        <v-col md="3" sm="3" xs="12">
           <v-card
             height="100%"
             :raised="active4"
@@ -149,8 +152,147 @@
 
             <v-card-text>
               <div class="text-center grey--text">
-                Следва компютърни науки в СУ. Завършила математическата гимназия в Пловдив. В разширения национален отбор по физика за международното състезание International Young Physics Tournament. 
+                Следва компютърни науки във ФМИ, завършила математическата гимназия в Пловдив.
               </div>
+              <br>
+              <v-divider />
+              <br>
+              <div class="text-center grey--text">
+                В разширения национален отбор по физика за международното състезание International Young Physics Tournament. 
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col md="3" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active5"
+            :elevation="active5 ? 3 : 0"
+            @mouseover="active5 = true"
+            @mouseleave="active5 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Ема Евгениева</v-list-item-title>
+                <v-list-item-subtitle>Учител по математика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Ema.png"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Следва компютърни науки във ФМИ
+              </div>
+              <br>
+              <v-divider />
+              <br>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col md="3" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active6"
+            :elevation="active6 ? 3 : 0"
+            @mouseover="active6 = true"
+            @mouseleave="active6 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Димитър Кюртев</v-list-item-title>
+                <v-list-item-subtitle>Учител по програмиране</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Dimitar.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Следва компютърни науки във ФМИ, бивш възпитаник на СМГ
+              </div>
+              <br>
+              <v-divider />
+              <br>
+              Математиката ми е страст от най-ранна възраст. Получих държавна стипендия и стаж по програмата Study IT fisrt, която се дава само на 10 първокурсника всяка година, с отличителен опит в програмирането. Още в гимназията водих школа по математика и затова съм уверен, че имам нужния опит да помогна и на вас.
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row class="center-content d-none">
+        <v-col md="3" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active7"
+            :elevation="active7 ? 3 : 0"
+            @mouseover="active7 = true"
+            @mouseleave="active7 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Гери Чолакова</v-list-item-title>
+                <v-list-item-subtitle>Учител по математика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Kli.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                
+              </div>
+            </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col md="3" sm="3" xs="12">
+          <v-card
+            height="100%"
+            :raised="active8"
+            :elevation="active8 ? 3 : 0"
+            @mouseover="active8 = true"
+            @mouseleave="active8 = false"
+            shaped
+            flat
+            class="mx-auto"
+          >
+            <v-list-item>
+              <v-list-item-content class="text-center">
+                <v-list-item-title class="headline">Катерина Кунева</v-list-item-title>
+                <v-list-item-subtitle>Учител по математика</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-img
+              src="@/assets/images/Kli.jpg"
+              height="300"
+            ></v-img>
+
+            <v-card-text>
+              <div class="text-center grey--text">
+                Последна година в СМГ с немски език
+              </div>
+              <br>
+              <v-divider />
+              <br>
+              Обичам да преподавам и да виждам прогреса при моите ученици. Фактът, че съм още в училище ми дава много близък поглед до проблемите на децата.
             </v-card-text>
           </v-card>
         </v-col>
@@ -168,6 +310,9 @@ export default {
       active3: false,
       active4: false,
       active5: false,
+      active6: false,
+      active7: false,
+      active8: false,
     }
   }
 };
@@ -178,4 +323,6 @@ export default {
   padding: 50px 0px
 .about-us
   text-align: justify
+.center-content
+  justify-content: center
 </style>

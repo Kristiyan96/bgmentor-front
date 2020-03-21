@@ -1,5 +1,10 @@
 <template>
-    <v-dialog v-model="open" persistent max-width="700px">
+  <div>
+    <v-btn fab text small @click="open = true">
+      <font-awesome-icon icon="filter"/>
+    </v-btn>
+
+    <v-dialog v-model="open" persistent max-width="500px">
       <v-card>
         <v-card-title>
           <span class="headline">Филтър на уроците</span>
@@ -8,13 +13,50 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-
+                <v-select
+                  :items="teachers"
+                  v-model="query.teacher_id"
+                  item-text="name"
+                  item-value="id"
+                  label="Учител"
+                  required
+                ></v-select>
               </v-col>
               <v-col cols="12">
-
+                <v-select
+                  :items="students"
+                  v-model="query.user_id"
+                  item-text="name"
+                  item-value="id"
+                  label="Ученик"
+                  required
+                ></v-select>
               </v-col>
               <v-col cols="12">
-
+                <v-select
+                  :items="groups_individuals"
+                  v-model="query.group_id"
+                  item-text="name"
+                  item-value="id"
+                  label="Група"
+                  required
+                ></v-select>
+              </v-col>
+              <v-col cols="12">
+                <v-select
+                  :items="locations"
+                  v-model="query.location_id"
+                  item-text="title"
+                  item-value="id"
+                  label="Офис"
+                  required
+                ></v-select>
+              </v-col>
+              <v-col cols="12">
+                <v-radio-group v-model="query.fulfill_all" :mandatory="false">
+                  <v-radio label="Изпълни поне един филтър" :value="false"></v-radio>
+                  <v-radio label="Изпълни всички филтри" :value="true"></v-radio>
+                </v-radio-group>
               </v-col>
             </v-row>
           </v-container>
@@ -26,46 +68,54 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { SET_LESSON_FILTERS } from "@/store/mutations.type";
+import { FETCH_LESSONS } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
   props: {
-    open: {
-      type: Boolean,
-      default: false,
-      description: "Is the dialog open"
-    },
+    filters: {
+      type: Object,
+      default: {},
+      description: "Calendar filters"
+    }
   },
   data() {
     return {
-      form: {
-
+      open: false,
+      query: {
+        teacher_id: null,
+        user_id: null,
+        group_id: null,
+        location_id: null,
+        fulfill_all: false,
+        searching: true
       }
     }
   },
-  mounted() {
-
+  computed: {
+    ...mapGetters(["groups_individuals", "locations", "students", "teachers"]),
   },
   methods: {
     closeDialog() {
-      this.$emit("closeDialog");
+      this.open = false;
     },
     applyFilters() {
-      
+      store.dispatch(FETCH_LESSONS, this.query);
+      this.closeDialog();
     }
   },
   watch: {
-    open: {
+    filters: {
       immediate: true,
       handler() {
-
+        store.dispatch(FETCH_LESSONS, this.filters);
       }
-    },
+    }
   }
 }
 </script>

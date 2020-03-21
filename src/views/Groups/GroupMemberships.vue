@@ -19,7 +19,7 @@
           <th :colspan="headers.length">
             <div class="d-flex">
               <PaymentDialog :group="group" :memberships="selectedUsers" />
-              <v-btn outlined @click="createAbsence" class="ml-2" v-if="calendar">Отсъства</v-btn>
+              <CreateAbsence v-if="calendar"/>
               <v-spacer />
               <v-btn outlined color="red" class="ml-2" v-if="!calendar" @click="destroyMembership">
                 Махни от групата
@@ -32,7 +32,7 @@
 
     <template v-slot:item.name="{ item }">
       <div style="display: flex">
-        {{ item.student.name }}
+        <v-btn text :href="`/profiles/${item.student.id}`">{{ item.student.name }}</v-btn>
       </div>
     </template>
 
@@ -45,6 +45,7 @@
 <script>
 import AddMembers from "./GroupAddStudentsDialog";
 import PaymentDialog from "./GroupAddPaymentDialog";
+import CreateAbsence from "@/views/Absences/CreateAbsence";
 import { mapGetters } from "vuex";
 import { FETCH_MEMBERSHIPS, CREATE_ABSENCE, DESTROY_MEMBERSHIP } from "@/store/actions.type";
 import store from "@/store";
@@ -52,7 +53,8 @@ import store from "@/store";
 export default {
   components: {
     AddMembers,
-    PaymentDialog
+    PaymentDialog,
+    CreateAbsence
   },
   props: {
     group: {

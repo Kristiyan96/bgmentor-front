@@ -1,54 +1,45 @@
 <template>
   <v-layout fill-height>
     <v-flex>
-      <v-sheet height="64">
-        <v-toolbar flat color="white">
-          <v-btn outlined class="mr-3" @click="setToday">
-            Today
-          </v-btn>
-          <v-btn fab text small @click="prev">
-            <v-icon small>arrow_back_ios</v-icon>
-          </v-btn>
-          <v-btn fab text small @click="next">
-            <v-icon small>arrow_forward_ios</v-icon>
-          </v-btn>
-          <v-toolbar-title>{{ title }}</v-toolbar-title>
-          <v-spacer></v-spacer>
-          <v-btn 
-            fab 
-            text 
-            small 
-            @click="filtersDialog = true"
-          >
-            <font-awesome-icon icon="filter"/>
-          </v-btn>
-          <FiltersDialog :open="filtersDialog" @closeDialog="filtersDialog = false"/>
-          <v-menu bottom right>
-            <template v-slot:activator="{ on }">
-              <v-btn outlined v-on="on">
-                <span>{{ typeToLabel[type] }}</span>
-                <v-icon right>arrow_drop_down</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item @click="type = 'day'">
-                <v-list-item-title>Day</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'week'">
-                <v-list-item-title>Week</v-list-item-title>
-              </v-list-item>
-              <v-list-item @click="type = 'month'">
-                <v-list-item-title>Month</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-toolbar>
-      </v-sheet>
+      <v-toolbar flat color="rgba(0,0,0,0)">
+        <v-btn outlined class="mr-3" @click="setToday">
+          {{ $t("calendar.today") }}
+        </v-btn>
+        <v-btn fab text small @click="prev">
+          <v-icon small>arrow_back_ios</v-icon>
+        </v-btn>
+        <v-btn fab text small @click="next">
+          <v-icon small>arrow_forward_ios</v-icon>
+        </v-btn>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <FiltersDialog :filters="filters"/>
+        <v-menu bottom right>
+          <template v-slot:activator="{ on }">
+            <v-btn outlined v-on="on">
+              <span>{{ $t(`calendar.${type}`) }}</span>
+              <v-icon right>arrow_drop_down</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item @click="type = 'day'">
+              <v-list-item-title>{{ $t("calendar.day") }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="type = 'week'">
+              <v-list-item-title>{{ $t("calendar.week") }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="type = 'month'">
+              <v-list-item-title>{{ $t("calendar.month") }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-toolbar>
       <Calendar
         ref="calendar"
         :today="today"
         :type="type"
         :focus="focus"
+        :lessonQuery="lessonQuery"
         @updateFocus="updateFocus"
         @updateType="updateType"
         @updateRange="updateRange"
@@ -66,19 +57,25 @@ export default {
     Calendar,
     FiltersDialog
   },
+  props: {
+    lessonQuery: {
+      type: Object,
+      default: null,
+      description: "Search quuery for lessons"
+    },
+    filters: {
+      type: Object,
+      default: {},
+      description: "Calendar filters"
+    }
+  },
   data() {
     return {
       today: this.$moment(new Date()).format("YYYY-MM-DD"),
       focus: this.$moment(new Date()).format("YYYY-MM-DD"),
       type: "week",
-      typeToLabel: {
-        month: "Month",
-        week: "Week",
-        day: "Day"
-      },
       start: null,
-      end: null,
-      filtersDialog: false
+      end: null
     }
   },
   computed: {
@@ -142,7 +139,7 @@ export default {
     },
     updateType(new_type) {
       this.type = new_type;
-    },
+    }
   },
 };
 </script>

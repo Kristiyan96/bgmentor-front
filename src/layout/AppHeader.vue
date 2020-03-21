@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app clipped-left elevation="0">
+  <v-app-bar app clipped-left elevation="0" color="grey lighten-5">
     <v-app-bar-nav-icon @click="toggleSidebar" />
     <span class="title ml-3 mr-5 white--grey">
       <a href="/"><img src="@/assets/images/logo.png" height="40px"/></a>

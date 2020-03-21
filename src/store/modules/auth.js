@@ -10,7 +10,8 @@ import {
   CHECK_AUTH,
   REGISTER,
   UPDATE_PROFILE,
-  CREATE_ALERT
+  CREATE_ALERT,
+  FETCH_PROFILE
 } from "../actions.type";
 
 import { SET_AUTH, PURGE_AUTH, SET_ERROR } from "../mutations.type";
@@ -42,6 +43,17 @@ const getters = {
 };
 
 const actions = {
+  [FETCH_PROFILE]({ commit, dispatch}, { id }) {
+    return new Promise(resolve => {
+      ApiService.get("profiles", id)
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => {
+          commit(SET_ERROR, error);
+        });
+    });
+  },
   [LOGIN]({ commit, dispatch }, credentials) {
     return new Promise(resolve => {
       ApiService.post("login", { user: credentials })

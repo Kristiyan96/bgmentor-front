@@ -123,6 +123,12 @@ let router = new Router({
       meta: { requiresAuth: true },
       component: () => import("@/views/Locations/LocationsWrapper")
     },
+    {
+      path: "/profiles/:id",
+      name: "Profile",
+      meta: { requiresAuth: true, layout: "no-sidebar"},
+      component: () => import("@/views/User/Profile")
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

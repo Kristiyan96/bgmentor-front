@@ -1,9 +1,9 @@
 <template>
-  <v-sheet height="calc(100vh - 135px)">
+  <v-sheet height="calc(100vh - 135px)" color="rgba(0,0,0,0)">
     <v-calendar
       ref="calendar"
       v-model="local_focus"
-      color="primary"
+      color="secondary"
       first-interval="8"
       interval-count="12"
       :weekdays="weekdays"
@@ -14,6 +14,8 @@
       :event-margin-bottom="3"
       :now="today"
       :type="type"
+      :weekday-format="d => $t(`calendar.weekdays.${d.weekday}`)"
+      :interval-format="d => d.time"
       @click:event="showEvent"
       @click:more="viewDay"
       @click:date="viewDay"
@@ -27,13 +29,23 @@
       @closeDialog="eventDialogOpen = false"  
     />
     <v-menu
+      v-if="selectedEvent && selectedEvent.id"
       v-model="selectedOpen"
       :close-on-content-click="false"
       :activator="selectedElement"
       offset-x
     >
       <LessonPreview
-        v-if="selectedEvent && selectedEvent.id"
+        v-if="current_user.role == 'teacher' || current_user.admin"
+        :lesson_id="selectedEvent.id"
+        :color="getEventColor(selectedEvent)"
+        :eventDialogOpen="eventDialogOpen"
+        @lessonDeleted="lessonDeleted"
+        @editLesson="editLesson"
+        @onClose="selectedOpen = false"
+      />
+      <LessonInfo
+        v-else
         :lesson_id="selectedEvent.id"
         :color="getEventColor(selectedEvent)"
         :eventDialogOpen="eventDialogOpen"
@@ -47,6 +59,7 @@
 
 <script>
 import LessonPreview from "./LessonPreview";
+import LessonInfo from "./LessonInfo";
 import LessonDialog from "./LessonDialog";
 import { mapGetters } from "vuex";
 import { FETCH_LESSONS, FETCH_LOCATIONS, DESTROY_LESSON } from "@/store/actions.type";
@@ -55,6 +68,7 @@ import store from "@/store";
 export default {
   components: {
     LessonPreview,
+    LessonInfo,
     LessonDialog
   },
   props: {
@@ -90,7 +104,6 @@ export default {
     }
   },
   mounted() {
-    store.dispatch(FETCH_LESSONS);
     store.dispatch(FETCH_LOCATIONS);
   },
   methods: {
@@ -148,7 +161,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["lessons", "locations"]),
+    ...mapGetters(["lessons", "locations", "current_user"]),
   },
   watch: {
     focus: {
@@ -171,3 +184,10 @@ export default {
   }
 };
 </script>
+
+<style lang="sass">
+.theme--light.v-calendar-daily
+  background-color: rgba(0,0,0,0)
+.v-calendar-daily__scroll-area
+  overflow-y: auto
+</style>
