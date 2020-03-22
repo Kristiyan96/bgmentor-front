@@ -40,7 +40,11 @@ import {
   faBug,
   faBuilding,
   faFilter,
-  faChalkboard
+  faChalkboard,
+  faCog,
+  faShieldAlt,
+  faAt,
+  faKey
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGoogle
@@ -65,7 +69,11 @@ library.add({
   faBuilding,
   faFilter,
   faChalkboard,
-  faGoogle
+  faGoogle,
+  faCog,
+  faShieldAlt,
+  faAt,
+  faKey
 });
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 

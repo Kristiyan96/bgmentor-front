@@ -1,57 +1,46 @@
 <template>
-  <div class="form-wrapper">
-    <card
-      type="secondary"
-      shadow
-      header-classes="pb-5"
-      body-classes="px-lg-1 py-lg-3"
-      class="col-xs-10 col-md-6 col-lg-3"
+  <v-container fluid class="fill-height">
+    <v-row
+      align="center"
+      justify="center"
     >
-      <div class="text-center text-muted mb-3">
-        <h3>Reset password</h3>
-      </div>
-      <base-alert type="success" v-if="success">
-        {{response}}
-      </base-alert>
-      <base-alert type="warning" v-if="failure">
-        {{response}}
-      </base-alert>
-      <form @submit.prevent="submit" v-cloak>
-        <base-input
-          alternative
-          class="mb-3 bg-white"
-          placeholder="Email"
-          addon-left-icon="at"
-          v-model="email"
-        >
-        </base-input>
-        <div class="text-center">
-          <base-button
-            type="primary"
-            class="my-4"
-            :class="{ disabled: success }"
-            @click="submit"
-          >
-            Send a link
-          </base-button>
-        </div>
-        <!-- The following line submits the form when pressing enter -->
-        <input type="submit" value="Submit" class="d-none" />
-      </form>
-      <div class="row mt-3">
-        <div class="col-6">
-          <router-link to="/login">
-            <small>Log in</small>
-          </router-link>
-        </div>
-        <div class="col-6 text-right">
-          <router-link to="/signup">
-            <small>Register</small>
-          </router-link>
-        </div>
-      </div>
-    </card>
-  </div>
+      <v-col xs="10" md="4">
+        <v-card shaped>
+          <v-card-title class="text-center mb-4">
+            <div class="text-center display-1">{{$t("auth.title.forgot_password")}}</div>
+          </v-card-title>
+
+          <v-card-text>
+            <v-alert :value="failure" color="error" class="mb-4" outlined>
+              {{ response }}
+            </v-alert>
+            <form @submit.prevent="submit" class="pt-5">
+              <v-text-field
+                v-model="email"
+                :label="$t('auth.label.email')"
+                type="email"
+                outlined
+              ><font-awesome-icon :icon="['fa', 'at']" slot="prepend-inner"/>
+              </v-text-field>
+              <div class="text-center">
+                <v-btn large color="primary" @click="submit" :class="{ disabled: success }">
+                  {{ $t('auth.button.change_password') }}
+                </v-btn>
+              </div>
+              <!-- The following line submits the form when pressing enter -->
+              <input type="submit" value="Submit" class="d-none" />
+            </form>
+          </v-card-text>
+          <v-card-actions>
+            <v-layout align-space-between justify-space-between row fill-height>
+              <v-btn text rounded to="/login">{{ $t("auth.link.signin") }}</v-btn>
+              <v-btn text rounded to="/register">{{ $t("auth.link.register") }}</v-btn>
+            </v-layout>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

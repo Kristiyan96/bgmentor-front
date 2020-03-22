@@ -1,47 +1,60 @@
 <template>
-  <div class="form-wrapper">
-    <card
-      type="secondary"
-      shadow
-      header-classes="bg-white pb-5"
-      body-classes="px-lg-1 py-lg-3"
-      class="col-xs-10 col-md-6 col-lg-3"
+  <v-container fluid class="fill-height">
+    <v-row
+      align="center"
+      justify="center"
     >
-      <h3 class="text-center">Reset password</h3>
-      <form @submit.prevent="submit" class="">
-        <base-input
-          alternative
-          class="mt-3"
-          v-model="password"
-          placeholder="New password"
-          input_type="password"
-          addon-left-icon="key"
-        />
-        <base-input
-          alternative
-          class="mt-3"
-          v-model="password_confirmation"
-          placeholder="Confirm password"
-          input_type="password"
-          addon-left-icon="key"
-        />
-        <base-button
-          class="float-right mt-3 mr-0"
-          type="primary"
-          @click="submit"
-          >Submit
-        </base-button>
-        <!-- The following line submits the form when pressing enter -->
-        <input type="submit" value="Submit" class="d-none" />
-      </form>
-    </card>
-  </div>
+      <v-col xs="10" md="4">
+        <v-card shaped>
+          <v-card-title class="text-center mb-4">
+            <div class="text-center display-1">{{$t("auth.title.reset_password")}}</div>
+          </v-card-title>
+
+          <v-card-text>
+            <v-alert :value="failure" color="error" class="mb-4" outlined>
+              {{ response }}
+            </v-alert>
+            <form @submit.prevent="submit" class="pt-5">
+              <v-text-field
+                v-model="password"
+                :label="$t('auth.label.new_password')"
+                type="password"
+                outlined
+              ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"/>
+              </v-text-field>
+              <v-text-field
+                v-model="password_confirmation"
+                :label="$t('auth.label.confirm_password')"
+                type="password"
+                outlined
+              ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"/>
+              </v-text-field>
+              <div class="text-center">
+                <v-btn large color="primary" @click="submit">
+                  {{ $t('auth.button.change_password') }}
+                </v-btn>
+              </div>
+              <!-- The following line submits the form when pressing enter -->
+              <input type="submit" value="Submit" class="d-none" />
+            </form>
+          </v-card-text>
+          <v-card-actions>
+            <v-layout align-space-between justify-space-between row fill-height>
+              <v-btn text rounded to="/login">{{ $t("auth.link.signin") }}</v-btn>
+              <v-btn text rounded to="/register">{{ $t("auth.link.register") }}</v-btn>
+            </v-layout>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      failure: false,
       password: "",
       password_confirmation: ""
     };

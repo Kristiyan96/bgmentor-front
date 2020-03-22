@@ -15,7 +15,7 @@
           >
             <v-card-title class="pb-0 pb-0 pl-2 mb-3 grey--text">
               <img class="mr-5" src="@/assets/images/programmer2.svg"/>  
-              Начинаещи
+              Начинаещи (6 клас +)
             </v-card-title>
             <v-card-subtitle style="padding-left: 98px">група 3-6 ученици</v-card-subtitle>
 
@@ -51,7 +51,7 @@
           >
             <v-card-title class="pb-0 pb-0 pl-2 mb-3 grey--text">
               <img class="mr-5" src="@/assets/images/programmer1.svg"/>  
-              Напреднали
+              Напреднали (8 клас +)
             </v-card-title>
             <v-card-subtitle style="padding-left: 98px">група 3-6 ученици</v-card-subtitle>
 

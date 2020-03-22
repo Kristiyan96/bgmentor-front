@@ -1,7 +1,7 @@
 <template>
-  <Screen>
-    <template v-slot:left>
-      <v-layout wrap>
+  <v-container fluid>
+    <v-row>
+      <v-col xs="12" md="4">
         <v-flex xs12>
           <v-toolbar flat dense>
             <v-toolbar-title>
@@ -35,22 +35,18 @@
             </v-list-item>
           </v-list>
         </v-flex>
-      </v-layout>
-    </template>
-    <template v-slot:right>
-      <v-container>
-        <router-view></router-view>
-      </v-container>
-    </template>
-  </Screen>
+      </v-col>
+      <v-col>
+        <v-container>
+          <router-view></router-view>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-<script>
-import Screen from "@/components/Screen2x1";
 
+<script>
 export default {
-  components: {
-    Screen
-  },
   data() {
     return { };
   }

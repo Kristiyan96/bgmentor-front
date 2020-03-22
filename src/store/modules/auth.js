@@ -121,7 +121,6 @@ const actions = {
     });
   },
   async [UPDATE_PROFILE]({ commit }, user) {
-    // should be tested when the back-end is rewritten
     const { data } = await UserService.update(user);
     commit(SET_AUTH, data.user);
     return data;

@@ -39,20 +39,29 @@ const messages = {
     },
     auth: {
       title: {
-        signin: "Log in"
+        signin: "Log in",
+        register: "Sign up",
+        forgot_password: "Forgot password",
+        reset_password: "Reset password"
       },
       button: {
         google: "Sign in with Google",
-        signin: "Sign in"
+        signin: "Sign in",
+        register: "Sign up",
+        change_password: "Change password"
       },
       label: {
+        name: "Names",
         email: "Email",
         password: "Password",
-        remember_me: "Remember me"
+        remember_me: "Remember me",
+        new_password: "New password",
+        confirm_password: "Confirm password"
       },
       link: {
         forgot_password: "Forgot password?",
-        register: "New account"
+        register: "New account",
+        signin: "Sign in"
       }
     },
     $vuetify: {
@@ -124,20 +133,29 @@ const messages = {
     },
     auth: {
       title: {
-        signin: "Вход"
+        signin: "Вход",
+        register: "Регистрация",
+        forgot_password: "Забравена парола",
+        reset_password: "Промяна на парола"
       },
       button: {
         google: "Влез с Google",
-        signin: "Влез"
+        signin: "Влез",
+        register: "Създай акаунт",
+        change_password: "Промени паролата",
       },
       label: {
+        name: "Имена",
         email: "Имейл",
         password: "Парола",
-        remember_me: "Запомни ме"
+        remember_me: "Запомни ме",
+        new_password: "Нова парола",
+        confirm_password: "Потвърди паролата"
       },
       link: {
         forgot_password: "Забравена парола?",
-        register: "Нов акаунт"
+        register: "Нов акаунт",
+        signin: "Вход"
       }
     },
     memberships: {

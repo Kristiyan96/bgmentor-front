@@ -22,14 +22,14 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item @click="type = 'day'">
-              <v-list-item-title>{{ $t("calendar.day") }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="type = 'week'">
-              <v-list-item-title>{{ $t("calendar.week") }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="type = 'month'">
-              <v-list-item-title>{{ $t("calendar.month") }}</v-list-item-title>
+            <v-list-item
+              v-for="viewOption in viewOptions"
+              :key="viewOption"
+              @click="type = viewOption"  
+            >
+              <v-list-item-title :class="{'primary--text': type == viewOption}">
+                {{ $t(`calendar.${viewOption}`) }}
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -75,7 +75,8 @@ export default {
       focus: this.$moment(new Date()).format("YYYY-MM-DD"),
       type: "week",
       start: null,
-      end: null
+      end: null,
+      viewOptions: ["day", "week", "month"]
     }
   },
   computed: {

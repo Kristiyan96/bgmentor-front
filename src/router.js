@@ -34,6 +34,12 @@ let router = new Router({
       component: () => import("@/views/Users/ConfirmEmail")
     },
     {
+      path: "/forgot_password",
+      name: "ForgotPassword",
+      meta: { layout: "no-sidebar" },
+      component: () => import("@/views/Users/ForgotPassword")
+    },
+    {
       path: "/password",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
@@ -94,6 +100,12 @@ let router = new Router({
       component: () => import("@/views/Groups/Groups")
     },
     {
+      path: "/groups/:id",
+      name: "GroupHome",
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Groups/Home/Dashboard")
+    },
+    {
       path: "/individuals",
       name: "Individials",
       meta: { requiresAuth: true },
@@ -122,6 +134,26 @@ let router = new Router({
       name: "Locations",
       meta: { requiresAuth: true },
       component: () => import("@/views/Locations/LocationsWrapper")
+    },
+    {
+      path: "/profile",
+      name: "Profile",
+      meta: { requiresAuth: true},
+      component: () => import("@/views/Users/Profile/Profile"),
+      children: [
+        {
+          path: "general",
+          component: () => import("@/views/Users/Profile/General"),
+        },
+        {
+          path: "security",
+          component: () => import("@/views/Users/Profile/Security"),
+        },
+        {
+          path: "notifications",
+          component: () => import("@/views/Users/Profile/Notifications"),
+        },
+      ]
     },
     {
       path: "/profiles/:id",

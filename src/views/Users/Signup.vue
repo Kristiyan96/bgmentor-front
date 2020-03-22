@@ -7,7 +7,7 @@
       <v-col xs="10" md="4">
         <v-card v-if="!registered" :loading="loading" shaped>
           <v-card-title class="text-center mb-4">
-            <div class="text-center display-1">Регистрация</div>
+            <div class="text-center display-1">{{$t("auth.title.register")}}</div>
           </v-card-title>
           <v-card-text>
             <v-alert v-if="errors.length" color="error" class="mb-4" outlined>
@@ -17,7 +17,7 @@
               <v-text-field
                 type="text"
                 v-model="user.name"
-                label="Име"
+                :label="$t('auth.label.name')"
                 outlined
                 :rules="rules.name"
                 validate-on-blur
@@ -26,7 +26,7 @@
               <v-text-field
                 type="email"
                 v-model="user.email"
-                label="Имейл"
+                :label="$t('auth.label.email')"
                 outlined
                 :rules="rules.email"
                 validate-on-blur
@@ -36,7 +36,7 @@
                 :rules="rules.password"
                 type="password"
                 v-model="user.password"
-                label="Парола"
+                :label="$t('auth.label.password')"
                 outlined
                 validate-on-blur
                 ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
@@ -45,15 +45,14 @@
                 :rules="rules.password_confirmation"
                 type="password"
                 v-model="user.password_confirmation"
-                label="Потвърди парола"
+                :label="$t('auth.label.confirm_password')"
                 outlined
                 validate-on-blur
                 ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
               /></v-text-field>
               <v-checkbox v-model="accept" type="checkbox" :rules="rules.accept">
                 <span slot="label">
-                  Съгласявам се с
-                  <router-link to="/privacy">условията</router-link>
+                  <v-btn text to="/privacy">Съгласявам се с условията</v-btn>
                 </span>
               </v-checkbox>
               <div class="text-center">
@@ -63,7 +62,7 @@
                   @click="submit"
                   :disabled="!valid"
                 >
-                  Създай профил
+                  {{$t("auth.button.register")}}
                 </v-btn>
               </div>
             </v-form>
@@ -85,7 +84,7 @@
                 color="primary"
                 to="/login"
               >
-                Вход
+                {{$t("auth.link.signin")}}
               </v-btn>
           </v-card-actions>
         </v-card>
@@ -129,11 +128,7 @@ export default {
           this.registered = true; 
           this.loading = false; 
           this.user = response;
-          console.log(response)
         }).catch(error => { 
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
         });
     }
   }

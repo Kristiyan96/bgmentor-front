@@ -45,7 +45,7 @@
           </v-card-text>
           <v-card-actions>
             <v-layout align-space-between justify-space-between row fill-height>
-              <v-btn text rounded to="/password">{{ $t("auth.link.forgot_password") }}</v-btn>
+              <v-btn text rounded to="/forgot_password">{{ $t("auth.link.forgot_password") }}</v-btn>
               <v-btn text rounded to="/register">{{ $t("auth.link.register") }}</v-btn>
             </v-layout>
           </v-card-actions>
