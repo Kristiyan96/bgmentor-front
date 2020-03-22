@@ -3,9 +3,9 @@
     <v-calendar
       ref="calendar"
       v-model="local_focus"
-      color="secondary"
+      color="rgba(0,0,0,0)"
       first-interval="8"
-      interval-count="12"
+      interval-count="11"
       :weekdays="weekdays"
       :events="events"
       event-start="start_time"
@@ -184,9 +184,11 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.theme--light.v-calendar-daily
-  background-color: rgba(0,0,0,0)
-.v-calendar-daily__scroll-area
-  overflow-y: auto
+<style scoped>
+>>> .v-calendar-daily__scroll-area {
+  overflow-y: auto;
+}
+>>> .v-calendar.v-calendar-daily {
+  background-color: rgba(0,0,0,0) !important;
+} 
 </style>

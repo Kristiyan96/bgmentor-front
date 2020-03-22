@@ -1,5 +1,5 @@
 <template>
-  <v-content dark>
+  <v-content>
     <Header />
     <SidebarLeft />
     <SidebarRight />

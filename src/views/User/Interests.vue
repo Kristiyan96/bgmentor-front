@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="7">
-        <v-card class="pb-0">
+        <v-card class="pb-0" outlined>
           <v-card-title>
             <span class="headline">Активни заявки</span>
           </v-card-title>
@@ -33,7 +33,7 @@
         </v-card>
       </v-col>
       <v-col xs="12" md="5">
-        <v-card>
+        <v-card outlined>
           <v-card-title>
             <span class="headline">Архивирани заявки</span>
           </v-card-title>

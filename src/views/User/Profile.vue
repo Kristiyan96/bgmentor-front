@@ -89,11 +89,9 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .full-height
   display:flex
   flex-direction: column
   min-height: calc(100vh - 56px)
->>> .theme--light.v-calendar-daily
-  background-color: red !important
 </style>

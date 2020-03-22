@@ -1,9 +1,9 @@
 <template>
-  <v-card>
+  <v-card outlined>
     <v-card-title>
       <span class="headline">{{location ? 'Редактиране на локация' : 'Нова локация'}}</span>
       <v-spacer />
-      <DeleteButton @confirm="destroy" v-if="location" tooltip="Delete location" />
+      <DeleteButton @confirm="destroy" v-if="location && current_user.admin" tooltip="Delete location" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -81,6 +81,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["current_user"]),
     dirty() {
       return !_.isEqual(this.form, this.location_copy);
     }

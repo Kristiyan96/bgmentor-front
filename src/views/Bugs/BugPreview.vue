@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined>
     <v-card-title>
       <span class="headline">{{bug ? 'Редактиране на бъг' : 'Нов бъг'}}</span>
       <v-spacer />

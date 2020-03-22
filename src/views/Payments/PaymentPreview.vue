@@ -1,12 +1,12 @@
 <template>
-  <v-card>
+  <v-card outlined>
     <v-card-title>
       <span class="headline">Разписка</span>
       <v-spacer />
       <v-btn icon @click="editing = !editing">
         <font-awesome-icon icon="edit" class="grey--text" />
       </v-btn>
-      <DeleteButton @confirm="remove" tooltip="Delete receipt" v-if="payment.id && current_user.admin"/>
+      <DeleteButton @confirm="remove" tooltip="Delete receipt" v-if="payment && payment.id && current_user.admin"/>
     </v-card-title>
     <v-card-text>
       <v-container class="px-0" v-if="!editing">

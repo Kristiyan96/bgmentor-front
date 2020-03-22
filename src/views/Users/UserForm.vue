@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card outlined>
     <v-card-title>
       <span class="headline">{{user ? 'Редактиране' : 'Нов акаунт'}}</span>
       <v-spacer />

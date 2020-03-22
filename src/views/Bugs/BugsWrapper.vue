@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="5">
-        <v-card class="pb-0">
+        <v-card class="pb-0" outlined>
           <v-card-title>
             <span class="headline">Бъгове</span>
             <v-spacer />
@@ -20,7 +20,7 @@
                     :items="bugs"
                     :items-per-page="bugs.length"
                     hide-default-footer
-                    class="elevation-1 table-scroll"
+                    class="table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: bug && item.id == bug.id, fixed: item.fixed == true}">

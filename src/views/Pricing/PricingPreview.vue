@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="pricing">
+  <v-card v-if="pricing" outlined>
     <v-card-title>
       <span class="headline">Разписка</span>
       <v-spacer />

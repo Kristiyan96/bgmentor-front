@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="5">
-        <v-card class="pb-0">
+        <v-card class="pb-0" outlined >
           <v-card-title>
             <span class="headline">Ценоразпис</span>
             <v-spacer/>
@@ -19,7 +19,6 @@
                     :headers="headers"
                     :items="pricings"
                     :items-per-page="10"
-                    class="elevation-1"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: pricing && item.id == pricing.id}">

@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="5">
-        <v-card class="pb-0">
+        <v-card class="pb-0" outlined>
           <v-card-title>
             <span class="headline">Групови уроци</span>
             <v-spacer />
@@ -20,7 +20,7 @@
                     :items="groups"
                     :items-per-page="groups.length"
                     hide-default-footer
-                    class="elevation-1 table-scroll"
+                    class="table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: group && item.id == group.id}">

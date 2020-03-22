@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="5">
-        <v-card class="pb-0">
+        <v-card class="pb-0" outlined>
           <v-card-title>
             <span class="headline">Плащания</span>
             <v-spacer></v-spacer>
@@ -24,7 +24,7 @@
                     :headers="headers"
                     :items="filtered_payments"
                     :items-per-page="10"
-                    class="elevation-1"
+                    class="table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: payment && item.id == payment.id}">

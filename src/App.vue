@@ -22,6 +22,8 @@ export default {
 
 <style lang="sass">
 @import '../node_modules/vuetify/dist/vuetify.css'
+.theme--light.v-application
+  background-color: white !important
 .row
   margin: 0px !important
 .container.grey.lighten-4

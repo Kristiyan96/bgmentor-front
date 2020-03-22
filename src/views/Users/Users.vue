@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col xs="12" md="5">
-        <v-card>
+        <v-card outlined>
           <v-toolbar flat>
             <v-toolbar-items>
               <v-btn
@@ -40,7 +40,7 @@
                     :items="filteredUsers"
                     hide-default-footer
                     :items-per-page="filteredUsers.length"
-                    class="elevation-1 table-scroll"
+                    class="table-scroll"
                   >
                     <template v-slot:item="{ item }">
                       <tr @click="activate(item)" :class="{active: user && item.id == user.id}">
