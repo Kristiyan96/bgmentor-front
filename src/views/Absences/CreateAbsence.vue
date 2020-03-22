@@ -1,13 +1,13 @@
 <template>
   <v-btn-toggle
-    tile
+    dense
     group
   >
-    <v-btn value="left">
+    <v-btn text value="left">
       Ще отсъства
     </v-btn>
 
-    <v-btn value="justify">
+    <v-btn text value="justify">
       Отсъства
     </v-btn>
   </v-btn-toggle>

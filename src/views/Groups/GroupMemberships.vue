@@ -17,7 +17,7 @@
       <thead v-else>
         <tr>
           <th :colspan="headers.length">
-            <div class="d-flex">
+            <div class="d-flex align-center">
               <PaymentDialog :group="group" :memberships="selectedUsers" />
               <CreateAbsence v-if="calendar"/>
               <v-spacer />

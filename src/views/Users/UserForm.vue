@@ -3,7 +3,7 @@
     <v-card-title>
       <span class="headline">{{user ? 'Редактиране' : 'Нов акаунт'}}</span>
       <v-spacer />
-      <DeleteButton @confirm="destroy" tooltip="Delete user" v-if="user" />
+      <DeleteButton @confirm="destroy" tooltip="Delete user" v-if="user && current_user.admin" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -82,6 +82,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["current_user"]),
     dirty() {
       return !_.isEqual(this.form, this.user_copy);
     }

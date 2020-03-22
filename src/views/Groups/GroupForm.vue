@@ -3,7 +3,7 @@
     <v-card-title>
       <span class="headline">{{group ? 'Редактиране' : 'Нова група'}}</span>
       <v-spacer />
-      <DeleteButton @confirm="destroy" tooltip="Delete group" v-if="group" />
+      <DeleteButton @confirm="destroy" tooltip="Delete group" v-if="group && current_user.admin" />
     </v-card-title>
     <v-card-text>
       <v-container class="px-0">
@@ -160,7 +160,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["groups", "teachers", "pricings", "locations"]),
+    ...mapGetters(["groups", "teachers", "pricings", "locations", "current_user"]),
     dirty() {
       return !_.isEqual(this.form, this.group_copy);
     }
