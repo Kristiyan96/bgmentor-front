@@ -107,9 +107,6 @@ export default {
     store.dispatch(FETCH_LOCATIONS);
   },
   methods: {
-    updateFocus() {
-      this.$emit("updateFocus", this.local_focus);
-    },
     getEventColor(event) {
       return event ? event.color : "#fff";
     },
@@ -129,7 +126,6 @@ export default {
       nativeEvent.stopPropagation();
     },
     viewDay({ date }) {
-      this.$emit('updateFocus', date);
       this.$emit('updateType', 'day');
     },
     newEvent(props) {
@@ -169,6 +165,9 @@ export default {
       handler() {
         this.local_focus = this.focus;
       }
+    },
+    local_focus() {
+      this.$emit('updateFocus', this.local_focus);
     },
     lessons() {
       this.events = this.lessons.map(l => {

@@ -65,7 +65,7 @@ export default {
     },
     filters: {
       type: Object,
-      default: {},
+      default: () => {},
       description: "Calendar filters"
     }
   },
@@ -118,7 +118,7 @@ export default {
       this.type = "day";
     },
     setToday() {
-      this.focus = this.today;
+      this.focus = this.$moment(new Date()).format("YYYY-MM-DD");
     },
     prev() {
       this.$refs.calendar.$refs.calendar.prev();
