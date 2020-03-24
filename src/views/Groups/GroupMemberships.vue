@@ -4,10 +4,10 @@
     :headers="headers"
     :items="memberships"
     :items-per-page="10"
-    v-model="selectedUsers"
+    v-model="selectedMemberships"
   >
     <template v-slot:header="{ props: { headers } }">
-      <thead v-if="!selectedUsers.length">
+      <thead v-if="!selectedMemberships.length">
         <tr>
           <th :colspan="headers.length">
             <AddMembers :group="group" :memberships="memberships"/>
@@ -18,8 +18,12 @@
         <tr>
           <th :colspan="headers.length">
             <div class="d-flex align-center">
-              <PaymentDialog :group="group" :memberships="selectedUsers" />
-              <CreateAbsence v-if="calendar"/>
+              <PaymentDialog :group="group" :memberships="selectedMemberships" />
+              <CreateAbsence 
+                v-if="calendar"
+                :selectedMemberships="selectedMemberships"
+                :lesson="lesson"
+              />
               <v-spacer />
               <v-btn outlined color="red" class="ml-2" v-if="!calendar" @click="destroyMembership">
                 Махни от групата
@@ -75,7 +79,7 @@ export default {
   },
   data() {
     return {
-      selectedUsers: [],
+      selectedMemberships: [],
       headers: [
         {
           text: 'Ученик',
@@ -92,27 +96,20 @@ export default {
     }
   },
   methods: {
-    createAbsence() {
-      let params = this.selectedUsers.map(u => {
-        return {"user_id": u.id, "lesson_id": this.lesson.id}
-      });
-      store.dispatch(CREATE_ABSENCE, params);
-      this.selectedUsers = [];
-    },
     destroyMembership() {
-      store.dispatch(DESTROY_MEMBERSHIP, this.selectedUsers);
-      this.selectedUsers = [];
+      store.dispatch(DESTROY_MEMBERSHIP, this.selectedMemberships);
+      this.selectedMemberships = [];
     }
   },
   computed: {
-    ...mapGetters(["memberships"]),
+    ...mapGetters(["memberships"])
   },
   watch: {
     group: {
       immediate: true,
       handler() {
         if(this.group) {
-          this.selectedUsers = [];
+          this.selectedMemberships = [];
           store.dispatch(FETCH_MEMBERSHIPS, this.group.id);
         }
       }

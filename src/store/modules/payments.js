@@ -37,7 +37,7 @@ const actions = {
   },
   async [CREATE_PAYMENT]({ commit, dispatch }, params) {
     return new Promise((resolve, reject) => {
-      ApiService.post(`/payments`, { payment: params }).then(
+      ApiService.post(`/payments`, { payments: params }).then(
         response => {
           commit(ADD_PAYMENT, response.data);
           dispatch(CREATE_ALERT, ["Payment created", "success"]);

@@ -21,7 +21,7 @@ const actions = {
   },
   async [CREATE_ABSENCE]({ commit, dispatch }, params) {
     return new Promise((resolve, reject) => {
-      ApiService.post(`/absences`, { absence: params }).then(
+      ApiService.post(`/absences`, { absences: params }).then(
         response => {
           commit(SET_ABSENCES, response.data);
           dispatch(CREATE_ALERT, ["Absence created", "success"]);
