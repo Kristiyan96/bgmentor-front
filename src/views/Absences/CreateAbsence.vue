@@ -15,7 +15,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { CREATE_ABSENCE, FETCH_MEMBERSHIPS } from "@/store/actions.type";
+import { CREATE_ABSENCE, FETCH_MEMBERSHIPS, FETCH_LESSONS } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
@@ -50,13 +50,14 @@ export default {
     createAbsence(excused) {
       let params = this.selectedMemberships.map(m => {
         return {
-          'user_id': m.user_id,
+          'membership_id': m.id,
           'lesson_id': this.lesson.id,
           'excused': excused
         }
       })
       store.dispatch(CREATE_ABSENCE, params).then(response => {
         store.dispatch(FETCH_MEMBERSHIPS, this.selectedMemberships[0].group_id);
+        store.dispatch(FETCH_LESSONS);
       })
     }
   }
