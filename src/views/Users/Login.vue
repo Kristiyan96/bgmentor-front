@@ -85,7 +85,7 @@ export default {
     googleAuthenticate() {
       this.$gAuth.getAuthCode()
       .then(authCode => {
-        return this.$http.post('https://www.bgmentor.com/api/auth/google_oauth2/callback', { code: authCode, redirect_uri: 'postmessage' })
+        return this.$http.post('/auth/google_oauth2/callback', { code: authCode, redirect_uri: 'postmessage' })
       })
       .then(response => {
         this.$store.commit(SET_AUTH, [response.headers.authorization, response.data]);
