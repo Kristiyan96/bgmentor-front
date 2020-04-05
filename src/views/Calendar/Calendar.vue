@@ -173,8 +173,8 @@ export default {
       this.events = this.lessons.map(l => {
         return {
           ...l,
-          start_time: this.$moment(l.start_time).format("YYYY-MM-DD HH:mm"),
-          end_time: this.$moment(l.end_time).format("YYYY-MM-DD HH:mm"),
+          start_time: this.$moment.tz(l.start_time, 'Europe/Sofia').format("YYYY-MM-DD HH:mm"),
+          end_time: this.$moment.tz(l.end_time, 'Europe/Sofia').format("YYYY-MM-DD HH:mm"),
           color: 'primary',
           name: `${l.teacher ? l.teacher.name : ''} - ${l.group ? l.group.name : ''}` 
         }

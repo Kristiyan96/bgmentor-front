@@ -31,11 +31,12 @@
               </ul>
               <v-divider class="mb-3 mt-3" />
               Цена: 
-              <ul>
+              <ul style="text-decoration: line-through;">
                 <li>Еднократно посещение(2ч.) - 25лв.</li>
                 <li>4 посещения(8ч.) - 80лв.</li>
                 <li>12 посещения(24ч.) - 230лв</li>
               </ul>
+              <span class="red--text">На 19.04.2020 започва безплатен едномесечен курс.</span>
             </v-card-text>
           </v-card>
         </div>

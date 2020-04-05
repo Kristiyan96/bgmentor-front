@@ -14,9 +14,10 @@ import NoSidebar from "@/layout/NoSidebar";
 
 import Vue2Filters from "vue2-filters";
 import vSelect from "vue-select";
-import moment from "moment";
 import vueSmoothScroll from "vue2-smooth-scroll";
 import underscore from "vue-underscore";
+import VueMoment from 'vue-moment'
+import moment from 'moment-timezone'
 
 import "@/assets/styles/table.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -84,7 +85,9 @@ Vue.use(GAuth, {
 })
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
-Vue.use(require("vue-moment"));
+Vue.use(VueMoment, {
+  moment,
+})
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
 Vue.component("v-select", vSelect);
