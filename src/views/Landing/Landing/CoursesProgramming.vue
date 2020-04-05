@@ -79,7 +79,7 @@
       </v-row>
 
       <v-row align-content="center">
-        <div class="col-sm-10 col-md-8 offset-sm-1 offset-md-2">
+        <div class="col-sm-5 col-md-4 offset-sm-1 offset-md-2">
           <v-card
             flat
             outlined
@@ -106,13 +106,31 @@
             </v-card-text>
           </v-card>
         </div>
+        <div class="col-sm-5 col-md-4">
+          <v-card
+            height="100%"
+            flat
+          >
+            <v-card-title class="pb-0 pl-2 mb-3">Как да се запиша?</v-card-title>
+            <v-card-text class="text--primary">
+              Записването става на място (ул. Кирил и Методий 27), на номер <a color="primary" href="tel:+359887627776">088 762 7776</a> или от бутона "Запиши се".
+            </v-card-text>
+            <v-card-actions>
+              <CourseSignUp subject="programming"/>
+            </v-card-actions>
+          </v-card>
+        </div>
       </v-row>
     </v-container>
   </section>
 </template>
 
 <script>
+import CourseSignUp from "@/views/components/CourseSignUp";
 export default {
+  components: {
+    CourseSignUp
+  },
   data() {
     return {
       active1: false,

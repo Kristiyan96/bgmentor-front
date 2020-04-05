@@ -81,14 +81,10 @@
           <v-card
             class="signup"
             flat
-            outlined
-            :raised="active2"
-            :elevation="active2 ? 3 : 0"
-            @mouseover="active2 = true"
-            @mouseleave="active2 = false"
           >
+            <v-card-title class="pb-0 pl-2 mb-3">Как да се запиша?</v-card-title>
             <v-card-text class="text--primary">
-              <b>Записването</b> става на място (ул. Кирил и Методий 27), на номер <a color="primary" href="tel:+35988 762 7776">088 762 7776</a> или като кликнете на бутона "Запиши се". Можете да се включите по всяко време!
+              Записването става на място (ул. Кирил и Методий 27), на номер <a color="primary" href="tel:+35988 762 7776">088 762 7776</a> или като кликнете на бутона "Запиши се". Можете да се включите по всяко време!
             </v-card-text>
 
             <v-card-actions>
@@ -98,22 +94,17 @@
           <v-card
             class="how-to-choose mt-1"
             flat
-            :raised="active3"
-            :elevation="active3 ? 3 : 0"
-            @mouseover="active3 = true"
-            @mouseleave="active3 = false"
           >
-            <v-card-title class="pb-0 pl-2 mb-3 white--text">Как да изберем?</v-card-title>
+            <v-card-title class="pb-0 pl-2 mb-3">Как да изберем?</v-card-title>
 
-            <v-card-text class="white--text">
+            <v-card-text>
               Прегледайте нашата статия, в която съветваме как да изберете между частни и групови уроци.
             </v-card-text>
             <v-card-actions>
               <v-btn
-                class="white--text px-5"
+                class="px-5"
                 outlined
                 rounded
-                style="border: 1px solid white;"
                 text
                 to="/частно-или-групово"
               >
@@ -139,7 +130,7 @@
               <b>Записването</b> става на място (ул. Кирил и Методий 27), на номер <a color="primary" href="tel:+359887627776">088 762 7776</a> или от бутона "Проявявам интерес".
             </v-card-text>
             <v-card-actions>
-              <CourseSignUp :grade="grade" :lesson="lesson"/>
+              <CourseSignUp :grade="grade" :lesson="lesson" subject="maths"/>
             </v-card-actions>
           </v-card>
         </div>
@@ -153,17 +144,16 @@
             @mouseover="active2 = true"
             @mouseleave="active2 = false"
           >
-            <v-card-title class="pb-0 pl-2 mb-3 white--text">Как да изберем?</v-card-title>
+            <v-card-title class="pb-0 pl-2 mb-3">Как да изберем?</v-card-title>
 
-            <v-card-text class="white--text flex-grow-1">
+            <v-card-text class="flex-grow-1">
               Прегледайте нашата статия, в която помагаме с избора между частни и групови уроци.
             </v-card-text>
             <v-card-actions>
               <v-btn
-                class="white--text px-5"
+                class="px-5"
                 outlined
                 rounded
-                style="border: 1px solid white;"
                 text
                 to="/частно-или-групово"
               >
@@ -252,8 +242,6 @@ h2
 .grade-picker
   display: flex
   justify-content: center
-.how-to-choose
-  background: #4FC3F7
 .grade-picker .v-item-group
   max-width: 100%
 </style>

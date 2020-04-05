@@ -9,13 +9,13 @@
           <v-card-text class="px-0 pb-0">
             <v-container class="px-0 pb-0">
               <v-row>
-                <v-list two-line subheader v-if="interests.filter(i => i.active).length">
+                <v-list two-line subheader v-if="interests.filter(i => i.active).length" style="width: 100%">
                   <v-list-item
                     v-for="interest in interests.filter(i => i.active)"
                     :key="interest.id"
                   >
                     <v-list-item-content>
-                      <v-list-item-title class="d-flex justify-space-between"><div>{{interest.name}}</div> <div class="text-right">{{interest.phone}}</div></v-list-item-title>
+                      <v-list-item-title class="d-flex justify-space-between"><div>{{interest.name}} - {{interest.subject}} - {{interest.lesson}}</div> <div class="text-right">{{interest.phone}}</div></v-list-item-title>
                       <v-list-item-subtitle>{{interest.created_at | moment("from", "now")}}</v-list-item-subtitle>
                     </v-list-item-content>
 

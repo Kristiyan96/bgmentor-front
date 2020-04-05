@@ -8,12 +8,12 @@
       outlined
       @click="openDialog"
     >
-      Проявявам интерес
+      Запиши се
     </v-btn>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <v-card v-if="!completed">
         <v-card-title>
-          <span class="headline">Искам да науча повече</span>
+          <span class="headline">Записване</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -40,6 +40,14 @@
                   required
                 ></v-select>
               </v-col>
+              <v-col cols="12">
+                <v-select
+                  :items="subjectOptions"
+                  v-model="form.subject"
+                  label="*Предмет"
+                  required
+                ></v-select>
+              </v-col>
             </v-row>
           </v-container>
           <small>*сигнализира задължително поле</small>
@@ -51,8 +59,8 @@
         </v-card-actions>
       </v-card>
       <v-card v-else>
-        <v-card-title>
-          <span class="headline">Благодарим за интереса</span>
+        <v-card-title class="headline text-center">
+          Благодарим за интереса.
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -83,6 +91,10 @@ export default {
     lesson: {
       type: String,
       default: "group"
+    },
+    subject: {
+      type: String,
+      default: "maths"
     }
   },
   data() {
@@ -93,7 +105,8 @@ export default {
         name: "",
         phone: "",
         grade: "",
-        lesson: ""
+        lesson: "",
+        subject: this.subject
       },
       gradeOptions: [
         {
@@ -129,6 +142,20 @@ export default {
         {
           text: "Частни",
           value: "private"
+        }
+      ],
+      subjectOptions: [
+        {
+          text: "Математика",
+          value: "maths"
+        },
+        {
+          text: "Програмиране",
+          value: "programming"
+        },
+        {
+          text: "Физика",
+          value: "physics"
         }
       ]
     }
