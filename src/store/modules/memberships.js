@@ -56,7 +56,7 @@ const actions = {
 
     return new Promise((resolve, reject) => {
       ApiService.post(`/groups/${group_id}/memberships`, {
-        membership: params
+        memberships: params
       }).then(
         response => {
           commit(SET_MEMBERSHIPS, response.data);
