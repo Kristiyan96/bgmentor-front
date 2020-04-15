@@ -1,8 +1,16 @@
 <template>
-  <v-app-bar app clipped-left elevation="0" color="grey lighten-5">
+  <v-app-bar
+    app
+    clipped-left
+    elevation="0"
+    color="grey lighten-5"
+  >
     <v-app-bar-nav-icon @click="toggleSidebar" />
     <span class="title ml-3 mr-5 white--grey">
-      <a href="/"><img src="@/assets/images/logo.png" height="40px"/></a>
+      <a href="/"><img
+          src="@/assets/images/logo.png"
+          height="40px"
+        /></a>
     </span>
     <v-spacer />
     <Alerts />
@@ -12,7 +20,14 @@
       offset-y
     >
       <template v-slot:activator="{ on }">
-        <v-btn fab dedpressed small text color="grey" v-on="on">
+        <v-btn
+          fab
+          dedpressed
+          small
+          text
+          color="grey"
+          v-on="on"
+        >
           <font-awesome-icon icon="user" />
         </v-btn>
       </template>
@@ -31,7 +46,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { LOGOUT, TOGGLE_NOTIFICATIONS } from "@/store/actions.type";
+import { LOGOUT } from "@/store/actions.type";
 import { TOGGLE_SIDEBAR } from "@/store/mutations.type";
 import Alerts from "./Alerts";
 
@@ -45,18 +60,15 @@ export default {
     };
   },
   methods: {
-    toggleNotifications() {
-      store.dispatch(TOGGLE_NOTIFICATIONS);
-    },
     toggleSidebar() {
       store.commit(TOGGLE_SIDEBAR);
     },
     logOut() {
-      store.dispatch(LOGOUT).then(() => this.$router.push('/'));
-    },
+      store.dispatch(LOGOUT).then(() => this.$router.push("/"));
+    }
   },
   computed: {
     ...mapGetters(["resizable"])
   }
-}
+};
 </script>

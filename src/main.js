@@ -18,6 +18,8 @@ import vueSmoothScroll from "vue2-smooth-scroll";
 import underscore from "vue-underscore";
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
+import VueDeviceDetector from 'vue-device-detector'
+import vClickOutside from 'v-click-outside'
 
 import "@/assets/styles/table.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -85,11 +87,14 @@ Vue.use(GAuth, {
 })
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
+Vue.use(VueDeviceDetector)
 Vue.use(VueMoment, {
   moment,
 })
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
+Vue.use(vClickOutside)
+
 Vue.component("v-select", vSelect);
 Vue.component("default-layout", Default);
 Vue.component("no-sidebar-layout", NoSidebar);
