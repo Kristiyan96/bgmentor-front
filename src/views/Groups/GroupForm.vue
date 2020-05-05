@@ -188,11 +188,11 @@ export default {
       lessonOptions: [
         {
           text: "Групови",
-          value: 1
+          value: "collective"
         },
         {
           text: "Частни",
-          value: 0
+          value: "individual"
         }
       ]
     };

@@ -9,7 +9,7 @@
         text
         color="green"
         v-on="on"
-      >Платил</v-btn>
+      >Създай плащане</v-btn>
     </template>
     <v-card>
       <v-card-title>
@@ -39,7 +39,35 @@
             </v-col>
           </v-row>
           <v-row>
-
+            <v-col
+              cols="12"
+              sm="6"
+              class="pl-0"
+            >
+              <v-select
+                clearable
+                :items="teachers"
+                v-model="form.payer_id"
+                item-text="name"
+                item-value="id"
+                label="Плащане от"
+                required
+              ></v-select>
+            </v-col>
+            <v-col
+              cols="6"
+              class="px-0"
+            >
+              <v-select
+                clearable
+                :items="teachers"
+                v-model="form.recipient_id"
+                item-text="name"
+                item-value="id"
+                label="Плащане към"
+                required
+              ></v-select>
+            </v-col>
           </v-row>
         </v-container>
       </v-card-text>
@@ -62,20 +90,15 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { CREATE_PAYMENT, FETCH_MEMBERSHIPS } from "@/store/actions.type";
+import { CREATE_PAYMENT } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
   props: {
-    group: {
+    teacher: {
       type: Object,
       default: () => {},
-      description: "Group to edit"
-    },
-    memberships: {
-      type: Array,
-      default: () => [],
-      description: "An array of memberships that have paid"
+      description: "The user whose profile we are creating it from"
     }
   },
   data() {
@@ -84,21 +107,21 @@ export default {
       form: {
         note: "",
         amount: 0,
-        membership_ids: []
+        payer_id: this.teacher.id,
+        payer_type: "User",
+        recipient_id: null,
+        recipient_type: "User"
       }
     };
   },
+  computed: {
+    ...mapGetters(["teachers"])
+  },
   methods: {
     addPayments() {
-      let params = this.memberships.map(m => {
-        return {
-          membership_id: m.id,
-          note: this.form.note,
-          amount: this.form.amount
-        };
-      });
-      store.dispatch(CREATE_PAYMENT, params).then(response => {
-        store.dispatch(FETCH_MEMBERSHIPS, this.group.id);
+      store.dispatch(CREATE_PAYMENT, [this.form]).then(response => {
+        // fetch user profile to show new credit and balance
+        this.$emit("refetchProfile");
       });
       this.dialog = false;
     }

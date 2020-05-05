@@ -40,7 +40,7 @@
                         @click="activate(item)"
                         :class="{active: payment && item.id == payment.id}"
                       >
-                        <td>{{ item.student.name }}</td>
+                        <td>{{ itemTransfer(item) }}</td>
                         <td>{{ item.amount }}</td>
                       </tr>
                     </template>
@@ -100,6 +100,16 @@ export default {
     capitalize(s) {
       if (typeof s !== "string") return "";
       return s.charAt(0).toUpperCase() + s.slice(1);
+    },
+    itemTransfer(item) {
+      let response = "";
+      if (["Academy", "User"].includes(item.payer_type)) {
+        response = item.payer.name + " -> " + item.recipient.name;
+      } else {
+        response = item.student.name + " -> " + item.recipient.name;
+      }
+
+      return response;
     }
   },
   computed: {
@@ -108,8 +118,9 @@ export default {
       return this.payments.filter(
         p =>
           p &&
-          p.student &&
-          p.student.name.toLowerCase().search(this.search.toLowerCase()) != -1
+          this.itemTransfer(p)
+            .toLowerCase()
+            .search(this.search.toLowerCase()) != -1
       );
     }
   },
