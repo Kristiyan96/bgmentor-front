@@ -40,7 +40,9 @@
                         @click="activate(item)"
                         :class="{active: payment && item.id == payment.id}"
                       >
-                        <td v-if="item.payer_type == 'Membership'">{{ item.student.name }}</td>
+                        <td v-if="['Membership', 'User'].includes(item.payer_type)">
+                          {{ item.payer.name }}
+                        </td>
                         <td v-else>{{ item.payer.name }}</td>
                         <td>{{ item.recipient.name }}</td>
                         <td>{{ parseFloat(item.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.</td>
@@ -108,14 +110,7 @@ export default {
       return s.charAt(0).toUpperCase() + s.slice(1);
     },
     itemTransfer(item) {
-      let response = "";
-      if (["Academy", "User"].includes(item.payer_type)) {
-        response = item.payer.name + " " + item.recipient.name;
-      } else {
-        response = item.student.name + " " + item.recipient.name;
-      }
-
-      return response;
+      return item.payer.name + " " + item.recipient.name;
     }
   },
   computed: {

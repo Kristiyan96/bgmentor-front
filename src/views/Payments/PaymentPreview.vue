@@ -26,7 +26,10 @@
         <v-row v-if="payment">
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Клиент</div>
-            {{ student.name }}
+            <v-btn
+              text
+              :href="`/profiles/${payment.payer.id}`"
+            >{{ payment.payer.name }}</v-btn>
           </v-col>
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Платено</div>
@@ -51,11 +54,17 @@
         <v-row v-if="payment">
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">От</div>
-            {{ payment.payer.name }}
+            <v-btn
+              text
+              :href="`/profiles/${payment.payer.id}`"
+            >{{ payment.payer.name }}</v-btn>
           </v-col>
           <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Към</div>
-            {{ payment.recipient.name }}
+            <div class="subtitle-1 font-weight-bold">До</div>
+            <v-btn
+              text
+              :href="`/profiles/${payment.recipient.id}`"
+            >{{ payment.recipient.name }}</v-btn>
           </v-col>
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Платено</div>
@@ -133,7 +142,6 @@ export default {
     return {
       editing: false,
       group: {},
-      student: {},
       form: {},
       form_copy: {}
     };
@@ -165,7 +173,6 @@ export default {
       handler() {
         if (this.payment) {
           this.group = this.payment.group;
-          this.student = this.payment.student;
           this.form = { ...this.payment };
           this.form_copy = { ...this.payment };
         }
