@@ -40,7 +40,9 @@
                         @click="activate(item)"
                         :class="{active: payment && item.id == payment.id}"
                       >
-                        <td>{{ itemTransfer(item) }}</td>
+                        <td v-if="item.payer_type == 'Membership'">{{ item.student.name }}</td>
+                        <td v-else>{{ item.payer.name }}</td>
+                        <td>{{ item.recipient.name }}</td>
                         <td>{{ item.amount }}</td>
                       </tr>
                     </template>
@@ -81,10 +83,14 @@ export default {
       search: "",
       headers: [
         {
-          text: "Име",
+          text: "От",
           align: "left",
-          sortable: false,
-          value: "name"
+          sortable: false
+        },
+        {
+          text: "До",
+          align: "left",
+          sortable: false
         },
         { text: "Сума", value: "amount" }
       ]
@@ -104,9 +110,9 @@ export default {
     itemTransfer(item) {
       let response = "";
       if (["Academy", "User"].includes(item.payer_type)) {
-        response = item.payer.name + " -> " + item.recipient.name;
+        response = item.payer.name + " " + item.recipient.name;
       } else {
-        response = item.student.name + " -> " + item.recipient.name;
+        response = item.student.name + " " + item.recipient.name;
       }
 
       return response;
