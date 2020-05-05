@@ -30,7 +30,7 @@
           </v-col>
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Платено</div>
-            {{ payment.amount }}лв.
+            {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
             <br>
             {{ payment.note }}
           </v-col>
@@ -59,7 +59,7 @@
           </v-col>
           <v-col cols="12">
             <div class="subtitle-1 font-weight-bold">Платено</div>
-            {{ payment.amount }}лв.
+            {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
             <br>
             {{ payment.note }}
           </v-col>

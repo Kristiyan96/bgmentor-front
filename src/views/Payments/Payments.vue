@@ -43,7 +43,7 @@
                         <td v-if="item.payer_type == 'Membership'">{{ item.student.name }}</td>
                         <td v-else>{{ item.payer.name }}</td>
                         <td>{{ item.recipient.name }}</td>
-                        <td>{{ item.amount }}</td>
+                        <td>{{ parseFloat(item.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.</td>
                       </tr>
                     </template>
                   </v-data-table>
