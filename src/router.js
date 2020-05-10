@@ -19,31 +19,31 @@ let router = new Router({
       path: "/login",
       name: "Login",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Users/Login")
+      component: () => import("@/views/Accounts/Login")
     },
     {
       path: "/register",
       name: "Register",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Users/Signup")
+      component: () => import("@/views/Accounts/Signup")
     },
     {
       path: "/confirm_email/:key",
       name: "Confirmation",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Users/ConfirmEmail")
+      component: () => import("@/views/Accounts/ConfirmEmail")
     },
     {
       path: "/forgot_password",
       name: "ForgotPassword",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Users/ForgotPassword")
+      component: () => import("@/views/Accounts/ForgotPassword")
     },
     {
       path: "/password",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Users/ResetPassword")
+      component: () => import("@/views/Accounts/ResetPassword")
     },
     {
       path: "/terms",
@@ -64,18 +64,6 @@ let router = new Router({
       component: () => import("@/views/Landing/Blog/PrivateVsGroup")
     },
     {
-      path: "/home",
-      name: "Home",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/User/Home")
-    },
-    {
-      path: "/reports",
-      name: "Reports",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/User/Reports")
-    },
-    {
       path: "/payments",
       name: "Payments",
       meta: { requiresAuth: true },
@@ -91,7 +79,7 @@ let router = new Router({
       path: "/interests",
       name: "Interests",
       meta: { requiresAuth: true },
-      component: () => import("@/views/User/Interests")
+      component: () => import("@/views/Users/Interests")
     },
     {
       path: "/groups",
@@ -115,7 +103,7 @@ let router = new Router({
       path: "/users",
       name: "Users",
       meta: { requiresAuth: true },
-      component: () => import("@/views/Users/Users")
+      component: () => import("@/views/Accounts/Users")
     },
     {
       path: "/calendar",
@@ -138,28 +126,28 @@ let router = new Router({
     {
       path: "/profile",
       name: "Profile",
-      meta: { requiresAuth: true},
-      component: () => import("@/views/Users/Profile/Profile"),
+      meta: { requiresAuth: true },
+      component: () => import("@/views/Accounts/Settings/Profile"),
       children: [
         {
           path: "general",
-          component: () => import("@/views/Users/Profile/General"),
+          component: () => import("@/views/Accounts/Settings/General"),
         },
         {
           path: "security",
-          component: () => import("@/views/Users/Profile/Security"),
+          component: () => import("@/views/Accounts/Settings/Security"),
         },
         {
           path: "notifications",
-          component: () => import("@/views/Users/Profile/Notifications"),
+          component: () => import("@/views/Accounts/Settings/Notifications"),
         },
       ]
     },
     {
       path: "/profiles/:id",
       name: "Profile",
-      meta: { requiresAuth: true, layout: "no-sidebar"},
-      component: () => import("@/views/User/Profile")
+      meta: { requiresAuth: true, layout: "no-sidebar" },
+      component: () => import("@/views/Users/Profile")
     },
   ],
   scrollBehavior(to, from, savedPosition) {

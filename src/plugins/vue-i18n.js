@@ -128,8 +128,8 @@ const messages = {
       }
     },
     lesson: {
-      "1": "Групов урок",
-      "0": "Частен урок",
+      "collective": "Групов урок",
+      "individual": "Частен урок",
     },
     auth: {
       title: {
@@ -202,6 +202,6 @@ const messages = {
 }
 
 export default new VueI18n({
-  locale: 'bg', 
-  messages 
+  locale: 'bg',
+  messages
 });
