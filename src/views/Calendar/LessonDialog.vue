@@ -5,51 +5,112 @@
           <span class="headline">{{this.lesson.id ? 'Редактиране' : 'Нов урок'}}</span>
         </v-card-title>
         <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6">
-                <h3>Начало:</h3>
-                <v-time-picker 
-                  format="24hr" 
-                  v-model="form.start_time" 
-                  :max="form.end_time ? form.end_time.toString() : ''">
-                </v-time-picker>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <h3>Край:</h3>
-                <v-time-picker 
-                  format="24hr" 
-                  v-model="form.end_time" 
-                  :min="form.start_time ? form.start_time.toString() : ''">
-                </v-time-picker>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="teachers"
-                  v-model="form.teacher_id"
-                  item-text="name"
-                  item-value="id"
-                  label="*Учител"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="groups_individuals"
-                  v-model="form.group_id"
-                  item-text="name"
-                  item-value="id"
-                  label="*Група"
-                  required
-                ></v-select>
-              </v-col>
-            </v-row>
-          </v-container>
+          <v-form ref="form" v-model="valid">
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="6">
+                  <v-menu
+                    ref="menu1"
+                    v-model="menu1"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    :return-value.sync="form.start_time"
+                    transition="scale-transition"
+                    offset-y
+                    max-width="290px"
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="form.start_time"
+                        label="Начало:"
+                        prepend-icon="access_time"
+                        readonly
+                        v-on="on"
+                        :rules="start_time_rules"
+                        required
+                      ></v-text-field>
+                    </template>
+                    <v-time-picker
+                      format="24hr" 
+                      v-if="menu1"
+                      v-model="form.start_time"
+                      full-width
+                      @click:minute="$refs.menu1.save(form.start_time)"
+                      :max="form.end_time ? form.end_time.toString() : ''">
+                    ></v-time-picker>
+                  </v-menu>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-menu
+                    ref="menu2"
+                    v-model="menu2"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    :return-value.sync="form.end_time"
+                    transition="scale-transition"
+                    offset-y
+                    max-width="290px"
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="form.end_time"
+                        label="Край:"
+                        prepend-icon="access_time"
+                        readonly
+                        v-on="on"
+                        :rules="end_time_rules"
+                        required
+                      ></v-text-field>
+                    </template>
+                    <v-time-picker
+                      format="24hr" 
+                      v-if="menu2"
+                      v-model="form.end_time"
+                      full-width
+                      @click:minute="$refs.menu2.save(form.end_time)"
+                      :min="form.start_time ? form.start_time.toString() : ''">
+                    ></v-time-picker>
+                  </v-menu>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-select
+                    :items="teachers"
+                    v-model="form.teacher_id"
+                    item-text="name"
+                    item-value="id"
+                    label="*Учител"
+                    required
+                    :rules="teacher_rules"
+                  ></v-select>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-select
+                    :items="groups_individuals"
+                    v-model="form.group_id"
+                    item-text="name"
+                    item-value="id"
+                    label="*Група"
+                    required
+                    :rules="group_rules"
+                  ></v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="closeDialog">Затвори</v-btn>
-          <v-btn color="blue darken-1" outlined @click="save">Запази</v-btn>
+          <v-btn 
+            color="blue darken-1" 
+            outlined 
+            @click="validate"
+            :disabled="!valid"
+          >
+            Запази
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -80,12 +141,19 @@ export default {
   },
   data() {
     return {
+      valid: true,
+      menu1: false,
+      menu2: false,
       form: {
         start_time: "",
         end_time: "",
         teacher_id: null,
         group_id: null
-      }
+      },
+      start_time_rules: [ v => !!v || "Началният час е задължителен" ],
+      end_time_rules: [ v => !!v || "Крайният час е задължителен" ],
+      teacher_rules: [ v => !!v || "Учителят е задължителен" ],
+      group_rules: [ v => !!v || "Групата/Ученикът е задължителен" ],
     }
   },
   mounted() {
@@ -95,6 +163,9 @@ export default {
   methods: {
     closeDialog() {
       this.$emit("closeDialog");
+    },
+    validate () {
+      this.$refs.form.validate()
     },
     save() {
       if(this.lesson.id) {

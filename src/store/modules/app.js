@@ -8,17 +8,25 @@ const state = {
   resizable: false,
   sidebar: false,
   sidebarRight: false,
+  colLeft: true,
+  colRight: true
 };
 
 const getters = {
   resizable(state) {
     return state.resizable;
   },
-  sidebar(state, _, rootState) {
+  sidebar(state) {
     return state.sidebar;
   },
   sidebarRight(state) {
     return state.sidebarRight;
+  },
+  colLeft(state) {
+    return state.colLeft;
+  },
+  colRight(state) {
+    return state.colRight;
   }
 };
 

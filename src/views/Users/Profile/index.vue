@@ -85,4 +85,6 @@ export default {
   display:flex
   flex-direction: column
   min-height: calc(100vh - 56px)
+.v-card
+  border: 0px !important
 </style>

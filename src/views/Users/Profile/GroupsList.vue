@@ -3,7 +3,7 @@
     three-line
     v-if="profile.role == 'student'"
   >
-    <template v-for="item in profile.groups">
+    <template v-for="(item, index) in profile.groups">
       <v-list-item :key="item.name">
         <v-list-item-content>
           <v-list-item-title v-html="item.name"></v-list-item-title>
@@ -11,6 +11,10 @@
           <v-list-item-content>{{$t(`memberships.remainingCredits`, [Math.round(membership(item.id).credit)])}}</v-list-item-content>
         </v-list-item-content>
       </v-list-item>
+      <v-divider
+        v-if="index + 1 < profile.groups.length"
+        :key="item.id"
+      ></v-divider>
     </template>
   </v-list>
 </template>
