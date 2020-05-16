@@ -138,4 +138,6 @@ export default {
 <style lang="sass">
 tr.active
   background: #e3f0ff !important
+th:nth-child(3), td:nth-child(3)
+  width: 25%
 </style>
