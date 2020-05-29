@@ -73,7 +73,7 @@ let router = new Router({
       path: "/pricing",
       name: "Pricing",
       meta: { requiresAuth: true },
-      component: () => import("@/views/Pricing/Pricing")
+      component: () => import("@/views/Pricing/Pricings")
     },
     {
       path: "/interests",
@@ -86,12 +86,6 @@ let router = new Router({
       name: "Groups",
       meta: { requiresAuth: true },
       component: () => import("@/views/Groups/Groups")
-    },
-    {
-      path: "/groups/:id",
-      name: "GroupHome",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Groups/Home/Dashboard")
     },
     {
       path: "/individuals",
@@ -115,13 +109,13 @@ let router = new Router({
       path: "/bugs",
       name: "Bugs",
       meta: { requiresAuth: true },
-      component: () => import("@/views/Bugs/BugsWrapper")
+      component: () => import("@/views/Bugs/Bugs")
     },
     {
       path: "/locations",
       name: "Locations",
       meta: { requiresAuth: true },
-      component: () => import("@/views/Locations/LocationsWrapper")
+      component: () => import("@/views/Locations/Locations")
     },
     {
       path: "/profile",

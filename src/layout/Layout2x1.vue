@@ -3,15 +3,15 @@
     <v-row>
       <v-col
         cols="12"
-        md="6"
+        md="5"
       >
-
+        <slot name="col-left"></slot>
       </v-col>
       <v-col
         cols="12"
-        md="6"
+        md="7"
       >
-
+        <slot name="col-right"></slot>
       </v-col>
     </v-row>
   </v-container>

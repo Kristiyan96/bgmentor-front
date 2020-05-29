@@ -1,8 +1,10 @@
 <template>
-  <v-card outlined>
-    <v-card-title>
-      <span class="headline">Разписка</span>
-      <v-spacer />
+  <LayoutColumn v-if="payment">
+    <template v-slot:title>
+      Разписка
+    </template>
+
+    <template v-slot:header-actions>
       <v-btn
         icon
         @click="editing = !editing"
@@ -17,88 +19,80 @@
         tooltip="Delete receipt"
         v-if="payment && payment.id && current_user.admin"
       />
-    </v-card-title>
-    <v-card-text v-if="payment">
-      <v-container
-        class="px-0"
-        v-if="!editing && payment.membership_id"
-      >
-        <v-row v-if="payment">
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Клиент</div>
-            <v-btn
-              text
-              :href="`/profiles/${payment.payer.id}`"
-            >{{ payment.payer.name }}</v-btn>
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Платено</div>
-            {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
-            <br>
-            {{ payment.note }}
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Услуга</div>
-            {{ group.lesson_type == 'individual' ? 'Индивидуален урок' : 'Групов урок' }} за {{ group.grade }} клас. Група {{ group.name }}
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Дата</div>
-            {{ $moment(payment.created_at)}}
-          </v-col>
-        </v-row>
-      </v-container>
-      <v-container
-        class="px-0"
-        v-if="!editing && ['User', 'Academy'].includes(payment.payer_type)"
-      >
-        <v-row v-if="payment">
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">От</div>
-            <v-btn
-              text
-              :href="`/profiles/${payment.payer.id}`"
-            >{{ payment.payer.name }}</v-btn>
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">До</div>
-            <v-btn
-              text
-              :href="`/profiles/${payment.recipient.id}`"
-            >{{ payment.recipient.name }}</v-btn>
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Платено</div>
-            {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
-            <br>
-            {{ payment.note }}
-          </v-col>
-          <v-col cols="12">
-            <div class="subtitle-1 font-weight-bold">Дата</div>
-            {{ $moment(payment.created_at)}}
-          </v-col>
-        </v-row>
-      </v-container>
-      <v-container
-        class="px-0"
-        v-if="editing"
-      >
-        <v-row v-if="payment">
-          <v-col cols="12">
-            <v-text-field
-              label="Сума"
-              v-model="form.amount"
-            ></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-text-field
-              label="Забележки"
-              v-model="form.note"
-            ></v-text-field>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card-text>
-    <v-card-actions v-if="editing">
+    </template>
+
+    <template
+      v-slot:content
+      v-if="payment"
+    >
+      <v-row v-if="!editing && payment.membership_id">
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Клиент</div>
+          <v-btn
+            text
+            :href="`/profiles/${payment.payer.id}`"
+          >{{ payment.payer.name }}</v-btn>
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Платено</div>
+          {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
+          <br>
+          {{ payment.note }}
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Услуга</div>
+          {{ group.lesson_type == 'individual' ? 'Индивидуален урок' : 'Групов урок' }} за {{ group.grade }} клас. Група {{ group.name }}
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Дата</div>
+          {{ $moment(payment.created_at)}}
+        </v-col>
+      </v-row>
+
+      <v-row v-if="!editing && ['User', 'Academy'].includes(payment.payer_type)">
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">От</div>
+          <v-btn
+            text
+            :href="`/profiles/${payment.payer.id}`"
+          >{{ payment.payer.name }}</v-btn>
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">До</div>
+          <v-btn
+            text
+            :href="`/profiles/${payment.recipient.id}`"
+          >{{ payment.recipient.name }}</v-btn>
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Платено</div>
+          {{ parseFloat(payment.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}лв.
+          <br>
+          {{ payment.note }}
+        </v-col>
+        <v-col cols="12">
+          <div class="subtitle-1 font-weight-bold">Дата</div>
+          {{ $moment(payment.created_at)}}
+        </v-col>
+      </v-row>
+
+      <v-row v-if="editing">
+        <v-col cols="12">
+          <v-text-field
+            label="Сума"
+            v-model="form.amount"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12">
+          <v-text-field
+            label="Забележки"
+            v-model="form.note"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+    </template>
+
+    <template v-slot:actions>
       <v-btn
         :disabled="!dirty"
         depressed
@@ -116,8 +110,8 @@
       >
         Редактирай
       </v-btn>
-    </v-card-actions>
-  </v-card>
+    </template>
+  </LayoutColumn>
 </template>
 
 <script>
@@ -126,10 +120,12 @@ import { mapGetters } from "vuex";
 import { UPDATE_PAYMENT, DESTROY_PAYMENT } from "@/store/actions.type";
 import store from "@/store";
 import DeleteButton from "@/views/components/DeleteButton";
+import LayoutColumn from "@/layout/LayoutColumn";
 
 export default {
   components: {
-    DeleteButton
+    DeleteButton,
+    LayoutColumn
   },
   props: {
     payment: {

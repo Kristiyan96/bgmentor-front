@@ -1,36 +1,36 @@
 <template>
   <Layout2x1>
     <template v-slot:col-left>
-      <PaymentList
-        :payment="payment"
-        @setPayment="setPayment"
+      <BugList
+        @setBug="setBug"
+        :bug="bug"
       />
     </template>
     <template v-slot:col-right>
-      <PaymentPreview :payment="payment" />
+      <BugPreview :bug="bug" />
     </template>
   </Layout2x1>
 </template>
 
 <script>
 import Layout2x1 from "@/layout/Layout2x1";
-import PaymentPreview from "./PaymentPreview";
-import PaymentList from "./PaymentList";
+import BugPreview from "./BugPreview";
+import BugList from "./BugList";
 
 export default {
   components: {
     Layout2x1,
-    PaymentList,
-    PaymentPreview
+    BugList,
+    BugPreview
   },
   data() {
     return {
-      payment: null
+      bug: null
     };
   },
   methods: {
-    setPayment(payment) {
-      this.payment = payment;
+    setBug(bug) {
+      this.bug = bug;
     }
   }
 };

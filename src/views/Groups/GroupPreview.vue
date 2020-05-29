@@ -1,16 +1,19 @@
 <template>
-  <v-card outlined>
-    <v-card-title>
-      <span class="headline">{{group ? 'Редактиране' : 'Нова група'}}</span>
-      <v-spacer />
+  <LayoutColumn>
+    <template v-slot:title>
+      {{group ? 'Редактиране' : 'Нова група'}}
+    </template>
+
+    <template v-slot:header-actions>
       <DeleteButton
         @confirm="destroy"
         tooltip="Delete group"
         v-if="group && current_user.admin"
       />
-    </v-card-title>
-    <v-card-text>
-      <v-container class="px-0">
+    </template>
+
+    <template v-slot:content>
+      <v-container>
         <v-row>
           <v-col
             cols="12"
@@ -98,8 +101,9 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-card-text>
-    <v-card-actions>
+    </template>
+
+    <template v-slot:actions>
       <v-btn
         :disabled="!dirty"
         depressed
@@ -127,11 +131,12 @@
       >
         Редактирай
       </v-btn>
-    </v-card-actions>
-  </v-card>
+    </template>
+  </LayoutColumn>
 </template>
 
 <script>
+import LayoutColumn from "@/layout/LayoutColumn";
 import { _ } from "vue-underscore";
 import GroupMemberships from "./GroupMemberships";
 import { mapGetters } from "vuex";
@@ -145,6 +150,7 @@ import DeleteButton from "@/views/components/DeleteButton";
 
 export default {
   components: {
+    LayoutColumn,
     GroupMemberships,
     DeleteButton
   },
@@ -152,7 +158,7 @@ export default {
     group: {
       type: Object,
       default: () => {},
-      description: "Group to edit"
+      description: "Selected group"
     }
   },
   data() {

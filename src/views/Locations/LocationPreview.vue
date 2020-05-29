@@ -1,53 +1,99 @@
 <template>
-  <v-card outlined>
-    <v-card-title>
-      <span class="headline">{{location ? 'Редактиране на локация' : 'Нова локация'}}</span>
-      <v-spacer />
-      <DeleteButton @confirm="destroy" v-if="location && current_user.admin" tooltip="Delete location" />
-    </v-card-title>
-    <v-card-text>
-      <v-container class="px-0">
+  <LayoutColumn>
+    <template v-slot:title>
+      {{location ? 'Редактиране на локация' : 'Нова локация'}}
+    </template>
+
+    <template v-slot:header-actions>
+      <DeleteButton
+        @confirm="destroy"
+        v-if="location && current_user.admin"
+        tooltip="Delete location"
+      />
+    </template>
+
+    <template v-slot:content>
+      <v-container>
         <v-row>
-          <v-col cols="12" class="px-0">
-            <v-text-field label="Заглавиe (Офис 1, ул Кирил и Методий, etc)" v-model="form.title"></v-text-field>
+          <v-col
+            cols="12"
+            class="px-0"
+          >
+            <v-text-field
+              label="Заглавиe (Офис 1, ул Кирил и Методий, etc)"
+              v-model="form.title"
+            ></v-text-field>
           </v-col>
-          <v-col cols="12" class="px-0">
+          <v-col
+            cols="12"
+            class="px-0"
+          >
             <v-textarea
               label="Адрес"
               v-model="form.address"
             ></v-textarea>
           </v-col>
-          <v-col cols="12" class="px-0">
-            <v-text-field label="Цвят" v-model="form.color"></v-text-field>
+          <v-col
+            cols="12"
+            class="px-0"
+          >
+            <v-text-field
+              label="Цвят"
+              v-model="form.color"
+            ></v-text-field>
           </v-col>
         </v-row>
       </v-container>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn :disabled="!dirty" depressed @click="reset" text>
+    </template>
+
+    <template v-slot:actions>
+      <v-btn
+        :disabled="!dirty"
+        depressed
+        @click="reset"
+        text
+      >
         Върни промените
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn color="primary" :disabled="!dirty" depressed @click="submit" v-if="!location">
+      <v-btn
+        color="primary"
+        :disabled="!dirty"
+        depressed
+        @click="submit"
+        v-if="!location"
+      >
         Създай
       </v-btn>
-      <v-btn color="primary" :disabled="!dirty" depressed @click="update" v-else>
+      <v-btn
+        color="primary"
+        :disabled="!dirty"
+        depressed
+        @click="update"
+        v-else
+      >
         Редактирай
       </v-btn>
-    </v-card-actions>
-  </v-card>
+    </template>
+  </LayoutColumn>
 </template>
 
 <script>
-import {_} from 'vue-underscore';
+import LayoutColumn from "@/layout/LayoutColumn";
+import { _ } from "vue-underscore";
 import { mapGetters } from "vuex";
-import { CREATE_LOCATION, UPDATE_LOCATION, DESTROY_LOCATION } from "@/store/actions.type";
+import {
+  CREATE_LOCATION,
+  UPDATE_LOCATION,
+  DESTROY_LOCATION
+} from "@/store/actions.type";
 import store from "@/store";
-import DeleteButton from '@/views/components/DeleteButton';
+import DeleteButton from "@/views/components/DeleteButton";
 
 export default {
   components: {
-    DeleteButton
+    DeleteButton,
+    LayoutColumn
   },
   props: {
     location: {
@@ -63,8 +109,8 @@ export default {
         address: "",
         color: "#1976d2"
       },
-      location_copy: { }
-    }
+      location_copy: {}
+    };
   },
   methods: {
     submit() {
@@ -90,18 +136,18 @@ export default {
     location: {
       immediate: true,
       handler() {
-        if(this.location) {
+        if (this.location) {
           this.form = { ...this.location };
-          this.location_copy = { ... this.form };
+          this.location_copy = { ...this.form };
         } else {
           this.form = {
             title: "",
             address: "",
             color: "#1976d2"
-          }
+          };
         }
       }
     }
   }
-}
+};
 </script>

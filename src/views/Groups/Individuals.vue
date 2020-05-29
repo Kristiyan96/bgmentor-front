@@ -1,73 +1,53 @@
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col xs="12" md="5">
-        <v-card class="pb-0" outlined>
-          <v-card-title>
-            <span class="headline">Индивидални уроци</span>
-            <v-spacer />
-            <v-btn icon @click="group = null">
-              <v-icon>mdi-plus-circle</v-icon>
-            </v-btn>
-          </v-card-title>
-          <v-card-text class="px-0 pb-0">
-            <v-container class="px-0 pb-0">
-              <v-row>
-                <v-col cols="12" class="px-0 pb-0">
-                  <v-data-table
-                    v-if="individuals.length"
-                    :headers="headers"
-                    :items="individuals"
-                    :items-per-page="individuals.length"
-                    hide-default-footer
-                    class="table-scroll"
-                  >
-                    <template v-slot:item="{ item }">
-                      <tr @click="activate(item)" :class="{active: group && item.id == group.id}">
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.grade }}</td>
-                      </tr>
-                    </template>
-                  </v-data-table>
-                  <div v-else class="grey--text px-3">Няма групи</div>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col xs="12" md="7">
-        <GroupForm :group="group" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <Layout2x1>
+    <template v-slot:col-left>
+      <GroupList
+        :groups="individuals"
+        @setGroup="setGroup"
+        :group="group"
+      />
+    </template>
+    <template v-slot:col-right>
+      <GroupPreview :group="group" />
+    </template>
+  </Layout2x1>
 </template>
 
 <script>
+import Layout2x1 from "@/layout/Layout2x1";
 import { mapGetters } from "vuex";
-import { FETCH_USERS, FETCH_GROUPS, FETCH_PRICINGS, FETCH_LOCATIONS, CREATE_GROUP, UPDATE_GROUP, DESTROY_GROUP } from "@/store/actions.type";
+import {
+  FETCH_USERS,
+  FETCH_GROUPS,
+  FETCH_PRICINGS,
+  FETCH_LOCATIONS,
+  CREATE_GROUP,
+  UPDATE_GROUP,
+  DESTROY_GROUP
+} from "@/store/actions.type";
 import store from "@/store";
-
-import GroupForm from "./GroupForm";
+import GroupList from "./GroupList";
+import GroupPreview from "./GroupPreview";
 
 export default {
   components: {
-    GroupForm
+    Layout2x1,
+    GroupList,
+    GroupPreview
   },
   data() {
     return {
       group: null,
-      editing: false,
       headers: [
         {
-          text: 'Име',
-          align: 'left',
+          text: "Име",
+          align: "left",
           sortable: false,
-          value: 'name',
+          value: "name"
         },
-        { text: 'Клас', value: 'grade' },
-      ],
-    }
+        { text: "Клас", value: "grade" }
+      ]
+    };
   },
   mounted() {
     store.dispatch(FETCH_GROUPS);
@@ -76,7 +56,7 @@ export default {
     store.dispatch(FETCH_LOCATIONS);
   },
   methods: {
-    activate(group) {
+    setGroup(group) {
       this.group = group;
     },
     destroy(group) {
@@ -84,16 +64,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["individuals"]),
+    ...mapGetters(["individuals"])
   },
   watch: {
     individuals() {
-      if(this.individuals.length) {
+      if (this.individuals.length) {
         this.group = this.individuals[0];
       }
     }
   }
-}
+};
 </script>
 
 <style lang="sass">
