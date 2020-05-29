@@ -1,10 +1,10 @@
 <template>
   <v-content>
-    <Header2 v-if="current_user.id" />
+    <Header2 v-if="current_user && current_user.id" />
     <Header v-else />
-    <SidebarLeft v-if="current_user.id" />
+    <SidebarLeft v-if="current_user && current_user.id" />
     <slot />
-    <Footer v-if="!current_user.id" />
+    <Footer v-if="!current_user || !current_user.id" />
   </v-content>
 </template>
 
