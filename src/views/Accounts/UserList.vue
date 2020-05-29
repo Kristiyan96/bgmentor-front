@@ -17,52 +17,54 @@
     </template>
 
     <template v-slot:content>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search users by name"
-        single-line
-        hide-details
-        class="pt-0 px-5"
-      ></v-text-field>
-      <v-container class="px-0 pb-0">
-        <v-row>
-          <v-col
-            cols="12"
-            class="px-0 pb-0"
-          >
-            <v-data-table
-              v-if="filteredUsers.length"
-              :headers="headers[userType]"
-              :items="filteredUsers"
-              hide-default-footer
-              :items-per-page="filteredUsers.length"
-              class="table-scroll"
+      <div class="wrapper">
+        <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="Search users by name"
+          single-line
+          hide-details
+          class="pt-0 px-5"
+        ></v-text-field>
+        <v-container class="px-0 pb-0">
+          <v-row>
+            <v-col
+              cols="12"
+              class="px-0 pb-0"
             >
-              <template v-slot:item="{ item }">
-                <tr
-                  @click="setUser(item)"
-                  :class="{active: user && item.id == user.id}"
-                >
-                  <td>
-                    <router-link
-                      text
-                      :to="`/profiles/${item.id}`"
-                      class="subtitle-2"
-                    >{{ item.name }}</router-link>
-                  </td>
-                  <td
-                    v-if="userType == 'students'"
-                    class="text-center"
+              <v-data-table
+                v-if="filteredUsers.length"
+                :headers="headers[userType]"
+                :items="filteredUsers"
+                hide-default-footer
+                :items-per-page="filteredUsers.length"
+                class="table-scroll"
+              >
+                <template v-slot:item="{ item }">
+                  <tr
+                    @click="setUser(item)"
+                    :class="{active: user && item.id == user.id}"
                   >
-                    {{ item.groups && item.groups.length ? item.groups[0].grade : '' }}
-                  </td>
-                </tr>
-              </template>
-            </v-data-table>
-          </v-col>
-        </v-row>
-      </v-container>
+                    <td>
+                      <router-link
+                        text
+                        :to="`/profiles/${item.id}`"
+                        class="subtitle-2"
+                      >{{ item.name }}</router-link>
+                    </td>
+                    <td
+                      v-if="userType == 'students'"
+                      class="text-center"
+                    >
+                      {{ item.groups && item.groups.length ? item.groups[0].grade : '' }}
+                    </td>
+                  </tr>
+                </template>
+              </v-data-table>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
     </template>
   </LayoutColumn>
 </template>
@@ -154,4 +156,8 @@ export default {
     width: 20%
   .subtitle-2
     text-decoration: none
+  .wrapper
+    position: relative
+    max-height: 100%
+    overflow: hidden
 </style>

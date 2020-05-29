@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pb-0"
+    class="pb-0 card"
     outlined
   >
     <v-card-title>
@@ -12,10 +12,11 @@
         <slot name="header-actions"></slot>
       </div>
     </v-card-title>
-    <v-card-text class="px-0 pb-0">
-      <v-container class="px-0 pb-0">
-        <slot name="content"></slot>
-      </v-container>
+    <v-card-text
+      class="px-0 pb-0"
+      v-bind:class="{small: $slots.action}"
+    >
+      <slot name="content"></slot>
     </v-card-text>
     <v-card-actions>
       <slot name="actions"></slot>
@@ -31,4 +32,20 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="sass" scoped>
+.card 
+  overflow: hidden
+  max-height: 100%
+  display: flex
+  flex-direction: column
+
+  .v-card__text
+    display: flex
+    flex-direction: column
+    position: relative
+    overflow: auto
+    max-height: calc(100% - 68px)
+
+  .v-card__text.small
+    max-height: calc(100% - 120px)
+</style>

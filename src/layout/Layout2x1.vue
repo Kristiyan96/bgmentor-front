@@ -1,16 +1,18 @@
 <template>
   <v-container
     fluid
-    class="px-0 py-0"
+    class="px-0 py-0 container-wrapper"
   >
     <v-row>
       <v-col
+        class="col-wrapper"
         cols="12"
         md="5"
       >
         <slot name="col-left"></slot>
       </v-col>
       <v-col
+        class="col-wrapper"
         cols="12"
         md="7"
       >
@@ -28,4 +30,10 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="sass" scoped>
+.container-wrapper, .container-wrapper .row 
+  max-height: calc(100vh - 90px) !important
+
+  .col-wrapper
+    max-height: calc(100vh - 90px) !important
+</style>
