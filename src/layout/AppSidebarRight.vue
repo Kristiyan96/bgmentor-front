@@ -1,6 +1,17 @@
 <template>
-  <v-navigation-drawer :value="sidebarRight" absolute clipped right width="400" class="sidebar-right">
-    <v-layout column fill-height align-content-start>
+  <v-navigation-drawer
+    :value="sidebarRight"
+    absolute
+    clipped
+    right
+    width="400"
+    class="sidebar-right"
+  >
+    <v-layout
+      column
+      fill-height
+      align-content-start
+    >
     </v-layout>
   </v-navigation-drawer>
 </template>
@@ -10,10 +21,10 @@ import { mapGetters } from "vuex";
 
 export default {
   data() {
-    return { };
+    return {};
   },
   computed: {
-    ...mapGetters(["sidebarRight"]),
+    ...mapGetters(["sidebarRight"])
   }
 };
 </script>

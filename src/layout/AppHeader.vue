@@ -7,10 +7,13 @@
   >
     <v-app-bar-nav-icon @click="toggleSidebar" />
     <span class="title ml-3 mr-5 white--grey">
-      <a href="/"><img
+      <router-link
+        to="/"
+        :active="false"
+      ><img
           src="@/assets/images/logo.png"
           height="40px"
-        /></a>
+        /></router-link>
     </span>
     <v-spacer />
     <Alerts />

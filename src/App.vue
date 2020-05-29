@@ -1,21 +1,19 @@
 <template>
   <v-app id="app">
-    <component :is="layout">
+    <DefaultLayout>
       <router-view />
-    </component>
+    </DefaultLayout>
   </v-app>
 </template>
 
 <script>
-
+import DefaultLayout from "@/layout/DefaultLayout";
 export default {
-  data() {
-    return { };
+  components: {
+    DefaultLayout
   },
-  computed: {
-    layout() {
-      return (this.$route.meta.layout || "default") + "-layout";
-    }
+  data() {
+    return {};
   }
 };
 </script>

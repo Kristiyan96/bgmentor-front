@@ -43,8 +43,11 @@ const getters = {
 };
 
 const actions = {
-  [FETCH_PROFILE]({ commit, dispatch}, { id }) {
+  [FETCH_PROFILE]({ commit, dispatch }, { id = null }) {
     return new Promise(resolve => {
+      if (id == null) {
+        id = state.user.id;
+      }
       ApiService.get("profiles", id)
         .then(response => {
           resolve(response.data);
@@ -81,29 +84,11 @@ const actions = {
         });
     });
   },
-  [CHECK_AUTH]({ commit, dispatch }) {
+  [CHECK_AUTH]({ commit, dispatch }, requiresAuth = false) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      ApiService.get("profile")
-        .then(response => {
-          if (response.data == null) {
-            commit(PURGE_AUTH);
-            router.push("/login");
-            dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
-          } else {
-            commit(SET_AUTH, [
-              response.config.headers.Authorization,
-              response.data
-            ]);
-          }
-        })
-        .catch(response => {
-          commit(PURGE_AUTH);
-          commit(SET_ERROR, response.data.errors);
-          router.push("/login");
-          dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
-        });
-    } else {
+      commit(SET_AUTH, [JwtService.getToken(), JwtService.getUser()]);
+    } else if (requiresAuth) {
       commit(PURGE_AUTH);
       router.push("/login");
       dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
@@ -135,6 +120,7 @@ const mutations = {
     state.isAuthenticated = true;
     state.user = user;
     state.errors = {};
+    JwtService.saveUser(user);
     JwtService.saveToken(token);
   },
   [PURGE_AUTH](state) {
@@ -144,6 +130,7 @@ const mutations = {
     state.admin = false;
     state.id = null;
     JwtService.destroyToken();
+    JwtService.destroyUser();
     ApiService.setHeader();
   }
 };

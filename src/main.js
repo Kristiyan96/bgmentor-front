@@ -9,9 +9,6 @@ import vuetify from "./plugins/vuetify";
 import i18n from "./plugins/vue-i18n";
 import GAuth from 'vue-google-oauth2';
 
-import Default from "@/layout/Default";
-import NoSidebar from "@/layout/NoSidebar";
-
 import Vue2Filters from "vue2-filters";
 import vSelect from "vue-select";
 import vueSmoothScroll from "vue2-smooth-scroll";
@@ -96,8 +93,6 @@ Vue.use(underscore);
 Vue.use(vClickOutside)
 
 Vue.component("v-select", vSelect);
-Vue.component("default-layout", Default);
-Vue.component("no-sidebar-layout", NoSidebar);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.prototype.moment = moment;
 Vue.config.productionTip = false;
@@ -106,8 +101,9 @@ ApiService.init();
 // check auth if required
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
-    Promise.all([store.dispatch(CHECK_AUTH)]).then(next);
+    Promise.all([store.dispatch(CHECK_AUTH)], true).then(next);
   } else {
+    Promise.all([store.dispatch(CHECK_AUTH)], false);
     next();
   }
 });

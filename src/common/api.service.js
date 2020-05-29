@@ -16,12 +16,14 @@ const ApiService = {
 
   query(resource, params) {
     return Vue.axios.get(resource, { params: params }).catch(error => {
+      UserService.checkAuth();
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
 
   get(resource, slug = "") {
     return Vue.axios.get(`${resource}/${slug}`).catch(error => {
+      UserService.checkAuth();
       throw new Error(`[RWV] ApiService ${error}`);
     });
   },
@@ -40,6 +42,7 @@ const ApiService = {
 
   delete(resource, slug) {
     return Vue.axios.delete(`${resource}/${slug ? slug : ""}`).catch(error => {
+      UserService.checkAuth();
       throw new Error(`[RWV] ApiService ${error}`);
     });
   }
@@ -50,5 +53,26 @@ export default ApiService;
 export const UserService = {
   update(params) {
     return ApiService.put("profile/update", { user: params });
+  },
+  checkAuth() {
+    ApiService.get("profile")
+      .then(response => {
+        if (response.data == null) {
+          // commit(PURGE_AUTH);
+          // router.push("/login");
+          // dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
+        } else {
+          // commit(SET_AUTH, [
+          //   response.config.headers.Authorization,
+          //   response.data
+          // ]);
+        }
+      })
+      .catch(response => {
+        // commit(PURGE_AUTH);
+        // commit(SET_ERROR, response.data.errors);
+        // router.push("/login");
+        // dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
+      });
   }
 };

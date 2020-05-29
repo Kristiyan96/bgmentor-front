@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { FETCH_PROFILE } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
