@@ -5,7 +5,10 @@
     elevation="0"
     color="grey lighten-5"
   >
-    <v-app-bar-nav-icon @click="toggleSidebar" />
+    <v-app-bar-nav-icon
+      @click="toggleSidebar"
+      v-if="current_user && current_user.id"
+    />
     <span class="title ml-3 mr-5 white--grey">
       <router-link
         to="/"
@@ -21,6 +24,7 @@
       transition="slide-y-transition"
       bottom
       offset-y
+      v-if="current_user && current_user.id"
     >
       <template v-slot:activator="{ on }">
         <v-btn
@@ -43,6 +47,50 @@
         </v-list-item>
       </v-list>
     </v-menu>
+    <div v-else>
+      <v-btn
+        text
+        color="primary"
+        to="/login"
+        class="hidden-sm-and-down"
+      >
+        Вход
+      </v-btn>
+
+      <v-btn
+        text
+        to="/register"
+        class="hidden-sm-and-down"
+      >
+        Регистрация
+      </v-btn>
+
+      <div class="hidden-md-and-up">
+        <v-menu
+          left
+          bottom
+        >
+          <template v-slot:activator="{ on }">
+            <v-btn
+              icon
+              v-on="on"
+            >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <v-list-item to="/login">
+              <v-list-item-title>Влез</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item to="/register">
+              <v-list-item-title>Регистрация</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+    </div>
   </v-app-bar>
 </template>
 
@@ -71,7 +119,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["resizable"])
+    ...mapGetters(["resizable", "current_user"])
   }
 };
 </script>

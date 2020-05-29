@@ -1,7 +1,6 @@
 <template>
   <v-content>
-    <Header2 v-if="current_user && current_user.id" />
-    <Header v-else />
+    <Header />
     <SidebarLeft v-if="current_user && current_user.id" />
     <slot />
     <Footer v-if="!current_user || !current_user.id" />
@@ -9,8 +8,7 @@
 </template>
 
 <script>
-import Header from "./Header";
-import Header2 from "./AppHeader";
+import Header from "./AppHeader";
 import SidebarLeft from "./AppSidebarLeft";
 import Footer from "./Footer";
 import { mapGetters } from "vuex";
@@ -18,7 +16,6 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     Header,
-    Header2,
     Footer,
     SidebarLeft
   },
