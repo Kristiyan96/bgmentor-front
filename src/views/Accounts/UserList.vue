@@ -45,12 +45,16 @@
                   :class="{active: user && item.id == user.id}"
                 >
                   <td>
-                    <v-btn
+                    <router-link
                       text
-                      :href="`/profiles/${item.id}`"
-                    >{{ item.name }}</v-btn>
+                      :to="`/profiles/${item.id}`"
+                      class="subtitle-2"
+                    >{{ item.name }}</router-link>
                   </td>
-                  <td v-if="userType == 'students'">
+                  <td
+                    v-if="userType == 'students'"
+                    class="text-center"
+                  >
                     {{ item.groups && item.groups.length ? item.groups[0].grade : '' }}
                   </td>
                 </tr>
@@ -147,4 +151,6 @@ tr.active
   background: #e3f0ff !important
 th:nth-child(2), td:nth-child(2)
   width: 20%
+.subtitle-2
+  text-decoration: none
 </style>

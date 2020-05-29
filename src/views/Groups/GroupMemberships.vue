@@ -10,7 +10,10 @@
       <thead v-if="!selectedMemberships.length">
         <tr>
           <th :colspan="headers.length">
-            <AddMembers :group="group" :memberships="memberships"/>
+            <AddMembers
+              :group="group"
+              :memberships="memberships"
+            />
           </th>
         </tr>
       </thead>
@@ -18,30 +21,45 @@
         <tr>
           <th :colspan="headers.length">
             <div class="d-flex align-center">
-              <PaymentDialog :group="group" :memberships="selectedMemberships" />
-              <CreateAbsence 
+              <PaymentDialog
+                :group="group"
+                :memberships="selectedMemberships"
+              />
+              <CreateAbsence
                 v-if="calendar"
                 :selectedMemberships="selectedMemberships"
                 :lesson="lesson"
               />
               <v-spacer />
-              <v-btn outlined color="red" class="ml-2" v-if="!calendar" @click="destroyMembership">
+              <v-btn
+                outlined
+                color="red"
+                class="ml-2"
+                v-if="!calendar"
+                @click="destroyMembership"
+              >
                 Махни от групата
               </v-btn>
             </div>
           </th>
         </tr>
-        </thead>
+      </thead>
     </template>
 
     <template v-slot:item.name="{ item }">
       <div style="display: flex">
-        <v-btn text :href="`/profiles/${item.student.id}`">{{ item.student.name }}</v-btn>
+        <router-link
+          class="subtitle-2"
+          :to="`/profiles/${item.student.id}`"
+        >{{ item.student.name }}</router-link>
       </div>
     </template>
 
     <template v-slot:item.credit="{ item }">
-      <span class="pr-4" :class="{'red--text': item.credit < 1}">{{ item.credit }}</span>
+      <span
+        class="pr-4"
+        :class="{'red--text': item.credit < 1}"
+      >{{ item.credit }}</span>
     </template>
   </v-data-table>
 </template>
@@ -51,7 +69,11 @@ import AddMembers from "./GroupAddStudentsDialog";
 import PaymentDialog from "./GroupAddPaymentDialog";
 import CreateAbsence from "@/views/Absences/CreateAbsence";
 import { mapGetters } from "vuex";
-import { FETCH_MEMBERSHIPS, CREATE_ABSENCE, DESTROY_MEMBERSHIP } from "@/store/actions.type";
+import {
+  FETCH_MEMBERSHIPS,
+  CREATE_ABSENCE,
+  DESTROY_MEMBERSHIP
+} from "@/store/actions.type";
 import store from "@/store";
 
 export default {
@@ -82,18 +104,18 @@ export default {
       selectedMemberships: [],
       headers: [
         {
-          text: 'Ученик',
-          align: 'left',
+          text: "Ученик",
+          align: "left",
           sortable: true,
           value: "name"
         },
         {
-          text: 'Оставащи посещения',
-          value: 'credit',
-          align: 'right'
+          text: "Оставащи посещения",
+          value: "credit",
+          align: "right"
         }
-      ],
-    }
+      ]
+    };
   },
   methods: {
     destroyMembership() {
@@ -108,12 +130,21 @@ export default {
     group: {
       immediate: true,
       handler() {
-        if(this.group) {
+        if (this.group) {
           this.selectedMemberships = [];
           store.dispatch(FETCH_MEMBERSHIPS, this.group.id);
         }
       }
     }
   }
-}
+};
 </script>
+
+<style lang="sass">
+tr.active
+  background: #e3f0ff !important
+th:nth-child(2), td:nth-child(2)
+  width: 60%
+.subtitle-2
+  text-decoration: none
+</style>

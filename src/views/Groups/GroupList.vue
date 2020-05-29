@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn class="group-list">
     <template v-slot:title>
       Групови уроци
     </template>
@@ -113,6 +113,11 @@ export default {
 </script>
 
 <style lang="sass">
-tr.active
-  background: #e3f0ff !important
+.group-list
+  tr.active
+    background: #e3f0ff !important
+  th:nth-child(1), td:nth-child(1)
+    width: 80%
+  th:nth-child(2), td:nth-child(2)
+    width: 20%
 </style>
