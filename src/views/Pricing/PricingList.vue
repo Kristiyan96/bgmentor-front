@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn class="pricing-list">
     <template v-slot:title>
       Ценоразпис
     </template>
@@ -110,6 +110,11 @@ export default {
 </script>
 
 <style lang="sass">
-tr.active
-  background: #e3f0ff !important
+.pricing-list
+  tr.active
+    background: #e3f0ff !important
+  th:nth-child(1), td:nth-child(1)
+    width: 60%
+  th:nth-child(2), td:nth-child(2)
+    width: 40%
 </style>

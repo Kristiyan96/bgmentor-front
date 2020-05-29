@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn class="user-list">
     <template v-slot:title>
       <SelectUserType
         @setUserType="setUserType"
@@ -147,10 +147,11 @@ export default {
 </script>
 
 <style lang="sass">
-tr.active
-  background: #e3f0ff !important
-th:nth-child(2), td:nth-child(2)
-  width: 20%
-.subtitle-2
-  text-decoration: none
+.user-list
+  tr.active
+    background: #e3f0ff !important
+  th:nth-child(2), td:nth-child(2)
+    width: 20%
+  .subtitle-2
+    text-decoration: none
 </style>

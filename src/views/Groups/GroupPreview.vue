@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn class="group-preview">
     <template v-slot:title>
       {{group ? 'Редактиране' : 'Нова група'}}
     </template>
@@ -240,3 +240,13 @@ export default {
   }
 };
 </script>
+
+<style lang="sass">
+.group-preview
+  tr.active
+    background: #e3f0ff !important
+  th:nth-child(2), td:nth-child(2)
+    width: 60%
+  th:nth-child(3), td:nth-child(3)
+    width: 30%
+</style>
