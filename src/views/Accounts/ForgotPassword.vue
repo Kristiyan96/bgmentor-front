@@ -25,6 +25,14 @@
             >
               {{ response }}
             </v-alert>
+            <v-alert
+              :value="success"
+              color="success"
+              class="mb-4"
+              outlined
+            >
+              Изпратихме Ви линк, с който можете да промените паролата си. Моля, проверете и в секцията "Спам". Следвайте получените инструкции, за да промените паролата си.
+            </v-alert>
             <form
               @submit.prevent="submit"
               class="pt-5"
@@ -34,6 +42,7 @@
                 :label="$t('auth.label.email')"
                 type="email"
                 outlined
+                :disabled="loading || success"
               >
                 <font-awesome-icon
                   :icon="['fa', 'at']"
@@ -42,12 +51,24 @@
               </v-text-field>
               <div class="text-center">
                 <v-btn
+                  v-if="!success"
+                  :loading="loading"
+                  :disabled="loading"
                   large
                   color="primary"
                   @click="submit"
                   :class="{ disabled: success }"
                 >
                   {{ $t('auth.button.change_password') }}
+                </v-btn>
+                <v-btn
+                  v-else
+                  large
+                  color="success"
+                  :class="{ disabled: success }"
+                  :href="`https://www.${email.split('@')[1]}`"
+                >
+                  Към {{email.split('@')[1]}}
                 </v-btn>
               </div>
               <!-- The following line submits the form when pressing enter -->
@@ -89,6 +110,7 @@ export default {
     return {
       email: "",
       response: "",
+      loading: false,
       success: false,
       failure: false
     };
@@ -98,6 +120,7 @@ export default {
       this.response = "";
       this.failure = false;
       this.success = false;
+      this.loading = true;
 
       if (!this.emailIsValid) {
         this.resetFailed("Please, use a real email.");
@@ -116,10 +139,12 @@ export default {
     resetSuccessful(response) {
       this.success = true;
       this.response = response.data.message;
+      this.loading = false;
     },
     resetFailed(error) {
       this.failure = true;
       this.response = error;
+      this.loading = false;
     }
   },
   computed: {

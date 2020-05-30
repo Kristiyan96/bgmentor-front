@@ -40,7 +40,7 @@ let router = new Router({
       component: () => import("@/views/Accounts/ForgotPassword")
     },
     {
-      path: "/password",
+      path: "/password/:token",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
       component: () => import("@/views/Accounts/ResetPassword")
