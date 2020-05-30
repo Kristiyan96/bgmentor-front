@@ -105,10 +105,18 @@ const actions = {
         });
     });
   },
-  async [UPDATE_PROFILE]({ commit }, user) {
-    const { data } = await UserService.update(user);
-    commit(SET_AUTH, data.user);
-    return data;
+  async [UPDATE_PROFILE]({ commit, dispatch }, user) {
+    return new Promise(resolve => {
+      UserService.update(user)
+        .then(({ data }) => {
+          commit(SET_AUTH, [null, data]);
+          dispatch(CREATE_ALERT, ["Промените бяха запазазени успешно.", "success"]);
+          resolve(data);
+        })
+        .catch(error => {
+          commit(SET_ERROR, error);
+        });
+    });
   }
 };
 
@@ -118,10 +126,15 @@ const mutations = {
   },
   [SET_AUTH](state, [token, user]) {
     state.isAuthenticated = true;
-    state.user = user;
     state.errors = {};
-    JwtService.saveUser(user);
-    JwtService.saveToken(token);
+
+    if (user) {
+      state.user = user;
+      JwtService.saveUser(user);
+    }
+    if (token) {
+      JwtService.saveToken(token);
+    }
   },
   [PURGE_AUTH](state) {
     state.isAuthenticated = false;

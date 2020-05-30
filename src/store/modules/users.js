@@ -46,11 +46,19 @@ const actions = {
     dispatch(CREATE_ALERT, ["User added", "success"]);
   },
   async [UPDATE_USER]({ commit, dispatch }, params) {
-    const { data } = await ApiService.update(`/users`, params.id, {
-      user: params
+    return new Promise((resolve, reject) => {
+      ApiService.update(`/users`, params.id, {
+        user: params
+      }).then(({ data }) => {
+        commit(SET_USER, data);
+        dispatch(CREATE_ALERT, ["User updated", "success"]);
+        resolve(data);
+      },
+        error => {
+          reject(error);
+        }
+      );
     });
-    commit(SET_USER, data);
-    dispatch(CREATE_ALERT, ["User updated", "success"]);
   },
   async [DESTROY_USER]({ commit, dispatch }, user_id) {
     await ApiService.delete(`/users`, user_id);

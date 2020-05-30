@@ -3,7 +3,7 @@
     <template v-slot:col-left>
       <LayoutColumn>
         <template v-slot:title>
-          Profile
+          Профил
         </template>
 
         <template v-slot:content>
@@ -18,7 +18,7 @@
                     />
                   </v-list-item-avatar>
                   <v-list-item-content>
-                    <v-list-item-title>Basic Settings</v-list-item-title>
+                    <v-list-item-title>Лична информация</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item to="security">
@@ -29,7 +29,7 @@
                     />
                   </v-list-item-avatar>
                   <v-list-item-content>
-                    <v-list-item-title>Security</v-list-item-title>
+                    <v-list-item-title>Настройки за достъп</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item to="notifications">
@@ -40,7 +40,7 @@
                     />
                   </v-list-item-avatar>
                   <v-list-item-content>
-                    <v-list-item-title>Notifications</v-list-item-title>
+                    <v-list-item-title>Известия</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>

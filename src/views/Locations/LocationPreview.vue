@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn paddingless>
     <template v-slot:title>
       {{location ? 'Редактиране на локация' : 'Нова локация'}}
     </template>
@@ -13,37 +13,35 @@
     </template>
 
     <template v-slot:content>
-      <v-container>
-        <v-row>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="Заглавиe (Офис 1, ул Кирил и Методий, etc)"
-              v-model="form.title"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-textarea
-              label="Адрес"
-              v-model="form.address"
-            ></v-textarea>
-          </v-col>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="Цвят"
-              v-model="form.color"
-            ></v-text-field>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-row>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="Заглавиe (Офис 1, ул Кирил и Методий, etc)"
+            v-model="form.title"
+          ></v-text-field>
+        </v-col>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-textarea
+            label="Адрес"
+            v-model="form.address"
+          ></v-textarea>
+        </v-col>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="Цвят"
+            v-model="form.color"
+          ></v-text-field>
+        </v-col>
+      </v-row>
     </template>
 
     <template v-slot:actions>

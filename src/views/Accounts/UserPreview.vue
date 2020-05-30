@@ -1,40 +1,42 @@
 <template>
-  <v-card outlined>
-    <v-card-title>
-      <span class="headline">{{user ? 'Редактиране' : 'Нов акаунт'}}</span>
-      <v-spacer />
+  <LayoutColumn paddingless>
+    <template v-slot:title>
+      {{user ? 'Редактиране' : 'Нов акаунт'}}
+    </template>
+
+    <template v-slot:header-actions>
       <DeleteButton
         @confirm="destroy"
         tooltip="Delete user"
         v-if="user && current_user.admin"
       />
-    </v-card-title>
-    <v-card-text>
-      <v-container class="px-0">
-        <v-row>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="*Име на потребителя"
-              v-model="form.name"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="*Имейл"
-              :disabled="user != null"
-              v-model="form.email"
-            ></v-text-field>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card-text>
-    <v-card-actions>
+    </template>
+
+    <template v-slot:content>
+      <v-row>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="*Име на потребителя"
+            v-model="form.name"
+          ></v-text-field>
+        </v-col>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="*Имейл"
+            :disabled="user != null"
+            v-model="form.email"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+    </template>
+
+    <template v-slot:actions>
       <v-btn
         :disabled="!dirty"
         depressed
@@ -62,11 +64,12 @@
       >
         Редактирай
       </v-btn>
-    </v-card-actions>
-  </v-card>
+    </template>
+  </LayoutColumn>
 </template>
 
 <script>
+import LayoutColumn from "@/layout/LayoutColumn";
 import { _ } from "vue-underscore";
 import { mapGetters } from "vuex";
 import { CREATE_USER, UPDATE_USER, DESTROY_USER } from "@/store/actions.type";
@@ -75,7 +78,8 @@ import DeleteButton from "@/views/components/DeleteButton";
 
 export default {
   components: {
-    DeleteButton
+    DeleteButton,
+    LayoutColumn
   },
   props: {
     user: {

@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn paddingless>
     <template v-slot:title>
       {{bug ? 'Редактиране на бъг' : 'Нов бъг'}}
     </template>
@@ -13,48 +13,46 @@
     </template>
 
     <template v-slot:content>
-      <v-container>
-        <v-row v-if="bug">
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="Заглавие"
-              v-model="form.title"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-textarea
-              label="Описание"
-              v-model="form.description"
-            ></v-textarea>
-          </v-col>
-        </v-row>
-        <v-row v-else>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-text-field
-              label="Заглавие"
-              v-model="form.title"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="12"
-            class="px-0"
-          >
-            <v-textarea
-              label="Описание"
-              v-model="form.description"
-            ></v-textarea>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-row v-if="bug">
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="Заглавие"
+            v-model="form.title"
+          ></v-text-field>
+        </v-col>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-textarea
+            label="Описание"
+            v-model="form.description"
+          ></v-textarea>
+        </v-col>
+      </v-row>
+      <v-row v-else>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-text-field
+            label="Заглавие"
+            v-model="form.title"
+          ></v-text-field>
+        </v-col>
+        <v-col
+          cols="12"
+          class="px-0"
+        >
+          <v-textarea
+            label="Описание"
+            v-model="form.description"
+          ></v-textarea>
+        </v-col>
+      </v-row>
     </template>
 
     <template v-slot:actions>

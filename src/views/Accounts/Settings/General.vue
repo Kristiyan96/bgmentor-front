@@ -1,14 +1,17 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn
+    paddingless
+    v-if="user"
+  >
     <template v-slot:title>
-      Главни настройки
+      Лична информация
     </template>
 
     <template v-slot:content>
       <v-form @submit.prevent="submit">
         <v-text-field
           v-model="user.name"
-          label="Name"
+          label="Име"
           required
         >
           <font-awesome-icon
@@ -20,7 +23,7 @@
         <v-text-field
           disabled
           v-model="user.email"
-          label="Email"
+          label="Имейл"
           required
         >
           <font-awesome-icon
@@ -50,7 +53,7 @@
       <v-spacer></v-spacer>
       <v-btn
         color="primary"
-        :disabled="false"
+        :disabled="!dirty"
         depressed
         :loading="loading"
         @click="submit"
@@ -64,7 +67,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { UPDATE_USER, FETCH_PROFILE } from "@/store/actions.type";
+import { UPDATE_PROFILE, FETCH_PROFILE } from "@/store/actions.type";
 import LayoutColumn from "@/layout/LayoutColumn";
 
 export default {
@@ -75,7 +78,7 @@ export default {
     return {
       show: false,
       loading: false,
-      user: { name: "", email: "", avatar: "" }
+      user: null
     };
   },
   mounted() {
@@ -86,11 +89,16 @@ export default {
   methods: {
     submit() {
       this.loading = true;
-      store.dispatch(UPDATE_USER, this.user);
+      store.dispatch(UPDATE_PROFILE, this.user).then(response => {
+        this.loading = false;
+      });
     }
   },
   computed: {
-    ...mapGetters(["current_user"])
+    ...mapGetters(["current_user"]),
+    dirty() {
+      return this.user.name != this.current_user.name;
+    }
   },
   watch: {
     current_user: {

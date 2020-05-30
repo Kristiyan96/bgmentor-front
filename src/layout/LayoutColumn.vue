@@ -13,8 +13,8 @@
       </div>
     </v-card-title>
     <v-card-text
-      class="px-0 pb-0"
-      v-bind:class="{small: $slots.action}"
+      class="pb-0"
+      v-bind:class="{small: $slots.action, 'px-5 py-5': paddingless, 'px-0': !paddingless}"
     >
       <slot name="content"></slot>
     </v-card-text>
@@ -26,6 +26,12 @@
 
 <script>
 export default {
+  props: {
+    paddingless: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {};
   }
@@ -38,6 +44,9 @@ export default {
   max-height: 100%
   display: flex
   flex-direction: column
+
+  .v-card__title
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12)
 
   .v-card__text
     display: flex

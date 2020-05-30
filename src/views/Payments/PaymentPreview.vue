@@ -1,5 +1,8 @@
 <template>
-  <LayoutColumn v-if="payment">
+  <LayoutColumn
+    v-if="payment"
+    :paddingless="editing"
+  >
     <template v-slot:title>
       Разписка
     </template>
