@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn>
+  <LayoutColumn class="bugs-list">
     <template v-slot:title>
       Бъгове
     </template>
@@ -34,7 +34,7 @@
                   :class="{active: bug && item.id == bug.id, fixed: item.fixed == true}"
                 >
                   <td>{{ item.title }}</td>
-                  <td class="text-right">
+                  <td>
                     <v-btn
                       class="mx-2"
                       fab
@@ -145,4 +145,9 @@ export default {
 <style lang="sass" scoped>
 .fixed
   background-color: #E8F5E9
+.bugs-list
+  th:nth-child(1), td:nth-child(1)
+    width: 60%
+  th:nth-child(2), td:nth-child(2)
+    width: 40%
 </style>

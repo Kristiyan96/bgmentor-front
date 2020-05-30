@@ -5,6 +5,7 @@
     :items="memberships"
     :items-per-page="10"
     v-model="selectedMemberships"
+    :mobile-breakpoint="10"
   >
     <template v-slot:header="{ props: { headers } }">
       <thead v-if="!selectedMemberships.length">
@@ -110,7 +111,7 @@ export default {
           value: "name"
         },
         {
-          text: "Оставащи посещения",
+          text: "Платени",
           value: "credit",
           align: "right"
         }
@@ -145,6 +146,8 @@ tr.active
   background: #e3f0ff !important
 th:nth-child(2), td:nth-child(2)
   width: 60%
+th:nth-child(3), td:nth-child(3)
+  width: 30%
 .subtitle-2
   text-decoration: none
 </style>
