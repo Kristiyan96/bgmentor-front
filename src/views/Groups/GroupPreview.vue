@@ -1,10 +1,7 @@
 <template>
-  <LayoutColumn
-    class="group-preview"
-    paddingless
-  >
+  <LayoutColumn class="group-preview" paddingless>
     <template v-slot:title>
-      {{group ? 'Редактиране' : 'Нова група'}}
+      {{ group ? "Редактиране" : "Нова група" }}
     </template>
 
     <template v-slot:header-actions>
@@ -17,21 +14,13 @@
 
     <template v-slot:content>
       <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pl-0"
-        >
+        <v-col cols="12" sm="6" class="pl-0">
           <v-text-field
             label="*Име на групата"
             v-model="form.name"
           ></v-text-field>
         </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pr-0"
-        >
+        <v-col cols="12" sm="6" class="pr-0">
           <v-select
             :items="teachers"
             v-model="form.user_id"
@@ -41,11 +30,7 @@
             required
           ></v-select>
         </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pl-0"
-        >
+        <v-col cols="12" sm="6" class="pl-0">
           <v-select
             :items="lessonOptions"
             v-model="form.lesson_type"
@@ -53,11 +38,7 @@
             required
           ></v-select>
         </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pr-0"
-        >
+        <v-col cols="12" sm="6" class="pr-0">
           <v-select
             :items="gradeOptions"
             v-model="form.grade"
@@ -65,11 +46,7 @@
             required
           ></v-select>
         </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pl-0"
-        >
+        <v-col cols="12" sm="6" class="pl-0">
           <v-select
             :items="pricings"
             v-model="form.pricing_id"
@@ -79,11 +56,7 @@
             required
           ></v-select>
         </v-col>
-        <v-col
-          cols="12"
-          sm="6"
-          class="pr-0"
-        >
+        <v-col cols="12" sm="6" class="pr-0">
           <v-select
             :items="locations"
             v-model="form.location_id"
@@ -93,24 +66,25 @@
             required
           ></v-select>
         </v-col>
+        <v-col cols="12" sm="6" class="pl-0">
+          <v-select
+            :items="subjectOptions"
+            v-model="form.subject_list"
+            label="*Предмет"
+            required
+            multiple
+          ></v-select>
+        </v-col>
       </v-row>
       <v-row v-if="group">
-        <v-col
-          cols="12"
-          class="px-0"
-        >
+        <v-col cols="12" class="px-0">
           <GroupMemberships :group="group" />
         </v-col>
       </v-row>
     </template>
 
     <template v-slot:actions>
-      <v-btn
-        :disabled="!dirty"
-        depressed
-        @click="reset"
-        text
-      >
+      <v-btn :disabled="!dirty" depressed @click="reset" text>
         Върни промените
       </v-btn>
       <v-spacer></v-spacer>
@@ -165,7 +139,28 @@ export default {
   data() {
     return {
       group_copy: {},
-      form: {},
+      form: {
+        subject: "maths",
+        lesson_type: "individual"
+      },
+      subjectOptions: [
+        {
+          text: "Математика",
+          value: "maths"
+        },
+        {
+          text: "Български",
+          value: "bulgarian"
+        },
+        {
+          text: "Програмиране",
+          value: "programming"
+        },
+        {
+          text: "Физика",
+          value: "physics"
+        }
+      ],
       gradeOptions: [
         {
           text: "5-ти",
