@@ -58,3 +58,5 @@ export const SET_LOCATIONS = "setLocations";
 export const SET_LOCATION = "setLocation";
 export const ADD_LOCATION = "addLocation";
 export const REMOVE_LOCATION = "removeLocation";
+
+export const SET_RESULTS = "setResults";

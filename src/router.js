@@ -16,6 +16,12 @@ let router = new Router({
       component: require("@/views/Landing/Landing").default
     },
     {
+      path: "/search/:query",
+      name: "Search",
+      meta: { layout: "no-sidebar" },
+      component: require("@/views/Search/Main").default
+    },
+    {
       path: "/login",
       name: "Login",
       meta: { layout: "no-sidebar" },
@@ -125,16 +131,16 @@ let router = new Router({
       children: [
         {
           path: "general",
-          component: () => import("@/views/Accounts/Settings/General"),
+          component: () => import("@/views/Accounts/Settings/General")
         },
         {
           path: "security",
-          component: () => import("@/views/Accounts/Settings/Security"),
+          component: () => import("@/views/Accounts/Settings/Security")
         },
         {
           path: "notifications",
-          component: () => import("@/views/Accounts/Settings/Notifications"),
-        },
+          component: () => import("@/views/Accounts/Settings/Notifications")
+        }
       ]
     },
     {
@@ -142,7 +148,7 @@ let router = new Router({
       name: "Profile",
       meta: { requiresAuth: true, layout: "no-sidebar" },
       component: () => import("@/views/Users/Profile")
-    },
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

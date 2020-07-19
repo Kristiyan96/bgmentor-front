@@ -2,20 +2,13 @@
   <v-container class="full-height">
     <v-row align="start">
       <v-col cols="6">
-        <v-skeleton-loader
-          :loading="loading"
-          class="mx-auto"
-          type="card"
-        >
-          <v-card
-            class="mx-auto"
-            outlined
-          >
+        <v-skeleton-loader :loading="loading" class="mx-auto" type="card">
+          <v-card class="mx-auto" outlined>
             <v-card-text>
               <p class="display-1 text--primary">
-                {{profile.name}}
+                {{ profile.name }}
               </p>
-              <p>{{$t(`account.roles.${profile.role}`)}}</p>
+              <p>{{ $t(`account.roles.${profile.role}`) }}</p>
 
               <GroupsList :profile="profile" />
 
@@ -33,10 +26,7 @@
         </v-skeleton-loader>
       </v-col>
       <v-col cols="6">
-        <UserCalendar
-          :profile="profile"
-          :loading="loading"
-        />
+        <UserCalendar :profile="profile" :loading="loading" />
       </v-col>
     </v-row>
   </v-container>

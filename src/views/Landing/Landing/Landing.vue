@@ -1,35 +1,39 @@
 <template>
   <section class="landing">
+    <!-- Desktop -->
     <v-container class="hidden-sm-and-down">
       <v-row class="pl-3">
         <v-col md="5" sm="5" xs="12" class="col-left pl-5">
-          <h1 class="mb-1">Групово и индивидуално <br>обучение по {{ words[count%words.length] }}</h1>
-          <h3 class="mb-3 grey--text">Отличаваме се с нашия амбициозен и млад екип - всеки един от нас е не само учител, но и ученик с отличия в математиката. Това ни позволява да видим проблемите на учениците през техните очи и да изберем най-подходящия начин на преподаване.</h3>
-          <v-btn 
-            class="primary mr-2" 
-            rounded 
-            x-large
-            depressed
-            href="#courses"
-            v-smooth-scroll
-          >
-            Прегледай курсовете
-          </v-btn>
+          <TeacherSearch />
+
+          <h4 class="mb-3 grey--text">
+            Отличаваме се с нашия амбициозен и млад екип - всеки един от нас е
+            не само учител, но и ученик с отличия в математиката. Това ни
+            позволява да видим проблемите на учениците през техните очи и да
+            изберем най-подходящия начин на преподаване.
+          </h4>
         </v-col>
         <v-col md="7" sm="7" xs="12">
-          <img class="bg-image d-sm-none d-md-flex" src="@/assets/images/bg.png"/>
+          <img
+            class="bg-image d-sm-none d-md-flex"
+            src="@/assets/images/bg.png"
+          />
         </v-col>
       </v-row>
     </v-container>
+    <!-- Mobile -->
     <v-container class="hidden-md-and-up">
       <v-row>
-        <img class="bg-image-small" src="@/assets/images/bg.png"/>
+        <img class="bg-image-small" src="@/assets/images/bg.png" />
       </v-row>
       <v-row class="main-small justify-center text-center">
-        <h1 class="mt-3 mb-3">Групово и индивидуално <br>обучение по {{ words[count%words.length] }}</h1>
-        <v-btn 
-          class="primary" 
-          rounded 
+        <h1 class="mt-3 mb-3">
+          Групово и индивидуално <br />обучение по
+          {{ words[count % words.length] }}
+        </h1>
+        <v-btn
+          class="primary"
+          rounded
           x-large
           depressed
           href="#courses"
@@ -43,21 +47,25 @@
 </template>
 
 <script>
+import TeacherSearch from "./TeacherSearch";
 export default {
+  components: {
+    TeacherSearch
+  },
   data() {
     return {
       cssProps: {
-        backgroundImage: `url(${require('@/assets/images/bg.png')})`
+        backgroundImage: `url(${require("@/assets/images/bg.png")})`
       },
       count: 0,
-      words: ['математика', 'програмиране', 'физика']
-    }
+      words: ["математика", "програмиране", "физика"]
+    };
   },
-  mounted: function () {
+  mounted: function() {
     window.setInterval(() => {
       this.count++;
-    }, 3000)
-  },
+    }, 3000);
+  }
 };
 </script>
 
@@ -76,7 +84,7 @@ export default {
   .bg-image-small
     width: 100%
 h1
-  font-size: 2em
+  font-size: 1.6em
 .hidden-md-and-up
   h1
     width: 100% !important

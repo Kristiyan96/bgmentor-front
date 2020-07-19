@@ -60,3 +60,5 @@ export const FETCH_LOCATIONS = "fetchLocations";
 export const CREATE_LOCATION = "createLocation";
 export const UPDATE_LOCATION = "updateLocation";
 export const DESTROY_LOCATION = "destroyLocation";
+
+export const FETCH_RESULTS = "fetchResults";

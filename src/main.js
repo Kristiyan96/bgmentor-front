@@ -7,16 +7,17 @@ import { CHECK_AUTH } from "@/store/actions.type";
 
 import vuetify from "./plugins/vuetify";
 import i18n from "./plugins/vue-i18n";
-import GAuth from 'vue-google-oauth2';
+import GAuth from "vue-google-oauth2";
+import VueGtag from "vue-gtag";
 
 import Vue2Filters from "vue2-filters";
 import vSelect from "vue-select";
 import vueSmoothScroll from "vue2-smooth-scroll";
 import underscore from "vue-underscore";
-import VueMoment from 'vue-moment'
-import moment from 'moment-timezone'
-import VueDeviceDetector from 'vue-device-detector'
-import vClickOutside from 'v-click-outside'
+import VueMoment from "vue-moment";
+import moment from "moment-timezone";
+import VueDeviceDetector from "vue-device-detector";
+import vClickOutside from "v-click-outside";
 
 import "@/assets/styles/table.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -46,9 +47,7 @@ import {
   faAt,
   faKey
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGoogle
-} from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 library.add({
   faCheck,
   faColumns,
@@ -75,22 +74,29 @@ library.add({
   faAt,
   faKey
 });
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import "material-design-icons-iconfont/dist/material-design-icons.css";
 
 Vue.use(GAuth, {
-  clientId: '416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com',
-  scope: 'profile email',
-  prompt: 'select_account'
-})
+  clientId:
+    "416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com",
+  scope: "profile email",
+  prompt: "select_account"
+});
+Vue.use(VueGtag, {
+  config: {
+    id:
+      "416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com"
+  }
+});
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
-Vue.use(VueDeviceDetector)
+Vue.use(VueDeviceDetector);
 Vue.use(VueMoment, {
-  moment,
-})
+  moment
+});
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
-Vue.use(vClickOutside)
+Vue.use(vClickOutside);
 
 Vue.component("v-select", vSelect);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
