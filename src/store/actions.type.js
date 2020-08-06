@@ -61,4 +61,11 @@ export const CREATE_LOCATION = "createLocation";
 export const UPDATE_LOCATION = "updateLocation";
 export const DESTROY_LOCATION = "destroyLocation";
 
+export const FETCH_SKILLS = "fetchSkills";
+export const CREATE_SKILL = "createSkill";
+export const UPDATE_SKILL = "updateSkill";
+export const DESTROY_SKILL = "destroySkill";
+
 export const FETCH_RESULTS = "fetchResults";
+export const FETCH_SUBJECTS = "fetchSubjects";
+export const FETCH_LEVELLS = "fetchLevels";

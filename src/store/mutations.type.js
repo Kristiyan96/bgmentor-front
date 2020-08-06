@@ -59,4 +59,11 @@ export const SET_LOCATION = "setLocation";
 export const ADD_LOCATION = "addLocation";
 export const REMOVE_LOCATION = "removeLocation";
 
+export const SET_SKILLS = "setSkills";
+export const SET_SKILL = "setSkill";
+export const ADD_SKILL = "addSkill";
+export const REMOVE_SKILL = "removeSkill";
+
 export const SET_RESULTS = "setResults";
+export const SET_SUBJECTS = "setSubjects";
+export const SET_LEVELS = "setLevels";
