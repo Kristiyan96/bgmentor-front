@@ -1,5 +1,4 @@
 import ApiService from "@/common/api.service";
-
 import { FETCH_LEVELS } from "../actions.type";
 import { SET_LEVELS } from "../mutations.type";
 
@@ -14,8 +13,8 @@ const getters = {
 };
 
 const actions = {
-  async [FETCH_LEVELS]({ commit }, params) {
-    const { data } = await ApiService.query(`/levels`, params);
+  async [FETCH_LEVELS]({ commit }) {
+    const { data } = await ApiService.get(`/levels`);
     commit(SET_LEVELS, data);
   }
 };

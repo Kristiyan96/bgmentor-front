@@ -68,4 +68,4 @@ export const DESTROY_SKILL = "destroySkill";
 
 export const FETCH_RESULTS = "fetchResults";
 export const FETCH_SUBJECTS = "fetchSubjects";
-export const FETCH_LEVELLS = "fetchLevels";
+export const FETCH_LEVELS = "fetchLevels";

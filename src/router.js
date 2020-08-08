@@ -124,6 +124,12 @@ let router = new Router({
       component: () => import("@/views/Locations/Locations")
     },
     {
+      path: "/profiles/:id",
+      name: "Profile",
+      meta: { requiresAuth: true, layout: "no-sidebar" },
+      component: () => import("@/views/Users/Profile")
+    },
+    {
       path: "/profile",
       name: "Profile",
       meta: { requiresAuth: true },
@@ -134,6 +140,10 @@ let router = new Router({
           component: () => import("@/views/Accounts/Settings/General")
         },
         {
+          path: "teacherProfile",
+          component: () => import("@/views/Accounts/Settings/TeacherProfile")
+        },
+        {
           path: "security",
           component: () => import("@/views/Accounts/Settings/Security")
         },
@@ -142,12 +152,6 @@ let router = new Router({
           component: () => import("@/views/Accounts/Settings/Notifications")
         }
       ]
-    },
-    {
-      path: "/profiles/:id",
-      name: "Profile",
-      meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Users/Profile")
     }
   ],
   scrollBehavior(to, from, savedPosition) {

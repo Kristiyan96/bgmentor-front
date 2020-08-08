@@ -1,31 +1,19 @@
 <template>
-  <LayoutColumn
-    paddingless
-    v-if="user"
-  >
+  <LayoutColumn paddingless v-if="user">
     <template v-slot:title>
       Лична информация
     </template>
 
     <template v-slot:content>
       <v-form @submit.prevent="submit">
-        <v-text-field
-          v-model="user.name"
-          label="Име"
-          required
-        >
+        <v-text-field v-model="user.name" label="Име" required>
           <font-awesome-icon
             class="grey--text"
             :icon="['fa', 'user']"
             slot="prepend"
           />
         </v-text-field>
-        <v-text-field
-          disabled
-          v-model="user.email"
-          label="Имейл"
-          required
-        >
+        <v-text-field disabled v-model="user.email" label="Имейл" required>
           <font-awesome-icon
             class="grey--text"
             :icon="['fa', 'at']"
@@ -33,21 +21,12 @@
           />
         </v-text-field>
         <!-- The following line submits the form when pressing enter -->
-        <input
-          type="submit"
-          value="Submit"
-          class="d-none"
-        />
+        <input type="submit" value="Submit" class="d-none" />
       </v-form>
     </template>
 
     <template v-slot:actions>
-      <v-btn
-        :disabled="false"
-        depressed
-        @click="alert()"
-        text
-      >
+      <v-btn :disabled="false" depressed @click="alert()" text>
         Върни промените
       </v-btn>
       <v-spacer></v-spacer>

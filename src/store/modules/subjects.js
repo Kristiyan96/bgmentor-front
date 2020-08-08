@@ -1,5 +1,4 @@
 import ApiService from "@/common/api.service";
-
 import { FETCH_SUBJECTS } from "../actions.type";
 import { SET_SUBJECTS } from "../mutations.type";
 
@@ -14,8 +13,8 @@ const getters = {
 };
 
 const actions = {
-  async [FETCH_SUBJECTS]({ commit }, params) {
-    const { data } = await ApiService.query(`/subjects`, params);
+  async [FETCH_SUBJECTS]({ commit }) {
+    const { data } = await ApiService.get(`/subjects`);
     commit(SET_SUBJECTS, data);
   }
 };

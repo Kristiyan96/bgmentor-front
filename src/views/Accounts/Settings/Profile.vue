@@ -12,21 +12,23 @@
               <v-list>
                 <v-list-item to="general">
                   <v-list-item-avatar>
-                    <font-awesome-icon
-                      icon="cog"
-                      class="grey--text"
-                    />
+                    <font-awesome-icon icon="cog" class="grey--text" />
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>Лична информация</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
+                <v-list-item to="teacherProfile">
+                  <v-list-item-avatar>
+                    <font-awesome-icon icon="cog" class="grey--text" />
+                  </v-list-item-avatar>
+                  <v-list-item-content>
+                    <v-list-item-title>Моята обява</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
                 <v-list-item to="security">
                   <v-list-item-avatar>
-                    <font-awesome-icon
-                      icon="shield-alt"
-                      class="grey--text"
-                    />
+                    <font-awesome-icon icon="shield-alt" class="grey--text" />
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>Настройки за достъп</v-list-item-title>
@@ -34,10 +36,7 @@
                 </v-list-item>
                 <v-list-item to="notifications">
                   <v-list-item-avatar>
-                    <font-awesome-icon
-                      icon="bell"
-                      class="grey--text"
-                    />
+                    <font-awesome-icon icon="bell" class="grey--text" />
                   </v-list-item-avatar>
                   <v-list-item-content>
                     <v-list-item-title>Известия</v-list-item-title>

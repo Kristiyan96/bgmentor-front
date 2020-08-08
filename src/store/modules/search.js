@@ -10,8 +10,8 @@ const state = {
 };
 
 const getters = {
-  pricings(state) {
-    return state.pricings;
+  results(state) {
+    return state.results;
   }
 };
 
