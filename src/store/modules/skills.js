@@ -20,7 +20,7 @@ const state = {
   new_skill: {
     user_id: "",
     subject_id: "",
-    level_id: "",
+    level_list: "",
     price: ""
   }
 };
@@ -32,13 +32,13 @@ const getters = {
 };
 
 const actions = {
-  async [FETCH_SKILLS]({ commit, rootState }) {
-    const { data } = await ApiService.query(`/skills`);
+  async [FETCH_SKILLS]({ commit, rootState }, user_id) {
+    const { data } = await ApiService.query(`/skills`, { user_id: user_id });
     commit(SET_SKILLS, data);
   },
   async [CREATE_SKILL]({ commit, dispatch }, params) {
     return new Promise((resolve, reject) => {
-      ApiService.post(`/skills`, { skills: params }).then(
+      ApiService.post(`/skills`, { skill: params }).then(
         response => {
           commit(ADD_SKILL, response.data);
           dispatch(CREATE_ALERT, ["Skill created", "success"]);
