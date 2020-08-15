@@ -18,6 +18,7 @@ import VueMoment from "vue-moment";
 import moment from "moment-timezone";
 import VueDeviceDetector from "vue-device-detector";
 import vClickOutside from "v-click-outside";
+import VueFbCustomerChat from "vue-fb-customer-chat";
 
 import "@/assets/styles/table.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -97,6 +98,11 @@ Vue.use(VueMoment, {
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
 Vue.use(vClickOutside);
+Vue.use(VueFbCustomerChat, {
+  page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
+  theme_color: "#1976d2", // theme color in HEX
+  locale: "en_US" // default 'en_US'
+});
 
 Vue.component("v-select", vSelect);
 Vue.component("font-awesome-icon", FontAwesomeIcon);

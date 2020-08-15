@@ -29,6 +29,7 @@
     "vue-axios": "^2.1.4",
     "vue-cookies": "^1.5.12",
     "vue-device-detector": "github:weilbith/vue-device-detector",
+    "vue-fb-customer-chat": "^0.2.0",
     "vue-flatpickr-component": "^8.1.2",
     "vue-google-oauth2": "^1.4.0",
     "vue-grid-layout": "^2.3.4",
