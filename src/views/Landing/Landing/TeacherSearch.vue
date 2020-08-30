@@ -28,13 +28,13 @@
             x-large
             depressed
             v-smooth-scroll
-            @click="performSearch"
+            to="#courses"
           >
             <v-icon dark>mdi-magnify</v-icon>
           </v-btn>
         </v-col>
       </v-row>
-      <a style="text-decoration: none" href="/search/">> Подробно търсене</a>
+      <a style="text-decoration: none" href="#courses">> Подробно търсене</a>
     </v-container>
   </v-form>
 </template>
@@ -50,7 +50,8 @@ export default {
       subjects: [
         { value: "math", text: "Математика" },
         { value: "programming", text: "Програмиране" },
-        { value: "bulgarian", text: "Български" }
+        { value: "bulgarian", text: "Български език" },
+        { value: "english", text: "Английски език" }
       ],
       locations: [
         { value: "sofia", text: "София" },

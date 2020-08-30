@@ -109,12 +109,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="blue darken-1" text @click="closeDialog">Затвори</v-btn>
-        <v-btn
-          color="blue darken-1"
-          outlined
-          @click="validate"
-          :disabled="!valid"
-        >
+        <v-btn color="blue darken-1" outlined @click="save" :disabled="!valid">
           Запази
         </v-btn>
       </v-card-actions>
@@ -200,7 +195,6 @@ export default {
           this.closeDialog();
         });
       } else {
-        console.log(1);
         this.form = {
           ...this.form,
           start_time: new Date(

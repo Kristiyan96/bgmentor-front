@@ -58,7 +58,7 @@ export default {
         backgroundImage: `url(${require("@/assets/images/bg.png")})`
       },
       count: 0,
-      words: ["математика", "програмиране", "физика"]
+      words: ["математика", "програмиране", ""]
     };
   },
   mounted: function() {
