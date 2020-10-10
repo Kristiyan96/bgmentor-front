@@ -98,6 +98,11 @@ Vue.use(VueMoment, {
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
 Vue.use(vClickOutside);
+Vue.use(VueFbCustomerChat, {
+  page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
+  theme_color: "#1976d2", // theme color in HEX
+  locale: "en_US" // default 'en_US'
+});
 Vue.component("v-select", vSelect);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.prototype.moment = moment;
@@ -115,13 +120,7 @@ router.beforeEach((to, from, next) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (!window.hasOwnProperty("FB")) {
-    Vue.use(VueFbCustomerChat, {
-      page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
-      theme_color: "#1976d2", // theme color in HEX
-      locale: "en_US" // default 'en_US'
-    });
-  }
+  FB.CustomerChat.hide();
   let v = new Vue({
     router,
     render: h => h(App),
@@ -131,4 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   global.vm = v; //Define you app variable globally
   v.$mount("#app");
+
+  setTimeout(function() {
+    FB.CustomerChat.show();
+  }, 10000);
 });
