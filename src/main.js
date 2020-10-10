@@ -120,7 +120,6 @@ router.beforeEach((to, from, next) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  FB.CustomerChat.hide();
   let v = new Vue({
     router,
     render: h => h(App),
@@ -130,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   global.vm = v; //Define you app variable globally
   v.$mount("#app");
+  FB.CustomerChat.hide();
 
   setTimeout(function() {
     FB.CustomerChat.show();
