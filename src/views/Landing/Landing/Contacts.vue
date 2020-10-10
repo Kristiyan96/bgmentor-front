@@ -26,8 +26,8 @@
               <td><v-icon>mdi-city</v-icon></td>
               <td>
                 София, ул. "Св. Св. Кирил и Методий 27" (Офис 1)
-                <v-btn outlined color="primary" @click="selected = 0"
-                  >Виж на картата</v-btn
+                <a outlined color="primary" @click="selected = 0"
+                  >Виж на картата</a
                 >
               </td>
             </tr>
@@ -35,8 +35,8 @@
               <td><v-icon>mdi-city</v-icon></td>
               <td>
                 София, ул. "Николай Гогол" 21 (Офис 2)
-                <v-btn outlined color="primary" @click="selected = 1"
-                  >Виж на картата</v-btn
+                <a outlined color="primary" @click="selected = 1"
+                  >Виж на картата</a
                 >
               </td>
             </tr>
