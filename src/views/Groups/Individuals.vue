@@ -5,6 +5,7 @@
         :groups="individuals"
         @setGroup="setGroup"
         :group="group"
+        type="Индивидуални"
       />
     </template>
     <template v-slot:col-right>
@@ -21,8 +22,6 @@ import {
   FETCH_GROUPS,
   FETCH_PRICINGS,
   FETCH_LOCATIONS,
-  CREATE_GROUP,
-  UPDATE_GROUP,
   DESTROY_GROUP
 } from "@/store/actions.type";
 import store from "@/store";

@@ -1,5 +1,5 @@
 <template>
-  <v-card color="grey lighten-4" min-width="350px" flat>
+  <v-card color="grey lighten-4" max-width="500px" flat>
     <v-toolbar :color="color" dark elevation="0">
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
@@ -12,41 +12,52 @@
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon @click="repeatOpen = true" class="mr-2" v-on="on">
-            <repeat-icon w="24px" h="24px" class='repeat' />
+            <repeat-icon w="24px" h="24px" class="repeat" />
           </v-btn>
         </template>
         Repeat event
       </v-tooltip>
-      <v-toolbar-title v-html="`${lesson.teacher.name} - ${lesson.group.name}`"/>
+      <v-toolbar-title
+        v-html="`${lesson.teacher.name} - ${lesson.group.name}`"
+      />
       <v-spacer></v-spacer>
       <DeleteButton @confirm="deleteLesson" tooltip="Delete event" />
     </v-toolbar>
-    <GroupMemberships 
-      :group="lesson.group" 
-      :calendar="true" 
-      :lesson="lesson" 
-    />
+    <GroupMemberships :group="lesson.group" :calendar="true" :lesson="lesson" />
     <v-card-actions>
       <v-btn text color="secondary" @click="$emit('onClose')">
         Затвори
       </v-btn>
       <v-spacer />
-      <v-btn depressed color="primary" @click="complete" :disabled="lesson.completed">
+      <v-btn
+        depressed
+        color="primary"
+        @click="complete"
+        :disabled="lesson.completed"
+      >
         Проведен
       </v-btn>
     </v-card-actions>
-    <RepeatDialog :lesson="lesson" :open="repeatOpen" @closeDialog="repeatOpen = false"/>
+    <RepeatDialog
+      :lesson="lesson"
+      :open="repeatOpen"
+      @closeDialog="repeatOpen = false"
+    />
   </v-card>
 </template>
 
 <script>
 import GroupMemberships from "@/views/Groups/GroupMemberships";
 import { mapGetters } from "vuex";
-import { UPDATE_LESSON, DESTROY_LESSON, FETCH_MEMBERSHIPS } from "@/store/actions.type";
+import {
+  UPDATE_LESSON,
+  DESTROY_LESSON,
+  FETCH_MEMBERSHIPS
+} from "@/store/actions.type";
 import store from "@/store";
-import RepeatIcon from 'vue-ionicons/dist/md-repeat.vue';
-import RepeatDialog from './LessonRepeat';
-import DeleteButton from '@/views/components/DeleteButton';
+import RepeatIcon from "vue-ionicons/dist/md-repeat.vue";
+import RepeatDialog from "./LessonRepeat";
+import DeleteButton from "@/views/components/DeleteButton";
 
 export default {
   components: {
@@ -70,7 +81,7 @@ export default {
   data() {
     return {
       repeatOpen: false
-    }
+    };
   },
   methods: {
     deleteLesson() {
@@ -85,14 +96,16 @@ export default {
       this.repeatLesson = false;
     },
     complete() {
-      store.dispatch(UPDATE_LESSON, {
-        ... this.lesson,
-        start_time: this.$moment(this.lesson.start_time),
-        end_time: this.$moment(this.lesson.end_time),
-        completed: true
-      }).then(response => {
-        store.dispatch(FETCH_MEMBERSHIPS, this.lesson.group_id);
-      })
+      store
+        .dispatch(UPDATE_LESSON, {
+          ...this.lesson,
+          start_time: this.$moment(this.lesson.start_time),
+          end_time: this.$moment(this.lesson.end_time),
+          completed: true
+        })
+        .then(response => {
+          store.dispatch(FETCH_MEMBERSHIPS, this.lesson.group_id);
+        });
     }
   },
   computed: {
@@ -101,7 +114,7 @@ export default {
       return this.lessons ? this.lessons.find(l => l.id == this.lesson_id) : {};
     }
   }
-}
+};
 </script>
 
 <style lang="sass" scoped>

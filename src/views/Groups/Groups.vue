@@ -5,6 +5,7 @@
         :groups="groups"
         @setGroup="setGroup"
         :group="group"
+        type="Групови"
       />
     </template>
     <template v-slot:col-right>
@@ -20,9 +21,7 @@ import {
   FETCH_USERS,
   FETCH_GROUPS,
   FETCH_PRICINGS,
-  FETCH_LOCATIONS,
-  CREATE_GROUP,
-  UPDATE_GROUP
+  FETCH_LOCATIONS
 } from "@/store/actions.type";
 import store from "@/store";
 import GroupList from "./GroupList";

@@ -1,13 +1,12 @@
 <template>
   <v-container fluid class="fill-height">
-    <v-row
-      align="center"
-      justify="center"
-    >
+    <v-row align="center" justify="center">
       <v-col xs="10" md="4">
         <v-card v-if="!registered" :loading="loading" shaped>
           <v-card-title class="text-center mb-4">
-            <div class="text-center display-1">{{$t("auth.title.register")}}</div>
+            <div class="text-center display-1">
+              {{ $t("auth.title.register") }}
+            </div>
           </v-card-title>
           <v-card-text>
             <v-alert v-if="errors.length" color="error" class="mb-4" outlined>
@@ -50,19 +49,26 @@
                 validate-on-blur
                 ><font-awesome-icon :icon="['fa', 'key']" slot="prepend-inner"
               /></v-text-field>
-              <v-checkbox v-model="accept" type="checkbox" :rules="rules.accept">
+              <v-radio-group v-model="user.role" :rules="rules.role">
+                <v-radio
+                  v-for="role in roles"
+                  :key="role.name"
+                  :label="role.name"
+                  :value="role.value"
+                ></v-radio>
+              </v-radio-group>
+              <v-checkbox
+                v-model="accept"
+                type="checkbox"
+                :rules="rules.accept"
+              >
                 <span slot="label">
                   <v-btn text to="/privacy">Съгласявам се с условията</v-btn>
                 </span>
               </v-checkbox>
               <div class="text-center">
-                <v-btn
-                  large
-                  color="primary"
-                  @click="submit"
-                  :disabled="!valid"
-                >
-                  {{$t("auth.button.register")}}
+                <v-btn large color="primary" @click="submit" :disabled="!valid">
+                  {{ $t("auth.button.register") }}
                 </v-btn>
               </div>
             </v-form>
@@ -75,17 +81,14 @@
             </div>
           </v-card-title>
           <v-card-text class="text-xs-center">
-            Изпратихме линк на Вашият имейл {{user.email}}. Кликнете на него, за да потвърдите регистрацията.
+            Изпратихме линк на Вашият имейл {{ user.email }}. Кликнете на него,
+            за да потвърдите регистрацията.
           </v-card-text>
           <v-card-actions>
-              <v-spacer />
-              <v-btn
-                large
-                color="primary"
-                to="/login"
-              >
-                {{$t("auth.link.signin")}}
-              </v-btn>
+            <v-spacer />
+            <v-btn large color="primary" to="/login">
+              {{ $t("auth.link.signin") }}
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -105,17 +108,32 @@ export default {
         name: "",
         email: "",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "",
+        role: "teacher"
       },
+      roles: [
+        { value: "academy", name: "Школа" },
+        { value: "teacher", name: "Учител" }
+      ],
       accept: false,
       registered: false,
       loading: false,
       errors: [],
       rules: {
         name: [val => !!val || "Въведете име."],
-        email: [val => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(val) || "Въведете реален имейл."],
-        password: [val => val.length > 7 || "Паролата трябва да е поне 8 символа."],
-        password_confirmation: [val => val == this.user.password || "Паролите не съвпадат."],
+        email: [
+          val =>
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+              val
+            ) || "Въведете реален имейл."
+        ],
+        password: [
+          val => val.length > 7 || "Паролата трябва да е поне 8 символа."
+        ],
+        password_confirmation: [
+          val => val == this.user.password || "Паролите не съвпадат."
+        ],
+        role: [val => !!val || "Изберете роля"],
         accept: [val => val || "Моля, съгласете се с Условията за ползване"]
       }
     };
@@ -123,13 +141,14 @@ export default {
   methods: {
     submit() {
       this.loading = true;
-      store.dispatch(REGISTER, this.user)
+      store
+        .dispatch(REGISTER, this.user)
         .then(response => {
-          this.registered = true; 
-          this.loading = false; 
+          this.registered = true;
+          this.loading = false;
           this.user = response;
-        }).catch(error => { 
-        });
+        })
+        .catch(error => {});
     }
   }
 };

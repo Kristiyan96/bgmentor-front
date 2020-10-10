@@ -98,12 +98,6 @@ Vue.use(VueMoment, {
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
 Vue.use(vClickOutside);
-Vue.use(VueFbCustomerChat, {
-  page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
-  theme_color: "#1976d2", // theme color in HEX
-  locale: "en_US" // default 'en_US'
-});
-
 Vue.component("v-select", vSelect);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.prototype.moment = moment;
@@ -130,4 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   global.vm = v; //Define you app variable globally
   v.$mount("#app");
+  v.use(VueFbCustomerChat, {
+    page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
+    theme_color: "#1976d2", // theme color in HEX
+    locale: "en_US" // default 'en_US'
+  });
 });

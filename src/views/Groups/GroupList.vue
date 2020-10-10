@@ -1,14 +1,11 @@
 <template>
   <LayoutColumn class="group-list">
     <template v-slot:title>
-      Групови уроци
+      {{ type }} уроци
     </template>
 
     <template v-slot:header-actions>
-      <v-btn
-        icon
-        @click="activate(null)"
-      >
+      <v-btn icon @click="activate(null)">
         <v-icon>mdi-plus-circle</v-icon>
       </v-btn>
     </template>
@@ -16,10 +13,7 @@
     <template v-slot:content>
       <v-container class="px-0 pb-0">
         <v-row>
-          <v-col
-            cols="12"
-            class="px-0 pb-0"
-          >
+          <v-col cols="12" class="px-0 pb-0">
             <v-data-table
               v-if="groups.length"
               :headers="headers"
@@ -31,17 +25,14 @@
               <template v-slot:item="{ item }">
                 <tr
                   @click="activate(item)"
-                  :class="{active: group && item.id == group.id}"
+                  :class="{ active: group && item.id == group.id }"
                 >
                   <td>{{ item.name }}</td>
                   <td>{{ item.grade }}</td>
                 </tr>
               </template>
             </v-data-table>
-            <div
-              v-else
-              class="grey--text px-3"
-            >Няма групи</div>
+            <div v-else class="grey--text px-3">Няма групи</div>
           </v-col>
         </v-row>
       </v-container>
@@ -50,14 +41,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import {
   FETCH_USERS,
   FETCH_GROUPS,
   FETCH_PRICINGS,
-  FETCH_LOCATIONS,
-  CREATE_GROUP,
-  UPDATE_GROUP
+  FETCH_LOCATIONS
 } from "@/store/actions.type";
 import store from "@/store";
 import LayoutColumn from "@/layout/LayoutColumn";
@@ -73,6 +61,11 @@ export default {
       type: Object,
       default: () => {},
       description: "Selected group"
+    },
+    type: {
+      type: String,
+      default: "Групови",
+      description: "Type of groups"
     }
   },
   components: {
