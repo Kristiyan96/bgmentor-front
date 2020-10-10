@@ -115,11 +115,13 @@ router.beforeEach((to, from, next) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  Vue.use(VueFbCustomerChat, {
-    page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
-    theme_color: "#1976d2", // theme color in HEX
-    locale: "en_US" // default 'en_US'
-  });
+  if (!window.hasOwnProperty("FB")) {
+    Vue.use(VueFbCustomerChat, {
+      page_id: 102719431149645, //  change 'null' to your Facebook Page ID,
+      theme_color: "#1976d2", // theme color in HEX
+      locale: "en_US" // default 'en_US'
+    });
+  }
   let v = new Vue({
     router,
     render: h => h(App),
