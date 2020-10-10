@@ -1,9 +1,9 @@
 <template>
   <span>
-    <v-btn 
-      color="primary" 
-      class="px-5" 
-      rounded 
+    <v-btn
+      color="primary"
+      class="px-5"
+      rounded
       depressed
       outlined
       @click="openDialog"
@@ -19,10 +19,11 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field label="Вашето име" v-model="form.name"></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="*Телефон за контакт" required v-model="form.phone"></v-text-field>
+                <v-text-field
+                  label="*Телефон за контакт"
+                  required
+                  v-model="form.phone"
+                ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-select
@@ -54,7 +55,9 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" text @click="dialog = false">Затвори</v-btn>
+          <v-btn color="grey darken-1" text @click="dialog = false"
+            >Затвори</v-btn
+          >
           <v-btn color="blue darken-1" text @click="submit">Изпрати</v-btn>
         </v-card-actions>
       </v-card>
@@ -66,15 +69,18 @@
           <v-container>
             <v-row>
               <v-col cols="12" align="center">
-                <font-awesome-icon icon="check" size="5x" /><br>
-                Ще се свържем с вас при първа възможност, за да отговорим на вашите въпроси и да разберем кои часове са ви удобни.
+                <font-awesome-icon icon="check" size="5x" /><br />
+                Ще се свържем с вас при първа възможност, за да отговорим на
+                вашите въпроси и да разберем кои часове са ви удобни.
               </v-col>
             </v-row>
           </v-container>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" text @click="dialog = false">Затвори</v-btn>
+          <v-btn color="grey darken-1" text @click="dialog = false"
+            >Затвори</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -102,7 +108,6 @@ export default {
       dialog: false,
       completed: false,
       form: {
-        name: "",
         phone: "",
         grade: "",
         lesson: "",
@@ -132,7 +137,7 @@ export default {
         {
           text: "10-ти",
           value: "10"
-        },
+        }
       ],
       lessonOptions: [
         {
@@ -158,7 +163,7 @@ export default {
           value: "physics"
         }
       ]
-    }
+    };
   },
   methods: {
     openDialog() {
@@ -177,7 +182,7 @@ export default {
         .catch(error => console.log(error));
     }
   }
-}
+};
 </script>
 
 <style scoped lang="sass">
