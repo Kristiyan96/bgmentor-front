@@ -1,10 +1,10 @@
 <template>
   <div class="body">
     <Landing />
-    <About />
     <CoursesMath />
     <CoursesProgramming />
     <Contacts />
+    <About />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   data() {
     return {};
   }
-}
+};
 </script>
 
 <style scoped lang="sass">

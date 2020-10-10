@@ -64,6 +64,8 @@
             <v-card-text class="text--primary">
               <b>Начало:</b> {{ info["group"][grade].start }}<br /><br />
               <b>График:</b> {{ info["group"][grade].when }}<br /><br />
+              <b>Място:</b> {{ info["group"][grade].description }}
+              <a href="#contacts">Виж на картата</a><br /><br />
               <b>Описание:</b>
               Групите са между 3 и 6 ученици. Едно занятие е от
               {{ info["group"][grade].school_h }} учебни часа с почивки между
@@ -78,6 +80,7 @@
                 </li>
               </ul>
               <br />
+              <b>Време:</b> {{ info["group"][grade].astr_h }}<br /><br />
               <b>Цена:</b> {{ info["group"][grade].price }}<br />
             </v-card-text>
           </v-card>
@@ -225,8 +228,8 @@ export default {
           },
           7: {
             start: "5-ти Септември 2020",
-            when: "Уточнява се.",
-            description: "ул. Кирил и Методий 27",
+            when: "Всяка неделя, 14:00",
+            description: "София, ул. 'Николай Гогол' 21",
             price:
               "Еднократно посещение - 35лв. 4 посещения - 120лв. 12 посещения - 350лв",
             school_h: 4,
