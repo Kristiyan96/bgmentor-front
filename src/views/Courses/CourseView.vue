@@ -1,56 +1,30 @@
 <template>
   <LayoutColumn paddingless>
     <template v-slot:title>
-      {{location ? 'Редактиране на локация' : 'Нова локация'}}
+      {{ course ? "Редактиране на курс" : "Нов курс" }}
     </template>
 
     <template v-slot:header-actions>
       <DeleteButton
         @confirm="destroy"
-        v-if="location && current_user.admin"
-        tooltip="Delete location"
+        v-if="course && current_user.admin"
+        tooltip="Delete course"
       />
     </template>
 
     <template v-slot:content>
       <v-row>
-        <v-col
-          cols="12"
-          class="px-0"
-        >
+        <v-col cols="12" class="px-0">
           <v-text-field
             label="Заглавиe (Офис 1, ул Кирил и Методий, etc)"
             v-model="form.title"
-          ></v-text-field>
-        </v-col>
-        <v-col
-          cols="12"
-          class="px-0"
-        >
-          <v-textarea
-            label="Адрес"
-            v-model="form.address"
-          ></v-textarea>
-        </v-col>
-        <v-col
-          cols="12"
-          class="px-0"
-        >
-          <v-text-field
-            label="Цвят"
-            v-model="form.color"
           ></v-text-field>
         </v-col>
       </v-row>
     </template>
 
     <template v-slot:actions>
-      <v-btn
-        :disabled="!dirty"
-        depressed
-        @click="reset"
-        text
-      >
+      <v-btn :disabled="!dirty" depressed @click="reset" text>
         Върни промените
       </v-btn>
       <v-spacer></v-spacer>
@@ -59,7 +33,7 @@
         :disabled="!dirty"
         depressed
         @click="submit"
-        v-if="!location"
+        v-if="!course"
       >
         Създай
       </v-btn>
@@ -81,9 +55,9 @@ import LayoutColumn from "@/layout/LayoutColumn";
 import { _ } from "vue-underscore";
 import { mapGetters } from "vuex";
 import {
-  CREATE_LOCATION,
-  UPDATE_LOCATION,
-  DESTROY_LOCATION
+  CREATE_COURSE,
+  UPDATE_COURSE,
+  DESTROY_COURSE
 } from "@/store/actions.type";
 import store from "@/store";
 import DeleteButton from "@/views/components/DeleteButton";
@@ -94,10 +68,10 @@ export default {
     LayoutColumn
   },
   props: {
-    location: {
+    course: {
       type: Object,
       default: () => {},
-      description: "The selected location"
+      description: "The selected course"
     }
   },
   data() {
@@ -107,36 +81,36 @@ export default {
         address: "",
         color: "#1976d2"
       },
-      location_copy: {}
+      course_copy: {}
     };
   },
   methods: {
     submit() {
-      store.dispatch(CREATE_LOCATION, this.form);
+      store.dispatch(CREATE_COURSE, this.form);
     },
     update() {
-      store.dispatch(UPDATE_LOCATION, this.form);
+      store.dispatch(UPDATE_COURSE, this.form);
     },
     destroy() {
-      store.dispatch(DESTROY_LOCATION, this.location.id);
+      store.dispatch(DESTROY_COURSE, this.course.id);
     },
     reset() {
-      this.form = { ...this.location_copy };
+      this.form = { ...this.course_copy };
     }
   },
   computed: {
     ...mapGetters(["current_user"]),
     dirty() {
-      return !_.isEqual(this.form, this.location_copy);
+      return !_.isEqual(this.form, this.course_copy);
     }
   },
   watch: {
-    location: {
+    course: {
       immediate: true,
       handler() {
-        if (this.location) {
-          this.form = { ...this.location };
-          this.location_copy = { ...this.form };
+        if (this.course) {
+          this.form = { ...this.course };
+          this.course_copy = { ...this.form };
         } else {
           this.form = {
             title: "",

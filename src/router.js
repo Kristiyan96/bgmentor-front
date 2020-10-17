@@ -70,64 +70,22 @@ let router = new Router({
       component: () => import("@/views/Landing/Blog/PrivateVsGroup")
     },
     {
-      path: "/payments",
-      name: "Payments",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Payments/Payments")
-    },
-    {
-      path: "/pricing",
-      name: "Pricing",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Pricing/Pricings")
-    },
-    {
-      path: "/interests",
-      name: "Interests",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Users/Interests")
-    },
-    {
-      path: "/groups",
-      name: "Groups",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Groups/Groups")
-    },
-    {
-      path: "/individuals",
-      name: "Individials",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Groups/Individuals")
-    },
-    {
       path: "/users",
       name: "Users",
       meta: { requiresAuth: true },
       component: () => import("@/views/Accounts/Users")
     },
     {
-      path: "/calendar",
-      name: "Calendar",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Calendar/CalendarWrapper")
-    },
-    {
-      path: "/bugs",
-      name: "Bugs",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Bugs/Bugs")
-    },
-    {
-      path: "/locations",
-      name: "Locations",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Locations/Locations")
-    },
-    {
       path: "/profiles/:id",
       name: "Profile",
       meta: { requiresAuth: true, layout: "no-sidebar" },
       component: () => import("@/views/Users/Profile")
+    },
+    {
+      path: "/courses/:id",
+      name: "Courses",
+      meta: { requiresAuth: true, layout: "no-sidebar" },
+      component: () => import("@/views/Courses/CoursesPage")
     },
     {
       path: "/profile",
