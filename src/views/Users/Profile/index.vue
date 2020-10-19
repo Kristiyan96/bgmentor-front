@@ -9,24 +9,9 @@
                 {{ profile.name }}
               </p>
               <p>{{ $t(`account.roles.${profile.role}`) }}</p>
-
-              <GroupsList :profile="profile" />
-
-              <div v-if="profile.role == 'teacher'">
-                <div>Баланс: {{ profile.balance }}</div>
-                <div>Кредит: {{ profile.credit }}</div>
-                <UserPaymentDialog
-                  v-if="current_user.admin"
-                  :teacher="profile"
-                  @refetchProfile="fetchProfile"
-                />
-              </div>
             </v-card-text>
           </v-card>
         </v-skeleton-loader>
-      </v-col>
-      <v-col cols="6">
-        <UserCalendar :profile="profile" :loading="loading" />
       </v-col>
     </v-row>
   </v-container>
@@ -36,16 +21,8 @@
 import { mapGetters } from "vuex";
 import { FETCH_PROFILE } from "@/store/actions.type";
 import store from "@/store";
-import UserPaymentDialog from "@/views/Payments/UserPaymentDialog";
-import GroupsList from "./GroupsList";
-import UserCalendar from "./UserCalendar";
 
 export default {
-  components: {
-    UserPaymentDialog,
-    GroupsList,
-    UserCalendar
-  },
   data() {
     return {
       profile: {},

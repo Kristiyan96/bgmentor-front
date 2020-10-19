@@ -17,3 +17,13 @@ export const SET_USERS = "setUsers";
 export const SET_USER = "setUser";
 export const ADD_USER = "addUser";
 export const REMOVE_USER = "removeUser";
+
+export const SET_COURSES = "setCourses";
+export const SET_COURSE = "setCourse";
+export const ADD_COURSE = "addCourse";
+export const REMOVE_COURSE = "removeCourse";
+
+export const SET_QUESTIONS = "setQuestions";
+export const SET_QUESTION = "setQuestion";
+export const ADD_QUESTION = "addQuestion";
+export const REMOVE_QUESTION = "removeQuestion";

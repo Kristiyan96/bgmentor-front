@@ -70,22 +70,22 @@ let router = new Router({
       component: () => import("@/views/Landing/Blog/PrivateVsGroup")
     },
     {
-      path: "/users",
-      name: "Users",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Accounts/Users")
-    },
-    {
-      path: "/profiles/:id",
-      name: "Profile",
-      meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Users/Profile")
-    },
-    {
-      path: "/courses/:id",
+      path: "/courses",
       name: "Courses",
       meta: { requiresAuth: true, layout: "no-sidebar" },
       component: () => import("@/views/Courses/CoursesPage")
+    },
+    {
+      path: "/questions",
+      name: "Questions",
+      meta: { requiresAuth: true, layout: "no-sidebar" },
+      component: () => import("@/views/Questions/QuestionsPage")
+    },
+    {
+      path: "/profiles/:id",
+      name: "Profiles",
+      meta: { requiresAuth: true, layout: "no-sidebar" },
+      component: () => import("@/views/Users/Profile")
     },
     {
       path: "/profile",

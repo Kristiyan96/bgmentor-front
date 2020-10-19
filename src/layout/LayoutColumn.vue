@@ -1,8 +1,5 @@
 <template>
-  <v-card
-    class="pb-0 card"
-    outlined
-  >
+  <v-card class="pb-0 card" elevation="0">
     <v-card-title>
       <span class="headline">
         <slot name="title"></slot>
@@ -14,7 +11,11 @@
     </v-card-title>
     <v-card-text
       class="pb-0"
-      v-bind:class="{small: $slots.action, 'px-5 py-5': paddingless, 'px-0': !paddingless}"
+      v-bind:class="{
+        small: $slots.action,
+        'px-5 py-5': paddingless,
+        'px-0': !paddingless
+      }"
     >
       <slot name="content"></slot>
     </v-card-text>
@@ -39,7 +40,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.card 
+.card
   overflow: hidden
   max-height: 100%
   display: flex

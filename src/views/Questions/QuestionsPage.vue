@@ -1,33 +1,33 @@
 <template>
   <Layout2x1>
     <template v-slot:col-left>
-      <CourseList @setCourse="setCourse" :course="course" />
+      <QuestionList @setQuestion="setQuestion" :question="question" />
     </template>
     <template v-slot:col-right>
-      <CourseView :course="course" />
+      <QuestionView :question="question" />
     </template>
   </Layout2x1>
 </template>
 
 <script>
 import Layout2x1 from "@/layout/Layout2x1";
-import CourseView from "./CourseView";
-import CourseList from "./CourseList";
+import QuestionView from "./QuestionView";
+import QuestionList from "./QuestionList";
 
 export default {
   components: {
-    CourseView,
-    CourseList,
+    QuestionView,
+    QuestionList,
     Layout2x1
   },
   data() {
     return {
-      course: null
+      question: null
     };
   },
   methods: {
-    setCourse(course) {
-      this.course = course;
+    setQuestion(question) {
+      this.question = question;
     }
   }
 };

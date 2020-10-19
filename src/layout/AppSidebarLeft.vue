@@ -21,6 +21,16 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item to="/questions">
+            <v-list-item-action>
+              <font-awesome-icon icon="file-alt" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Въпроси
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
           <v-list-item to="/interests" v-if="current_user.admin">
             <v-list-item-action>
               <font-awesome-icon icon="user-friends" class="grey--text" />

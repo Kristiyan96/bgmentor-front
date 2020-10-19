@@ -1,14 +1,14 @@
 <template>
   <LayoutColumn paddingless>
     <template v-slot:title>
-      {{ course ? "Редактиране на курс" : "Нов курс" }}
+      {{ question ? "Редактиране на въпрос" : "Нов въпрос" }}
     </template>
 
     <template v-slot:header-actions>
       <DeleteButton
         @confirm="destroy"
-        v-if="course && current_user.admin"
-        tooltip="Delete course"
+        v-if="question && current_user.admin"
+        tooltip="Delete question"
       />
     </template>
 
@@ -24,7 +24,13 @@
           ></v-text-field>
         </v-col>
         <v-col cols="12" class="px-0">
-          <v-text-field label="Предмет" v-model="form.subject"></v-text-field>
+          <v-text-field label="Подсказка" v-model="form.hint"></v-text-field>
+        </v-col>
+        <v-col cols="12" class="px-0">
+          <v-text-field
+            label="Обяснение на отговора"
+            v-model="form.explanation"
+          ></v-text-field>
         </v-col>
       </v-row>
     </template>
@@ -39,7 +45,7 @@
         :disabled="!dirty"
         depressed
         @click="submit"
-        v-if="!course"
+        v-if="!question"
       >
         Създай
       </v-btn>
@@ -61,9 +67,9 @@ import LayoutColumn from "@/layout/LayoutColumn";
 import { _ } from "vue-underscore";
 import { mapGetters } from "vuex";
 import {
-  CREATE_COURSE,
-  UPDATE_COURSE,
-  DESTROY_COURSE
+  CREATE_QUESTION,
+  UPDATE_QUESTION,
+  DESTROY_QUESTION
 } from "@/store/actions.type";
 import store from "@/store";
 import DeleteButton from "@/views/components/DeleteButton";
@@ -74,50 +80,50 @@ export default {
     LayoutColumn
   },
   props: {
-    course: {
+    question: {
       type: Object,
       default: () => {},
-      description: "The selected course"
+      description: "The selected question"
     }
   },
   data() {
     return {
       form: {},
-      course_copy: {}
+      question_copy: {}
     };
   },
   methods: {
     submit() {
-      store.dispatch(CREATE_COURSE, this.form);
+      store.dispatch(CREATE_QUESTION, this.form);
     },
     update() {
-      store.dispatch(UPDATE_COURSE, this.form);
+      store.dispatch(UPDATE_QUESTION, this.form);
     },
     destroy() {
-      store.dispatch(DESTROY_COURSE, this.course.id);
+      store.dispatch(DESTROY_QUESTION, this.question.id);
     },
     reset() {
-      this.form = { ...this.course_copy };
+      this.form = { ...this.question_copy };
     }
   },
   computed: {
-    ...mapGetters(["current_user", "new_course"]),
+    ...mapGetters(["current_user", "new_question"]),
     dirty() {
-      return !_.isEqual(this.form, this.course_copy);
+      return !_.isEqual(this.form, this.question_copy);
     }
   },
   watch: {
-    course: {
+    question: {
       immediate: true,
       handler() {
-        if (this.course) {
-          this.form = { ...this.course };
+        if (this.question) {
+          this.form = { ...this.question };
         } else {
           this.form = {
-            ...this.new_course
+            ...this.new_question
           };
         }
-        this.course_copy = { ...this.form };
+        this.question_copy = { ...this.form };
       }
     }
   }
