@@ -28,13 +28,13 @@
             x-large
             depressed
             v-smooth-scroll
-            to="#courses"
+            to="#about"
           >
             <v-icon dark>mdi-magnify</v-icon>
           </v-btn>
         </v-col>
       </v-row>
-      <a style="text-decoration: none" href="#courses">> Подробно търсене</a>
+      <a style="text-decoration: none" href="#about">> Подробно търсене</a>
     </v-container>
   </v-form>
 </template>

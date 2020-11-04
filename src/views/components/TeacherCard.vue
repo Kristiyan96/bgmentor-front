@@ -14,7 +14,10 @@
         <v-list-item-title class="headline">{{
           teacher.name
         }}</v-list-item-title>
-        <v-list-item-subtitle
+        <v-list-item-subtitle v-if="!founder"
+          >Съосновател / учител</v-list-item-subtitle
+        >
+        <v-list-item-subtitle v-if="founder"
           >Учител по {{ teacher.subjects.join(", ") }}</v-list-item-subtitle
         >
       </v-list-item-content>
@@ -45,6 +48,11 @@ export default {
       type: Object,
       default: () => {},
       description: "Teacher object"
+    },
+    founder: {
+      type: Boolean,
+      default: false,
+      description: "Is it a founder"
     }
   },
   data() {
