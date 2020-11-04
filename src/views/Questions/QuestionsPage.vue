@@ -1,10 +1,10 @@
 <template>
   <Layout2x1>
     <template v-slot:col-left>
-      <QuestionList @setQuestion="setQuestion" :question="question" />
+      <QuestionList />
     </template>
     <template v-slot:col-right>
-      <QuestionView :question="question" />
+      <QuestionView />
     </template>
   </Layout2x1>
 </template>
@@ -21,14 +21,8 @@ export default {
     Layout2x1
   },
   data() {
-    return {
-      question: null
-    };
+    return {};
   },
-  methods: {
-    setQuestion(question) {
-      this.question = question;
-    }
-  }
+  methods: {}
 };
 </script>

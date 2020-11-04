@@ -10,7 +10,7 @@
 
 <script>
 import Landing from "./Landing/Landing";
-import About from "./Landing/About";
+import About from "./Landing/About/About";
 import Contacts from "./Landing/Contacts";
 import CoursesMath from "./Landing/CoursesMath";
 import CoursesProgramming from "./Landing/CoursesProgramming";

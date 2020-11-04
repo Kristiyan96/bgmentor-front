@@ -27,3 +27,4 @@ export const SET_QUESTIONS = "setQuestions";
 export const SET_QUESTION = "setQuestion";
 export const ADD_QUESTION = "addQuestion";
 export const REMOVE_QUESTION = "removeQuestion";
+export const SET_ACTIVE_QUESTION = "setActiveQuestion";

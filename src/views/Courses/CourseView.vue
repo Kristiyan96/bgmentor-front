@@ -18,10 +18,11 @@
           <v-text-field label="Заглавиe" v-model="form.title"></v-text-field>
         </v-col>
         <v-col cols="12" class="px-0">
-          <v-text-field
+          <VueEditor
             label="Описание"
             v-model="form.description"
-          ></v-text-field>
+            placeholder="Описание на курса"
+          />
         </v-col>
         <v-col cols="12" class="px-0">
           <v-text-field label="Предмет" v-model="form.subject"></v-text-field>
@@ -67,11 +68,13 @@ import {
 } from "@/store/actions.type";
 import store from "@/store";
 import DeleteButton from "@/views/components/DeleteButton";
+import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
     DeleteButton,
-    LayoutColumn
+    LayoutColumn,
+    VueEditor
   },
   props: {
     course: {
@@ -88,10 +91,16 @@ export default {
   },
   methods: {
     submit() {
-      store.dispatch(CREATE_COURSE, this.form);
+      store.dispatch(CREATE_COURSE, {
+        ...this.form,
+        options_attributes: [this.form.options]
+      });
     },
     update() {
-      store.dispatch(UPDATE_COURSE, this.form);
+      store.dispatch(UPDATE_COURSE, {
+        ...this.form,
+        options_attributes: [this.form.options]
+      });
     },
     destroy() {
       store.dispatch(DESTROY_COURSE, this.course.id);

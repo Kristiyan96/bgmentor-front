@@ -28,3 +28,6 @@ export const FETCH_QUESTIONS = "fetchQuestions";
 export const CREATE_QUESTION = "createQuestion";
 export const UPDATE_QUESTION = "updateQuestion";
 export const DESTROY_QUESTION = "destroyQuestion";
+export const ACTIVATE_QUESTION = "activateQuestion";
+
+export const ADD_OPTION = "addOption";

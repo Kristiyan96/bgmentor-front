@@ -15,7 +15,7 @@
         <v-row>
           <v-col cols="12" class="px-0 pb-0">
             <v-data-table
-              v-if="questions.length"
+              v-if="questions && questions.length"
               :headers="headers"
               :items="questions"
               :items-per-page="questions.length"
@@ -26,7 +26,7 @@
                 <tr
                   @click="activate(item)"
                   :class="{
-                    active: question && item.id == course.id,
+                    active: active_question && item.id == active_question.id,
                     fixed: item.fixed == true
                   }"
                 >
@@ -45,17 +45,10 @@
 <script>
 import LayoutColumn from "@/layout/LayoutColumn";
 import { mapGetters } from "vuex";
-import { FETCH_QUESTIONS } from "@/store/actions.type";
+import { FETCH_QUESTIONS, ACTIVATE_QUESTION } from "@/store/actions.type";
 import store from "@/store";
 
 export default {
-  props: {
-    question: {
-      type: Object,
-      default: () => {},
-      description: "Selected question"
-    }
-  },
   components: {
     LayoutColumn
   },
@@ -75,26 +68,14 @@ export default {
   },
   methods: {
     activate(item) {
-      this.$emit("setQuestion", item);
+      store.dispatch(ACTIVATE_QUESTION, item.id);
     },
     addNew() {
-      this.$emit("setQuestion", null);
+      store.dispatch(ACTIVATE_QUESTION);
     }
   },
   computed: {
-    ...mapGetters(["questions"])
-  },
-  watch: {
-    questions: {
-      immediate: true,
-      handler() {
-        if (this.questions.length) {
-          this.activate(this.questions[0]);
-        } else {
-          this.addNew();
-        }
-      }
-    }
+    ...mapGetters(["questions", "active_question"])
   }
 };
 </script>

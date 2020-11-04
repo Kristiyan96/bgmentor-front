@@ -11,7 +11,6 @@
         :rules="descriptionRules"
         required
       ></v-textarea>
-      <SkillsList />
     </template>
     <template v-slot:actions>
       <v-spacer></v-spacer>
@@ -39,12 +38,10 @@ import {
   FETCH_PROFILE
 } from "@/store/actions.type";
 import LayoutColumn from "@/layout/LayoutColumn";
-import SkillsList from "./TeacherSkills/SkillsList";
 
 export default {
   components: {
-    LayoutColumn,
-    SkillsList
+    LayoutColumn
   },
   data() {
     return {

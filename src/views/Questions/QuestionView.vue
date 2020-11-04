@@ -1,13 +1,13 @@
 <template>
   <LayoutColumn paddingless>
     <template v-slot:title>
-      {{ question ? "Редактиране на въпрос" : "Нов въпрос" }}
+      {{ active_question ? "Редактиране на въпрос" : "Нов въпрос" }}
     </template>
 
     <template v-slot:header-actions>
       <DeleteButton
         @confirm="destroy"
-        v-if="question && current_user.admin"
+        v-if="active_question && current_user.admin"
         tooltip="Delete question"
       />
     </template>
@@ -18,19 +18,22 @@
           <v-text-field label="Заглавиe" v-model="form.title"></v-text-field>
         </v-col>
         <v-col cols="12" class="px-0">
-          <v-text-field
-            label="Описание"
+          <VueEditor
             v-model="form.description"
-          ></v-text-field>
+            placeholder="Условие на задачата"
+          />
         </v-col>
         <v-col cols="12" class="px-0">
           <v-text-field label="Подсказка" v-model="form.hint"></v-text-field>
         </v-col>
         <v-col cols="12" class="px-0">
-          <v-text-field
-            label="Обяснение на отговора"
+          <VueEditor
             v-model="form.explanation"
-          ></v-text-field>
+            placeholder="Обяснение на отговора"
+          />
+        </v-col>
+        <v-col cols="12" class="px-0">
+          <Options />
         </v-col>
       </v-row>
     </template>
@@ -45,7 +48,7 @@
         :disabled="!dirty"
         depressed
         @click="submit"
-        v-if="!question"
+        v-if="!active_question"
       >
         Създай
       </v-btn>
@@ -73,18 +76,15 @@ import {
 } from "@/store/actions.type";
 import store from "@/store";
 import DeleteButton from "@/views/components/DeleteButton";
+import { VueEditor } from "vue2-editor";
+import Options from "./Options/Options";
 
 export default {
   components: {
     DeleteButton,
-    LayoutColumn
-  },
-  props: {
-    question: {
-      type: Object,
-      default: () => {},
-      description: "The selected question"
-    }
+    LayoutColumn,
+    VueEditor,
+    Options
   },
   data() {
     return {
@@ -94,30 +94,36 @@ export default {
   },
   methods: {
     submit() {
-      store.dispatch(CREATE_QUESTION, this.form);
+      let params = { ...this.form };
+      params.options_attributes = params.options;
+      delete params["options"];
+      store.dispatch(CREATE_QUESTION, params);
     },
     update() {
+      let params = { ...this.form };
+      params.options_attributes = params.options;
+      delete params["options"];
       store.dispatch(UPDATE_QUESTION, this.form);
     },
     destroy() {
-      store.dispatch(DESTROY_QUESTION, this.question.id);
+      store.dispatch(DESTROY_QUESTION, this.active_question.id);
     },
     reset() {
       this.form = { ...this.question_copy };
     }
   },
   computed: {
-    ...mapGetters(["current_user", "new_question"]),
+    ...mapGetters(["current_user", "new_question", "active_question"]),
     dirty() {
       return !_.isEqual(this.form, this.question_copy);
     }
   },
   watch: {
-    question: {
+    active_question: {
       immediate: true,
       handler() {
-        if (this.question) {
-          this.form = { ...this.question };
+        if (this.active_question) {
+          this.form = { ...this.active_question };
         } else {
           this.form = {
             ...this.new_question
