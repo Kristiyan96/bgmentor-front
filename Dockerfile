@@ -1,12 +1,12 @@
 FROM node:11
-WORKDIR /srv/daylogs
-ADD package* /srv/daylogs/
+WORKDIR /srv/bgmentor
+ADD package* /srv/bgmentor/
 RUN npm install
 ADD . .
 RUN npm run build --dest=dist
 RUN ls
 
 FROM nginx:latest
-WORKDIR /var/www/daylogs
-COPY --from=0 /srv/daylogs/dist/. .
+WORKDIR /var/www/bgmentor
+COPY --from=0 /srv/bgmentor/dist/. .
 COPY api-endpoint.conf /etc/nginx/conf.d/.
