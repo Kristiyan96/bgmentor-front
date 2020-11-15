@@ -5,7 +5,7 @@ RUN npm install
 ADD . .
 RUN npm run build
 
-FROM nginx:latest
+FROM nginx:alpine as production-build
 
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
