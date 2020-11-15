@@ -6,6 +6,11 @@ ADD . .
 RUN npm run build
 
 FROM nginx:latest
+
+## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
-WORKDIR /var/www/bgmentor-front
-COPY --from=builder /srv/bgmentor-front/dist/. .
+
+COPY --from=builder /vue-ui/dist /usr/share/nginx/html
+
+EXPOSE 80
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
