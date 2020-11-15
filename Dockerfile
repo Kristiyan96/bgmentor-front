@@ -1,11 +1,10 @@
 FROM node:11
-WORKDIR /srv/bgmentor-front
-ADD package* /srv/bgmentor-front/
+WORKDIR /vue-ui
+ADD package*.json ./
 RUN npm install
 ADD . .
-RUN npm run build --dest=dist
-RUN ls
+RUN npm run build
 
 FROM nginx:latest
 WORKDIR /var/www/bgmentor-front
-COPY --from=0 /srv/bgmentor-front/dist/. .
+COPY --from=builder /srv/bgmentor-front/dist/. .
