@@ -6,7 +6,7 @@ ADD . .
 RUN npm run build --dest=dist
 
 FROM nginx:alpine as production-build
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+ADD ./.nginx/nginx.conf /etc/nginx
 
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
