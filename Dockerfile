@@ -5,6 +5,6 @@ RUN npm install
 ADD . .
 RUN npm run build --dest=dist
 
-FROM nginx:alpine as production-build
-WORKDIR /var/www/vue-ui
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
 COPY --from=0 /srv/vue-ui/dist/. .
