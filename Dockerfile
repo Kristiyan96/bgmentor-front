@@ -1,17 +1,11 @@
 FROM node:11
-RUN mkdir /bgmentor-front
-
-WORKDIR /bgmentor-front
-
-COPY package.json /bgmentor-front
-COPY package-lock.json /bgmentor-front
+WORKDIR /srv/infbase
+ADD package* /srv/infbase/
 RUN npm install
+ADD . .
+RUN npm run build --dest=dist
+RUN ls
 
-COPY . /bgmentor-front
-
-CMD ["npm", "serve", "--dest=dist"]
-
-# FROM nginx:latest
-# WORKDIR /var/www/bgmentor
-# COPY --from=0 /srv/bgmentor/dist/. .
-# COPY api-endpoint.conf /etc/nginx/conf.d/.
+FROM nginx:latest
+WORKDIR /var/www/infbase
+COPY --from=0 /srv/infbase/dist/. .
