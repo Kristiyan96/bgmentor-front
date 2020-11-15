@@ -11,7 +11,7 @@ COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 ## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /vue-ui/dist /usr/share/nginx/html
+COPY --from=build /vue-ui/dist /usr/share/nginx/html
 
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
