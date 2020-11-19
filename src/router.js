@@ -13,79 +13,85 @@ let router = new Router({
       path: "/",
       name: "Landing",
       meta: { layout: "no-sidebar" },
-      component: require("@/views/Landing/Landing").default
+      component: require("@/views/Landing/Landing").default,
+    },
+    {
+      path: "/payments",
+      name: "Payments",
+      meta: { layout: "no-sidebar" },
+      component: require("@/views/Payments/Payments").default,
     },
     {
       path: "/search/:query",
       name: "Search",
       meta: { layout: "no-sidebar" },
-      component: require("@/views/Search/Main").default
+      component: require("@/views/Search/Main").default,
     },
     {
       path: "/login",
       name: "Login",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/Login")
+      component: () => import("@/views/Accounts/Login"),
     },
     {
       path: "/register",
       name: "Register",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/Signup")
+      component: () => import("@/views/Accounts/Signup"),
     },
     {
       path: "/confirm_email/:key",
       name: "Confirmation",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ConfirmEmail")
+      component: () => import("@/views/Accounts/ConfirmEmail"),
     },
     {
       path: "/forgot_password",
       name: "ForgotPassword",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ForgotPassword")
+      component: () => import("@/views/Accounts/ForgotPassword"),
     },
     {
       path: "/password/:token",
       name: "ResetPassword",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ResetPassword")
+      component: () => import("@/views/Accounts/ResetPassword"),
     },
     {
       path: "/terms",
       name: "Terms",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Terms")
+      component: () => import("@/views/Landing/Terms"),
     },
     {
       path: "/privacy",
       name: "Privacy",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Privacy")
+      component: () => import("@/views/Landing/Privacy"),
     },
     {
       path: "/частно-или-групово",
       name: "Частно или Групово",
       meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Blog/PrivateVsGroup")
+      component: () => import("@/views/Landing/Blog/PrivateVsGroup"),
     },
     {
       path: "/courses",
       name: "Courses",
       meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Courses/CoursesPage")
+      component: () => import("@/views/Courses/CoursesPage"),
     },
     {
       path: "/questions",
       name: "Questions",
       meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Questions/QuestionsPage")
+      component: () => import("@/views/Questions/QuestionsPage"),
     },
     {
       path: "/profiles/:id",
       name: "Profiles",
       meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Users/Profile")
+      component: () => import("@/views/Users/Profile"),
     },
     {
       path: "/profile",
@@ -95,22 +101,22 @@ let router = new Router({
       children: [
         {
           path: "general",
-          component: () => import("@/views/Accounts/Settings/General")
+          component: () => import("@/views/Accounts/Settings/General"),
         },
         {
           path: "teacherProfile",
-          component: () => import("@/views/Accounts/Settings/TeacherProfile")
+          component: () => import("@/views/Accounts/Settings/TeacherProfile"),
         },
         {
           path: "security",
-          component: () => import("@/views/Accounts/Settings/Security")
+          component: () => import("@/views/Accounts/Settings/Security"),
         },
         {
           path: "notifications",
-          component: () => import("@/views/Accounts/Settings/Notifications")
-        }
-      ]
-    }
+          component: () => import("@/views/Accounts/Settings/Notifications"),
+        },
+      ],
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -118,7 +124,7 @@ let router = new Router({
     } else {
       return { x: 0, y: 0 };
     }
-  }
+  },
 });
 
 export default router;
