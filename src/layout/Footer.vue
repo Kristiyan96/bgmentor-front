@@ -17,4 +17,8 @@
 export default {};
 </script>
 <style scoped lang="sass">
+.v-footer
+  position: fixed
+  bottom: 0
+  width: 100%
 </style>
