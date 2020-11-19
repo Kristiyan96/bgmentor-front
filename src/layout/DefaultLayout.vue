@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Header from "./AppHeader";
+import Header from "./Header/AppHeader";
 import SidebarLeft from "./AppSidebarLeft";
 import Footer from "./Footer";
 import { mapGetters } from "vuex";
