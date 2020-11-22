@@ -19,6 +19,10 @@ import moment from "moment-timezone";
 import VueDeviceDetector from "vue-device-detector";
 import vClickOutside from "v-click-outside";
 import VueFbCustomerChat from "vue-fb-customer-chat";
+import VuePhoneNumberInput from "vue-phone-number-input";
+import "vue-phone-number-input/dist/vue-phone-number-input.css";
+
+Vue.component("vue-phone-number-input", VuePhoneNumberInput);
 
 import "@/assets/styles/table.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -46,7 +50,7 @@ import {
   faCog,
   faShieldAlt,
   faAt,
-  faKey
+  faKey,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 library.add({
@@ -73,7 +77,7 @@ library.add({
   faCog,
   faShieldAlt,
   faAt,
-  faKey
+  faKey,
 });
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 
@@ -81,19 +85,19 @@ Vue.use(GAuth, {
   clientId:
     "416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com",
   scope: "profile email",
-  prompt: "select_account"
+  prompt: "select_account",
 });
 Vue.use(VueGtag, {
   config: {
     id:
-      "416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com"
-  }
+      "416415299078-04rm7eih4dufkukuhbfcd3v772ol95a1.apps.googleusercontent.com",
+  },
 });
 Vue.use(Vue2Filters);
 Vue.use(require("vue-cookies"));
 Vue.use(VueDeviceDetector);
 Vue.use(VueMoment, {
-  moment
+  moment,
 });
 Vue.use(vueSmoothScroll);
 Vue.use(underscore);
@@ -122,10 +126,10 @@ router.beforeEach((to, from, next) => {
 document.addEventListener("DOMContentLoaded", () => {
   let v = new Vue({
     router,
-    render: h => h(App),
+    render: (h) => h(App),
     vuetify,
     i18n,
-    store
+    store,
   });
   global.vm = v; //Define you app variable globally
   v.$mount("#app");

@@ -1,0 +1,10 @@
+#app {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -142px;
+}
+
+.v-footer {
+  height: 142px;
+}

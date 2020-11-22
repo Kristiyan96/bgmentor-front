@@ -1,10 +1,12 @@
 <template>
-  <v-content>
+  <div class="container-wrapper">
     <Header />
     <SidebarLeft v-if="current_user && current_user.id" />
-    <slot />
+    <v-content>
+      <slot />
+    </v-content>
     <Footer v-if="!current_user || !current_user.id" />
-  </v-content>
+  </div>
 </template>
 
 <script>
@@ -17,10 +19,17 @@ export default {
   components: {
     Header,
     Footer,
-    SidebarLeft
+    SidebarLeft,
   },
   computed: {
-    ...mapGetters(["current_user"])
-  }
+    ...mapGetters(["current_user"]),
+  },
 };
 </script>
+
+<style lang="sass">
+.container-wrapper
+  height: 100%
+  display: flex
+  flex-direction: column
+</style>

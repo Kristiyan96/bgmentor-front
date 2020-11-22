@@ -10,11 +10,11 @@
 import DefaultLayout from "@/layout/DefaultLayout";
 export default {
   components: {
-    DefaultLayout
+    DefaultLayout,
   },
   data() {
     return {};
-  }
+  },
 };
 </script>
 
@@ -32,4 +32,8 @@ html
   overflow-y: auto !important
 .v-btn
   text-transform: none !important
+#app
+  display: flex
+  flex-direction: column
+  min-height: 100%
 </style>
