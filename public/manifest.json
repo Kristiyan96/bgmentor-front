@@ -1,6 +1,6 @@
 {
-  "name": "infbase-frontend",
-  "short_name": "infbase-frontend",
+  "name": "bgmentor-frontend",
+  "short_name": "bgmentor-frontend",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
