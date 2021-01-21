@@ -1,11 +1,11 @@
 <template>
   <div class="container-wrapper">
     <Header />
-    <SidebarLeft v-if="current_user && current_user.id" />
-    <v-content>
+    <SidebarLeft v-if="currentUser && currentUser.id" />
+    <v-main>
       <slot />
-    </v-content>
-    <Footer v-if="!current_user || !current_user.id" />
+    </v-main>
+    <Footer v-if="!currentUser" />
   </div>
 </template>
 
@@ -14,17 +14,16 @@ import Header from "./Header/AppHeader";
 import SidebarLeft from "./AppSidebarLeft";
 import Footer from "./Footer";
 import { mapGetters } from "vuex";
-
 export default {
   components: {
     Header,
     Footer,
-    SidebarLeft,
+    SidebarLeft
   },
   computed: {
-    ...mapGetters(["current_user"]),
-  },
-};
+    ...mapGetters(["currentUser"])
+  }
+}
 </script>
 
 <style lang="sass">

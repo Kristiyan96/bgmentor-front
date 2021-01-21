@@ -11,34 +11,73 @@
     <v-layout column fill-height align-content-start>
       <v-flex shrink>
         <v-list dense shaped>
-          <v-list-item to="/courses">
+          <v-list-item to="/verify" v-if="!currentUser.verified">
             <v-list-item-action>
-              <font-awesome-icon icon="file-alt" class="grey--text" />
+              <font-awesome-icon icon="sms" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                Теми
+                {{ $t("nav.verify") }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/questions">
+          <v-list-item to="/me/general">
             <v-list-item-action>
-              <font-awesome-icon icon="file-alt" class="grey--text" />
+              <font-awesome-icon icon="user" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                Въпроси
+                {{ $t("nav.profile") }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/interests" v-if="current_user.admin">
+          <v-list-item to="/schedule">
+            <v-list-item-action>
+              <font-awesome-icon icon="calendar-alt" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t("nav.schedule") }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/payments" v-if="!currentUser.isStudent">
+            <v-list-item-action>
+              <font-awesome-icon icon="dollar-sign" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title> {{ $t("nav.payments") }} </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/follows" v-if="currentUser.isTeacher">
+            <v-list-item-action>
+              <font-awesome-icon icon="star" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t("nav.myStudents") }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item
+            to="/my_lessons"
+            v-if="currentUser.isTeacher || currentUser.isStudent"
+          >
+            <v-list-item-action>
+              <font-awesome-icon icon="history" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t("nav.myLessons") }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/interests" v-if="currentUser.admin">
             <v-list-item-action>
               <font-awesome-icon icon="user-friends" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
-                Заявки
-              </v-list-item-title>
+              <v-list-item-title> Заявки </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -50,28 +89,22 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { TOGGLE_SIDEBAR } from "@/store/mutations.type";
-
 export default {
   data() {
     return {};
   },
-  mounted() {
-    if (!this.$isMobile()) {
-      store.commit(TOGGLE_SIDEBAR);
-    }
-  },
+  mounted() {},
   computed: {
-    ...mapGetters(["favorites", "sidebar", "current_user"])
+    ...mapGetters(["sidebar", "currentUser"])
   },
   methods: {
     handleClickOutside() {
       if (this.sidebar && this.$isMobile()) {
-        store.commit(TOGGLE_SIDEBAR);
+        store.commit("toggleSidebar");
       }
     }
   }
-};
+}
 </script>
 
 <style scoped lang="sass">

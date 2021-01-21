@@ -3,7 +3,7 @@
     transition="slide-y-transition"
     bottom
     offset-y
-    v-if="current_user && current_user.id"
+    v-if="currentUser && currentUser.id"
   >
     <template v-slot:activator="{ on }">
       <v-btn fab dedpressed small text color="grey" v-on="on">
@@ -11,7 +11,7 @@
       </v-btn>
     </template>
     <v-list>
-      <v-list-item to="/profile/general">
+      <v-list-item to="/me/general">
         <v-list-item-title>Моят профил</v-list-item-title>
       </v-list-item>
       <v-list-item @click="logOut">
@@ -24,21 +24,20 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { LOGOUT } from "@/store/actions.type";
-
 export default {
   data() {
     return {
-      projectDialog: false,
+      projectDialog: false
     };
   },
   methods: {
     logOut() {
-      store.dispatch(LOGOUT).then(() => this.$router.push("/"));
-    },
+      store.commit("purgeAuth");
+      this.$router.push("/");
+    }
   },
   computed: {
-    ...mapGetters(["current_user"]),
-  },
+    ...mapGetters(["currentUser"])
+  }
 };
 </script>

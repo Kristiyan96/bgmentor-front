@@ -41,21 +41,14 @@ export default {
 
 <style lang="sass" scoped>
 .card
-  overflow: hidden
-  max-height: 100%
+  overflow: auto
   display: flex
   flex-direction: column
-
   .v-card__title
     border-bottom: 1px solid rgba(0, 0, 0, 0.12)
-
   .v-card__text
     display: flex
     flex-direction: column
     position: relative
     overflow: auto
-    max-height: calc(100% - 68px)
-
-  .v-card__text.small
-    max-height: calc(100% - 120px)
 </style>
