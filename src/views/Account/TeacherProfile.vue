@@ -1,14 +1,12 @@
 <template>
   <LayoutColumn paddingless>
-    <template v-slot:title>
-      Моята обява
-    </template>
+    <template v-slot:title> {{ $t("account.ad.title") }} </template>
     <template v-slot:content>
       <v-textarea
         class="mb-2"
-        v-model="user.description"
-        label="Моля, опишете Вашия опит, постижения..."
-        :rules="descriptionRules"
+        v-model="user.education"
+        :label="$t('account.ad.education')"
+        :rules="educationRules"
         required
       ></v-textarea>
     </template>
@@ -21,7 +19,7 @@
         :loading="loading"
         @click="submit"
       >
-        Запази
+        {{ $t("form.save") }}
       </v-btn>
     </template>
   </LayoutColumn>
@@ -30,15 +28,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import {
-  FETCH_SUBJECTS,
-  FETCH_LEVELS,
-  FETCH_SKILLS,
-  UPDATE_PROFILE,
-  FETCH_PROFILE
-} from "@/store/actions.type";
 import LayoutColumn from "@/layout/LayoutColumn";
-
 export default {
   components: {
     LayoutColumn
@@ -48,36 +38,33 @@ export default {
       show: false,
       user: {},
       loading: false,
-      descriptionRules: [v => !!v || "Описанието е задължително."]
+      educationRules: [v => !!v || "Описанието е задължително."]
     };
   },
   mounted() {
-    store.dispatch(FETCH_SUBJECTS);
-    store.dispatch(FETCH_LEVELS);
-    store.dispatch(FETCH_SKILLS, this.current_user.id);
     this.user = {
-      ...this.current_user
+      ...this.currentUser
     };
   },
   methods: {
     submit() {
       this.loading = true;
-      store.dispatch(UPDATE_PROFILE, this.user).then(response => {
+      store.dispatch("updateProfile", this.user).then(response => {
         this.loading = false;
       });
     }
   },
   computed: {
-    ...mapGetters(["current_user", "subjects", "levels"]),
+    ...mapGetters(["currentUser", "subjects", "levels"]),
     dirty() {
-      return this.user.description != this.current_user.description;
+      return this.user.education !== this.currentUser.education;
     }
   },
   watch: {
-    current_user: {
+    currentUser: {
       immediate: true,
       handler() {
-        store.dispatch(FETCH_PROFILE, { id: null });
+        store.dispatch("fetchProfile", { id: null });
       }
     }
   }

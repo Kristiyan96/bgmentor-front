@@ -1,19 +1,38 @@
 <template>
-  <LayoutColumn paddingless v-if="user">
+  <LayoutColumn paddingless>
     <template v-slot:title>
-      Лична информация
+      {{ $t("account.general.title") }}
     </template>
 
     <template v-slot:content>
       <v-form @submit.prevent="submit">
-        <v-text-field v-model="user.name" label="Име" required>
+        <v-text-field
+          v-model="user.first_name"
+          :label="$t('auth.label.firstName')"
+          required
+        >
           <font-awesome-icon
             class="grey--text"
             :icon="['fa', 'user']"
             slot="prepend"
           />
         </v-text-field>
-        <v-text-field disabled v-model="user.email" label="Имейл" required>
+        <v-text-field
+          v-model="user.last_name"
+          :label="$t('auth.label.lastName')"
+          required
+        >
+          <font-awesome-icon
+            class="grey--text"
+            :icon="['fa', 'user']"
+            slot="prepend"
+          />
+        </v-text-field>
+        <v-text-field
+          v-model="user.email"
+          :label="$t('auth.label.email')"
+          required
+        >
           <font-awesome-icon
             class="grey--text"
             :icon="['fa', 'at']"
@@ -27,7 +46,7 @@
 
     <template v-slot:actions>
       <v-btn :disabled="false" depressed @click="alert()" text>
-        Върни промените
+        {{ $t("form.clearChanges") }}
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn
@@ -37,7 +56,7 @@
         :loading="loading"
         @click="submit"
       >
-        Редактирай
+        {{ $t("form.save") }}
       </v-btn>
     </template>
   </LayoutColumn>
@@ -46,9 +65,7 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "@/store";
-import { UPDATE_PROFILE, FETCH_PROFILE } from "@/store/actions.type";
 import LayoutColumn from "@/layout/LayoutColumn";
-
 export default {
   components: {
     LayoutColumn
@@ -57,34 +74,32 @@ export default {
     return {
       show: false,
       loading: false,
-      user: null
+      user: {
+        first_name: "",
+        last_name: "",
+        email: ""
+      }
     };
   },
   mounted() {
     this.user = {
-      ...this.current_user
+      ...this.currentUser
     };
   },
   methods: {
     submit() {
       this.loading = true;
-      store.dispatch(UPDATE_PROFILE, this.user).then(response => {
-        this.loading = false;
-      });
+      store.dispatch("updateProfile", this.user);
     }
   },
   computed: {
-    ...mapGetters(["current_user"]),
+    ...mapGetters(["currentUser"]),
     dirty() {
-      return this.user.name != this.current_user.name;
-    }
-  },
-  watch: {
-    current_user: {
-      immediate: true,
-      handler() {
-        store.dispatch(FETCH_PROFILE, { id: null });
-      }
+      return (
+        this.user.first_name !== this.currentUser.first_name ||
+        this.user.last_name !== this.currentUser.last_name ||
+        this.user.email !== this.currentUser.email
+      );
     }
   }
 };

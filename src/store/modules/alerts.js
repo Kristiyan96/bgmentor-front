@@ -1,7 +1,3 @@
-import { CREATE_ALERT, DESTROY_ALERT } from "../actions.type";
-
-import { ADD_ALERT, REMOVE_ALERT } from "../mutations.type";
-
 const state = {
   alerts: []
 };
@@ -13,31 +9,32 @@ const getters = {
 };
 
 const actions = {
-  [CREATE_ALERT](context, [message, status]) {
+  createAlert(context, [message, status]) {
     let idx = context.state.alerts.findIndex(
-      a => a[0] == message && a[1] == status
+      a => a[0] === message && a[1] === status
     );
 
-    if (idx == -1) {
+    if (idx === -1) {
       // prevent adding the same status multiple times
-      context.commit(ADD_ALERT, [message, status]);
+      context.commit("addAlert", [message, status]);
       setTimeout(
-        () => context.commit(REMOVE_ALERT, message),
+        () => context.commit("removeAlert", message),
         700 + message.length * 75
       );
     }
   },
-  [DESTROY_ALERT]({ commit }, message) {
-    commit(REMOVE_ALERT, message);
+  destroyAlert({ commit }, message) {
+    commit("removeAlert", message);
   }
 };
 
 const mutations = {
-  [ADD_ALERT](state, alert) {
+  addAlert(state, alert) {
     state.alerts.push(alert);
   },
-  [REMOVE_ALERT](state, message) {
-    state.alerts = state.alerts.filter(([msg, _status]) => msg != message);
+  removeAlert(state, message) {
+    // eslint-disable-next-line no-unused-vars
+    state.alerts = state.alerts.filter(([msg, _status]) => msg !== message);
   }
 };
 

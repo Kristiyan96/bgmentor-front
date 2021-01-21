@@ -1,9 +1,22 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Signin from "@/views/Guest/Signin";
+import Signup from "@/views/Guest/Signup";
+import Verify from "@/views/Guest/Verify";
+import ForgotPassword from "@/views/Guest/ForgotPassword";
+import ResetPassword from "@/views/Guest/ResetPassword";
+import UsersList from "@/views/admin/users/List";
+import UserEdit from "@/views/admin/users/Edit";
+import Account from "@/views/Account";
+import Landing from "@/views/Landing/index";
+import Payments from "@/views/Payments/index";
+import MyLessons from "@/views/Lessons/index";
+import MyFollows from "@/views/Follows/index";
+import CalendarWrapper from "@/views/Schedule/CalendarWrapper";
 
 Vue.use(Router);
 
-let router = new Router({
+export default new Router({
   mode: "history",
   linkExactActiveClass: "active",
   linkActiveClass: "active",
@@ -12,119 +25,85 @@ let router = new Router({
     {
       path: "/",
       name: "Landing",
-      meta: { layout: "no-sidebar" },
-      component: require("@/views/Landing/Landing").default,
+      component: Landing
+    },
+    {
+      path: "/signin",
+      name: "Signin",
+      component: Signin
+    },
+    {
+      path: "/me",
+      name: "Account",
+      component: Account,
+      children: [
+        {
+          path: "general",
+          component: () => import("@/views/Account/General")
+        },
+        {
+          path: "teacher_profile",
+          component: () => import("@/views/Account/TeacherProfile")
+        },
+        {
+          path: "security",
+          component: () => import("@/views/Account/Security")
+        },
+        {
+          path: "notifications",
+          component: () => import("@/views/Account/Notifications")
+        }
+      ]
+    },
+    {
+      path: "/schedule",
+      name: "Schedule",
+      component: CalendarWrapper
+    },
+    {
+      path: "/my_lessons",
+      name: "MyLessons",
+      component: MyLessons
+    },
+    {
+      path: "/follows",
+      name: "Follows",
+      component: MyFollows
     },
     {
       path: "/payments",
       name: "Payments",
-      meta: { layout: "no-sidebar" },
-      component: require("@/views/Payments/Payments").default,
+      component: Payments
     },
     {
-      path: "/search/:query",
-      name: "Search",
-      meta: { layout: "no-sidebar" },
-      component: require("@/views/Search/Main").default,
+      path: "/verify",
+      name: "Verify",
+      component: Verify
     },
     {
-      path: "/login",
-      name: "Login",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/Login"),
-    },
-    {
-      path: "/register",
-      name: "Register",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/Signup"),
-    },
-    {
-      path: "/confirm_email/:key",
-      name: "Confirmation",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ConfirmEmail"),
+      path: "/signup",
+      name: "Signup",
+      component: Signup
     },
     {
       path: "/forgot_password",
       name: "ForgotPassword",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ForgotPassword"),
+      component: ForgotPassword
     },
     {
-      path: "/password/:token",
+      path: "/password_resets/:token",
       name: "ResetPassword",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Accounts/ResetPassword"),
+      component: ResetPassword
     },
     {
-      path: "/terms",
-      name: "Terms",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Terms"),
+      path: "/admin/users",
+      name: "UsersList",
+      component: UsersList
     },
     {
-      path: "/privacy",
-      name: "Privacy",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Privacy"),
-    },
-    {
-      path: "/частно-или-групово",
-      name: "Частно или Групово",
-      meta: { layout: "no-sidebar" },
-      component: () => import("@/views/Landing/Blog/PrivateVsGroup"),
-    },
-    {
-      path: "/courses",
-      name: "Courses",
-      meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Courses/CoursesPage"),
-    },
-    {
-      path: "/questions",
-      name: "Questions",
-      meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Questions/QuestionsPage"),
-    },
-    {
-      path: "/profiles/:id",
-      name: "Profiles",
-      meta: { requiresAuth: true, layout: "no-sidebar" },
-      component: () => import("@/views/Users/Profile"),
-    },
-    {
-      path: "/profile",
-      name: "Profile",
-      meta: { requiresAuth: true },
-      component: () => import("@/views/Accounts/Settings/Profile"),
-      children: [
-        {
-          path: "general",
-          component: () => import("@/views/Accounts/Settings/General"),
-        },
-        {
-          path: "teacherProfile",
-          component: () => import("@/views/Accounts/Settings/TeacherProfile"),
-        },
-        {
-          path: "security",
-          component: () => import("@/views/Accounts/Settings/Security"),
-        },
-        {
-          path: "notifications",
-          component: () => import("@/views/Accounts/Settings/Notifications"),
-        },
-      ],
-    },
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { x: 0, y: 0 };
+      path: "/admin/users/:id",
+      name: "UserEdit",
+      component: UserEdit
     }
-  },
+  ]
 });
-
-export default router;

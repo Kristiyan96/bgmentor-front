@@ -1,48 +1,26 @@
-import {
-  TOGGLE_RESIZABLE,
-  TOGGLE_SIDEBAR,
-  TOGGLE_SIDEBARRIGHT
-} from "../mutations.type";
-
 const state = {
-  resizable: false,
-  sidebar: false,
-  sidebarRight: false,
-  colLeft: true,
-  colRight: true
+  sidebar: true,
+  visibleColumn: "0" // 0 for left or 1 for right
 };
 
 const getters = {
-  resizable(state) {
-    return state.resizable;
-  },
   sidebar(state) {
     return state.sidebar;
   },
-  sidebarRight(state) {
-    return state.sidebarRight;
-  },
-  colLeft(state) {
-    return state.colLeft;
-  },
-  colRight(state) {
-    return state.colRight;
+  visibleColumn(state) {
+    return state.visibleColumn;
   }
 };
 
-const actions = {
-
-};
+const actions = {};
 
 const mutations = {
-  [TOGGLE_RESIZABLE](state) {
-    state.resizable = !state.resizable;
-  },
-  [TOGGLE_SIDEBAR](state) {
+  toggleSidebar(state) {
     state.sidebar = !state.sidebar;
   },
-  [TOGGLE_SIDEBARRIGHT](state, open) {
-    state.sidebarRight = open;
+  setVisibleColumn(state, column) {
+    column = column || "left";
+    state.visibleColumn = column;
   }
 };
 

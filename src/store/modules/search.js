@@ -1,8 +1,5 @@
 import ApiService from "@/common/api.service";
 
-import { FETCH_RESULTS } from "../actions.type";
-import { SET_RESULTS } from "../mutations.type";
-
 import {} from "../mutations.type";
 
 const state = {
@@ -16,14 +13,14 @@ const getters = {
 };
 
 const actions = {
-  async [FETCH_RESULTS]({ commit }, params) {
-    const { data } = await ApiService.query(`/search`, params);
-    commit(SET_RESULTS, data);
+  async ["fetchResults"]({ commit }, params) {
+    const { data } = await ApiService.query("/search", params);
+    commit("setResults", data);
   }
 };
 
 const mutations = {
-  [SET_RESULTS](state, results) {
+  ["setResults"](state, results) {
     state.results = results;
   }
 };

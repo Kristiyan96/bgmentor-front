@@ -1,150 +1,146 @@
-import ApiService from "@/common/api.service";
-import JwtService from "@/common/jwt.service";
-import router from "@/router";
-
-import { UserService } from "@/common/api.service";
-
-import {
-  LOGIN,
-  LOGOUT,
-  CHECK_AUTH,
-  REGISTER,
-  UPDATE_PROFILE,
-  CREATE_ALERT,
-  FETCH_PROFILE
-} from "../actions.type";
-
-import { SET_AUTH, PURGE_AUTH, SET_ERROR } from "../mutations.type";
+import router from "@/router.js";
 
 const state = {
-  isAuthenticated: false,
-  user: {},
-  errors: {}
+  user: null,
+  csrf: null
 };
 
 const getters = {
-  current_user(state) {
-    return state.user;
+  role(state) {
+    return state.user ? state.user.role : "student";
   },
-  formatted_name(state) {
-    let user = state.user;
-    if (!user || !user.name) return "";
-    return user.name
-      .split(" ")
-      .map((n, idx) => {
-        if (idx > 0 && n.length) {
-          return n[0].toUpperCase() + ".";
-        } else {
-          return n;
-        }
-      })
-      .join(" ");
+  isAdmin(state) {
+    return state.user && state.user.role === "admin";
+  },
+  isTeacher(state) {
+    return state.user && state.user.role === "teacher";
+  },
+  isStudent(state) {
+    return state.user && state.user.role === "student";
+  },
+  currentUserId(state) {
+    return state.user ? state.user.id : null;
+  },
+  currentUser(state, getters) {
+    return {
+      ...state.user,
+      isAdmin: getters.isAdmin,
+      isTeacher: getters.isTeacher,
+      isStudent: getters.isStudent
+    };
   }
 };
 
 const actions = {
-  [FETCH_PROFILE]({ commit, dispatch }, { id = null }) {
+  fetchProfile({ commit }) {
     return new Promise(resolve => {
-      if (id == null) {
-        id = state.user.id;
-      }
-      ApiService.get("profiles", id)
+      this._vm.$http.secured
+        .get("/me")
         .then(response => {
+          commit("setUser", response.data);
           resolve(response.data);
         })
         .catch(error => {
-          commit(SET_ERROR, error);
+          console.log(error);
         });
     });
   },
-  [LOGIN]({ commit, dispatch }, credentials) {
+  updateProfile({ commit }, user) {
     return new Promise(resolve => {
-      ApiService.post("login", { user: credentials })
+      this._vm.$http.secured
+        .put("/me", { user: user })
         .then(response => {
-          dispatch(CREATE_ALERT, ["Влязохте успешно.", "success"]);
-          commit(SET_AUTH, [response.headers.authorization, response.data]);
+          commit("setUser", response.data);
           resolve(response.data);
         })
         .catch(error => {
-          dispatch(CREATE_ALERT, [error.response.data.error, "warning"]);
-          commit(SET_ERROR, error);
+          console.log(error);
         });
     });
   },
-  [LOGOUT]({ commit, dispatch }) {
+  register({ commit }, user) {
     return new Promise(resolve => {
-      ApiService.delete("logout")
-        .then(() => {
-          dispatch(CREATE_ALERT, ["Излязохте успешно.", "success"]);
-          commit(PURGE_AUTH);
-          resolve();
-        })
-        .catch(response => {
-          commit(SET_ERROR, response.data.errors);
-        });
-    });
-  },
-  [CHECK_AUTH]({ commit, dispatch }, requiresAuth = false) {
-    if (JwtService.getToken()) {
-      ApiService.setHeader();
-      commit(SET_AUTH, [JwtService.getToken(), JwtService.getUser()]);
-    } else if (requiresAuth) {
-      commit(PURGE_AUTH);
-      router.push("/login");
-      dispatch(CREATE_ALERT, ["Моля, първо влезте в акаунта си."]);
-    }
-  },
-  [REGISTER]({ commit }, user) {
-    return new Promise(resolve => {
-      ApiService.post("signup", { user: user })
+      this._vm.$http.plain
+        .post("/signup", { user: user })
         .then(response => {
+          commit("setUser", response.data.user);
+          commit("setAuth", response.data.csrf);
+          router.push("verify");
           resolve(response.data);
         })
         .catch(error => {
-          commit(SET_ERROR, error);
+          commit("purgeAuth");
+          resolve(error);
         });
     });
   },
-  async [UPDATE_PROFILE]({ commit, dispatch }, user) {
+  logIn({ commit }, user) {
     return new Promise(resolve => {
-      UserService.update(user)
-        .then(({ data }) => {
-          commit(SET_AUTH, [null, data]);
-          dispatch(CREATE_ALERT, ["Промените бяха запазазени успешно.", "success"]);
-          resolve(data);
+      this._vm.$http.plain
+        .post("/signin", user)
+        .then(response => {
+          commit("setUser", response.data.user);
+          commit("setAuth", response.data.csrf);
+          router.push("me");
+          resolve(response.data);
         })
         .catch(error => {
-          commit(SET_ERROR, error);
+          commit("purgeAuth");
+          resolve(error);
+        });
+    });
+  },
+  verify({ commit }, token) {
+    return new Promise(resolve => {
+      this._vm.$http.secured
+        .post("verify", { token: token })
+        .then(response => {
+          commit("setUser", response.data);
+          router.push("me");
+          resolve(response.data);
+        })
+        .catch(error => {
+          resolve(error);
+        });
+    });
+  },
+  logOut({ commit }) {
+    return new Promise(resolve => {
+      this._vm.$http.secured
+        .delete("/signin")
+        .then(response => {
+          commit("setUser", null);
+          commit("purgeAuth");
+          router.push("");
+          resolve(response.data);
+        })
+        .catch(error => {
+          commit("purgeAuth");
+          resolve(error);
         });
     });
   }
 };
 
 const mutations = {
-  [SET_ERROR](state, error) {
-    state.errors = error;
-  },
-  [SET_AUTH](state, [token, user]) {
-    state.isAuthenticated = true;
-    state.errors = {};
-
+  setUser(state, user = null) {
     if (user) {
-      state.user = user;
-      JwtService.saveUser(user);
+      state.signedIn = true;
     }
-    if (token) {
-      JwtService.saveToken(token);
-    }
+    state.user = user;
   },
-  [PURGE_AUTH](state) {
-    state.isAuthenticated = false;
-    state.user = {};
-    state.errors = {};
-    state.admin = false;
-    state.id = null;
-    JwtService.destroyToken();
-    JwtService.destroyUser();
-    ApiService.setHeader();
+  setAuth(state, csrf) {
+    state.signedIn = true;
+    state.csrf = csrf;
+  },
+  refreshAuth(state, csrf) {
+    state.signedIn = true;
+    state.csrf = csrf;
+  },
+  purgeAuth(state) {
+    state.user = null;
+    state.signedIn = false;
+    state.csrf = null;
   }
 };
 
