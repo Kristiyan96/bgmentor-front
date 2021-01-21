@@ -55,7 +55,7 @@ const messages = {
       notif: {
         title: "Notifications and SMS",
         info:
-          "Apologies, this functionality is not ready yet. We will not send "unimportant" SMS and emails."
+          "Apologies, this functionality is not ready yet. We will not send 'unimportant' SMS and emails."
       },
       ad: {
         title: "My public profile",
