@@ -18,7 +18,6 @@ import VueMoment from "vue-moment";
 import moment from "moment-timezone";
 import VueDeviceDetector from "vue-device-detector";
 import vClickOutside from "v-click-outside";
-import VueFbCustomerChat from "vue-fb-customer-chat";
 import VuePhoneNumberInput from "vue-phone-number-input";
 import "vue-phone-number-input/dist/vue-phone-number-input.css";
 

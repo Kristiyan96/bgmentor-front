@@ -1,13 +1,13 @@
-import '@mdi/font/css/materialdesignicons.css';
+import "@mdi/font/css/materialdesignicons.css";
 import Vue from "vue";
-import VueI18n from 'vue-i18n';
+import VueI18n from "vue-i18n";
 
 Vue.use(VueI18n);
 
 const messages = {
   en: {
     calendar: {
-      today: 'Today',
+      today: "Today",
       day: "Day",
       week: "Week",
       month: "Month",
@@ -18,37 +18,37 @@ const messages = {
         "4": "Thu",
         "5": "Fri",
         "6": "Sat",
-        "0": 'Sun'
-      }
+        "0": "Sun",
+      },
     },
     account: {
       roles: {
-        student: 'Student',
-        teacher: 'Teacher',
-        parent: 'Parent',
-        guardian: 'Parent',
-        admin: 'Admin'
-      }
+        student: "Student",
+        teacher: "Teacher",
+        parent: "Parent",
+        guardian: "Parent",
+        admin: "Admin",
+      },
     },
     lesson: {
       "1": "Group lesson",
       "0": "Privave lesson",
     },
     memberships: {
-      remainingCredits: "Payed lessons: {0}"
+      remainingCredits: "Payed lessons: {0}",
     },
     auth: {
       title: {
         signin: "Log in",
         register: "Sign up",
         forgot_password: "Forgot password",
-        reset_password: "Reset password"
+        reset_password: "Reset password",
       },
       button: {
         google: "Sign in with Google",
         signin: "Sign in",
         register: "Sign up",
-        change_password: "Change password"
+        change_password: "Change password",
       },
       label: {
         name: "Names",
@@ -56,55 +56,55 @@ const messages = {
         password: "Password",
         remember_me: "Remember me",
         new_password: "New password",
-        confirm_password: "Confirm password"
+        confirm_password: "Confirm password",
       },
       link: {
         forgot_password: "Forgot password?",
         register: "New account",
-        signin: "Sign in"
-      }
+        signin: "Sign in",
+      },
     },
     $vuetify: {
-      close: 'Close',
+      close: "Close",
       dataIterator: {
-        pageText: '{0}-{1} of {2}',
-        noResultsText: 'No matching records found',
-        loadingText: 'Loading items...',
+        pageText: "{0}-{1} of {2}",
+        noResultsText: "No matching records found",
+        loadingText: "Loading items...",
       },
       dataTable: {
-        itemsPerPageText: 'Rows per page:',
+        itemsPerPageText: "Rows per page:",
         ariaLabel: {
-          sortDescending: ': Sorted descending. Activate to remove sorting.',
-          sortAscending: ': Sorted ascending. Activate to sort descending.',
-          sortNone: ': Not sorted. Activate to sort ascending.',
+          sortDescending: ": Sorted descending. Activate to remove sorting.",
+          sortAscending: ": Sorted ascending. Activate to sort descending.",
+          sortNone: ": Not sorted. Activate to sort ascending.",
         },
-        sortBy: 'Sort by',
+        sortBy: "Sort by",
       },
       dataFooter: {
-        pageText: '{0}-{1} of {2}',
-        itemsPerPageText: 'Items per page:',
-        itemsPerPageAll: 'All',
-        nextPage: 'Next page',
-        prevPage: 'Previous page',
-        firstPage: 'First page',
-        lastPage: 'Last page',
+        pageText: "{0}-{1} of {2}",
+        itemsPerPageText: "Items per page:",
+        itemsPerPageAll: "All",
+        nextPage: "Next page",
+        prevPage: "Previous page",
+        firstPage: "First page",
+        lastPage: "Last page",
       },
       datePicker: {
-        itemsSelected: '{0} selected',
+        itemsSelected: "{0} selected",
       },
-      noDataText: 'No data available',
+      noDataText: "No data available",
       carousel: {
-        prev: 'Previous visual',
-        next: 'Next visual',
+        prev: "Previous visual",
+        next: "Next visual",
       },
       calendar: {
-        moreEvents: '{0} more',
+        moreEvents: "{0} more",
       },
-    }
+    },
   },
   bg: {
     calendar: {
-      today: 'Днес',
+      today: "Днес",
       day: "Ден",
       week: "Седмица",
       month: "Месец",
@@ -115,28 +115,28 @@ const messages = {
         "4": "Четв",
         "5": "Пет",
         "6": "Съб",
-        "0": 'Нед'
-      }
+        "0": "Нед",
+      },
     },
     account: {
       roles: {
-        student: 'Ученик',
-        teacher: 'Учител',
-        parent: 'Родител',
-        guardian: 'Родител',
-        admin: 'Админ'
-      }
+        student: "Ученик",
+        teacher: "Учител",
+        parent: "Родител",
+        guardian: "Родител",
+        admin: "Админ",
+      },
     },
     lesson: {
-      "collective": "Групов урок",
-      "individual": "Частен урок",
+      collective: "Групов урок",
+      individual: "Частен урок",
     },
     auth: {
       title: {
         signin: "Вход",
         register: "Регистрация",
         forgot_password: "Забравена парола",
-        reset_password: "Промяна на парола"
+        reset_password: "Промяна на парола",
       },
       button: {
         google: "Влез с Google",
@@ -150,58 +150,58 @@ const messages = {
         password: "Парола",
         remember_me: "Запомни ме",
         new_password: "Нова парола",
-        confirm_password: "Потвърди паролата"
+        confirm_password: "Потвърди паролата",
       },
       link: {
         forgot_password: "Забравена парола?",
         register: "Нов акаунт",
-        signin: "Вход"
-      }
+        signin: "Вход",
+      },
     },
     memberships: {
-      remainingCredits: "Платени уроци: {0}"
+      remainingCredits: "Платени уроци: {0}",
     },
     $vuetify: {
-      close: 'Close',
+      close: "Close",
       dataIterator: {
-        pageText: '{0}-{1} of {2}',
-        noResultsText: 'No matching records found',
-        loadingText: 'Loading items...',
+        pageText: "{0}-{1} of {2}",
+        noResultsText: "No matching records found",
+        loadingText: "Loading items...",
       },
       dataTable: {
-        itemsPerPageText: 'Rows per page:',
+        itemsPerPageText: "Rows per page:",
         ariaLabel: {
-          sortDescending: ': Sorted descending. Activate to remove sorting.',
-          sortAscending: ': Sorted ascending. Activate to sort descending.',
-          sortNone: ': Not sorted. Activate to sort ascending.',
+          sortDescending: ": Sorted descending. Activate to remove sorting.",
+          sortAscending: ": Sorted ascending. Activate to sort descending.",
+          sortNone: ": Not sorted. Activate to sort ascending.",
         },
-        sortBy: 'Sort by',
+        sortBy: "Sort by",
       },
       dataFooter: {
-        pageText: '{0}-{1} of {2}',
-        itemsPerPageText: 'Items per page:',
-        itemsPerPageAll: 'All',
-        nextPage: 'Next page',
-        prevPage: 'Previous page',
-        firstPage: 'First page',
-        lastPage: 'Last page',
+        pageText: "{0}-{1} of {2}",
+        itemsPerPageText: "Items per page:",
+        itemsPerPageAll: "All",
+        nextPage: "Next page",
+        prevPage: "Previous page",
+        firstPage: "First page",
+        lastPage: "Last page",
       },
       datePicker: {
-        itemsSelected: '{0} selected',
+        itemsSelected: "{0} selected",
       },
-      noDataText: 'No data available',
+      noDataText: "No data available",
       carousel: {
-        prev: 'Previous visual',
-        next: 'Next visual',
+        prev: "Previous visual",
+        next: "Next visual",
       },
       calendar: {
-        moreEvents: '{0} more',
+        moreEvents: "{0} more",
       },
-    }
-  }
-}
+    },
+  },
+};
 
 export default new VueI18n({
-  locale: 'bg',
-  messages
+  locale: "bg",
+  messages,
 });
