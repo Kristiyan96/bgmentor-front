@@ -1,7 +1,8 @@
 import "@mdi/font/css/materialdesignicons.css";
 import Vue from "vue";
-import Vuetify from "vuetify/lib";
+import Vuetify from "vuetify";
 import VueI18n from "vue-i18n";
+import "vuetify/dist/vuetify.min.css";
 
 Vue.use(Vuetify);
 Vue.use(VueI18n);
@@ -13,16 +14,16 @@ const messages = {
       dataIterator: {
         pageText: "{0}-{1} of {2}",
         noResultsText: "No matching records found",
-        loadingText: "Loading items...",
+        loadingText: "Loading items..."
       },
       dataTable: {
         itemsPerPageText: "Rows per page:",
         ariaLabel: {
           sortDescending: ": Sorted descending. Activate to remove sorting.",
           sortAscending: ": Sorted ascending. Activate to sort descending.",
-          sortNone: ": Not sorted. Activate to sort ascending.",
+          sortNone: ": Not sorted. Activate to sort ascending."
         },
-        sortBy: "Sort by",
+        sortBy: "Sort by"
       },
       dataFooter: {
         pageText: "{0}-{1} of {2}",
@@ -31,20 +32,20 @@ const messages = {
         nextPage: "Next page",
         prevPage: "Previous page",
         firstPage: "First page",
-        lastPage: "Last page",
+        lastPage: "Last page"
       },
       datePicker: {
-        itemsSelected: "{0} selected",
+        itemsSelected: "{0} selected"
       },
       noDataText: "No data available",
       carousel: {
         prev: "Previous visual",
-        next: "Next visual",
+        next: "Next visual"
       },
       calendar: {
-        moreEvents: "{0} more",
-      },
-    },
+        moreEvents: "{0} more"
+      }
+    }
   },
   bg: {
     $vuetify: {
@@ -52,7 +53,7 @@ const messages = {
       dataIterator: {
         pageText: "{0}-{1} от {2}",
         noResultsText: "Не бяха открити резултати",
-        loadingText: "Зарежда...",
+        loadingText: "Зарежда..."
       },
       dataTable: {
         itemsPerPageText: "Резлутати на страница:",
@@ -60,9 +61,9 @@ const messages = {
           sortDescending:
             ": В низходящ ред. Активирай, за да махнеш сортиране.",
           sortAscending: ": Във възходящ ред. Активирай за низходящ.",
-          sortNone: ": Несортирано. активирай за възходящ.",
+          sortNone: ": Несортирано. активирай за възходящ."
         },
-        sortBy: "Сортирай по",
+        sortBy: "Сортирай по"
       },
       dataFooter: {
         pageText: "{0}-{1} от {2}",
@@ -71,34 +72,34 @@ const messages = {
         nextPage: "Следваща",
         prevPage: "Предишна",
         firstPage: "Първа",
-        lastPage: "Последна",
+        lastPage: "Последна"
       },
       datePicker: {
-        itemsSelected: "{0} избрани",
+        itemsSelected: "{0} избрани"
       },
       noDataText: "Няма информация",
       carousel: {
         prev: "ППредишен",
-        next: "Следващ",
+        next: "Следващ"
       },
       calendar: {
-        moreEvents: "{0} още",
-      },
-    },
-  },
-};
+        moreEvents: "{0} още"
+      }
+    }
+  }
+}
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: "bg",
-  messages,
+  messages
 });
 
 export default new Vuetify({
   icons: {
-    iconfont: "mdi",
+    iconfont: "mdi"
   },
   lang: {
-    t: (key, ...params) => i18n.t(key, params),
-  },
+    t: (key, ...params) => i18n.t(key, params)
+  }
 });
