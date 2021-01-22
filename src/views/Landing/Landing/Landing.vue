@@ -4,14 +4,7 @@
     <v-container class="hidden-sm-and-down">
       <v-row class="pl-3">
         <v-col md="5" sm="5" xs="12" class="col-left pl-5">
-          <TeacherSearch />
-
-          <h4 class="mb-3 grey--text">
-            Отличаваме се с нашия амбициозен и млад екип - всеки един от нас е
-            не само учител, но и ученик с отличия в математиката. Това ни
-            позволява да видим проблемите на учениците през техните очи и да
-            изберем най-подходящия начин на преподаване.
-          </h4>
+          <h4 class="mb-3 grey--text"></h4>
         </v-col>
         <v-col md="7" sm="7" xs="12">
           <img
@@ -31,14 +24,7 @@
           Групово и индивидуално <br />обучение по
           {{ words[count % words.length] }}
         </h1>
-        <v-btn
-          class="primary"
-          rounded
-          x-large
-          depressed
-          href="#courses"
-          v-smooth-scroll
-        >
+        <v-btn class="primary" rounded x-large depressed href="#courses">
           Прегледай курсовете
         </v-btn>
       </v-row>
@@ -47,11 +33,8 @@
 </template>
 
 <script>
-import TeacherSearch from "./TeacherSearch";
 export default {
-  components: {
-    TeacherSearch
-  },
+  name: "Landing",
   data() {
     return {
       cssProps: {

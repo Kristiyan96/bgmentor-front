@@ -46,8 +46,7 @@
 </template>
 
 <script>
-import TeacherCard from "@/views/components/TeacherCard";
-
+import TeacherCard from "@/components/TeacherCard";
 export default {
   components: {
     TeacherCard

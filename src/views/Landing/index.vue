@@ -1,8 +1,6 @@
 <template>
   <div class="body">
     <Landing />
-    <CoursesMath />
-    <CoursesProgramming />
     <Contacts />
     <About />
   </div>
@@ -10,19 +8,14 @@
 
 <script>
 import Landing from "./Landing/Landing";
-import About from "./Landing/About/About";
+import About from "./Landing/About";
 import Contacts from "./Landing/Contacts";
-import CoursesMath from "./Landing/CoursesMath";
-import CoursesProgramming from "./Landing/CoursesProgramming";
-
 export default {
   name: "landing",
   components: {
     Landing,
     About,
-    Contacts,
-    CoursesMath,
-    CoursesProgramming
+    Contacts
   },
   data() {
     return {};
@@ -48,6 +41,5 @@ export default {
       img
         display: inline-block
         width: calc(90vw - 500px)
-
 section.features
 </style>

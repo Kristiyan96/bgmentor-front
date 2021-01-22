@@ -108,14 +108,14 @@ h2
   padding: 50px 0px
 .mapouter
   position:relative
-  text-align:right
-  max-height:500px
-  max-width:600px
+  text-align: right
+  max-height: 500px
+  max-width: 600px
 .gmap_canvas
   overflow: hidden
   background: none !important
-  max-height:500px
-  width:100%
+  max-height: 500px
+  width: 100%
   iframe
     min-width: 100%
 table
