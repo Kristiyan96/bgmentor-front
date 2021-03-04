@@ -39,19 +39,20 @@
       ></v-text-field>
 
       <v-btn type="submit" large color="primary" class="btn mt-3">
-        {{ $t("auth.link.register") }}
+        {{ $t('auth.link.register') }}
       </v-btn>
     </form>
   </FormWrapper>
 </template>
 
 <script>
-import FormWrapper from "./FormWrapper";
-import store from "@/store/index";
-import VuePhoneNumberInput from "vue-phone-number-input";
-import "vue-phone-number-input/dist/vue-phone-number-input.css";
+import FormWrapper from './FormWrapper'
+import store from '@/store/index'
+import VuePhoneNumberInput from 'vue-phone-number-input'
+import 'vue-phone-number-input/dist/vue-phone-number-input.css'
+
 export default {
-  name: "Signup",
+  name: 'Signup',
   components: {
     FormWrapper,
     VuePhoneNumberInput
@@ -59,38 +60,38 @@ export default {
   data() {
     return {
       valid: false,
-      email: "",
-      phoneNumber: "",
-      formattedNumber: "",
-      password: "",
-      password_confirmation: "",
-      error: ""
-    };
+      email: '',
+      phoneNumber: '',
+      formattedNumber: '',
+      password: '',
+      password_confirmation: '',
+      error: ''
+    }
   },
   created() {
-    this.checkSignedIn();
+    this.checkSignedIn()
   },
   updated() {
-    this.checkSignedIn();
+    this.checkSignedIn()
   },
   methods: {
     signup() {
-      store.dispatch("register", {
+      store.dispatch('register', {
         email: this.email,
         phone_number: this.formattedNumber,
         password: this.password,
         password_confirmation: this.password_confirmation
-      });
+      })
     },
     checkSignedIn() {
       if (store.state.auth.signedIn) {
-        this.$router.replace("/todos");
+        this.$router.replace('/todos')
       }
     },
     handleChange({ formattedNumber, isValid, formatInternational }) {
-      this.valid = isValid;
-      this.formattedNumber = formattedNumber;
+      this.valid = isValid
+      this.formattedNumber = formattedNumber
     }
   }
-};
+}
 </script>

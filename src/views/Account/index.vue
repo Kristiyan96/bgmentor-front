@@ -3,6 +3,7 @@
     <template v-slot:col-left>
       <LayoutColumn>
         <template v-slot:title> Профил </template>
+
         <template v-slot:content>
           <v-container class="px-0 pb-0">
             <v-flex xs12>
@@ -52,15 +53,15 @@
 </template>
 
 <script>
-import Layout2x1 from "@/layout/Layout2x1";
-import LayoutColumn from "@/layout/LayoutColumn";
+import Layout2x1 from '@/layout/Layout2x1'
+import LayoutColumn from '@/layout/LayoutColumn'
 export default {
   components: {
     Layout2x1,
     LayoutColumn
   },
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>

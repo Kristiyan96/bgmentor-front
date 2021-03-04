@@ -34,22 +34,22 @@
 
 <script>
 export default {
-  name: "Landing",
+  name: 'Landing',
   data() {
     return {
       cssProps: {
-        backgroundImage: `url(${require("@/assets/images/bg.png")})`
+        backgroundImage: `url(${require('@/assets/images/bg.png')})`
       },
       count: 0,
-      words: ["математика", "програмиране", ""]
-    };
+      words: ['математика', 'програмиране', '']
+    }
   },
-  mounted: function() {
+  mounted: function () {
     window.setInterval(() => {
-      this.count++;
-    }, 3000);
+      this.count++
+    }, 3000)
   }
-};
+}
 </script>
 
 <style scoped lang="sass">

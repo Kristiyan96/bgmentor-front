@@ -14,9 +14,9 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style lang="sass" scoped></style>

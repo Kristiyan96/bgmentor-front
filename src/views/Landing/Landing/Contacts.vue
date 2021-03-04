@@ -84,20 +84,20 @@ export default {
       active: false,
       addresses: [
         {
-          title: "Офис 1",
+          title: 'Офис 1',
           link:
-            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.045412837181!2d23.326595115467185!3d42.70275917916532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x160e33202ab13629!2z0KjQutC-0LvQsCAi0JHQsyDQnNC10L3RgtC-0YAi!5e0!3m2!1sen!2sbg!4v1573422803711!5m2!1sen!2sbg"
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2932.045412837181!2d23.326595115467185!3d42.70275917916532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x160e33202ab13629!2z0KjQutC-0LvQsCAi0JHQsyDQnNC10L3RgtC-0YAi!5e0!3m2!1sen!2sbg!4v1573422803711!5m2!1sen!2sbg'
         },
         {
-          title: "Офис 2",
+          title: 'Офис 2',
           link:
-            "https://maps.google.com/maps?q=ul%20Nikolai%20Gogol%2021&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            'https://maps.google.com/maps?q=ul%20Nikolai%20Gogol%2021&t=&z=15&ie=UTF8&iwloc=&output=embed'
         }
       ],
       selected: 0
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped lang="sass">

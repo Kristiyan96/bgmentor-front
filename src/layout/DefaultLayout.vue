@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import Header from "./Header/AppHeader";
-import SidebarLeft from "./AppSidebarLeft";
-import Footer from "./Footer";
-import { mapGetters } from "vuex";
+import Header from './Header/AppHeader'
+import SidebarLeft from './AppSidebarLeft'
+import Footer from './Footer'
+import { mapGetters } from 'vuex'
+
 export default {
   components: {
     Header,
@@ -21,7 +22,7 @@ export default {
     SidebarLeft
   },
   computed: {
-    ...mapGetters(["currentUser"])
+    ...mapGetters(['currentUser'])
   }
 }
 </script>

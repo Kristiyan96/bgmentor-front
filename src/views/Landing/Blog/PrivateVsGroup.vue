@@ -156,16 +156,15 @@
 </template>
 
 <script>
-import CourseSignUp from "@/views/components/CourseSignUp";
-
+import CourseSignUp from '@/views/components/CourseSignUp'
 export default {
   components: {
     CourseSignUp
   },
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style scoped lang="sass">

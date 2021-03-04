@@ -19,15 +19,15 @@ export default {
     return {
       langs: [
         {
-          label: "Бг",
-          value: "bg"
+          label: 'Бг',
+          value: 'bg'
         },
         {
-          label: "En",
-          value: "en"
+          label: 'En',
+          value: 'en'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>

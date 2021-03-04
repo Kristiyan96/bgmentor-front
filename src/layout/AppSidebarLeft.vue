@@ -17,7 +17,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ $t("nav.verify") }}
+                {{ $t('nav.verify') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -27,7 +27,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ $t("nav.profile") }}
+                {{ $t('nav.profile') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -37,7 +37,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ $t("nav.schedule") }}
+                {{ $t('nav.schedule') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -46,7 +46,7 @@
               <font-awesome-icon icon="dollar-sign" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title> {{ $t("nav.payments") }} </v-list-item-title>
+              <v-list-item-title> {{ $t('nav.payments') }} </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-list-item to="/follows" v-if="currentUser.isTeacher">
@@ -55,7 +55,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ $t("nav.myStudents") }}
+                {{ $t('nav.myStudents') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -68,7 +68,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
-                {{ $t("nav.myLessons") }}
+                {{ $t('nav.myLessons') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -87,20 +87,25 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import store from "@/store";
+import { mapGetters } from 'vuex'
+import store from '@/store'
+
 export default {
   data() {
-    return {};
+    return {}
   },
-  mounted() {},
+  mounted() {
+    // if (!this.$isMobile()) {
+    //   store.commit('toggleSidebar')
+    // }
+  },
   computed: {
-    ...mapGetters(["sidebar", "currentUser"])
+    ...mapGetters(['sidebar', 'currentUser'])
   },
   methods: {
     handleClickOutside() {
       if (this.sidebar && this.$isMobile()) {
-        store.commit("toggleSidebar");
+        store.commit('toggleSidebar')
       }
     }
   }

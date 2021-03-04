@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-card class="mx-auto my-12" max-width="385" shaped>
-      <v-card-title>{{ $t("verify.verifyNumber") }}</v-card-title>
+      <v-card-title>{{ $t('verify.verifyNumber') }}</v-card-title>
 
-      <div class="my-4 mx-5 subtitle-1">{{ $t("verify.info") }}</div>
+      <div class="my-4 mx-5 subtitle-1">{{ $t('verify.info') }}</div>
 
       <v-card-text
         ><CodeInput
@@ -16,10 +16,10 @@
 
       <v-card-actions>
         <v-btn color="primary" @click="resendCode">
-          {{ $t("verify.resend") }}
+          {{ $t('verify.resend') }}
         </v-btn>
         <v-btn @click="$router.go(-1)" text>
-          {{ $t("verify.changeNumber") }}
+          {{ $t('verify.changeNumber') }}
         </v-btn></v-card-actions
       >
     </v-card>
@@ -27,35 +27,36 @@
 </template>
 
 <script>
-import VuePhoneNumberInput from "vue-phone-number-input";
-import store from "@/store/index";
-import "vue-phone-number-input/dist/vue-phone-number-input.css";
-import CodeInput from "vue-verification-code-input";
+import VuePhoneNumberInput from 'vue-phone-number-input'
+import store from '@/store/index'
+import 'vue-phone-number-input/dist/vue-phone-number-input.css'
+import CodeInput from 'vue-verification-code-input'
+
 export default {
   components: { VuePhoneNumberInput, CodeInput },
-  name: "Verify",
+  name: 'Verify',
   data() {
     return {
-      token: ""
-    };
+      token: ''
+    }
   },
   methods: {
     onChange(token) {
-      this.token = token;
+      this.token = token
     },
     onComplete(token) {
-      store.dispatch("verify", token);
+      store.dispatch('verify', token)
     },
     resendCode() {
       this.$http.secured
-        .post("resend")
-        .then(response => {
-          console.log(response);
+        .post('resend')
+        .then((response) => {
+          console.log(response)
         })
-        .catch(error => {
-          console.log(error);
-        });
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>

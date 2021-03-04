@@ -1,6 +1,6 @@
 <template>
   <LayoutColumn paddingless>
-    <template v-slot:title> {{ $t("account.ad.title") }} </template>
+    <template v-slot:title> {{ $t('account.ad.title') }} </template>
     <template v-slot:content>
       <v-textarea
         class="mb-2"
@@ -19,16 +19,16 @@
         :loading="loading"
         @click="submit"
       >
-        {{ $t("form.save") }}
+        {{ $t('form.save') }}
       </v-btn>
     </template>
   </LayoutColumn>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import store from "@/store";
-import LayoutColumn from "@/layout/LayoutColumn";
+import { mapGetters } from 'vuex'
+import store from '@/store'
+import LayoutColumn from '@/layout/LayoutColumn'
 export default {
   components: {
     LayoutColumn
@@ -38,35 +38,35 @@ export default {
       show: false,
       user: {},
       loading: false,
-      educationRules: [v => !!v || "Описанието е задължително."]
-    };
+      educationRules: [(v) => !!v || 'Описанието е задължително.']
+    }
   },
   mounted() {
     this.user = {
       ...this.currentUser
-    };
+    }
   },
   methods: {
     submit() {
-      this.loading = true;
-      store.dispatch("updateProfile", this.user).then(response => {
-        this.loading = false;
-      });
+      this.loading = true
+      store.dispatch('updateProfile', this.user).then((response) => {
+        this.loading = false
+      })
     }
   },
   computed: {
-    ...mapGetters(["currentUser", "subjects", "levels"]),
+    ...mapGetters(['currentUser', 'subjects', 'levels']),
     dirty() {
-      return this.user.education !== this.currentUser.education;
+      return this.user.education !== this.currentUser.education
     }
   },
   watch: {
     currentUser: {
       immediate: true,
       handler() {
-        store.dispatch("fetchProfile", { id: null });
+        store.dispatch('fetchProfile', { id: null })
       }
     }
   }
-};
+}
 </script>

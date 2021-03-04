@@ -11,54 +11,55 @@
         :placeholder="$t('auth.label.password')"
       ></v-text-field>
       <v-btn type="submit" large color="primary" class="btn mt-3">
-        {{ $t("auth.button.signin") }}
+        {{ $t('auth.button.signin') }}
       </v-btn>
     </form>
   </FormWrapper>
 </template>
 
 <script>
-import FormWrapper from "./FormWrapper";
-import { mapGetters } from "vuex";
-import store from "@/store/index";
-import PhoneNumber from "@/components/PhoneNumber";
+import FormWrapper from './FormWrapper'
+import { mapGetters } from 'vuex'
+import store from '@/store/index'
+import PhoneNumber from '@/components/PhoneNumber'
+
 export default {
-  name: "Signin",
+  name: 'Signin',
   components: {
     FormWrapper,
     PhoneNumber
   },
   data() {
     return {
-      phone_number: "",
-      password: "",
-      error: ""
-    };
+      phone_number: '',
+      password: '',
+      error: ''
+    }
   },
   created() {
-    this.checkSignedIn();
+    this.checkSignedIn()
   },
   updated() {
-    this.checkSignedIn();
+    this.checkSignedIn()
   },
   methods: {
     signin() {
-      store.dispatch("logIn", {
+      store.dispatch('logIn', {
         phone_number: this.phone_number,
         password: this.password
-      });
+      })
     },
     checkSignedIn() {
       if (this.currentUserId) {
-        this.$router.replace("/me");
+        this.$router.replace('/me')
       }
     },
     updatePhoneNumber({ input }) {
-      this.phone_number = input;
+      this.phone_number = input
     }
   },
   computed: {
-    ...mapGetters(["currentUserId"])
+    ...mapGetters(['currentUserId'])
   }
-};
+}
 </script>

@@ -7,33 +7,13 @@
 </template>
 
 <script>
-import DefaultLayout from "@/layout/DefaultLayout";
+import DefaultLayout from '@/layout/DefaultLayout'
 export default {
   components: {
-    DefaultLayout,
+    DefaultLayout
   },
-  data() {
-    return {};
-  },
-};
+  name: 'App'
+}
 </script>
 
-<style lang="sass">
-@import '../node_modules/vuetify/dist/vuetify.css'
-.theme--light.v-application
-  background-color: white !important
-.row
-  margin: 0px !important
-.container.grey.lighten-4
-  padding: 0px
-button:focus, a:focus
-  outline: 0 !important
-html
-  overflow-y: auto !important
-.v-btn
-  text-transform: none !important
-#app
-  display: flex
-  flex-direction: column
-  min-height: 100%
-</style>
+<style></style>

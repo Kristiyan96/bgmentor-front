@@ -1,7 +1,7 @@
 <template>
   <LayoutColumn paddingless>
     <template v-slot:title>
-      {{ $t("account.general.title") }}
+      {{ $t('account.general.title') }}
     </template>
 
     <template v-slot:content>
@@ -46,7 +46,7 @@
 
     <template v-slot:actions>
       <v-btn :disabled="false" depressed @click="alert()" text>
-        {{ $t("form.clearChanges") }}
+        {{ $t('form.clearChanges') }}
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn
@@ -56,16 +56,17 @@
         :loading="loading"
         @click="submit"
       >
-        {{ $t("form.save") }}
+        {{ $t('form.save') }}
       </v-btn>
     </template>
   </LayoutColumn>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import store from "@/store";
-import LayoutColumn from "@/layout/LayoutColumn";
+import { mapGetters } from 'vuex'
+import store from '@/store'
+import LayoutColumn from '@/layout/LayoutColumn'
+
 export default {
   components: {
     LayoutColumn
@@ -75,32 +76,32 @@ export default {
       show: false,
       loading: false,
       user: {
-        first_name: "",
-        last_name: "",
-        email: ""
+        first_name: '',
+        last_name: '',
+        email: ''
       }
-    };
+    }
   },
   mounted() {
     this.user = {
       ...this.currentUser
-    };
+    }
   },
   methods: {
     submit() {
-      this.loading = true;
-      store.dispatch("updateProfile", this.user);
+      this.loading = true
+      store.dispatch('updateProfile', this.user)
     }
   },
   computed: {
-    ...mapGetters(["currentUser"]),
+    ...mapGetters(['currentUser']),
     dirty() {
       return (
         this.user.first_name !== this.currentUser.first_name ||
         this.user.last_name !== this.currentUser.last_name ||
         this.user.email !== this.currentUser.email
-      );
+      )
     }
   }
-};
+}
 </script>

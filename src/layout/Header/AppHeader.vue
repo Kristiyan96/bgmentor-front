@@ -14,11 +14,12 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import store from "@/store";
-import Alerts from "../Alerts";
-import UserHeader from "./User";
-import GuestHeader from "./Guest";
+import { mapGetters } from 'vuex'
+import store from '@/store'
+import Alerts from '../Alerts'
+import UserHeader from './User'
+import GuestHeader from './Guest'
+
 export default {
   components: {
     Alerts,
@@ -28,15 +29,15 @@ export default {
   data() {
     return {
       projectDialog: false
-    };
+    }
   },
   methods: {
     toggleSidebar() {
-      store.commit("toggleSidebar");
+      store.commit('toggleSidebar')
     }
   },
   computed: {
-    ...mapGetters(["currentUser"])
+    ...mapGetters(['currentUser'])
   }
-};
+}
 </script>

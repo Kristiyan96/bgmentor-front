@@ -21,28 +21,26 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { DESTROY_ALERT } from "@/store/actions.type";
-
+import { mapGetters } from 'vuex'
 export default {
   props: {
     position: {
       type: Array,
-      default: () => ["top", "right"]
+      default: () => ['top', 'right']
     }
   },
   data() {
     return {
       snackbar: true
-    };
+    }
   },
   methods: {
     closeAlert(message) {
-      this.$store.dispatch(DESTROY_ALERT, message);
+      this.$store.dispatch('destroyAlert', message)
     }
   },
   computed: {
-    ...mapGetters(["alerts"])
-  },
-};
+    ...mapGetters(['alerts'])
+  }
+}
 </script>

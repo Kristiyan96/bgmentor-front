@@ -7,20 +7,21 @@
 </template>
 
 <script>
-import Landing from "./Landing/Landing";
-import About from "./Landing/About";
-import Contacts from "./Landing/Contacts";
+import Landing from './Landing/Landing'
+import About from './Landing/About'
+import Contacts from './Landing/Contacts'
+
 export default {
-  name: "landing",
+  name: 'landing',
   components: {
     Landing,
     About,
     Contacts
   },
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style scoped lang="sass">

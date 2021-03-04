@@ -4,7 +4,7 @@
       <div class="alert alert-info" v-if="notice">{{ notice }}</div>
       <div class="alert alert-danger" v-if="error">{{ error }}</div>
       <div class="form-group">
-        <label for="email">{{ $t("auth.label.email") }}</label>
+        <label for="email">{{ $t('auth.label.email') }}</label>
         <input
           v-model="email"
           type="email"
@@ -14,43 +14,44 @@
         />
       </div>
       <v-btn type="submit" large color="primary" class="btn mt-3"
-        >{{ $t("auth.button.reset_password") }}
+        >{{ $t('auth.button.reset_password') }}
       </v-btn>
     </form>
   </FormWrapper>
 </template>
 
 <script>
-import FormWrapper from "./FormWrapper";
+import FormWrapper from './FormWrapper'
+
 export default {
-  name: "ForgotPassword",
+  name: 'ForgotPassword',
   components: {
     FormWrapper
   },
   data() {
     return {
-      email: "",
-      error: "",
-      notice: ""
-    };
+      email: '',
+      error: '',
+      notice: ''
+    }
   },
   methods: {
     submit() {
       this.$http.plain
-        .post("/password_resets", { email: this.email })
+        .post('/password_resets', { email: this.email })
         .then(() => this.submitSuccessful())
-        .catch(error => this.submitFailed(error));
+        .catch((error) => this.submitFailed(error))
     },
     submitSuccessful() {
-      this.notice = "Email with password reset instructions had been sent.";
-      this.error = "";
-      this.email = "";
+      this.notice = 'Email with password reset instructions had been sent.'
+      this.error = ''
+      this.email = ''
     },
     submitFailed(error) {
       this.error =
         (error.response && error.response.data && error.response.data.error) ||
-        "";
+        ''
     }
   }
-};
+}
 </script>

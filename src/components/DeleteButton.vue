@@ -3,6 +3,7 @@
     <template v-slot:activator="{ on }">
       <v-btn icon @click="openDialog" v-on="on">
         <font-awesome-icon icon="trash-alt" />
+
         <v-dialog v-model="open" max-width="290">
           <v-card>
             <v-card-title class="headline">You want to delete?</v-card-title>
@@ -31,26 +32,26 @@ export default {
   props: {
     tooltip: {
       type: String,
-      default: "Delete record",
-      description: "Default tooltip text"
+      default: 'Delete record',
+      description: 'Default tooltip text'
     }
   },
   data() {
     return {
       open: false
-    };
+    }
   },
   methods: {
     openDialog() {
-      this.open = true;
+      this.open = true
     },
     closeDialog() {
-      this.open = false;
+      this.open = false
     },
     confirm() {
-      this.$emit("confirm");
-      this.closeDialog();
+      this.$emit('confirm')
+      this.closeDialog()
     }
   }
-};
+}
 </script>

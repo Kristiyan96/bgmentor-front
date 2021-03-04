@@ -16,11 +16,11 @@
   </v-footer>
 </template>
 <script>
-import ChooseLanguage from "@/components/ChooseLanguage";
+import ChooseLanguage from '@/components/ChooseLanguage'
 export default {
   components: {
     ChooseLanguage
   }
-};
+}
 </script>
 <style scoped lang="sass"></style>

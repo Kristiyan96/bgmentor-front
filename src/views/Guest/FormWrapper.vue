@@ -11,12 +11,12 @@
     <v-divider class="mx-4"></v-divider>
 
     <v-card-actions>
-      <router-link to="/signin">{{ $t("auth.button.signin") }}</router-link>
+      <router-link to="/signin">{{ $t('auth.button.signin') }}</router-link>
       <v-spacer />
-      <router-link to="/signup">{{ $t("auth.link.register") }}</router-link>
+      <router-link to="/signup">{{ $t('auth.link.register') }}</router-link>
       <v-spacer />
       <router-link to="/forgot_password">{{
-        $t("auth.link.forgot_password")
+        $t('auth.link.forgot_password')
       }}</router-link>
     </v-card-actions>
   </v-card>
@@ -24,16 +24,16 @@
 
 <script>
 export default {
-  name: "Wrapper",
+  name: 'Wrapper',
   props: {
     title: {
       type: String,
-      default: "",
-      description: "Form title"
+      default: '',
+      description: 'Form title'
     }
   },
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>

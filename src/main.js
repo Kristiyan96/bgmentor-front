@@ -1,18 +1,18 @@
-import Vue from "vue";
-import App from "./App";
-import router from "./router.js";
-import store from "./store/index";
-import VueAxios from "vue-axios";
+import Vue from 'vue'
+import App from './App'
+import router from './router.js'
+import store from './store/index'
+import VueAxios from 'vue-axios'
 import {
   roledAxiosInstance,
   securedAxiosInstance,
   plainAxiosInstance
-} from "./backend/axios";
-import vuetify from "./plugins/vuetify";
-import i18n from "./plugins/vue-i18n";
-import VueMobileDetection from "vue-mobile-detection";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+} from './backend/axios'
+import vuetify from './plugins/vuetify'
+import i18n from './plugins/vue-i18n'
+import VueMobileDetection from 'vue-mobile-detection'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faCheck,
   faColumns,
@@ -40,16 +40,16 @@ import {
   faSms,
   faStar,
   faHistory
-} from "@fortawesome/free-solid-svg-icons";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import "material-design-icons-iconfont/dist/material-design-icons.css";
-Vue.use(require("vue-moment"));
-Vue.use(VueMobileDetection);
+} from '@fortawesome/free-solid-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+Vue.use(require('vue-moment'))
+Vue.use(VueMobileDetection)
 Vue.use(VueAxios, {
   roled: roledAxiosInstance,
   secured: securedAxiosInstance,
   plain: plainAxiosInstance
-});
+})
 
 library.add({
   faCheck,
@@ -79,12 +79,12 @@ library.add({
   faSms,
   faStar,
   faHistory
-});
-Vue.component("font-awesome-icon", FontAwesomeIcon);
+})
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   let v = new Vue({
     router,
     store,
@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     roledAxiosInstance,
     securedAxiosInstance,
     plainAxiosInstance,
-    render: h => h(App)
-  });
-  global.vm = v; // Define you app variable globally
-  v.$mount("#app");
-});
+    render: (h) => h(App)
+  })
+  global.vm = v // Define you app variable globally
+  v.$mount('#app')
+})

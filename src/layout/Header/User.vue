@@ -22,22 +22,23 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import store from "@/store";
+import { mapGetters } from 'vuex'
+import store from '@/store'
+
 export default {
   data() {
     return {
       projectDialog: false
-    };
+    }
   },
   methods: {
     logOut() {
-      store.commit("purgeAuth");
-      this.$router.push("/");
+      store.commit('purgeAuth')
+      this.$router.push('/')
     }
   },
   computed: {
-    ...mapGetters(["currentUser"])
+    ...mapGetters(['currentUser'])
   }
-};
+}
 </script>

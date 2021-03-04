@@ -1,1 +1,6 @@
-module.exports = { runtimeCompiler: true };
+module.exports = {
+  sass: {
+    includePaths: ['./src/sass'],
+    indentedSyntax: true
+  }
+}
