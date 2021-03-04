@@ -31,55 +31,6 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/schedule">
-            <v-list-item-action>
-              <font-awesome-icon icon="calendar-alt" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ $t('nav.schedule') }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/payments" v-if="!currentUser.isStudent">
-            <v-list-item-action>
-              <font-awesome-icon icon="dollar-sign" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title> {{ $t('nav.payments') }} </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/follows" v-if="currentUser.isTeacher">
-            <v-list-item-action>
-              <font-awesome-icon icon="star" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ $t('nav.myStudents') }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            to="/my_lessons"
-            v-if="currentUser.isTeacher || currentUser.isStudent"
-          >
-            <v-list-item-action>
-              <font-awesome-icon icon="history" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ $t('nav.myLessons') }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item to="/interests" v-if="currentUser.admin">
-            <v-list-item-action>
-              <font-awesome-icon icon="user-friends" class="grey--text" />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title> Заявки </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
         </v-list>
       </v-flex>
     </v-layout>

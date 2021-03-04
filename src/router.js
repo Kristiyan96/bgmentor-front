@@ -9,10 +9,6 @@ import UsersList from '@/views/admin/users/List'
 import UserEdit from '@/views/admin/users/Edit'
 import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
-import Payments from '@/views/Payments/index'
-import MyLessons from '@/views/Lessons/index'
-import MyFollows from '@/views/Follows/index'
-import CalendarWrapper from '@/views/Schedule/CalendarWrapper'
 
 Vue.use(Router)
 
@@ -54,26 +50,6 @@ export default new Router({
           component: () => import('@/views/Account/Notifications')
         }
       ]
-    },
-    {
-      path: '/schedule',
-      name: 'Schedule',
-      component: CalendarWrapper
-    },
-    {
-      path: '/my_lessons',
-      name: 'MyLessons',
-      component: MyLessons
-    },
-    {
-      path: '/follows',
-      name: 'Follows',
-      component: MyFollows
-    },
-    {
-      path: '/payments',
-      name: 'Payments',
-      component: Payments
     },
     {
       path: '/verify',
