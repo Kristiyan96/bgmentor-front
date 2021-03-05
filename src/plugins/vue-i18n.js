@@ -47,7 +47,7 @@ const messages = {
       security: {
         changePassword: 'Change password',
         changePasswordInfo:
-          'Click on the link above and you will receive an SMS with instructions.',
+          'Click on the link above and you will receive an email with instructions.',
         changePhone: 'Change phone number',
         changePhoneInfo:
           'Sorry, this functionality is still not available :/. You can chat with us and we will make the change for you!'
@@ -223,7 +223,7 @@ const messages = {
         title: 'Настройки за достъп',
         changePassword: 'Промени паролата',
         changePasswordInfo:
-          'Кликни на бутона, за да получиш СМС с линк за смяна на паролата.',
+          'Кликни на бутона, за да получиш имейл с линк за смяна на паролата.',
         changePhone: 'Промени мобилен номер',
         changePhoneInfo:
           'Съжаляваме, тази функционалност още не е готова. Моля, обадете ни се, за да сменим номера Ви ръчно.'
