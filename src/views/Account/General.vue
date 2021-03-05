@@ -45,9 +45,6 @@
     </template>
 
     <template v-slot:actions>
-      <v-btn :disabled="false" depressed @click="alert()" text>
-        {{ $t('form.clearChanges') }}
-      </v-btn>
       <v-spacer></v-spacer>
       <v-btn
         color="primary"

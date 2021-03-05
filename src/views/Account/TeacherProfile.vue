@@ -35,7 +35,6 @@ export default {
   },
   data() {
     return {
-      show: false,
       user: {},
       loading: false,
       educationRules: [(v) => !!v || 'Описанието е задължително.']
@@ -55,17 +54,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentUser', 'subjects', 'levels']),
+    ...mapGetters(['currentUser']),
     dirty() {
       return this.user.education !== this.currentUser.education
-    }
-  },
-  watch: {
-    currentUser: {
-      immediate: true,
-      handler() {
-        store.dispatch('fetchProfile', { id: null })
-      }
     }
   }
 }
