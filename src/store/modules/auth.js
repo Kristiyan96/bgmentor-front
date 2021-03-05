@@ -33,7 +33,7 @@ const getters = {
 
 const actions = {
   fetchProfile({ commit }) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this._vm.$http.secured
         .get('/me')
         .then((response) => {
@@ -41,12 +41,12 @@ const actions = {
           resolve(response.data)
         })
         .catch((error) => {
-          console.log(error)
+          reject(error)
         })
     })
   },
   updateProfile({ commit }, user) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this._vm.$http.secured
         .put('/me', { user: user })
         .then((response) => {
@@ -54,12 +54,12 @@ const actions = {
           resolve(response.data)
         })
         .catch((error) => {
-          console.log(error)
+          reject(error)
         })
     })
   },
   register({ commit }, user) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this._vm.$http.plain
         .post('/signup', { user: user })
         .then((response) => {
@@ -70,12 +70,12 @@ const actions = {
         })
         .catch((error) => {
           commit('purgeAuth')
-          resolve(error)
+          reject(error)
         })
     })
   },
   logIn({ commit }, user) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this._vm.$http.plain
         .post('/signin', user)
         .then((response) => {
@@ -86,26 +86,12 @@ const actions = {
         })
         .catch((error) => {
           commit('purgeAuth')
-          resolve(error)
-        })
-    })
-  },
-  verify({ commit }, token) {
-    return new Promise((resolve) => {
-      this._vm.$http.secured
-        .post('verify', { token: token })
-        .then((response) => {
-          commit('setUser', response.data)
-          router.push('me')
-          resolve(response.data)
-        })
-        .catch((error) => {
-          resolve(error)
+          reject(error)
         })
     })
   },
   logOut({ commit }) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this._vm.$http.secured
         .delete('/signin')
         .then((response) => {
@@ -116,7 +102,21 @@ const actions = {
         })
         .catch((error) => {
           commit('purgeAuth')
-          resolve(error)
+          reject(error)
+        })
+    })
+  },
+  verify({ commit }, token) {
+    return new Promise((resolve, reject) => {
+      this._vm.$http.secured
+        .post('verify', { token: token })
+        .then((response) => {
+          commit('setUser', response.data)
+          router.push('me')
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
         })
     })
   }
