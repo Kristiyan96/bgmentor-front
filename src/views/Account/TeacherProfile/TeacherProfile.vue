@@ -4,11 +4,12 @@
     <template v-slot:content>
       <v-textarea
         class="mb-2"
-        v-model="user.education"
+        v-model="user.description"
         :label="$t('account.ad.education')"
-        :rules="educationRules"
+        :rules="descriptionRules"
         required
       ></v-textarea>
+      <TeacherSubjects />
     </template>
     <template v-slot:actions>
       <v-spacer></v-spacer>
@@ -29,15 +30,18 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import LayoutColumn from '@/layout/LayoutColumn'
+import TeacherSubjects from "./TeacherSubjects"
+
 export default {
   components: {
-    LayoutColumn
+    LayoutColumn,
+    TeacherSubjects
   },
   data() {
     return {
       user: {},
       loading: false,
-      educationRules: [(v) => !!v || 'Описанието е задължително.']
+      descriptionRules: [(v) => !!v || 'Описанието е задължително.']
     }
   },
   mounted() {
@@ -56,7 +60,7 @@ export default {
   computed: {
     ...mapGetters(['currentUser']),
     dirty() {
-      return this.user.education !== this.currentUser.education
+      return this.user.description !== this.currentUser.description
     }
   }
 }

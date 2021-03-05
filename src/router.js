@@ -39,7 +39,8 @@ export default new Router({
         },
         {
           path: 'teacher_profile',
-          component: () => import('@/views/Account/TeacherProfile')
+          component: () =>
+            import('@/views/Account/TeacherProfile/TeacherProfile')
         },
         {
           path: 'security',

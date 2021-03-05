@@ -59,7 +59,9 @@ const messages = {
       },
       ad: {
         title: 'My public profile',
-        education: 'Please, list your achievements, education, previous work...'
+        education:
+          'Please, list your achievements, education, previous work...',
+        addSubject: 'Add a subject'
       }
     },
     lessons: {
@@ -234,7 +236,8 @@ const messages = {
       ad: {
         title: 'Моята обява',
         education:
-          'Моля, опишете Вашия опит, постижения, предишна/постоянна работа...'
+          'Моля, опишете Вашия опит, постижения, предишна/постоянна работа...',
+        addSubject: 'Добави предмет'
       }
     },
     lessons: {
