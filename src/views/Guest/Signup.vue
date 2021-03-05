@@ -59,13 +59,14 @@ export default {
   },
   data() {
     return {
+      loading: false,
+      error: '',
       valid: false,
       email: '',
       phoneNumber: '',
       formattedNumber: '',
       password: '',
-      password_confirmation: '',
-      error: ''
+      password_confirmation: ''
     }
   },
   created() {
@@ -75,13 +76,21 @@ export default {
     this.checkSignedIn()
   },
   methods: {
-    signup() {
-      store.dispatch('register', {
-        email: this.email,
-        phone_number: this.formattedNumber,
-        password: this.password,
-        password_confirmation: this.password_confirmation
-      })
+    async signup() {
+      this.loading = true
+
+      try {
+        await store.dispatch('register', {
+          email: this.email,
+          phone_number: this.formattedNumber,
+          password: this.password,
+          password_confirmation: this.password_confirmation
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     },
     checkSignedIn() {
       if (store.state.auth.signedIn) {
