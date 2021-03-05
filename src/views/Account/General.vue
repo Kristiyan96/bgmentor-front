@@ -87,8 +87,14 @@ export default {
   methods: {
     async submit() {
       this.loading = true
-      await store.dispatch('updateProfile', this.user)
-      this.loading = false
+
+      try {
+        await store.dispatch('updateProfile', this.user)
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     }
   },
   computed: {

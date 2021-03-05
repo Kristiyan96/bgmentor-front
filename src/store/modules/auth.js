@@ -126,6 +126,22 @@ const actions = {
         .post('resend_verify')
         .then((response) => {
           dispatch('createAlert', [
+            'An SMS with a new verification was sent to you mobile phone.',
+            'success'
+          ])
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  send_password_reset({ dispatch }, email) {
+    return new Promise((resolve, reject) => {
+      this._vm.$http.plain
+        .post('password_resets', { email: email })
+        .then((response) => {
+          dispatch('createAlert', [
             'A password reset link was sent to your email.',
             'success'
           ])

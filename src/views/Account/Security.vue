@@ -7,7 +7,9 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
-              <v-btn>{{ $t('account.security.changePassword') }}</v-btn>
+              <v-btn @click="changePassword">{{
+                $t('account.security.changePassword')
+              }}</v-btn>
             </v-list-item-title>
             <v-list-item-subtitle>{{
               $t('account.security.changePasswordInfo')
@@ -31,16 +33,36 @@
 </template>
 
 <script>
-// import store from '@/store'
 import LayoutColumn from '@/layout/LayoutColumn'
+import store from '@/store'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     LayoutColumn
   },
   data() {
-    return {}
+    return {
+      loading: false,
+      error: ''
+    }
   },
-  methods: {}
+  methods: {
+    async changePassword() {
+      this.loading = true
+
+      try {
+        await store.dispatch('send_password_reset', this.currentUser.email)
+        this.error = ''
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(['currentUser'])
+  }
 }
 </script>

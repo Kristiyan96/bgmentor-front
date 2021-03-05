@@ -1,7 +1,6 @@
 <template>
   <FormWrapper :title="$t('auth.title.forgot_password')">
     <form class="form-app form-forgot-password" @submit.prevent="submit">
-      <div class="alert alert-info" v-if="notice">{{ notice }}</div>
       <div class="alert alert-danger" v-if="error">{{ error }}</div>
       <div class="form-group">
         <label for="email">{{ $t('auth.label.email') }}</label>
@@ -22,6 +21,7 @@
 
 <script>
 import FormWrapper from './FormWrapper'
+import store from '@/store'
 
 export default {
   name: 'ForgotPassword',
@@ -31,26 +31,21 @@ export default {
   data() {
     return {
       email: '',
-      error: '',
-      notice: ''
+      error: ''
     }
   },
   methods: {
-    submit() {
-      this.$http.plain
-        .post('/password_resets', { email: this.email })
-        .then(() => this.submitSuccessful())
-        .catch((error) => this.submitFailed(error))
-    },
-    submitSuccessful() {
-      this.notice = 'Email with password reset instructions had been sent.'
-      this.error = ''
-      this.email = ''
-    },
-    submitFailed(error) {
-      this.error =
-        (error.response && error.response.data && error.response.data.error) ||
-        ''
+    async changePassword() {
+      this.loading = true
+
+      try {
+        await store.dispatch('send_password_reset', this.email)
+        this.error = ''
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
