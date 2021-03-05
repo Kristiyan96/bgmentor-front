@@ -85,9 +85,10 @@ export default {
     }
   },
   methods: {
-    submit() {
+    async submit() {
       this.loading = true
-      store.dispatch('updateProfile', this.user)
+      await store.dispatch('updateProfile', this.user)
+      this.loading = false
     }
   },
   computed: {

@@ -30,7 +30,7 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import LayoutColumn from '@/layout/LayoutColumn'
-import TeacherSubjects from "./TeacherSubjects"
+import TeacherSubjects from './TeacherSubjects'
 
 export default {
   components: {
