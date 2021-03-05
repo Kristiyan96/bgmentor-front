@@ -119,6 +119,22 @@ const actions = {
           reject(error)
         })
     })
+  },
+  resend_verify({ dispatch }) {
+    return new Promise((resolve, reject) => {
+      this._vm.$http.secured
+        .post('resend_verify')
+        .then((response) => {
+          dispatch('createAlert', [
+            'A password reset link was sent to your email.',
+            'success'
+          ])
+          resolve(response.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   }
 }
 
