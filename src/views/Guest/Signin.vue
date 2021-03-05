@@ -1,8 +1,13 @@
 <template>
   <FormWrapper :title="$t('auth.title.signin')">
     <form class="form-app form-signin" @submit.prevent="signin">
-      <div class="alert alert-danger" v-if="error">{{ error }}</div>
-      <PhoneNumber @update="updatePhoneNumber" :value="phone_number" />
+      <div class="alert alert-danger" v-if="error">
+        {{ error }}
+      </div>
+      <PhoneNumber
+        @update="({ input }) => (phone_number = input)"
+        :value="phone_number"
+      />
       <v-text-field
         v-model="password"
         type="password"
@@ -31,9 +36,10 @@ export default {
   },
   data() {
     return {
+      loading: false,
+      error: '',
       phone_number: '',
-      password: '',
-      error: ''
+      password: ''
     }
   },
   created() {
@@ -43,19 +49,24 @@ export default {
     this.checkSignedIn()
   },
   methods: {
-    signin() {
-      store.dispatch('logIn', {
-        phone_number: this.phone_number,
-        password: this.password
-      })
+    async signin() {
+      this.loading = true
+
+      try {
+        await store.dispatch('logIn', {
+          phone_number: this.phone_number,
+          password: this.password
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     },
     checkSignedIn() {
       if (this.currentUserId) {
         this.$router.replace('/me')
       }
-    },
-    updatePhoneNumber({ input }) {
-      this.phone_number = input
     }
   },
   computed: {
