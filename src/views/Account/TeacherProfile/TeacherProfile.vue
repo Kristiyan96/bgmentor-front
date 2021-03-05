@@ -41,6 +41,7 @@ export default {
     return {
       user: {},
       loading: false,
+      error: '',
       descriptionRules: [(v) => !!v || 'Описанието е задължително.']
     }
   },
@@ -50,11 +51,18 @@ export default {
     }
   },
   methods: {
-    submit() {
+    async submit() {
       this.loading = true
-      store.dispatch('updateProfile', this.user).then((response) => {
+
+      try {
+        await store.dispatch('updateProfile', this.user)
+        this.error = ''
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
         this.loading = false
-      })
+      }
+      await store.dispatch('updateProfile', this.user)
     }
   },
   computed: {
