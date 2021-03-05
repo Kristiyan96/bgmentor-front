@@ -69,7 +69,7 @@ export default {
     resetFailed(error) {
       this.error =
         (error.response && error.response.data && error.response.data.error) ||
-        'Something went wrong'
+        'The link you used is not valid anymore. Please, send a new one.'
       this.notice = ''
     },
     checkPasswordToken() {
