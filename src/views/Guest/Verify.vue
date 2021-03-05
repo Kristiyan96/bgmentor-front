@@ -53,6 +53,7 @@ export default {
 
       try {
         await store.dispatch('verify', token)
+        this.error = ''
       } catch (error) {
         this.error = error.response.data.error
       } finally {
@@ -64,6 +65,7 @@ export default {
 
       try {
         await store.dispatch('resend_verify')
+        this.error = ''
       } catch (error) {
         this.error = error.response.data.error
       } finally {
