@@ -2,8 +2,10 @@
   <div>
     <v-card class="mx-auto my-12" max-width="385" shaped>
       <v-card-title>{{ $t('verify.verifyNumber') }}</v-card-title>
-
       <div class="my-4 mx-5 subtitle-1">{{ $t('verify.info') }}</div>
+      <div class="alert alert-danger" v-if="error">
+        {{ error }}
+      </div>
 
       <v-card-text
         ><CodeInput
@@ -37,6 +39,8 @@ export default {
   name: 'Verify',
   data() {
     return {
+      loading: false,
+      error: '',
       token: ''
     }
   },
@@ -44,18 +48,27 @@ export default {
     onChange(token) {
       this.token = token
     },
-    onComplete(token) {
-      store.dispatch('verify', token)
+    async onComplete(token) {
+      this.loading = true
+
+      try {
+        await store.dispatch('verify', token)
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     },
-    resendCode() {
-      this.$http.secured
-        .post('resend')
-        .then((response) => {
-          console.log(response)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+    async resendCode() {
+      this.loading = true
+
+      try {
+        await store.dispatch('resend_verify')
+      } catch (error) {
+        this.error = error.response.data.error
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
