@@ -54,7 +54,7 @@
 
 <script>
 import Layout2x1 from '@/layout/Layout2x1'
-import LayoutColumn from '@/layout/LayoutColumn'
+import LayoutColumn from '@/layout/LayoutColumnDefault'
 export default {
   components: {
     Layout2x1,

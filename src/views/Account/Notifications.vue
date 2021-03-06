@@ -23,7 +23,7 @@
 
 <script>
 // import store from '@/store'
-import LayoutColumn from '@/layout/LayoutColumn'
+import LayoutColumn from '@/layout/LayoutColumnDefault'
 
 export default {
   components: {

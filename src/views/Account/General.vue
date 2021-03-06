@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumn paddingless>
+  <LayoutColumnForm paddingless>
     <template v-slot:title>
       {{ $t('account.general.title') }}
     </template>
@@ -56,17 +56,17 @@
         {{ $t('form.save') }}
       </v-btn>
     </template>
-  </LayoutColumn>
+  </LayoutColumnForm>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import LayoutColumn from '@/layout/LayoutColumn'
+import LayoutColumnForm from '@/layout/LayoutColumnForm'
 
 export default {
   components: {
-    LayoutColumn
+    LayoutColumnForm
   },
   data() {
     return {

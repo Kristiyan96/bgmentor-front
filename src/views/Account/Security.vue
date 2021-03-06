@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import LayoutColumn from '@/layout/LayoutColumn'
+import LayoutColumn from '@/layout/LayoutColumnDefault'
 import store from '@/store'
 import { mapGetters } from 'vuex'
 
