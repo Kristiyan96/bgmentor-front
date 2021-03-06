@@ -50,7 +50,7 @@ const actions = {
         })
         .then(
           ({ data }) => {
-            commit('replaceSubject', data)
+            commit('setSubject', data)
             dispatch('createAlert', ['Subject created.', 'success'])
             resolve(data)
           },
@@ -104,13 +104,6 @@ const mutations = {
   },
   addSubject(state, subject) {
     state.subjects.push(subject || { ...state.new_subject })
-  },
-  replaceSubject(state, subject) {
-    const idx = state.subjects.findIndex((s) => s.id === subject.id)
-
-    if (idx > -1) {
-      state.subjects = state.subjects.splice(idx, 1, subject)
-    }
   },
   removeSubject(state, subjectId) {
     state.subjects = state.subjects.filter((s) => s.id !== subjectId)
