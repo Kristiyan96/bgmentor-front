@@ -81,9 +81,6 @@ const messages = {
         cancelled: 'Cancelled'
       }
     },
-    memberships: {
-      remainingCredits: 'Payed lessons: {0}'
-    },
     auth: {
       title: {
         signin: 'Log in',
@@ -178,6 +175,20 @@ const messages = {
         phoneNumber: 'Mobile number - student',
         parentPhoneNumber: 'Mobile number - parent'
       }
+    },
+    products: {
+      text: {
+        noProducts: 'This teacher does not have a price list yet.'
+      }
+    },
+    actions: {
+      confirm: 'Confirm',
+      submit: 'Submit',
+      save: 'Save',
+      update: 'Update',
+      delete: 'Delete',
+      cancel: 'Cancel',
+      close: 'Close'
     }
   },
   bg: {
@@ -287,9 +298,6 @@ const messages = {
         signin: 'Вход'
       }
     },
-    memberships: {
-      remainingCredits: 'Платени уроци: {0}'
-    },
     $vuetify: {
       close: 'Close',
       dataIterator: {
@@ -354,6 +362,19 @@ const messages = {
         phoneNumber: 'Мобилен номер',
         parentPhoneNumber: 'Мобилен номер - родител'
       }
+    },
+    products: {
+      text: {
+        noProducts: 'Този учител все още няма обявен ценоразпис.'
+      }
+    },
+    actions: {
+      confirm: 'Потвърди',
+      submit: 'Запази',
+      update: 'Редактирай',
+      delete: 'Изтрий',
+      cancel: 'Откажи',
+      close: 'Затвори'
     }
   }
 }
