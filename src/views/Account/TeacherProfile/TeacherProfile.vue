@@ -1,5 +1,5 @@
 <template>
-  <LayoutColumnForm paddingless>
+  <LayoutColumn paddingless>
     <template v-slot:title> {{ $t('account.ad.title') }} </template>
     <template v-slot:content>
       <v-textarea
@@ -9,32 +9,32 @@
         :rules="descriptionRules"
         required
       ></v-textarea>
+      <div class="mb-5 d-flex">
+        <v-spacer></v-spacer>
+        <v-btn
+          color="primary"
+          :disabled="!dirty"
+          depressed
+          :loading="loading"
+          @click="submit"
+        >
+          {{ $t('form.save') }}
+        </v-btn>
+      </div>
       <TeacherProducts />
     </template>
-    <template v-slot:actions>
-      <v-spacer></v-spacer>
-      <v-btn
-        color="primary"
-        :disabled="!dirty"
-        depressed
-        :loading="loading"
-        @click="submit"
-      >
-        {{ $t('form.save') }}
-      </v-btn>
-    </template>
-  </LayoutColumnForm>
+  </LayoutColumn>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import LayoutColumnForm from '@/layout/LayoutColumnForm'
+import LayoutColumn from '@/layout/LayoutColumnDefault'
 import TeacherProducts from './TeacherProducts'
 
 export default {
   components: {
-    LayoutColumnForm,
+    LayoutColumn,
     TeacherProducts
   },
   data() {
