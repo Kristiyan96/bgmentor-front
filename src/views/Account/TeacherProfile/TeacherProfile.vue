@@ -9,7 +9,7 @@
         :rules="descriptionRules"
         required
       ></v-textarea>
-      <TeacherSubjects />
+      <TeacherProducts />
     </template>
     <template v-slot:actions>
       <v-spacer></v-spacer>
@@ -30,12 +30,12 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import LayoutColumn from '@/layout/LayoutColumn'
-import TeacherSubjects from './TeacherSubjects'
+import TeacherProducts from './TeacherProducts'
 
 export default {
   components: {
     LayoutColumn,
-    TeacherSubjects
+    TeacherProducts
   },
   data() {
     return {
