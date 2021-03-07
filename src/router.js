@@ -9,6 +9,7 @@ import UsersList from '@/views/admin/users/List'
 import UserEdit from '@/views/admin/users/Edit'
 import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
+import UserProfile from '@/views/Profile/Profile'
 
 Vue.use(Router)
 
@@ -81,6 +82,11 @@ export default new Router({
       path: '/admin/users/:id',
       name: 'UserEdit',
       component: UserEdit
+    },
+    {
+      path: '/profile/:id',
+      name: 'UserProfile',
+      component: UserProfile
     }
   ]
 })

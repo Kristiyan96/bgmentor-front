@@ -1,5 +1,6 @@
 const state = {
   users: [],
+  profile: {},
   new_user: {
     name: '',
     email: '',
@@ -11,6 +12,9 @@ const getters = {
   users(state) {
     return state.users
   },
+  profile(state) {
+    return state.profile
+  },
   students(state) {
     return state.users.filter((u) => u.role === 'student')
   },
@@ -20,6 +24,20 @@ const getters = {
 }
 
 const actions = {
+  fetchProfile({ commit }, userId) {
+    return new Promise((resolve, reject) => {
+      this._vm.$http.plain.get(`profile/${userId}`).then(
+        ({ data }) => {
+          console.log(data)
+          commit('setProfile', data)
+          resolve(data)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
+  },
   async fetchUsers({ commit }) {
     const { data } = await this._vm.$http.roled.get(`users`)
     commit('setUsers', data)
@@ -69,6 +87,9 @@ const mutations = {
   },
   removeUser(state, userId) {
     state.users = state.users.filter((u) => u.id !== userId)
+  },
+  setProfile(state, profile) {
+    state.profile = profile
   }
 }
 
