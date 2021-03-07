@@ -92,6 +92,10 @@ const mutations = {
     state.products.splice(idx, 1, product)
   },
   addProduct(state, product) {
+    if (!product && state.products.filter((p) => !p.id).length > 0) {
+      return
+    }
+
     state.products.push(product || { ...state.new_product })
   },
   removeProduct(state, productId) {
