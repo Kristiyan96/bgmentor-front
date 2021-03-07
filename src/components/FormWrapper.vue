@@ -7,24 +7,8 @@
       <slot />
     </v-main>
 
-    <v-btn
-      type="submit"
-      large
-      color="primary"
-      class="btn mt-3"
-      v-if="!actions.length"
-    >
+    <v-btn type="submit" large color="primary" class="btn mt-3">
       {{ $t('actions.submit') }}</v-btn
-    >
-
-    <v-btn
-      v-for="action in actions"
-      :key="action.label"
-      large
-      :color="action.color ?? 'primary'"
-      class="btn mt-3"
-    >
-      {{ $t(action.label) }}</v-btn
     >
   </form>
 </template>
@@ -37,10 +21,10 @@ export default {
       default: '',
       description: 'Title of the form, using t18 string'
     },
-    actions: {
-      type: Array,
-      default: () => [],
-      description: 'A list of action buttons. Expects label & color'
+    displayActions: {
+      type: Boolean,
+      default: true,
+      description: 'Should the default actions be displayed if actions is empty'
     },
     onSubmit: {
       type: Function,
