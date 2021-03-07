@@ -1,7 +1,8 @@
 <template>
   <div class="root">
     <ProductList />
-    <v-btn>
+    <!-- <NewProductForm v-if="new_product" :product="new_product" /> -->
+    <v-btn @click="addSubject">
       <font-awesome-icon icon="plus" class="grey--text mr-3" />
       {{ $t('account.ad.addSubject') }}
     </v-btn>
@@ -10,13 +11,23 @@
 
 <script>
 import ProductList from '@/views/Products/ProductList'
+import NewProductForm from '@/views/Products/ProductForm'
+import store from '@/store'
 
 export default {
   components: {
-    ProductList
+    ProductList,
+    NewProductForm
   },
   data() {
-    return {}
+    return {
+      new_product: null
+    }
+  },
+  methods: {
+    addSubject() {
+      store.commit('addProduct')
+    }
   }
 }
 </script>

@@ -16,14 +16,6 @@
                     <v-list-item-title>Лична информация</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
-                <v-list-item to="/me/teacher_profile">
-                  <v-list-item-avatar>
-                    <font-awesome-icon icon="cog" class="grey--text" />
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title>Моята обява</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
                 <v-list-item to="/me/security">
                   <v-list-item-avatar>
                     <font-awesome-icon icon="shield-alt" class="grey--text" />

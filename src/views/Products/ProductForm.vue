@@ -1,5 +1,5 @@
 <template>
-  <FormWrapper :error="error" :notice="notice" :onSubmit="submit">
+  <DialogForm :error="error" :notice="notice" :onSubmit="submit">
     <v-textarea
       class="mb-2"
       v-model="form_product.title"
@@ -27,17 +27,17 @@
       :label="$t('product.label.description')"
       required
     />
-  </FormWrapper>
+  </DialogForm>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import FormWrapper from '@/components/FormWrapper'
+import DialogForm from '@/components/DialogForm'
 
 export default {
   components: {
-    FormWrapper
+    DialogForm
   },
   props: {
     product: {
