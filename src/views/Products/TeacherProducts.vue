@@ -1,23 +1,26 @@
 <template>
   <div class="root">
-    <ProductList />
-    <!-- <NewProductForm v-if="new_product" :product="new_product" /> -->
-    <v-btn @click="addSubject">
-      <font-awesome-icon icon="plus" class="grey--text mr-3" />
-      {{ $t('account.ad.addSubject') }}
-    </v-btn>
+    <!-- <ProductList /> -->
+    <ProductForm :product="new_product" />
   </div>
 </template>
 
 <script>
 import ProductList from '@/views/Products/ProductList'
-import NewProductForm from '@/views/Products/ProductForm'
+import ProductForm from '@/views/Products/ProductForm'
 import store from '@/store'
 
 export default {
+  props: {
+    teacher: {
+      type: Object,
+      default: () => {},
+      description: 'The teacher we are displaying'
+    }
+  },
   components: {
     ProductList,
-    NewProductForm
+    ProductForm
   },
   data() {
     return {

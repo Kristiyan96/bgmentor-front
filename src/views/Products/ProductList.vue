@@ -1,9 +1,7 @@
 <template>
   <div>
     <v-list three-line v-if="!loading && products.length">
-      <template v-for="item in products">
-        <ProductItem :product="item" :key="item.id" />
-      </template>
+      <ProductItem :product="item" :key="item.id" v-for="item in products" />
     </v-list>
     <div v-else-if="loading">{{ $t('$vuetify.dataIterator.loadingText') }}</div>
     <div v-else class="mb-2">{{ $t('products.text.noProducts') }}</div>

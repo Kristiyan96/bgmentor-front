@@ -15,9 +15,7 @@
           <div class="alert alert-danger" v-if="error">{{ error }}</div>
 
           <FormWrapper :displayActions="false">
-            <v-main>
-              <slot />
-            </v-main>
+            <slot />
           </FormWrapper>
 
           <small>*indicates required field</small>
