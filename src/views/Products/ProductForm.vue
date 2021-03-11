@@ -1,5 +1,5 @@
 <template>
-  <DialogForm :error="error" :notice="notice" :onSubmit="submit">
+  <DialogForm :error="error" :notice="notice" :onSubmit="submit" :title="title">
     <v-textarea
       class="mb-2"
       v-model="form_product.title"
@@ -85,6 +85,9 @@ export default {
         this.product.description !== this.form_product.description ||
         this.product.subject_id !== this.form_product.subject_id
       )
+    },
+    title() {
+      return 'New product'
     }
   }
 }

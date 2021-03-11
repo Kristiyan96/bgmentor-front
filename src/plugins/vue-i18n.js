@@ -383,6 +383,7 @@ const messages = {
     actions: {
       confirm: 'Потвърди',
       submit: 'Запази',
+      save: 'Запази',
       update: 'Редактирай',
       delete: 'Изтрий',
       cancel: 'Откажи',

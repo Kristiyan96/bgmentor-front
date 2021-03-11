@@ -3,11 +3,15 @@
     <div class="alert alert-info" v-if="notice">{{ notice }}</div>
     <div class="alert alert-danger" v-if="error">{{ error }}</div>
 
-    <v-main>
-      <slot />
-    </v-main>
+    <slot />
 
-    <v-btn type="submit" large color="primary" class="btn mt-3">
+    <v-btn
+      type="submit"
+      large
+      color="primary"
+      class="btn mt-3"
+      v-if="displayActions"
+    >
       {{ $t('actions.submit') }}</v-btn
     >
   </form>

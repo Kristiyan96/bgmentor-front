@@ -1,10 +1,8 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
+    <v-dialog v-model="open" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
-          Open Dialog
-        </v-btn>
+        <v-btn color="primary" dark v-bind="attrs" v-on="on"> Open </v-btn>
       </template>
       <v-card>
         <v-card-title>
@@ -23,10 +21,10 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="darken-1" text @click="open = false">
-            {{ $t(actions.cancel) }}
+            {{ $t('actions.cancel') }}
           </v-btn>
           <v-btn color="blue darken-1" text @click="onSubmit">
-            {{ $t(actions.save) }}
+            {{ $t('actions.save') }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -61,6 +59,11 @@ export default {
       type: String,
       default: '',
       description: 'Error messages from submition.'
+    },
+    actions: {
+      type: Array,
+      default: () => [],
+      description: 'List of available actions'
     }
   },
   data() {
