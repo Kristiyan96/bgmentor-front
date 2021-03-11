@@ -3,28 +3,28 @@
     <v-textarea
       class="mb-2"
       v-model="form_product.title"
-      :label="$t('product.label.title')"
+      :label="$t('products.labels.title')"
       :rules="titleRules"
       required
     />
     <v-textarea
       class="mb-2"
       v-model="form_product.subject_id"
-      :label="$t('product.label.subject')"
+      :label="$t('products.labels.subject')"
       :rules="subjectRules"
       required
     />
     <v-textarea
       class="mb-2"
       v-model="form_product.price"
-      :label="$t('product.label.price')"
+      :label="$t('products.labels.price')"
       :rules="priceRules"
       required
     />
     <v-textarea
       class="mb-2"
       v-model="form_product.description"
-      :label="$t('product.label.description')"
+      :label="$t('products.labels.description')"
       required
     />
   </DialogForm>

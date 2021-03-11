@@ -179,6 +179,12 @@ const messages = {
     products: {
       text: {
         noProducts: 'This teacher does not have a price list yet.'
+      },
+      labels: {
+        title: 'Title',
+        subject: 'Subject',
+        price: 'Price per hour',
+        description: 'Description'
       }
     },
     actions: {
@@ -366,6 +372,12 @@ const messages = {
     products: {
       text: {
         noProducts: 'Този учител все още няма обявен ценоразпис.'
+      },
+      labels: {
+        title: 'Заглавие',
+        subject: 'Предмет',
+        price: 'Цена на час',
+        description: 'Описание'
       }
     },
     actions: {
