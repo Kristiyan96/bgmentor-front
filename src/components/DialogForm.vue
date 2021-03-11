@@ -1,35 +1,33 @@
 <template>
-  <v-row justify="center">
-    <v-dialog v-model="open" persistent max-width="600px">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on"> Open </v-btn>
-      </template>
-      <v-card>
-        <v-card-title>
-          <span class="headline">{{ title }}</span>
-        </v-card-title>
-        <v-card-text>
-          <div class="alert alert-info" v-if="notice">{{ notice }}</div>
-          <div class="alert alert-danger" v-if="error">{{ error }}</div>
+  <v-dialog v-model="open" persistent max-width="600px">
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn color="primary" dark v-bind="attrs" v-on="on"> Open </v-btn>
+    </template>
+    <v-card>
+      <v-card-title>
+        <span class="headline">{{ title }}</span>
+      </v-card-title>
+      <v-card-text>
+        <div class="alert alert-info" v-if="notice">{{ notice }}</div>
+        <div class="alert alert-danger" v-if="error">{{ error }}</div>
 
-          <FormWrapper :displayActions="false">
-            <slot />
-          </FormWrapper>
+        <FormWrapper :displayActions="false">
+          <slot />
+        </FormWrapper>
 
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="darken-1" text @click="open = false">
-            {{ $t('actions.cancel') }}
-          </v-btn>
-          <v-btn color="blue darken-1" text @click="onSubmit">
-            {{ $t('actions.save') }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-row>
+        <small>*indicates required field</small>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="darken-1" text @click="open = false">
+          {{ $t('actions.cancel') }}
+        </v-btn>
+        <v-btn color="blue darken-1" text @click="onSubmit">
+          {{ $t('actions.save') }}
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
