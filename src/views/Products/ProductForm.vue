@@ -1,20 +1,23 @@
 <template>
   <DialogForm :error="error" :notice="notice" :onSubmit="submit" :title="title">
-    <v-textarea
+    <v-text-field
       class="mb-2"
       v-model="form_product.title"
       :label="$t('products.labels.title')"
       :rules="titleRules"
       required
     />
-    <v-textarea
+    <v-select
+      :items="subjects"
+      item-text="title"
+      item-value="id"
       class="mb-2"
       v-model="form_product.subject_id"
       :label="$t('products.labels.subject')"
       :rules="subjectRules"
       required
     />
-    <v-textarea
+    <v-text-field
       class="mb-2"
       v-model="form_product.price"
       :label="$t('products.labels.price')"
@@ -58,6 +61,7 @@ export default {
     }
   },
   mounted() {
+    store.dispatch('fetchApprovedSubjects')
     this.form_product = {
       ...this.product
     }
@@ -77,7 +81,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['new_product']),
+    ...mapGetters(['new_product', 'subjects']),
     dirty() {
       return (
         this.product.title !== this.form_product.title ||

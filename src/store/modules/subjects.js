@@ -96,7 +96,7 @@ const actions = {
 
 const mutations = {
   setSubjects(state, subjects) {
-    state.users = subjects
+    state.subjects = subjects
   },
   setSubject(state, subject) {
     let idx = state.subjects.findIndex((s) => s.id === subject.id)
