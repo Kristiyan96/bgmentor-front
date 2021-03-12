@@ -15,7 +15,7 @@
           <slot />
         </FormWrapper>
 
-        <small>*indicates required field</small>
+        <small>*{{ $t('form.required') }}</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

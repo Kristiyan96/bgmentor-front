@@ -53,7 +53,7 @@
         :loading="loading"
         @click="submit"
       >
-        {{ $t('form.save') }}
+        {{ $t('actions.save') }}
       </v-btn>
     </template>
   </LayoutColumnForm>

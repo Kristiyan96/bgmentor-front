@@ -13,9 +13,7 @@ const messages = {
       admin: 'admin'
     },
     form: {
-      save: 'Save',
-      cancel: 'Cancel',
-      clearChanges: 'Clear changes'
+      required: 'indicates required field'
     },
     calendar: {
       today: 'Today',
@@ -194,7 +192,8 @@ const messages = {
       update: 'Update',
       delete: 'Delete',
       cancel: 'Cancel',
-      close: 'Close'
+      close: 'Close',
+      clearChanges: 'Clear changes'
     }
   },
   bg: {
@@ -205,9 +204,7 @@ const messages = {
       admin: 'админ'
     },
     form: {
-      save: 'Запази',
-      cancel: 'Затвори',
-      clearChanges: 'Върни промените'
+      required: 'задължително поле'
     },
     calendar: {
       today: 'Днес',
@@ -387,7 +384,8 @@ const messages = {
       update: 'Редактирай',
       delete: 'Изтрий',
       cancel: 'Откажи',
-      close: 'Затвори'
+      close: 'Затвори',
+      clearChanges: 'Върни промените'
     }
   }
 }
