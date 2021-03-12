@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-    <!-- <ProductList /> -->
+    <ProductList />
     <ProductForm :product="new_product" />
   </div>
 </template>

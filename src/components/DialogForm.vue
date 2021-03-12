@@ -1,8 +1,5 @@
 <template>
   <v-dialog v-model="open" persistent max-width="600px">
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn color="primary" dark v-bind="attrs" v-on="on"> Open </v-btn>
-    </template>
     <v-card>
       <v-card-title>
         <span class="headline">{{ title }}</span>
@@ -19,7 +16,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="darken-1" text @click="open = false">
+        <v-btn color="darken-1" text @click="closeDialog">
           {{ $t('actions.cancel') }}
         </v-btn>
         <v-btn color="blue darken-1" text @click="onSubmit">
@@ -38,6 +35,11 @@ export default {
     FormWrapper
   },
   props: {
+    open: {
+      type: Boolean,
+      default: false,
+      description: 'Is the dialog open'
+    },
     title: {
       type: String,
       default: '',
@@ -65,8 +67,11 @@ export default {
     }
   },
   data() {
-    return {
-      open: false
+    return {}
+  },
+  methods: {
+    closeDialog() {
+      this.$emit('onClose')
     }
   }
 }
