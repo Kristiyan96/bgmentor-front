@@ -1,26 +1,18 @@
 <template>
-  <div>
-    <v-img
-      lazy-src="https://picsum.photos/id/11/10/6"
-      max-height="150"
-      max-width="250"
-      src="https://picsum.photos/id/11/500/300"
-    ></v-img>
-    <div>{{ profile.first_name }} {{ profile.last_name }}</div>
-    <div>{{ profile.desciption }}</div>
-    <TeacherProducts :teacher="profile" />
-  </div>
+  <v-container class="grey lighten-5">
+    <TeacherItem :teacher="profile" />
+  </v-container>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import TeacherProducts from '@/views/Products/TeacherProducts'
+import TeacherItem from '@/views/Search/TeacherItem'
 
 export default {
   name: 'Profile',
   components: {
-    TeacherProducts
+    TeacherItem
   },
   data() {
     return {
