@@ -1,6 +1,10 @@
 <template>
   <v-container class="grey lighten-5">
     <TeacherItem :teacher="profile" />
+    <v-row>
+      <v-col> </v-col>
+      <v-col> </v-col>
+    </v-row>
   </v-container>
 </template>
 

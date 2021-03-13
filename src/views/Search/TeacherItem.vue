@@ -11,7 +11,7 @@
       <v-card-title>{{ teacher.first_name }}</v-card-title>
       <v-card-text>
         <div class="my-4 subtitle-1">
-          {{ teacher.country }}, {{ teacher.city }}
+          {{ teacher.city }}, {{ teacher.country }}
         </div>
         <v-row align="center" class="mx-0">
           <v-rating
