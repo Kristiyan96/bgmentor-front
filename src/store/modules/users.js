@@ -28,7 +28,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       this._vm.$http.plain.get(`profile/${userId}`).then(
         ({ data }) => {
-          console.log(data)
           commit('setProfile', data)
           resolve(data)
         },

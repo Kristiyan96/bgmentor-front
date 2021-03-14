@@ -43,6 +43,7 @@ export default {
     }
   },
   mounted() {
+    this.subject = ''
     this.user = { ...this.currentUser }
   },
   methods: {
@@ -61,6 +62,8 @@ export default {
           subject_list: [...this.user.subject_list, this.subject].join(', ')
         })
         this.error = null
+        this.closeDialog()
+        store.dispatch('fetchProfile', this.profile.id)
       } catch (error) {
         this.error = error
       } finally {
