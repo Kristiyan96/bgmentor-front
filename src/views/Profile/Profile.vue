@@ -1,9 +1,9 @@
 <template>
   <v-container class="grey lighten-5">
     <TeacherItem :teacher="profile" />
-    <v-row>
-      <v-col> </v-col>
-      <v-col> </v-col>
+    <v-row no-gutters class="mt-2">
+      <v-col cols="4"><TeacherSubjects /> </v-col>
+      <v-col cols="8"> </v-col>
     </v-row>
   </v-container>
 </template>
@@ -12,11 +12,13 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import TeacherItem from '@/views/Search/TeacherItem'
+import TeacherSubjects from './TeacherSubjects'
 
 export default {
   name: 'Profile',
   components: {
-    TeacherItem
+    TeacherItem,
+    TeacherSubjects
   },
   data() {
     return {

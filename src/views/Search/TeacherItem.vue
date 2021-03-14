@@ -1,16 +1,23 @@
 <template>
   <v-row no-gutters>
-    <v-col cols="6" sm="4">
+    <v-col cols="4">
       <v-img
         lazy-src="https://picsum.photos/id/11/10/6"
         src="https://picsum.photos/id/11/500/300"
         class="img"
       ></v-img>
     </v-col>
-    <v-col cols="6" sm="4">
-      <v-card-title>{{ teacher.first_name }}</v-card-title>
+    <v-col cols="8">
+      <v-card-title>
+        <div class="h2">
+          {{ teacher.first_name }}
+        </div>
+      </v-card-title>
       <v-card-text>
-        <div class="my-4 subtitle-1">
+        <div class="h5 grey--text">
+          {{ teacher.title }}
+        </div>
+        <div class="my-1 subtitle-1">
           {{ teacher.city }}, {{ teacher.country }}
         </div>
         <v-row align="center" class="mx-0">
@@ -49,5 +56,5 @@ export default {
 
 <style scoped lang="sass">
 .img
-  border-radius: 15px
+  border-radius: 5px
 </style>
