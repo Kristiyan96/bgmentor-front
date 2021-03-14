@@ -58,7 +58,7 @@ export default {
       try {
         await store.dispatch('updateProfile', {
           ...this.user,
-          subject_list: [...this.user.subject_list, this.subject]
+          subject_list: [...this.user.subject_list, this.subject].join(', ')
         })
         this.error = null
       } catch (error) {

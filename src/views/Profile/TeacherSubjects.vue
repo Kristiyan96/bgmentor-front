@@ -8,7 +8,7 @@
         column
       >
         <v-chip
-          v-for="subject in subjects"
+          v-for="subject in profile.subject_list"
           :key="subject"
           class="mr-2"
           color="primary"
@@ -35,9 +35,7 @@ export default {
     AddSubject
   },
   data() {
-    return {
-      subjects: ['Maths', 'Bulgarian']
-    }
+    return {}
   },
   methods: {},
   computed: {
