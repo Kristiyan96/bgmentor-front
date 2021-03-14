@@ -58,14 +58,13 @@ export default {
 
       try {
         await store.dispatch('updateProfile', {
-          ...this.user,
           subject_list: [...this.user.subject_list, this.subject].join(', ')
         })
         this.error = null
         this.closeDialog()
-        store.dispatch('fetchProfile', this.profile.id)
+        this.subject = ''
       } catch (error) {
-        this.error = error
+        this.error = error.response.data.error
       } finally {
         this.loading = false
       }
