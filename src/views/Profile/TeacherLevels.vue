@@ -1,19 +1,19 @@
 <template>
-  <v-card class="mx-auto" outlined>
-    <v-card-title>Subjects</v-card-title>
+  <v-card class="mx-auto mt-4" outlined>
+    <v-card-title>Levels</v-card-title>
     <v-card-text>
       <v-chip-group active-class="deep-purple accent-4 white--text" column>
         <v-chip
-          v-for="subject in profile.subject_list"
-          :key="subject"
+          v-for="level in profile.level_list"
+          :key="level"
           class="mr-2"
           color="primary"
           :close="deleteable"
-          @click:close="deleteSubject(subject)"
+          @click:close="deleteLevel(level)"
         >
-          {{ subject }}
+          {{ level }}
         </v-chip>
-        <AddSubject v-if="deleteable" />
+        <AddLevel v-if="deleteable" />
       </v-chip-group>
     </v-card-text>
   </v-card>
@@ -23,13 +23,13 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import DialogForm from '@/components/DialogForm'
-import AddSubject from '@/views/Profile/AddSubject'
+import AddLevel from '@/views/Profile/AddLevel'
 
 export default {
-  name: 'TeacherSubjects',
+  name: 'TeacherLevels',
   components: {
     DialogForm,
-    AddSubject
+    AddLevel
   },
   data() {
     return {
@@ -37,15 +37,15 @@ export default {
     }
   },
   methods: {
-    async deleteSubject(subject) {
+    async deleteLevel(level) {
       this.loading = true
-      const subjectList = this.currentUser.subject_list
-        .filter((s) => s !== subject)
+      const levelList = this.currentUser.level_list
+        .filter((l) => l !== level)
         .join(', ')
 
       try {
         await store.dispatch('updateProfile', {
-          subject_list: subjectList
+          level_list: levelList
         })
         this.error = null
       } catch (error) {

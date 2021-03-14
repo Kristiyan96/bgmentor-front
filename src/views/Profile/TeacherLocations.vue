@@ -1,19 +1,19 @@
 <template>
-  <v-card class="mx-auto" outlined>
-    <v-card-title>Subjects</v-card-title>
+  <v-card class="mx-auto mt-4" outlined>
+    <v-card-title>Locations</v-card-title>
     <v-card-text>
       <v-chip-group active-class="deep-purple accent-4 white--text" column>
         <v-chip
-          v-for="subject in profile.subject_list"
-          :key="subject"
+          v-for="location in profile.location_list"
+          :key="location"
           class="mr-2"
           color="primary"
           :close="deleteable"
-          @click:close="deleteSubject(subject)"
+          @click:close="deleteLocation(location)"
         >
-          {{ subject }}
+          {{ location }}
         </v-chip>
-        <AddSubject v-if="deleteable" />
+        <AddLocation v-if="deleteable" />
       </v-chip-group>
     </v-card-text>
   </v-card>
@@ -23,13 +23,13 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import DialogForm from '@/components/DialogForm'
-import AddSubject from '@/views/Profile/AddSubject'
+import AddLocation from '@/views/Profile/AddLocation'
 
 export default {
-  name: 'TeacherSubjects',
+  name: 'TeacherLocations',
   components: {
     DialogForm,
-    AddSubject
+    AddLocation
   },
   data() {
     return {
@@ -37,15 +37,15 @@ export default {
     }
   },
   methods: {
-    async deleteSubject(subject) {
+    async deleteLocation(location) {
       this.loading = true
-      const subjectList = this.currentUser.subject_list
-        .filter((s) => s !== subject)
+      const locationList = this.currentUser.location_list
+        .filter((s) => s !== location)
         .join(', ')
 
       try {
         await store.dispatch('updateProfile', {
-          subject_list: subjectList
+          location_list: locationList
         })
         this.error = null
       } catch (error) {

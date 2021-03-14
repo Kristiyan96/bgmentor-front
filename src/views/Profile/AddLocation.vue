@@ -7,14 +7,14 @@
       :open="open"
       :onSubmit="submit"
       @onClose="closeDialog"
-      title="Add subject"
+      title="Add location"
       :notice="notice"
       :error="error"
     >
       <v-text-field
-        v-model="subject"
-        label="Subject"
-        placeholder="e.g Maths, Frech, Computer Science"
+        v-model="location"
+        label="Location"
+        placeholder="e.g My place, My Office, Your place, Online"
         outlined
       ></v-text-field>
     </DialogForm>
@@ -27,14 +27,14 @@ import { mapGetters } from 'vuex'
 import store from '@/store'
 
 export default {
-  name: 'TeacherSubjects',
+  name: 'TeacherLocations',
   components: {
     DialogForm
   },
   data() {
     return {
-      subject: '',
-      subjectRules: [(v) => !!v || 'Предметът е задължителен.'],
+      location: '',
+      locationRules: [(v) => !!v || 'Предметът е задължителен.'],
       loading: false,
       open: false,
       notice: '',
@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted() {
-    this.subject = ''
+    this.location = ''
     this.user = { ...this.currentUser }
   },
   methods: {
@@ -58,11 +58,11 @@ export default {
 
       try {
         await store.dispatch('updateProfile', {
-          subject_list: [...this.user.subject_list, this.subject].join(', ')
+          location_list: [...this.user.location_list, this.location].join(', ')
         })
         this.error = null
         this.closeDialog()
-        this.subject = ''
+        this.location = ''
       } catch (error) {
         this.error = error.response.data.error
       } finally {

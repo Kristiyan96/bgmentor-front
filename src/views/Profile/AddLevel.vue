@@ -7,14 +7,14 @@
       :open="open"
       :onSubmit="submit"
       @onClose="closeDialog"
-      title="Add subject"
+      title="Add level"
       :notice="notice"
       :error="error"
     >
       <v-text-field
-        v-model="subject"
-        label="Subject"
-        placeholder="e.g Maths, Frech, Computer Science"
+        v-model="level"
+        label="Level"
+        placeholder="e.g Beginner, Intermediate, Advanced"
         outlined
       ></v-text-field>
     </DialogForm>
@@ -27,14 +27,14 @@ import { mapGetters } from 'vuex'
 import store from '@/store'
 
 export default {
-  name: 'TeacherSubjects',
+  name: 'TeacherLevels',
   components: {
     DialogForm
   },
   data() {
     return {
-      subject: '',
-      subjectRules: [(v) => !!v || 'Предметът е задължителен.'],
+      level: '',
+      levelRules: [(v) => !!v || 'Предметът е задължителен.'],
       loading: false,
       open: false,
       notice: '',
@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted() {
-    this.subject = ''
+    this.level = ''
     this.user = { ...this.currentUser }
   },
   methods: {
@@ -58,11 +58,11 @@ export default {
 
       try {
         await store.dispatch('updateProfile', {
-          subject_list: [...this.user.subject_list, this.subject].join(', ')
+          level_list: [...this.user.level_list, this.level].join(', ')
         })
         this.error = null
         this.closeDialog()
-        this.subject = ''
+        this.level = ''
       } catch (error) {
         this.error = error.response.data.error
       } finally {
