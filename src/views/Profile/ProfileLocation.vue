@@ -1,56 +1,42 @@
 <template>
   <div class="my-1 mb-3 subtitle-1 d-flex align-center">
-    <span v-if="!editing">
-      <v-btn
-        @click="editing = true"
-        color="primary"
-        v-if="!editing"
-        icon
-        smallclass="mr-5"
-      >
+    <span>
+      <v-btn @click="openDialog" color="primary" icon smallclass="mr-5">
         <font-awesome-icon icon="edit" />
       </v-btn>
       <font-awesome-icon icon="map-marker-alt" class="mr-2" />
       {{ profile.city }}, {{ profile.country }}
     </span>
-    <span class="d-flex" v-else>
-      <v-container>
-        <v-row>
-          <v-text-field
-            v-model="city"
-            :label="$t(`profile.labels.city`)"
-          ></v-text-field>
-          <v-text-field
-            v-model="country"
-            :label="$t(`profile.labels.country`)"
-          ></v-text-field>
-        </v-row>
-        <v-row>
-          <v-btn @click="cancelEditing" class="mr-2 mt-2" icon>
-            <font-awesome-icon icon="times" />
-          </v-btn>
-          <v-btn
-            @click="saveLocation"
-            color="primary"
-            class="mt-2"
-            :loading="loading"
-            icon
-          >
-            <font-awesome-icon icon="check" />
-          </v-btn>
-        </v-row>
-      </v-container>
-    </span>
+    <DialogForm
+      :open="open"
+      :onSubmit="saveLocation"
+      @onClose="closeDialog"
+      title="Update your location"
+      :notice="notice"
+      :error="error"
+    >
+      <v-text-field
+        v-model="city"
+        :label="$t(`profile.labels.city`)"
+      ></v-text-field>
+      <v-text-field
+        v-model="country"
+        :label="$t(`profile.labels.country`)"
+      ></v-text-field>
+    </DialogForm>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
+import DialogForm from '@/components/DialogForm'
 
 export default {
   name: 'TeacherLocation',
-  components: {},
+  components: {
+    DialogForm
+  },
   props: {
     profile: {
       type: Object
@@ -61,12 +47,13 @@ export default {
       loading: false,
       country: '',
       city: '',
-      editing: false
+      open: false,
+      error: null,
+      notice: null
     }
   },
   mounted() {
-    this.country = this.profile.country
-    this.city = this.profile.city
+    this.cancelEditing()
   },
   methods: {
     async saveLocation() {
@@ -79,7 +66,7 @@ export default {
           city: this.city
         })
         this.error = null
-        this.editing = false
+        this.closeDialog()
       } catch (error) {
         this.error = error
       } finally {
@@ -87,9 +74,15 @@ export default {
       }
     },
     cancelEditing() {
-      this.editing = false
       this.country = this.profile.country
       this.city = this.profile.city
+    },
+    openDialog() {
+      this.open = true
+    },
+    closeDialog() {
+      this.open = false
+      this.cancelEditing()
     }
   },
   computed: {
