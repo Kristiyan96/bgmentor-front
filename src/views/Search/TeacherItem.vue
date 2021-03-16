@@ -18,16 +18,6 @@
       <v-card-text>
         <TeacherTitle :teacher="teacher" />
         <v-row align="center" class="mx-0">
-          <v-rating
-            :value="4.5"
-            color="amber"
-            dense
-            half-increments
-            readonly
-            size="14"
-          ></v-rating>
-
-          <div class="grey--text ml-4">4.5 (413)</div>
           <v-spacer />
           <ProfileLocation :profile="teacher" />
         </v-row>
