@@ -163,28 +163,6 @@ const messages = {
       profile: 'Profile',
       schedule: 'Schedule'
     },
-    follows: {
-      searchPlaceholder: 'Search students by name, number',
-      edit: 'Preview student',
-      new: 'Create student',
-      emptyList: 'You have no students yet.',
-      form: {
-        name: 'Name',
-        phoneNumber: 'Mobile number - student',
-        parentPhoneNumber: 'Mobile number - parent'
-      }
-    },
-    products: {
-      text: {
-        noProducts: 'This teacher does not have a price list yet.'
-      },
-      labels: {
-        title: 'Title',
-        subject: 'Subject',
-        price: 'Price per hour',
-        description: 'Description'
-      }
-    },
     actions: {
       confirm: 'Confirm',
       submit: 'Submit',
@@ -193,7 +171,29 @@ const messages = {
       delete: 'Delete',
       cancel: 'Cancel',
       close: 'Close',
-      clearChanges: 'Clear changes'
+      clearChanges: 'Clear changes',
+      preview: 'Preview'
+    },
+    profile: {
+      titles: {
+        subject: 'Add a subject',
+        level: 'Add a level',
+        location: 'Add a location',
+        cv: 'CV',
+        methodology: 'Methodology',
+        experience: 'Experience',
+        rate_details: 'Rate details',
+        price: 'Price: ',
+        negotiate: "Let's discuss"
+      },
+      labels: {
+        subject: 'I teach',
+        level: 'to',
+        location: 'My lessons take place',
+        add: 'Add',
+        city: 'City',
+        country: 'Country'
+      }
     }
   },
   bg: {
@@ -355,37 +355,37 @@ const messages = {
       profile: 'Профил',
       schedule: 'Календар'
     },
-    follows: {
-      searchPlaceholder: 'Намери ученик по име, номер',
-      edit: 'Преглед на ученик',
-      new: 'Добави ученик',
-      emptyList: 'Все още нямаш ученици. Добави ученици с бутона +.',
-      form: {
-        name: 'Име',
-        phoneNumber: 'Мобилен номер',
-        parentPhoneNumber: 'Мобилен номер - родител'
-      }
-    },
-    products: {
-      text: {
-        noProducts: 'Този учител все още няма обявен ценоразпис.'
-      },
-      labels: {
-        title: 'Заглавие',
-        subject: 'Предмет',
-        price: 'Цена на час',
-        description: 'Описание'
-      }
-    },
     actions: {
       confirm: 'Потвърди',
       submit: 'Запази',
       save: 'Запази',
-      update: 'Редактирай',
+      update: 'Промени',
       delete: 'Изтрий',
       cancel: 'Откажи',
       close: 'Затвори',
-      clearChanges: 'Върни промените'
+      clearChanges: 'Върни промените',
+      preview: 'Преглед'
+    },
+    profile: {
+      titles: {
+        subject: 'Добави предмет',
+        level: 'Добави ниво на преподаване',
+        location: 'Добави място на преподаване',
+        cv: 'CV',
+        methodology: 'Начин на преподаване',
+        experience: 'Предишен опит в тази сфера',
+        rate_details: 'Ценоразпис',
+        price: 'Цена',
+        negotiate: 'По договаряне'
+      },
+      labels: {
+        subject: 'Превподавам по',
+        level: 'Преподавам на',
+        location: 'Урокът се провежда',
+        add: 'Добави',
+        city: 'Град',
+        country: 'Държава'
+      }
     }
   }
 }

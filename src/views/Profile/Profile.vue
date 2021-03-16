@@ -1,11 +1,21 @@
 <template>
   <v-container class="grey lighten-5">
     <TeacherItem :teacher="profile" />
-    <v-row no-gutters class="mt-2">
-      <v-col cols="4"
-        ><TeacherSubjects /><TeacherLevels /><TeacherLocations />
+    <v-row class="mt-2">
+      <v-col cols="4">
+        <TeacherTagsSection
+          v-for="model in ['subject', 'level', 'location']"
+          :key="model"
+          :model="model"
+        />
       </v-col>
-      <v-col cols="8"> <TeacherCV /> </v-col>
+      <v-col cols="8">
+        <TeacherTextSection
+          v-for="model in ['cv', 'experience', 'rate_details']"
+          :key="model"
+          :model="model"
+        />
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -14,19 +24,15 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import TeacherItem from '@/views/Search/TeacherItem'
-import TeacherSubjects from './TeacherSubjects'
-import TeacherLevels from './TeacherLevels'
-import TeacherLocations from './TeacherLocations'
-import TeacherCV from './TeacherCV'
+import TeacherTagsSection from './TeacherTagsSection'
+import TeacherTextSection from './TeacherTextSection'
 
 export default {
   name: 'Profile',
   components: {
     TeacherItem,
-    TeacherSubjects,
-    TeacherLevels,
-    TeacherLocations,
-    TeacherCV
+    TeacherTagsSection,
+    TeacherTextSection
   },
   data() {
     return {
