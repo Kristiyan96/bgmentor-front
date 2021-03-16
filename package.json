@@ -5,7 +5,7 @@
   "author": "Kristiyan96 <kristiyan.c@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config config/dev.env.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "serve": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
