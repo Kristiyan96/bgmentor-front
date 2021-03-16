@@ -53,7 +53,7 @@ export default {
     }
   },
   mounted() {
-    this.cancelEditing()
+    this.resetEditing()
   },
   methods: {
     async saveLocation() {
@@ -73,7 +73,7 @@ export default {
         this.loading = false
       }
     },
-    cancelEditing() {
+    resetEditing() {
       this.country = this.profile.country
       this.city = this.profile.city
     },
@@ -82,7 +82,7 @@ export default {
     },
     closeDialog() {
       this.open = false
-      this.cancelEditing()
+      this.resetEditing()
     }
   },
   computed: {
