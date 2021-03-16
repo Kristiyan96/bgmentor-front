@@ -29,6 +29,7 @@ export default {
 
 <style lang="sass">
 .container-wrapper
+  background: #fafafa
   height: 100%
   display: flex
   flex-direction: column
