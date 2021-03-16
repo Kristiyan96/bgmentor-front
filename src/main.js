@@ -40,7 +40,8 @@ import {
   faSms,
   faStar,
   faHistory,
-  faPlus
+  faPlus,
+  faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
@@ -80,7 +81,8 @@ library.add({
   faSms,
   faStar,
   faHistory,
-  faPlus
+  faPlus,
+  faMapMarkerAlt
 })
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

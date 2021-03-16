@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters>
+  <v-row>
     <v-col cols="4">
       <v-img
         lazy-src="https://picsum.photos/id/11/10/6"
@@ -9,17 +9,14 @@
     </v-col>
     <v-col cols="8">
       <v-card-title>
-        <div class="h2">
+        <span class="h2">
           {{ teacher.first_name }}
-        </div>
+        </span>
+        <v-spacer />
+        <TeacherPricing :teacher="teacher" />
       </v-card-title>
       <v-card-text>
-        <div class="h5 grey--text">
-          {{ teacher.title }}
-        </div>
-        <div class="my-1 subtitle-1">
-          {{ teacher.city }}, {{ teacher.country }}
-        </div>
+        <TeacherTitle :teacher="teacher" />
         <v-row align="center" class="mx-0">
           <v-rating
             :value="4.5"
@@ -31,6 +28,8 @@
           ></v-rating>
 
           <div class="grey--text ml-4">4.5 (413)</div>
+          <v-spacer />
+          <ProfileLocation :profile="teacher" />
         </v-row>
       </v-card-text>
     </v-col>
@@ -38,8 +37,17 @@
 </template>
 
 <script>
+import ProfileLocation from '@/views/Profile/ProfileLocation'
+import TeacherPricing from '@/views/Profile/TeacherPricing'
+import TeacherTitle from '@/views/Profile/TeacherTitle'
+
 export default {
   name: 'TeacherItem',
+  components: {
+    ProfileLocation,
+    TeacherPricing,
+    TeacherTitle
+  },
   props: {
     teacher: {
       type: Object,
