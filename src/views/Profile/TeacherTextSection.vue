@@ -25,7 +25,7 @@
           v-if="editing"
           :loading="loading"
         >
-          <font-awesome-icon icon="save" class="mr-2" />
+          <font-awesome-icon icon="check" class="mr-2" />
           {{ $t(`actions.save`) }}
         </v-btn>
       </div>
