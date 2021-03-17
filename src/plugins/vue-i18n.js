@@ -375,7 +375,7 @@ const messages = {
         location: 'Добави място на преподаване',
         cv: 'CV',
         methodology: 'Начин на преподаване',
-        experience: 'Предишен опит в тази сфера',
+        experience: 'Опит като преподавател',
         rate_details: 'Ценоразпис',
         price: 'Цена',
         negotiate: 'По договаряне',
