@@ -194,7 +194,13 @@ const messages = {
         add: 'Add',
         city: 'City',
         country: 'Country',
-        title: 'Profile title'
+        title: 'Profile title',
+        pricing_minutes: 'Minutes',
+        pricing_price: 'Price'
+      },
+      rules: {
+        minutes: 'Minutes should be an integer > 0',
+        price: 'Price should be a decimal >= 0'
       }
     }
   },
@@ -378,7 +384,7 @@ const messages = {
         experience: 'Опит като преподавател',
         rate_details: 'Ценоразпис',
         price: 'Цена',
-        negotiate: 'По договаряне',
+        negotiate: 'По Договаряне',
         title: 'Промени заглавие'
       },
       labels: {
@@ -388,7 +394,13 @@ const messages = {
         add: 'Добави',
         city: 'Град',
         country: 'Държава',
-        title: 'Заглавие на профил'
+        title: 'Заглавие на профил',
+        pricing_minutes: 'Минути',
+        pricing_price: 'Цена'
+      },
+      rules: {
+        minutes: '',
+        price: ''
       }
     }
   }
