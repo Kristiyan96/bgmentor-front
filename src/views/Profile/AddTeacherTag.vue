@@ -64,7 +64,7 @@ export default {
       try {
         await store.dispatch('updateProfile', {
           [this.modelList]: [
-            ...this.user[this.modelList],
+            ...this.profile[this.modelList],
             this.modelValue
           ].join(', ')
         })
