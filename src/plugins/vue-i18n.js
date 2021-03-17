@@ -184,7 +184,8 @@ const messages = {
         experience: 'Experience',
         rate_details: 'Rate details',
         price: 'Price: ',
-        negotiate: "Let's discuss"
+        negotiate: "Let's discuss",
+        title: 'Промени заглавие'
       },
       labels: {
         subject: 'I teach',
@@ -192,7 +193,8 @@ const messages = {
         location: 'My lessons take place',
         add: 'Add',
         city: 'City',
-        country: 'Country'
+        country: 'Country',
+        title: 'Profile title'
       }
     }
   },
@@ -376,7 +378,8 @@ const messages = {
         experience: 'Предишен опит в тази сфера',
         rate_details: 'Ценоразпис',
         price: 'Цена',
-        negotiate: 'По договаряне'
+        negotiate: 'По договаряне',
+        title: 'Промени заглавие'
       },
       labels: {
         subject: 'Превподавам по',
@@ -384,7 +387,8 @@ const messages = {
         location: 'Урокът се провежда',
         add: 'Добави',
         city: 'Град',
-        country: 'Държава'
+        country: 'Държава',
+        title: 'Заглавие на профил'
       }
     }
   }

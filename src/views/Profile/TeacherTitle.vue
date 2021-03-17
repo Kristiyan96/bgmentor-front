@@ -8,7 +8,7 @@
       :open="open"
       :onSubmit="saveTitle"
       @onClose="closeDialog"
-      title="Update your title"
+      :title="$t(`profile.titles.title`)"
       :error="error"
     >
       <v-text-field
