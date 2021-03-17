@@ -21,7 +21,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/me/general">
+          <v-list-item :to="`/profile/${currentUser.id}`">
             <v-list-item-action>
               <font-awesome-icon icon="user" class="grey--text" />
             </v-list-item-action>
