@@ -14,6 +14,7 @@
     >
       <v-text-field
         v-model="modelValue"
+        :rules="modelRules"
         :label="$t(`profile.labels.${model}`)"
         :placeholder="$t(`profile.titles.${model}`)"
         outlined
