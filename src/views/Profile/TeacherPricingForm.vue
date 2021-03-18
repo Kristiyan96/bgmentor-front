@@ -5,7 +5,7 @@
     </v-btn>
     <DialogForm
       :open="open"
-      :onSubmit="saveTitle"
+      :onSubmit="savePricings"
       @onClose="closeDialog"
       :title="$t(`profile.titles.title`)"
       :error="error"
@@ -13,12 +13,12 @@
       <div v-for="pricing in pricings" :key="pricing.id" class="d-flex">
         <v-text-field
           :rules="minutesRules"
-          v-model="title"
+          v-model="pricing.minutes"
           :label="$t(`profile.labels.pricing_minutes`)"
         ></v-text-field>
         <v-text-field
           :rules="priceRules"
-          v-model="title"
+          v-model="pricing.price"
           :label="$t(`profile.labels.pricing_price`)"
         ></v-text-field>
       </div>
@@ -54,9 +54,12 @@ export default {
       priceRules: [(v) => !!v || this.$t(`profile.rules.price`)]
     }
   },
+  mounted() {
+    this.pricings = this.teacher.pricings
+  },
   methods: {
     addPricing() {
-      this.pricings.push({ ...this.newPricing })
+      this.pricings = [...this.pricings, { minutes: null, price: null }]
     },
     openDialog() {
       this.open = true
@@ -65,19 +68,15 @@ export default {
       this.open = false
       this.resetEditing()
     },
-    async savePricing() {
+    async savePricings() {
       this.loading = true
 
       try {
-        await store.dispatch(
-          this.pricing.id ? 'updatePricing' : 'createPricing',
-          {
-            id: this.profile.id,
-            title: this.title
-          }
-        )
+        await store.dispatch('updateProfile', {
+          pricings_attributes: this.pricings
+        })
         this.error = null
-        this.closeDialog()
+        this.editing = false
       } catch (error) {
         this.error = error
       } finally {
@@ -89,7 +88,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentUser', 'profile', 'newPricing']),
+    ...mapGetters(['currentUser', 'profile']),
     editable() {
       return this.profile.id === this.currentUser.id
     }

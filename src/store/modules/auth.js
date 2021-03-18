@@ -45,10 +45,10 @@ const actions = {
         })
     })
   },
-  updateProfile({ commit, getters }, user) {
+  updateProfile({ commit, getters }, params) {
     return new Promise((resolve, reject) => {
       this._vm.$http.secured
-        .put('/me', { user: { id: getters.currentUserId, ...user } })
+        .put('/me', { user: { id: getters.currentUserId, ...params } })
         .then((response) => {
           commit('setUser', response.data)
           commit('setProfile', response.data)
