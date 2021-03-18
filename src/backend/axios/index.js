@@ -57,17 +57,17 @@ const onError = (error) => {
         { headers: { 'X-CSRF-TOKEN': store.state.auth.csrf } }
       )
       .then((response) => {
-        store.commit('refresh', response.data.csrf)
+        store.commit('refreshAuth', response.data.csrf)
         // And after successful refresh - repeat the original request
         let retryConfig = error.response.config
-        retryConfig.headers['X-CSRF-TOKEN'] = store.state.auth.csrf
+        retryConfig.headers['X-CSRF-TOKEN'] = response.data.csrf
 
         return plainAxiosInstance.request(retryConfig)
       })
       .catch((error) => {
-        // store.commit('purgeAuth')
+        store.commit('purgeAuth')
         // redirect to signin in case refresh request fails
-        // location.replace('/')
+        location.replace('/')
         return Promise.reject(error)
       })
   } else {
