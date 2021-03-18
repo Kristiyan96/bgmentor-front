@@ -47,7 +47,7 @@ const onError = (error) => {
   if (
     error.response &&
     error.response.config &&
-    error.response.status === 401
+    (error.response.status === 401 || error.response.status === 403)
   ) {
     // In case 401 is caused by expired access cookie - we'll do refresh request
     return plainAxiosInstance
@@ -65,9 +65,9 @@ const onError = (error) => {
         return plainAxiosInstance.request(retryConfig)
       })
       .catch((error) => {
-        store.commit('purgeAuth')
+        // store.commit('purgeAuth')
         // redirect to signin in case refresh request fails
-        location.replace('/')
+        // location.replace('/')
         return Promise.reject(error)
       })
   } else {
