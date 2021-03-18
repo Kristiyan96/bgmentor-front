@@ -202,6 +202,14 @@ const messages = {
         minutes: 'Minutes should be an integer > 0',
         price: 'Price should be a decimal >= 0'
       }
+    },
+    time: {
+      minutes: 'minutes',
+      min: 'min.',
+      hours: 'hours',
+      h: 'h.',
+      days: 'days',
+      d: 'd.'
     }
   },
   bg: {
@@ -402,6 +410,14 @@ const messages = {
         minutes: '',
         price: ''
       }
+    },
+    time: {
+      minutes: 'минути',
+      min: 'мин.',
+      hours: 'часа',
+      h: 'ч.',
+      days: 'дни',
+      d: 'д.'
     }
   }
 }

@@ -3,7 +3,7 @@
     <TeacherPricingForm :teacher="teacher" />
     <font-awesome-icon icon="dollar-sign" />
     {{ $t(`profile.titles.price`) }}
-    {{ teacher.price || $t(`profile.titles.negotiate`) }}
+    {{ price || $t(`profile.titles.negotiate`) }}
   </span>
 </template>
 
@@ -30,7 +30,34 @@ export default {
   },
   methods: {},
   computed: {
-    ...mapGetters(['currentUser', 'profile'])
+    ...mapGetters(['currentUser', 'profile']),
+    formattedPrice() {
+      return `от ${Math.floor(this.lowestPricing.price)}лв`
+    },
+    formattedTimeCalculated() {
+      return `${Math.floor(this.lowestPricing.minutes / 60)}${this.$t(
+        'time.h'
+      )}${this.lowestPricing.minutes % 60}${this.$t('time.min')}`
+    },
+    formattedTimeInMins() {
+      return `${this.lowestPricing.minutes}${this.$t('time.min')}`
+    },
+    formattedTime() {
+      return this.formattedTimeCalculated.length >=
+        this.formattedTimeInMins.length
+        ? this.formattedTimeCalculated
+        : this.formattedTimeInMins
+    },
+    price() {
+      return this.lowestPricing
+        ? `${this.formattedPrice} / ${this.formattedTime}`
+        : this.$t(`profile.titles.negotiate`)
+    },
+    lowestPricing() {
+      return this.teacher.pricings.reduce((prev, curr) =>
+        prev.price < curr.price ? prev : curr
+      )
+    }
   }
 }
 </script>

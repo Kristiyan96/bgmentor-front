@@ -55,7 +55,7 @@ export default {
     }
   },
   mounted() {
-    this.pricings = this.teacher.pricings
+    this.resetEditing()
   },
   methods: {
     addPricing() {
@@ -84,7 +84,7 @@ export default {
       }
     },
     resetEditing() {
-      this.pricings = this.profile.pricings
+      this.pricings = [...this.teacher.pricings]
     }
   },
   computed: {
