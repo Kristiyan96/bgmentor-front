@@ -2,21 +2,21 @@
   <v-container id="search-wrapper" class="d-flex">
     <v-col>
       <SearchFilterSelect
-        label="Location"
+        :label="$t(`search.labels.location`)"
         model="location"
         :suggestions="suggestedLocations"
       />
     </v-col>
     <v-col>
       <SearchFilterSelect
-        label="Subject"
+        :label="$t(`search.labels.subject`)"
         model="subject"
         :suggestions="suggestedSubjects"
       />
     </v-col>
     <v-col>
       <SearchFilterSelect
-        label="Levels"
+        :label="$t(`search.labels.level`)"
         model="level"
         :suggestions="suggestedLevels"
       />

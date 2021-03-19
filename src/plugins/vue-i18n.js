@@ -213,6 +213,16 @@ const messages = {
       h: 'h.',
       days: 'days',
       d: 'd.'
+    },
+    search: {
+      titles: {
+        results: 'Results'
+      },
+      labels: {
+        location: 'Lesson location',
+        subject: 'Subjects',
+        level: 'Knowledge level'
+      }
     }
   },
   bg: {
@@ -424,6 +434,16 @@ const messages = {
       h: 'ч.',
       days: 'дни',
       d: 'д.'
+    },
+    search: {
+      titles: {
+        results: 'Резултати'
+      },
+      labels: {
+        location: 'Място на урок',
+        subject: 'Предмети',
+        level: 'Ниво на знание'
+      }
     }
   }
 }
