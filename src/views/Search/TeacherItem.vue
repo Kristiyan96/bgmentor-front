@@ -1,11 +1,7 @@
 <template>
   <v-row>
     <v-col cols="4">
-      <v-img
-        lazy-src="https://picsum.photos/id/11/10/6"
-        src="https://picsum.photos/id/11/500/300"
-        class="img"
-      ></v-img>
+      <ProfileAvatar :teacher="teacher" />
     </v-col>
     <v-col cols="8">
       <v-card-title>
@@ -30,10 +26,12 @@
 import ProfileLocation from '@/views/Profile/ProfileLocation'
 import TeacherPricing from '@/views/Profile/TeacherPricing'
 import TeacherTitle from '@/views/Profile/TeacherTitle'
+import ProfileAvatar from '@/views/Profile/ProfileAvatar'
 
 export default {
   name: 'TeacherItem',
   components: {
+    ProfileAvatar,
     ProfileLocation,
     TeacherPricing,
     TeacherTitle
