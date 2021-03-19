@@ -6,7 +6,9 @@
     :items="allModels"
     chips
     flat
-    :label="label"
+    :label="$t(`search.labels.${model}`)"
+    item-text="text"
+    item-value="value"
     multiple
   ></v-autocomplete>
 </template>
@@ -43,11 +45,19 @@ export default {
   computed: {
     allModels() {
       return [
-        { header: 'From your search' },
+        { header: this.$t(`search.labels.from_input`) },
         ...this.fetchedFilters,
-        { header: 'Suggestions' },
-        ...this.suggestions
+        { header: this.$t(`search.labels.suggestions`) },
+        ...this.formattedSuggestions
       ]
+    },
+    formattedSuggestions() {
+      return this.suggestions.map((s) => {
+        return {
+          text: this.$t(`search.${this.model}.${s}`),
+          value: s
+        }
+      })
     }
   }
 }

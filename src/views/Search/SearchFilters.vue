@@ -37,15 +37,38 @@ export default {
     return {
       locations: [],
       suggestedLocations: [
-        'Online',
-        "Teacher's place",
-        'My Place',
-        'BgMentor office'
+        'online',
+        'teacher_place',
+        'student_place',
+        'bgmentor_office'
       ],
       subjects: [],
-      suggestedSubjects: ['Maths', 'Bulgarian', 'English'],
+      suggestedSubjects: [
+        'maths',
+        'bulgarian',
+        'english',
+        'programming',
+        'biology',
+        'piano'
+      ],
       levels: [],
-      suggestedLevels: ['beginner', 'intermediate', 'advanced']
+      suggestedLevels: [
+        'beginner',
+        'intermediate',
+        'advanced',
+        '_1st_grade',
+        '_2nd_grade',
+        '_3rd_grade',
+        '_4th_grade',
+        '_5th_grade',
+        '_6th_grade',
+        '_7th_grade',
+        '_8th_grade',
+        '_9th_grade',
+        '_10th_grade',
+        '_11th_grade',
+        '_12th_grade'
+      ]
     }
   },
   methods: {},

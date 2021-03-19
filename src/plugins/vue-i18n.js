@@ -221,7 +221,40 @@ const messages = {
       labels: {
         location: 'Lesson location',
         subject: 'Subjects',
-        level: 'Knowledge level'
+        level: 'Knowledge level',
+        from_input: 'Suggestions',
+        suggestions: 'Most popular'
+      },
+      locations: {
+        online: 'Online',
+        teacher_place: "Teacher's place",
+        student_place: "Student's place",
+        bgmentor_office: "BgMentor's office"
+      },
+      subjects: {
+        maths: 'Maths',
+        bulgarian: 'Bulgarian',
+        programming: 'Programming',
+        english: 'English',
+        biology: 'Biology',
+        piano: 'Piano'
+      },
+      levels: {
+        _1_grade: '1st grade',
+        _2_grade: '2nd grade',
+        _3_grade: '3rd grade',
+        _4_grade: '4th grade',
+        _5_grade: '5th grade',
+        _6_grade: '6th grade',
+        _7_grade: '7th grade',
+        _8_grade: '8th grade',
+        _9_grade: '9th grade',
+        _10_grade: '10th grade',
+        _11_grade: '11th grade',
+        _12_grade: '12th grade',
+        beginner: 'Beginner',
+        intermediate: 'Intermediate',
+        professional: 'Professional'
       }
     }
   },
@@ -442,7 +475,40 @@ const messages = {
       labels: {
         location: 'Място на урок',
         subject: 'Предмети',
-        level: 'Ниво на знание'
+        level: 'Ниво на знание',
+        from_input: 'Предложения',
+        suggestions: 'Най-търсени'
+      },
+      location: {
+        online: 'Онлайн',
+        teacher_place: 'При учителя',
+        student_place: 'При ученика',
+        bgmentor_office: 'Офис на Бг Ментор'
+      },
+      subject: {
+        maths: 'Математика',
+        bulgarian: 'Български ез. и Литература',
+        programming: 'Програмиране',
+        english: 'Английски',
+        biology: 'Биология',
+        piano: 'Пиано'
+      },
+      level: {
+        _1_grade: '1ви клас',
+        _2_grade: '2ри клас',
+        _3_grade: '3ти клас',
+        _4_grade: '4ти клас',
+        _5_grade: '5ти клас',
+        _6_grade: '6ти клас',
+        _7_grade: '7ми клас',
+        _8_grade: '8ми клас',
+        _9_grade: '9ти клас',
+        _10_grade: '10ти клас',
+        _11_grade: '11ти клас',
+        _12_grade: '12ти клас',
+        beginner: 'Начинаещи',
+        intermediate: 'Напреднали',
+        professional: 'Професионално'
       }
     }
   }
