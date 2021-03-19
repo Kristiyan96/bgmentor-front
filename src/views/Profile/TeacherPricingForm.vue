@@ -7,7 +7,7 @@
       :open="open"
       :onSubmit="savePricings"
       @onClose="closeDialog"
-      :title="$t(`profile.titles.title`)"
+      :title="$t(`profile.titles.change_pricing`)"
       :error="error"
     >
       <v-container>
@@ -43,7 +43,7 @@
         class="mt-4"
         :loading="loading"
       >
-        Add pricing
+        {{ $t(`profile.labels.add_pricing`) }}
       </v-btn>
     </DialogForm>
   </span>

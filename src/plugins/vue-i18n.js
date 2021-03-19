@@ -176,6 +176,8 @@ const messages = {
     },
     profile: {
       titles: {
+        change_address: 'Change your address',
+        change_pricing: 'Edit pricing',
         subject: 'Add a subject',
         level: 'Add a level',
         location: 'Add a location',
@@ -192,6 +194,7 @@ const messages = {
         level: 'to',
         location: 'My lessons take place',
         add: 'Add',
+        add_pricing: 'Add pricing',
         city: 'City',
         country: 'Country',
         title: 'Profile title',
@@ -360,7 +363,7 @@ const messages = {
       changeNumber: 'Промени номера',
       info: 'Ще получите СМС с код за достъп.',
       infoSummary:
-        'Обадете ни се на +359 885955926, ако не получите код до 5-10 минути.',
+        'Обадете се на +359 885955926, ако не получите код до 5-10 минути.',
       verifyNumber: 'Потвърждаване на мобилен номер'
     },
     nav: {
@@ -384,6 +387,8 @@ const messages = {
     },
     profile: {
       titles: {
+        change_address: 'Промени адрес',
+        change_pricing: 'Промени ценоразпис',
         subject: 'Добави предмет',
         level: 'Добави ниво на преподаване',
         location: 'Добави място на преподаване',
@@ -400,6 +405,7 @@ const messages = {
         level: 'Преподавам на',
         location: 'Урокът се провежда',
         add: 'Добави',
+        add_pricing: 'Добави цена',
         city: 'Град',
         country: 'Държава',
         title: 'Заглавие на профил',
@@ -407,8 +413,8 @@ const messages = {
         pricing_price: 'Цена'
       },
       rules: {
-        minutes: '',
-        price: ''
+        minutes: 'Минутите трябва да са положително число.',
+        price: 'Цената трябва да е положително число.'
       }
     },
     time: {

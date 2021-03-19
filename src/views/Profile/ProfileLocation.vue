@@ -11,7 +11,7 @@
       :open="open"
       :onSubmit="saveLocation"
       @onClose="closeDialog"
-      title="Update your location"
+      :title="$t(`profile.titles.change_address`)"
       :notice="notice"
       :error="error"
     >
