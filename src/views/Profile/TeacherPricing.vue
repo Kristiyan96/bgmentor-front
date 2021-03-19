@@ -2,7 +2,7 @@
   <span>
     <TeacherPricingForm :teacher="teacher" />
     <span class="h5 font-weight-bold">
-      {{ price || $t(`profile.titles.negotiate`) }}
+      {{ price }}
     </span>
   </span>
 </template>
@@ -37,13 +37,17 @@ export default {
     formattedTimeCalculated() {
       return `${Math.floor(this.lowestPricing.minutes / 60)}${this.$t(
         'time.h'
-      )}${this.lowestPricing.minutes % 60}${this.$t('time.min')}`
+      )}${
+        this.lowestPricing.minutes % 60 !== 0
+          ? this.lowestPricing.minutes % 60
+          : ''
+      }${this.lowestPricing.minutes % 60 !== 0 ? this.$t('time.min') : ''}`
     },
     formattedTimeInMins() {
       return `${this.lowestPricing.minutes}${this.$t('time.min')}`
     },
     formattedTime() {
-      return this.formattedTimeCalculated.length >=
+      return this.formattedTimeCalculated.length <
         this.formattedTimeInMins.length
         ? this.formattedTimeCalculated
         : this.formattedTimeInMins

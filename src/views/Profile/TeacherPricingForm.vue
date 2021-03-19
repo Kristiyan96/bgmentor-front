@@ -37,7 +37,12 @@
           </v-col>
         </v-row>
       </v-container>
-      <v-btn @click="addPricing" color="primary" class="mt-4">
+      <v-btn
+        @click="addPricing"
+        color="primary"
+        class="mt-4"
+        :loading="loading"
+      >
         Add pricing
       </v-btn>
     </DialogForm>
@@ -93,7 +98,8 @@ export default {
           pricings_attributes: this.pricings
         })
         this.error = null
-        this.editing = false
+        this.resetEditing()
+        this.closeDialog()
       } catch (error) {
         this.error = error
       } finally {
