@@ -12,10 +12,7 @@
         :width="200"
         :height="200"
         :headers="headers"
-        url="/api/signup"
-        method="put"
-        field="user[avatar]"
-        lang-type="en"
+        :lang-ext="$t(`$imageCrop`)"
         img-format="png"
       />
     </v-row>
@@ -69,19 +66,20 @@ export default {
           avatar: this.avatar
         })
         this.error = null
+        this.$store.commit('ADD_ALERT', [
+          'Avatar updated successfully!!',
+          'success'
+        ])
       } catch (error) {
         this.error = error
       } finally {
         this.loading = false
       }
     },
-    cropUploadSuccess(jsonData, field) {
+    cropUploadSuccess(jsonData) {
       this.show = false
       this.avatar = jsonData.avatar
-      this.$store.commit('ADD_ALERT', [
-        'Avatar updated successfully!!',
-        'success'
-      ])
+      this.submit()
     }
   },
   computed: {
