@@ -1,65 +1,55 @@
 <template>
   <v-container id="search-wrapper" class="d-flex">
     <v-col>
-      <v-autocomplete
-        filled
-        id="search-location"
-        v-model="locations"
-        :items="allLocations"
-        chips
-        flat
-        label="Locations"
-        multiple
-      ></v-autocomplete>
+      <SearchFilterSelect
+        label="Location"
+        model="location"
+        :suggestions="suggestedLocations"
+      />
     </v-col>
     <v-col>
-      <v-autocomplete
-        filled
-        id="search-subject"
-        v-model="subjects"
-        :items="allSubjects"
-        chips
-        flat
-        label="Subjects"
-        multiple
-      ></v-autocomplete>
+      <SearchFilterSelect
+        label="Subject"
+        model="subject"
+        :suggestions="suggestedSubjects"
+      />
     </v-col>
     <v-col>
-      <v-autocomplete
-        filled
-        id="search-levels"
-        v-model="levels"
-        :items="allLevels"
-        chips
-        flat
+      <SearchFilterSelect
         label="Levels"
-        multiple
-      ></v-autocomplete>
+        model="level"
+        :suggestions="suggestedLevels"
+      />
     </v-col>
   </v-container>
 </template>
 
 <script>
+import SearchFilterSelect from './SearchFilterSelect'
+
 export default {
   name: 'SearchFilters',
-  components: {},
+  components: {
+    SearchFilterSelect
+  },
   props: {},
   data() {
     return {
       locations: [],
-      allLocations: [
+      suggestedLocations: [
         'Online',
         "Teacher's place",
         'My Place',
         'BgMentor office'
       ],
       subjects: [],
-      allSubjects: ['Maths', 'Bulgarian', 'English'],
+      suggestedSubjects: ['Maths', 'Bulgarian', 'English'],
       levels: [],
-      allLevels: ['beginner', 'intermediate', 'advanced']
+      suggestedLevels: ['beginner', 'intermediate', 'advanced']
     }
   },
-  methods: {}
+  methods: {},
+  computed: {}
 }
 </script>
 
