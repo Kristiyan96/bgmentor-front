@@ -184,10 +184,10 @@ const messages = {
         cv: 'CV',
         methodology: 'Methodology',
         experience: 'Experience',
-        rate_details: 'Rate details',
-        price: 'Price: ',
+        rate_details: 'Price breakdown',
+        price: 'Price ',
         negotiate: "Let's discuss",
-        title: 'Промени заглавие'
+        title: 'Chnage title'
       },
       labels: {
         subject: 'I teach',

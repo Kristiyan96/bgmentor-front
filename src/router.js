@@ -10,6 +10,7 @@ import UserEdit from '@/views/admin/users/Edit'
 import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
 import UserProfile from '@/views/Profile/Profile'
+import TeacherSearch from '@/views/Search/TeacherSearch'
 
 Vue.use(Router)
 
@@ -82,6 +83,11 @@ export default new Router({
       path: '/profile/:id',
       name: 'UserProfile',
       component: UserProfile
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: TeacherSearch
     }
   ]
 })
