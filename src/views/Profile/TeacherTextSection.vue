@@ -30,6 +30,7 @@
         </v-btn>
       </div>
     </v-card-title>
+    <slot />
     <v-card-text>
       <VueEditor v-model="modelValue" v-if="editing" />
 

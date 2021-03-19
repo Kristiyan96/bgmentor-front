@@ -10,19 +10,36 @@
       :title="$t(`profile.titles.title`)"
       :error="error"
     >
-      <div v-for="pricing in pricings" :key="pricing.id" class="d-flex">
-        <v-text-field
-          :rules="minutesRules"
-          v-model="pricing.minutes"
-          :label="$t(`profile.labels.pricing_minutes`)"
-        ></v-text-field>
-        <v-text-field
-          :rules="priceRules"
-          v-model="pricing.price"
-          :label="$t(`profile.labels.pricing_price`)"
-        ></v-text-field>
-      </div>
-      <v-btn @click="addPricing" color="primary"> Add pricing </v-btn>
+      <v-container>
+        <v-row
+          v-for="(pricing, idx) in filteredPricings"
+          :key="`${pricing.id}-${idx}`"
+          class="d-flex pricing-item"
+        >
+          <v-col>
+            <v-text-field
+              :rules="minutesRules"
+              v-model="pricing.minutes"
+              :label="$t(`profile.labels.pricing_minutes`)"
+            ></v-text-field>
+          </v-col>
+          <v-col>
+            <v-text-field
+              :rules="priceRules"
+              v-model="pricing.price"
+              :label="$t(`profile.labels.pricing_price`)"
+            ></v-text-field>
+          </v-col>
+          <v-col>
+            <v-btn icon @click="deletePricing(pricing)"
+              ><font-awesome-icon icon="trash-alt"
+            /></v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-btn @click="addPricing" color="primary" class="mt-4">
+        Add pricing
+      </v-btn>
     </DialogForm>
   </span>
 </template>
@@ -85,13 +102,35 @@ export default {
     },
     resetEditing() {
       this.pricings = [...this.teacher.pricings]
+    },
+    deletePricing(pr) {
+      const idx = this.pricings.findIndex(
+        (p) =>
+          p.id === pr.id &&
+          p.minutes === pr.minutes &&
+          p.price === pr.price &&
+          !p._destroy
+      )
+
+      if (idx >= 0) {
+        const newPricing = { ...this.pricings[idx], _destroy: true }
+        this.pricings.splice(idx, 1, newPricing)
+      }
     }
   },
   computed: {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
       return this.profile.id === this.currentUser.id
+    },
+    filteredPricings() {
+      return this.pricings.filter((p) => p['_destroy'] !== true)
     }
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.pricing-item
+  border-bottom: 1px solid rgb(220,220,220)
+</style>

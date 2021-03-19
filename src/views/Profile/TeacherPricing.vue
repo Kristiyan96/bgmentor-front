@@ -1,9 +1,9 @@
 <template>
-  <span class="h5 font-weight-bold">
+  <span>
     <TeacherPricingForm :teacher="teacher" />
-    <font-awesome-icon icon="dollar-sign" />
-    {{ $t(`profile.titles.price`) }}
-    {{ price || $t(`profile.titles.negotiate`) }}
+    <span class="h5 font-weight-bold">
+      {{ price || $t(`profile.titles.negotiate`) }}
+    </span>
   </span>
 </template>
 

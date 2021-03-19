@@ -11,10 +11,11 @@
       </v-col>
       <v-col cols="8">
         <TeacherTextSection
-          v-for="model in ['cv', 'experience', 'rate_details']"
+          v-for="model in ['cv', 'experience']"
           :key="model"
           :model="model"
         />
+        <TeacherPricing />
       </v-col>
     </v-row>
   </v-container>
@@ -26,13 +27,15 @@ import store from '@/store'
 import TeacherItem from '@/views/Search/TeacherItem'
 import TeacherTagsSection from './TeacherTagsSection'
 import TeacherTextSection from './TeacherTextSection'
+import TeacherPricing from './TeacherPricingSection'
 
 export default {
   name: 'Profile',
   components: {
     TeacherItem,
     TeacherTagsSection,
-    TeacherTextSection
+    TeacherTextSection,
+    TeacherPricing
   },
   data() {
     return {
