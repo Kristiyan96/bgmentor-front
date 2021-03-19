@@ -11,8 +11,6 @@
         <FormWrapper :displayActions="false">
           <slot />
         </FormWrapper>
-
-        <small>*{{ $t('form.required') }}</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
