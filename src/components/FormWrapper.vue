@@ -5,15 +5,21 @@
 
     <slot />
 
-    <v-btn
-      type="submit"
-      large
-      color="primary"
-      class="btn mt-3"
-      v-if="displayActions"
-    >
-      {{ $t('actions.submit') }}</v-btn
-    >
+    <v-row id="action-wrapper">
+      <v-btn large class="btn mt-3" v-if="displayActions" plain>
+        {{ $t('actions.cancel') }}</v-btn
+      >
+
+      <v-btn
+        type="submit"
+        large
+        color="primary"
+        class="btn mt-3"
+        v-if="displayActions"
+      >
+        {{ $t('actions.submit') }}</v-btn
+      >
+    </v-row>
   </form>
 </template>
 
@@ -35,6 +41,11 @@ export default {
       default: () => {},
       description: 'Action to be performed when the form is submitted'
     },
+    onCancel: {
+      type: Function,
+      default: () => {},
+      description: 'What happens when user clicks on cancel'
+    },
     notice: {
       type: String,
       default: '',
@@ -51,3 +62,11 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+form
+  padding: 15px
+#action-wrapper
+  display: flex
+  justify-content: flex-end
+</style>
