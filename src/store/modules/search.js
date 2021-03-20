@@ -2,7 +2,7 @@ import router from '@/router.js'
 
 const state = {
   results: [],
-  filters: []
+  filters: {}
 }
 
 const getters = {
@@ -17,11 +17,12 @@ const getters = {
 const actions = {
   async performSearch({ commit, getters }, params) {
     return new Promise((resolve, reject) => {
+      commit('updateFilters', params)
       this._vm.$http.plain
-        .post('/users', { search: { ...getters.filters, ...params } })
+        .get('/users', { params: getters.filters })
         .then((response) => {
-          commit('setResults', response.data.results)
-          router.push('')
+          commit('setResults', response.data)
+          // router.push({ query: { params } })
           resolve(response.data)
         })
         .catch((error) => {
@@ -33,8 +34,14 @@ const actions = {
 }
 
 const mutations = {
+  setResults(state, results) {
+    state.results = results
+  },
   updateParams(state) {
     return true
+  },
+  updateFilters(state, filters) {
+    state.filters = { ...state.filters, ...filters }
   }
 }
 
