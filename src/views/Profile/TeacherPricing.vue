@@ -58,9 +58,11 @@ export default {
         : this.$t(`profile.titles.negotiate`)
     },
     lowestPricing() {
-      return this.teacher.pricings.reduce((prev, curr) =>
-        prev.price < curr.price ? prev : curr
-      )
+      return this.teacher.pricings.length
+        ? this.teacher.pricings.reduce((prev, curr) =>
+            prev.price < curr.price ? prev : curr
+          )
+        : null
     }
   }
 }

@@ -5,7 +5,8 @@
         <font-awesome-icon icon="edit" />
       </v-btn>
       <font-awesome-icon icon="map-marker-alt" class="mr-2" />
-      {{ profile.city }}, {{ profile.country }}
+      {{ profile.city ? profile.city : 'Unknown' }},
+      {{ profile.country ? profile.country : 'Unknown' }}
     </span>
     <DialogForm
       :open="open"
