@@ -8,23 +8,27 @@
         {{ $t(`search.titles.results`) }}: {{ results.length }}
       </div>
     </v-row>
-    <v-list three-line>
-      <template v-for="(item, index) in results">
-        <v-subheader
-          v-if="item.header"
-          :key="item.header"
-          v-text="item.header"
-        ></v-subheader>
+    <v-row>
+      <v-col cols="8" xs="12">
+        <v-list three-line>
+          <template v-for="(item, index) in results">
+            <v-subheader
+              v-if="item.header"
+              :key="item.header"
+              v-text="item.header"
+            ></v-subheader>
 
-        <v-divider
-          v-else-if="item.divider"
-          :key="index"
-          :inset="item.inset"
-        ></v-divider>
+            <v-divider
+              v-else-if="item.divider"
+              :key="index"
+              :inset="item.inset"
+            ></v-divider>
 
-        <TeacherItem :key="item.id" :teacher="item" />
-      </template>
-    </v-list>
+            <TeacherItem :key="item.id" :teacher="item" />
+          </template>
+        </v-list>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

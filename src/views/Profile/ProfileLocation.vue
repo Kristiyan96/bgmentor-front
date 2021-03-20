@@ -1,5 +1,5 @@
 <template>
-  <div class="my-1 mb-3 subtitle-1 d-flex align-center">
+  <div class="my-1 mb-3 subtitle-1 flex-end d-flex">
     <span>
       <v-btn @click="openDialog" color="primary" icon smallclass="mr-5">
         <font-awesome-icon icon="edit" />
@@ -94,3 +94,9 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.flex-end
+  display: flex
+  justify-content: flex-end
+</style>
