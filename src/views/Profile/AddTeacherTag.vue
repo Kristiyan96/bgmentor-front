@@ -12,13 +12,18 @@
       :notice="notice"
       :error="error"
     >
-      <v-text-field
+      <v-autocomplete
+        filled
+        :id="`tag-${model}`"
         v-model="modelValue"
-        :rules="modelRules"
+        :items="allModels"
+        chips
+        flat
         :label="$t(`profile.labels.${model}`)"
-        :placeholder="$t(`profile.titles.${model}`)"
-        outlined
-      ></v-text-field>
+        item-text="text"
+        item-value="value"
+        multiple
+      ></v-autocomplete>
     </DialogForm>
   </span>
 </template>
@@ -37,6 +42,12 @@ export default {
     model: {
       type: String,
       description: 'Which user field to edit. Has to be an array of tags'
+    },
+    suggestions: {
+      type: Array,
+      default: () => [],
+      description:
+        'List of suggestions. TODO: This component should fetch these'
     }
   },
   data() {
@@ -46,11 +57,9 @@ export default {
       loading: false,
       open: false,
       notice: '',
-      error: ''
+      error: '',
+      fetchedFilters: []
     }
-  },
-  mounted() {
-    this.modelValue = ''
   },
   methods: {
     openDialog() {
@@ -83,6 +92,29 @@ export default {
     ...mapGetters(['currentUser', 'profile']),
     modelList() {
       return `${this.model}_list`
+    },
+    allModels() {
+      return [
+        { header: this.$t(`search.labels.from_input`) },
+        ...this.fetchedFilters,
+        { header: this.$t(`search.labels.suggestions`) },
+        ...this.formattedSuggestions
+      ]
+    },
+    formattedSuggestions() {
+      return this.suggestions.map((s) => {
+        return {
+          text: this.$t(`search.${this.model}.${s}`),
+          value: s
+        }
+      })
+    }
+  },
+  watch: {
+    open() {
+      if (this.open) {
+        this.modelValue = this.profile[this.modelList]
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
     <v-card-title>
       {{ $t(`profile.labels.${model}`) }}
       <v-spacer />
-      <AddTag v-if="editable" :model="model" />
+      <AddTag v-if="editable" :model="model" :suggestions="suggestions" />
     </v-card-title>
     <v-card-text>
       <v-chip-group active-class="deep-purple accent-4 white--text" column>
@@ -15,7 +15,7 @@
           :close="editable"
           @click:close="deleteModel(m)"
         >
-          {{ m }}
+          {{ $t(`search.${model}.${m}`) }}
         </v-chip>
       </v-chip-group>
     </v-card-text>
@@ -71,6 +71,9 @@ export default {
     },
     modelList() {
       return `${this.model}_list`
+    },
+    suggestions() {
+      return Object.keys(this.$t(`search.${this.model}`))
     }
   }
 }

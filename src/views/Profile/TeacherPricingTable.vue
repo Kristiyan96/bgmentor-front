@@ -1,7 +1,7 @@
 <template>
-  <v-simple-table>
+  <v-simple-table v-if="user && user.pricings.length">
     <template v-slot:default>
-      <thead v-if="user.pricings.length">
+      <thead>
         <tr>
           <th class="text-left">{{ $t(`time.minutes`) }}</th>
           <th class="text-left">{{ $t(`profile.titles.price`) }}</th>
