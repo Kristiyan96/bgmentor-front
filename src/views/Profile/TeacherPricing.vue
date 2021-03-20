@@ -1,6 +1,6 @@
 <template>
   <span>
-    <TeacherPricingForm :teacher="teacher" />
+    <TeacherPricingForm v-if="!dontEdit" :teacher="teacher" />
     <span class="h5 font-weight-bold">
       {{ price }}
     </span>
@@ -19,6 +19,11 @@ export default {
     TeacherPricingForm
   },
   props: {
+    dontEdit: {
+      type: Boolean,
+      default: false,
+      description: 'Should we display edit button'
+    },
     teacher: {
       type: Object,
       default: () => {},

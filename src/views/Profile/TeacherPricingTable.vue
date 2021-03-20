@@ -1,14 +1,14 @@
 <template>
   <v-simple-table>
     <template v-slot:default>
-      <thead v-if="profile.pricings.length">
+      <thead v-if="teacher.pricings.length">
         <tr>
           <th class="text-left">{{ $t(`time.minutes`) }}</th>
           <th class="text-left">{{ $t(`profile.titles.price`) }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="pricing in profile.pricings" :key="pricing.minutes">
+        <tr v-for="pricing in teacher.pricings" :key="pricing.minutes">
           <td>{{ pricing.minutes }}</td>
           <td>{{ Math.floor(pricing.price) }}лв</td>
         </tr>
@@ -22,7 +22,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PricingTable',
-  props: {},
+  props: {
+    teacher: {
+      type: Object,
+      default: () => this.profile,
+      description: 'Teacher being displayed'
+    }
+  },
   data() {
     return {
       loading: false
@@ -32,7 +38,7 @@ export default {
   computed: {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
-      return this.profile.id === this.currentUser.id
+      return this.teacher.id === this.currentUser.id
     }
   }
 }

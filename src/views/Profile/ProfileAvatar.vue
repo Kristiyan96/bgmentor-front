@@ -1,21 +1,19 @@
 <template>
-  <div class="mb-5">
-    <v-row class="absolute-center">
-      <v-img
-        :src="`${urlBase}${teacher.avatar_url}`"
-        class="img"
-        @click="showEdit"
-      ></v-img>
-      <MyUpload
-        @crop-success="cropSuccess"
-        v-model="show"
-        :width="200"
-        :height="200"
-        :headers="headers"
-        :lang-ext="$t(`$imageCrop`)"
-        img-format="png"
-      />
-    </v-row>
+  <div>
+    <v-img
+      :src="`${urlBase}${teacher.avatar_url}`"
+      class="img"
+      @click="showEdit"
+    ></v-img>
+    <MyUpload
+      @crop-success="cropSuccess"
+      v-model="show"
+      :width="200"
+      :height="200"
+      :headers="headers"
+      :lang-ext="$t(`$imageCrop`)"
+      img-format="png"
+    />
   </div>
 </template>
 
@@ -96,10 +94,4 @@ export default {
   max-height: 300px
   max-width: 300px
   z-index: 2
-.absolute-center
-  display: flex
-  align-items: center
-  justify-content: center
-  text-align: center
-  z-index: 9
 </style>
