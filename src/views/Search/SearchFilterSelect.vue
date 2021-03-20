@@ -43,6 +43,9 @@ export default {
       fetchedFilters: []
     }
   },
+  mounted() {
+    this.value = store.getters.filters[this.model]
+  },
   methods: {},
   computed: {
     allModels() {
