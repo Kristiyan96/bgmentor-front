@@ -10,7 +10,13 @@
     item-text="text"
     item-value="value"
     multiple
-  ></v-autocomplete>
+  >
+    <template v-slot:selection="data">
+      <v-chip color="primary" v-bind="data.attrs" :input-value="data.selected">
+        {{ data.item.text }}
+      </v-chip>
+    </template>
+  </v-autocomplete>
 </template>
 
 <script>
