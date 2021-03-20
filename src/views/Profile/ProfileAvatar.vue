@@ -2,12 +2,12 @@
   <div class="mb-5">
     <v-row class="absolute-center">
       <v-img
-        src="https://picsum.photos/200/200"
+        :src="`${urlBase}${teacher.avatar_url}`"
         class="img"
         @click="showEdit"
       ></v-img>
       <MyUpload
-        @crop-upload-success="cropUploadSuccess"
+        @crop-success="cropSuccess"
         v-model="show"
         :width="200"
         :height="200"
@@ -23,6 +23,7 @@
 import MyUpload from 'vue-image-crop-upload'
 import store from '@/store'
 import { mapGetters } from 'vuex'
+import { API_URL } from '@/backend/axios/config'
 
 export default {
   name: 'TeacherImage',
@@ -38,6 +39,7 @@ export default {
   },
   data() {
     return {
+      urlBase: API_URL,
       avatar: null,
       show: false,
       headers: {
@@ -58,12 +60,14 @@ export default {
         this.show = true
       }
     },
-    async submit() {
+    async cropSuccess(imgDataUrl) {
+      this.show = false
+      this.avatar = imgDataUrl
       this.loading = true
 
       try {
         await store.dispatch('updateProfile', {
-          avatar: this.avatar
+          avatar: imgDataUrl
         })
         this.error = null
         this.$store.commit('ADD_ALERT', [
@@ -75,11 +79,6 @@ export default {
       } finally {
         this.loading = false
       }
-    },
-    cropUploadSuccess(jsonData) {
-      this.show = false
-      this.avatar = jsonData.avatar
-      this.submit()
     }
   },
   computed: {
