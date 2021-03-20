@@ -3,7 +3,9 @@
     <v-btn @click="openDialog" color="primary" icon smallclass="mr-5">
       <font-awesome-icon icon="edit" />
     </v-btn>
-    <span>{{ profile.title }}</span>
+    <span>{{
+      profile.title ? profile.title : editable ? 'Empty title' : ''
+    }}</span>
     <DialogForm
       :open="open"
       :onSubmit="saveTitle"
