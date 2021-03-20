@@ -444,7 +444,7 @@ const messages = {
         title: 'Промени заглавие'
       },
       labels: {
-        subject: 'Превподавам по',
+        subject: 'Преподавам по',
         level: 'Преподавам на',
         location: 'Урокът се провежда',
         add: 'Добави',
