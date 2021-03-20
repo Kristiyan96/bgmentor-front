@@ -1,14 +1,14 @@
 <template>
   <v-simple-table>
     <template v-slot:default>
-      <thead v-if="teacher.pricings.length">
+      <thead v-if="user.pricings.length">
         <tr>
           <th class="text-left">{{ $t(`time.minutes`) }}</th>
           <th class="text-left">{{ $t(`profile.titles.price`) }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="pricing in teacher.pricings" :key="pricing.minutes">
+        <tr v-for="pricing in user.pricings" :key="pricing.minutes">
           <td>{{ pricing.minutes }}</td>
           <td>{{ Math.floor(pricing.price) }}лв</td>
         </tr>
@@ -25,20 +25,23 @@ export default {
   props: {
     teacher: {
       type: Object,
-      default: () => this.profile,
+      default: () => {},
       description: 'Teacher being displayed'
     }
   },
   data() {
     return {
-      loading: false
+      loading: false,
+      user: null
     }
   },
-  methods: {},
+  mounted() {
+    this.user = this.teacher ? this.teacher : this.profile
+  },
   computed: {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
-      return this.teacher.id === this.currentUser.id
+      return this.user.id === this.currentUser.id
     }
   }
 }
