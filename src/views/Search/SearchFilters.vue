@@ -55,19 +55,19 @@ export default {
       suggestedLevels: [
         'beginner',
         'intermediate',
-        'advanced',
-        '_1st_grade',
-        '_2nd_grade',
-        '_3rd_grade',
-        '_4th_grade',
-        '_5th_grade',
-        '_6th_grade',
-        '_7th_grade',
-        '_8th_grade',
-        '_9th_grade',
-        '_10th_grade',
-        '_11th_grade',
-        '_12th_grade'
+        'professional',
+        '_1_grade',
+        '_2_grade',
+        '_3_grade',
+        '_4_grade',
+        '_5_grade',
+        '_6_grade',
+        '_7_grade',
+        '_8_grade',
+        '_9_grade',
+        '_10_grade',
+        '_11_grade',
+        '_12_grade'
       ]
     }
   },
