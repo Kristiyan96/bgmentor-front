@@ -4,7 +4,7 @@
       <SearchFilters />
     </v-row>
     <v-row>
-      <div class="h2">{{ $t(`search.titles.results`) }}</div>
+      <div class="h2 pl-5">{{ $t(`search.titles.results`) }}</div>
     </v-row>
   </v-container>
 </template>

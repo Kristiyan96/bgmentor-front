@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import store from '@/store'
+
 export default {
   name: 'SearchFilterSelect',
   components: {},
@@ -58,6 +60,12 @@ export default {
           value: s
         }
       })
+    }
+  },
+  watch: {
+    value(value) {
+      // update store filters and perform search
+      store.dispatch('performSearch', { [this.model]: this.value })
     }
   }
 }
