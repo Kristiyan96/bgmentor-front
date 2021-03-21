@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-img
-      :src="`${urlBase}${teacher.avatar_url}`"
-      class="img"
-      @click="showEdit"
-    ></v-img>
+    <v-img :src="imageSrc" class="img" @click="showEdit"></v-img>
     <MyUpload
       @crop-success="cropSuccess"
       v-model="show"
@@ -83,6 +79,11 @@ export default {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
       return this.profile.id === this.currentUser.id
+    },
+    imageSrc() {
+      return this.teacher.avatar_url
+        ? `${this.urlBase}${this.teacher.avatar_url}`
+        : 'https://picsum.photos/200/200'
     }
   }
 }
