@@ -222,6 +222,8 @@ const messages = {
         location: 'Lesson location',
         subject: 'Subjects',
         level: 'Knowledge level',
+        city: 'City',
+        country: 'Country',
         from_input: 'Suggestions',
         suggestions: 'Most popular'
       },
@@ -230,6 +232,15 @@ const messages = {
         teacher_place: "Teacher's place",
         student_place: "Student's place",
         bgmentor_office: "BgMentor's office"
+      },
+      city: {
+        sofia: 'Sofia',
+        varna: 'Varna',
+        burgas: 'Bourgas',
+        plovdiv: 'Plovdiv'
+      },
+      country: {
+        bulgaria: 'Bulgaria'
       },
       subjects: {
         maths: 'Maths',
@@ -476,6 +487,8 @@ const messages = {
         location: 'Място на урок',
         subject: 'Предмети',
         level: 'Ниво на знание',
+        city: 'Град',
+        country: 'Държава',
         from_input: 'Предложения',
         suggestions: 'Най-търсени'
       },
@@ -484,6 +497,15 @@ const messages = {
         teacher_place: 'При учителя',
         student_place: 'При ученика',
         bgmentor_office: 'Офис на Бг Ментор'
+      },
+      city: {
+        sofia: 'София',
+        varna: 'Варна',
+        burgas: 'Бургас',
+        plovdiv: 'Пловдив'
+      },
+      country: {
+        bulgaria: 'България'
       },
       subject: {
         maths: 'Математика',
