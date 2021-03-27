@@ -9,21 +9,15 @@
       :onSubmit="submit"
       @onClose="closeDialog"
       :title="$t(`profile.titles.${model}`)"
-      :notice="notice"
       :error="error"
     >
-      <v-autocomplete
-        filled
-        :id="`tag-${model}`"
-        v-model="modelValue"
-        :items="allModels"
-        chips
-        flat
-        :label="$t(`profile.labels.${model}`)"
-        item-text="text"
-        item-value="value"
-        multiple
-      ></v-autocomplete>
+      <TagField
+        :model="model"
+        :suggestions="suggestions"
+        :multiple="true"
+        @update="(val) => (modelValue = val)"
+        :savedValue="modelValue"
+      />
     </DialogForm>
   </span>
 </template>
@@ -32,11 +26,13 @@
 import DialogForm from '@/components/DialogForm'
 import { mapGetters } from 'vuex'
 import store from '@/store'
+import TagField from '@/components/TagField'
 
 export default {
   name: 'TeacherLevels',
   components: {
-    DialogForm
+    DialogForm,
+    TagField
   },
   props: {
     model: {
@@ -53,10 +49,8 @@ export default {
   data() {
     return {
       modelValue: '',
-      modelRules: [(v) => !!v || this.$t(`profile.titles.${this.model}`)],
       loading: false,
       open: false,
-      notice: '',
       error: '',
       fetchedFilters: []
     }
