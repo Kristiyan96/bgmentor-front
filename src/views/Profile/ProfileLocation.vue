@@ -1,42 +1,22 @@
 <template>
   <div class="my-1 mb-3 subtitle-1 flex-end d-flex">
     <span>
-      <v-btn @click="openDialog" color="primary" icon smallclass="mr-5">
-        <font-awesome-icon icon="edit" />
-      </v-btn>
+      <SetTeacherLocation v-if="editable" :profile="profile" />
       <font-awesome-icon icon="map-marker-alt" class="mr-2" />
-      {{ profile.city ? profile.city : 'Unknown' }},
-      {{ profile.country ? profile.country : 'Unknown' }}
+      {{ city }},
+      {{ country }}
     </span>
-    <DialogForm
-      :open="open"
-      :onSubmit="saveLocation"
-      @onClose="closeDialog"
-      :title="$t(`profile.titles.change_address`)"
-      :notice="notice"
-      :error="error"
-    >
-      <v-text-field
-        v-model="city"
-        :label="$t(`profile.labels.city`)"
-      ></v-text-field>
-      <v-text-field
-        v-model="country"
-        :label="$t(`profile.labels.country`)"
-      ></v-text-field>
-    </DialogForm>
   </div>
 </template>
 
 <script>
+import SetTeacherLocation from './SetTeacherLocation'
 import { mapGetters } from 'vuex'
-import store from '@/store'
-import DialogForm from '@/components/DialogForm'
 
 export default {
   name: 'TeacherLocation',
   components: {
-    DialogForm
+    SetTeacherLocation
   },
   props: {
     profile: {
@@ -44,52 +24,22 @@ export default {
     }
   },
   data() {
-    return {
-      loading: false,
-      country: '',
-      city: '',
-      open: false,
-      error: null,
-      notice: null
-    }
-  },
-  mounted() {
-    this.resetEditing()
-  },
-  methods: {
-    async saveLocation() {
-      this.loading = true
-
-      try {
-        await store.dispatch('updateProfile', {
-          id: this.profile.id,
-          country: this.country,
-          city: this.city
-        })
-        this.error = null
-        this.closeDialog()
-      } catch (error) {
-        this.error = error
-      } finally {
-        this.loading = false
-      }
-    },
-    resetEditing() {
-      this.country = this.profile.country
-      this.city = this.profile.city
-    },
-    openDialog() {
-      this.open = true
-    },
-    closeDialog() {
-      this.open = false
-      this.resetEditing()
-    }
+    return {}
   },
   computed: {
     ...mapGetters(['currentUser']),
     editable() {
       return this.profile.id === this.currentUser.id
+    },
+    city() {
+      return this.profile.city_list.length
+        ? this.$t(`search.city.${this.profile.city_list[0]}`)
+        : 'Unknown'
+    },
+    country() {
+      return this.profile.country_list.length
+        ? this.$t(`search.country.${this.profile.country_list[0]}`)
+        : 'Unknown'
     }
   }
 }
