@@ -1,5 +1,6 @@
 <template>
   <v-container class="grey lighten-5">
+    <AddRating />
     <TeacherHeader :teacher="profile" />
     <v-row class="mt-2">
       <v-col cols="4">
@@ -28,10 +29,12 @@ import TeacherHeader from '@/views/Profile/TeacherHeader'
 import TeacherTagsSection from './TeacherTagsSection'
 import TeacherTextSection from './TeacherTextSection'
 import TeacherPricing from './TeacherPricingSection'
+import AddRating from './AddRating'
 
 export default {
   name: 'Profile',
   components: {
+    AddRating,
     TeacherHeader,
     TeacherTagsSection,
     TeacherTextSection,
