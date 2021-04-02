@@ -1,5 +1,5 @@
 <template>
-  <v-list-item>
+  <v-list-item :to="`/profile/${teacher.id}`">
     <v-list-item-avatar size="190" rounded>
       <ProfileAvatar :teacher="teacher" />
     </v-list-item-avatar>
@@ -50,7 +50,8 @@ export default {
   data() {
     return {}
   },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 
