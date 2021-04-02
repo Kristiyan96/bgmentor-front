@@ -1,6 +1,6 @@
 <template>
   <v-container class="grey lighten-5">
-    <AddRating />
+    <!-- <AddRating /> -->
     <TeacherHeader :teacher="profile" />
     <v-row class="mt-2">
       <v-col cols="4">
