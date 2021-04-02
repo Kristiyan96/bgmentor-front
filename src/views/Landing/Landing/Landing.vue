@@ -20,11 +20,9 @@
         <img class="bg-image-small" src="@/assets/images/bg.png" />
       </v-row>
       <v-row class="main-small justify-center text-center">
-        <h1 class="mt-3 mb-3">
-          Групово и индивидуално <br />обучение по
-          {{ words[count % words.length] }}
-        </h1>
-        <v-btn class="primary" rounded x-large depressed href="#courses">
+        <h1 class="mt-3 mb-3">Групово и индивидуално <br />обучение</h1>
+        <SearchFilters />
+        <v-btn class="primary" rounded x-large depressed to="/search">
           Прегледай курсовете
         </v-btn>
       </v-row>
@@ -33,21 +31,19 @@
 </template>
 
 <script>
+import SearchFilters from '@/views/Search/SearchFilters'
+
 export default {
   name: 'Landing',
+  components: {
+    SearchFilters
+  },
   data() {
     return {
       cssProps: {
         backgroundImage: `url(${require('@/assets/images/bg.png')})`
-      },
-      count: 0,
-      words: ['математика', 'програмиране', '']
+      }
     }
-  },
-  mounted: function () {
-    window.setInterval(() => {
-      this.count++
-    }, 3000)
   }
 }
 </script>
