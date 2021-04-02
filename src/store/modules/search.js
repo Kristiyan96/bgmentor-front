@@ -1,5 +1,3 @@
-import router from '@/router.js'
-
 const state = {
   results: [],
   filters: {}
@@ -22,7 +20,6 @@ const actions = {
         .get('/users', { params: getters.filters })
         .then((response) => {
           commit('setResults', response.data)
-          // router.push({ query: { params } })
           resolve(response.data)
         })
         .catch((error) => {
@@ -36,9 +33,6 @@ const actions = {
 const mutations = {
   setResults(state, results) {
     state.results = results
-  },
-  updateParams(state) {
-    return true
   },
   updateFilters(state, filters) {
     state.filters = { ...state.filters, ...filters }

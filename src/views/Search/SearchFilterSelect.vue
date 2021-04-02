@@ -72,9 +72,8 @@ export default {
     }
   },
   watch: {
-    value(value) {
-      // update store filters and perform search
-      store.dispatch('performSearch', { [this.model]: this.value })
+    value(val) {
+      store.dispatch('performSearch', { [this.model]: val })
     }
   }
 }
