@@ -1,26 +1,28 @@
 <template>
-  <v-container id="search-wrapper" class="d-flex">
-    <v-col>
-      <SearchFilterSelect
-        :label="$t(`search.labels.location`)"
-        model="location"
-        :suggestions="suggestedLocations"
-      />
-    </v-col>
-    <v-col>
-      <SearchFilterSelect
-        :label="$t(`search.labels.subject`)"
-        model="subject"
-        :suggestions="suggestedSubjects"
-      />
-    </v-col>
-    <v-col>
-      <SearchFilterSelect
-        :label="$t(`search.labels.level`)"
-        model="level"
-        :suggestions="suggestedLevels"
-      />
-    </v-col>
+  <v-container id="search-wrapper">
+    <v-row>
+      <v-col cols="12" sm="12" lg="4">
+        <SearchFilterSelect
+          :label="$t(`search.labels.location`)"
+          model="location"
+          :suggestions="suggestedLocations"
+        />
+      </v-col>
+      <v-col cols="12" sm="12" lg="4">
+        <SearchFilterSelect
+          :label="$t(`search.labels.subject`)"
+          model="subject"
+          :suggestions="suggestedSubjects"
+        />
+      </v-col>
+      <v-col cols="12" sm="12" lg="4">
+        <SearchFilterSelect
+          :label="$t(`search.labels.level`)"
+          model="level"
+          :suggestions="suggestedLevels"
+        />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -30,7 +32,7 @@ import SearchFilterSelect from './SearchFilterSelect'
 export default {
   name: 'SearchFilters',
   components: {
-    SearchFilterSelect
+    SearchFilterSelect,
   },
   props: {},
   data() {
