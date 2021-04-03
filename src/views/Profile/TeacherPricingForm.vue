@@ -1,6 +1,12 @@
 <template>
   <span class="h5 font-weight-bold">
-    <v-btn @click="openDialog" color="primary" icon smallclass="mr-5">
+    <v-btn
+      @click="openDialog"
+      color="primary"
+      icon
+      smallclass="mr-5"
+      v-if="editable"
+    >
       <font-awesome-icon icon="edit" />
     </v-btn>
     <DialogForm
