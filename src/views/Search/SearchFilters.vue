@@ -32,7 +32,7 @@ import SearchFilterSelect from './SearchFilterSelect'
 export default {
   name: 'SearchFilters',
   components: {
-    SearchFilterSelect,
+    SearchFilterSelect
   },
   props: {},
   data() {
