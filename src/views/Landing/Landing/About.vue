@@ -13,16 +13,6 @@
         <v-col lg="12">
           <v-row class="teachers">
             <v-col
-              lg="3"
-              md="4"
-              sm="6"
-              xs="12"
-              v-for="teacher in teachers"
-              :key="teacher.name"
-            >
-              <TeacherCard :teacher="teacher" />
-            </v-col>
-            <v-col
               lg="5"
               md="4"
               sm="6"
