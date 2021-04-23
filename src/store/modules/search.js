@@ -17,13 +17,12 @@ const actions = {
     return new Promise((resolve, reject) => {
       commit('updateFilters', params)
       this._vm.$http.plain
-        .get('/users', { params: getters.filters })
+        .get('/profile', { params: getters.filters })
         .then((response) => {
           commit('setResults', response.data)
           resolve(response.data)
         })
         .catch((error) => {
-          commit('purgeAuth')
           reject(error)
         })
     })

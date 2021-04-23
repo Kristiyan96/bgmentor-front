@@ -104,6 +104,7 @@ const actions = {
         })
         .catch((error) => {
           commit('purgeAuth')
+          commit('setUser', null)
           reject(error)
         })
     })
