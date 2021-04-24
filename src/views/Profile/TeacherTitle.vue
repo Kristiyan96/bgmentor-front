@@ -10,7 +10,7 @@
       <font-awesome-icon icon="edit" />
     </v-btn>
     <span>{{
-      profile.title ? profile.title : editable ? 'Empty title' : ''
+      teacher.title ? teacher.title : editable ? 'Empty title' : ''
     }}</span>
     <DialogForm
       :open="open"
@@ -66,7 +66,7 @@ export default {
 
       try {
         await store.dispatch('updateProfile', {
-          id: this.profile.id,
+          id: this.teacher.id,
           title: this.title
         })
         this.error = null
@@ -78,11 +78,11 @@ export default {
       }
     },
     resetEditing() {
-      this.title = this.profile.title
+      this.title = this.teacher.title
     }
   },
   computed: {
-    ...mapGetters(['currentUser', 'profile']),
+    ...mapGetters(['currentUser']),
     editable() {
       return this.teacher.id === this.currentUser.id
     }
