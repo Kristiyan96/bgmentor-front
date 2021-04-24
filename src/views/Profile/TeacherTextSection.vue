@@ -65,9 +65,6 @@ export default {
       editing: false
     }
   },
-  mounted() {
-    this.modelValue = this.profile[this.model]
-  },
   methods: {
     async saveModelValue() {
       this.loading = true
@@ -93,6 +90,17 @@ export default {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
       return this.profile.id === this.currentUser.id
+    },
+    profileId() {
+      return this.profile.id
+    }
+  },
+  watch: {
+    profileId: {
+      immediate: true,
+      handler() {
+        this.modelValue = this.profile[this.model]
+      }
     }
   }
 }
