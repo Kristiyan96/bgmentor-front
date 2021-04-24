@@ -46,21 +46,36 @@ export default {
       error: ''
     }
   },
-  async mounted() {
-    this.loading = true
+  mounted() {
+    this.fetchProfile()
+  },
+  methods: {
+    async fetchProfile() {
+      this.loading = true
 
-    try {
-      await store.dispatch('fetchProfile', this.$route.params.id)
-      this.error = ''
-    } catch (error) {
-      this.error = error
-    } finally {
-      this.loading = false
+      try {
+        await store.dispatch('fetchProfile', this.$route.params.id)
+        this.error = ''
+      } catch (error) {
+        this.error = error
+      } finally {
+        this.loading = false
+      }
     }
   },
-  methods: {},
   computed: {
-    ...mapGetters(['currentUser', 'profile'])
+    ...mapGetters(['currentUser', 'profile']),
+    profileId() {
+      return this.profile.id
+    }
+  },
+  watch: {
+    profileId: {
+      immediate: true,
+      handler() {
+        this.fetchProfile()
+      }
+    }
   }
 }
 </script>

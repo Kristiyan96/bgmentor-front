@@ -84,7 +84,7 @@ export default {
   computed: {
     ...mapGetters(['currentUser', 'profile']),
     editable() {
-      return this.profile.id === this.currentUser.id
+      return this.teacher.id === this.currentUser.id
     }
   }
 }
