@@ -3,14 +3,14 @@
     <!-- <AddRating /> -->
     <TeacherHeader :teacher="profile" />
     <v-row class="mt-2">
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <TeacherTagsSection
           v-for="model in ['subject', 'level', 'location']"
           :key="model"
           :model="model"
         />
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" md="8">
         <TeacherTextSection
           v-for="model in ['cv', 'experience']"
           :key="model"

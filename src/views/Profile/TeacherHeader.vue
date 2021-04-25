@@ -1,13 +1,13 @@
 <template>
   <v-row>
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <div class="mb-5">
         <v-row class="absolute-center">
           <ProfileAvatar :teacher="teacher" />
         </v-row>
       </div>
     </v-col>
-    <v-col cols="8">
+    <v-col cols="12" md="8">
       <v-card-title>
         <span class="h2">
           {{ teacher.first_name }}
@@ -16,11 +16,11 @@
         <TeacherPricing :teacher="teacher" />
       </v-card-title>
       <v-card-text>
-        <v-row align="center" class="mx-0">
-          <v-col>
+        <v-row class="mx-0">
+          <v-col cols="12" md="8">
             <TeacherTitle :teacher="teacher" />
           </v-col>
-          <v-col class="text-right">
+          <v-col class="text-right" cols="12" md="4">
             <ProfileLocation :profile="teacher" />
           </v-col>
         </v-row>
