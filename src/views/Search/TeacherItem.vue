@@ -29,7 +29,7 @@
     </v-list-item>
     <v-card class="mx-auto my-12 d-md-none" :to="`/profile/${teacher.id}`">
       <div class="mobile-image-wrapper">
-        <ProfileAvatar :teacher="teacher" />
+        <ProfileAvatar :teacher="teacher" gradient />
 
         <div class="h2 teacher-title">
           <span>{{ teacher.first_name }}</span>
@@ -84,7 +84,7 @@ export default {
   position: relative
 .teacher-title
   display: flex
-  color: white
+  font-weight: bold
   position: absolute
   bottom: 0px
   left: 30px

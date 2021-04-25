@@ -1,6 +1,7 @@
 <template>
   <div class="img-wrapper">
     <v-img :src="imageSrc" class="img" @click="showEdit"></v-img>
+    <div class="gradient" v-if="gradient"></div>
     <MyUpload
       @crop-success="cropSuccess"
       v-model="show"
@@ -29,6 +30,11 @@ export default {
       type: Object,
       default: () => {},
       description: 'Teacher being displayed'
+    },
+    gradient: {
+      type: Boolean,
+      default: false,
+      description: 'Add gradient at the bottom'
     }
   },
   data() {
@@ -98,4 +104,11 @@ export default {
 .img-wrapper
   display: flex
   justify-content: center
+.gradient
+  background: linear-gradient(180deg, rgba(2,0,36,0.01) 60%, rgba(255,255,255,0.8) 70%, rgba(255,255,255,0.9) 100%)
+  height: 50%
+  width: 300px
+  z-index: 90
+  position: absolute
+  bottom: 0
 </style>
