@@ -91,6 +91,6 @@ export default {
   bottom: 0px
   left: 30px
   z-index: 100
-.link::hover
+.link:hover
   text-decoration: none !important
 </style>
