@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-list-item :to="`/profile/${teacher.id}`" class="d-none d-md-block">
+    <!-- desktop version -->
+    <v-list-item :to="`/profile/${teacher.id}`" class="d-none d-md-flex link">
       <v-list-item-avatar size="190" rounded>
         <ProfileAvatar :teacher="teacher" />
       </v-list-item-avatar>
@@ -27,7 +28,8 @@
         </v-card-text>
       </v-list-item-content>
     </v-list-item>
-    <v-card class="mx-auto my-12 d-md-none" :to="`/profile/${teacher.id}`">
+    <!-- mobile version -->
+    <v-card class="mx-auto my-12 d-md-none link" :to="`/profile/${teacher.id}`">
       <div class="mobile-image-wrapper">
         <ProfileAvatar :teacher="teacher" gradient />
 
@@ -89,4 +91,6 @@ export default {
   bottom: 0px
   left: 30px
   z-index: 100
+.link::hover
+  text-decoration: none !important
 </style>
