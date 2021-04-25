@@ -12,7 +12,7 @@
       </v-col>
       <v-col cols="12" md="8">
         <TeacherTextSection
-          v-for="model in ['cv']"
+          v-for="model in ['cv', 'experience']"
           :key="model"
           :model="model"
         />

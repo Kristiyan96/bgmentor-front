@@ -9,7 +9,7 @@
       </div>
     </v-row>
     <v-row>
-      <v-col cols="8" xs="12">
+      <v-col cols="12" md="8">
         <v-list three-line>
           <template v-for="(item, index) in results">
             <v-subheader
