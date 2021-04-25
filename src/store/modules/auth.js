@@ -32,7 +32,7 @@ const getters = {
 }
 
 const actions = {
-  fetchProfile({ commit }) {
+  getProfile({ commit }) {
     return new Promise((resolve, reject) => {
       this._vm.$http.secured
         .get('/me')
@@ -83,7 +83,7 @@ const actions = {
         .then((response) => {
           commit('setUser', response.data.user)
           commit('setAuth', response.data.csrf)
-          router.push('me')
+          router.push(`/profile/${response.data.user.id}`)
           resolve(response.data)
         })
         .catch((error) => {
@@ -97,14 +97,12 @@ const actions = {
       this._vm.$http.secured
         .delete('/signin')
         .then((response) => {
-          commit('setUser', null)
           commit('purgeAuth')
-          router.push('')
+          router.push('/')
           resolve(response.data)
         })
         .catch((error) => {
           commit('purgeAuth')
-          commit('setUser', null)
           reject(error)
         })
     })

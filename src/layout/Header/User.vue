@@ -33,8 +33,11 @@ export default {
   },
   methods: {
     logOut() {
-      store.commit('purgeAuth')
-      this.$router.push('/')
+      try {
+        store.dispatch('logOut')
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   computed: {
