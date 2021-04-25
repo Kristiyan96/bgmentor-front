@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="img-wrapper">
     <v-img :src="imageSrc" class="img" @click="showEdit"></v-img>
     <MyUpload
       @crop-success="cropSuccess"
@@ -95,4 +95,7 @@ export default {
   max-height: 300px
   max-width: 300px
   z-index: 2
+.img-wrapper
+  display: flex
+  justify-content: center
 </style>
