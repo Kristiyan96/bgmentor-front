@@ -46,9 +46,6 @@ export default {
       error: ''
     }
   },
-  mounted() {
-    this.fetchProfile()
-  },
   methods: {
     async fetchProfile() {
       this.loading = true
@@ -66,7 +63,7 @@ export default {
   computed: {
     ...mapGetters(['currentUser', 'profile']),
     profileId() {
-      return this.profile.id
+      return this.$route.params.id
     }
   },
   watch: {
