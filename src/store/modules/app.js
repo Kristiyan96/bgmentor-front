@@ -12,11 +12,15 @@ const getters = {
   }
 }
 
-const actions = {}
+const actions = {
+  toggleSidebar({ commit, getters }) {
+    commit('toggleSidebar', !getters.sidebar)
+  }
+}
 
 const mutations = {
-  toggleSidebar(state) {
-    state.sidebar = !state.sidebar
+  toggleSidebar(state, open) {
+    state.sidebar = open
   },
   setVisibleColumn(state, column) {
     column = column || 'left'

@@ -28,6 +28,9 @@ const getters = {
       isTeacher: getters.isTeacher,
       isStudent: getters.isStudent
     }
+  },
+  signedIn(state) {
+    return state.signedIn
   }
 }
 

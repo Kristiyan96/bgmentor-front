@@ -45,11 +45,6 @@ export default {
   data() {
     return {}
   },
-  mounted() {
-    // if (!this.$isMobile()) {
-    //   store.commit('toggleSidebar')
-    // }
-  },
   computed: {
     ...mapGetters(['sidebar', 'currentUser'])
   },

@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app clipped-left elevation="0" color="grey lighten-5">
-    <v-app-bar-nav-icon @click="toggleSidebar" v-if="currentUser" />
+    <v-app-bar-nav-icon @click="toggleSidebar" v-if="signedIn" />
     <span class="title ml-3 mr-5 white--grey">
       <router-link to="/" :active="false"
         ><img src="@/assets/images/logo.png" height="40px"
@@ -8,7 +8,7 @@
     </span>
     <v-spacer />
     <Alerts />
-    <UserHeader v-if="currentUser && currentUser.id" />
+    <UserHeader v-if="signedIn" />
     <GuestHeader v-else />
   </v-app-bar>
 </template>
@@ -33,11 +33,11 @@ export default {
   },
   methods: {
     toggleSidebar() {
-      store.commit('toggleSidebar')
+      store.dispatch('toggleSidebar')
     }
   },
   computed: {
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['signedIn'])
   }
 }
 </script>

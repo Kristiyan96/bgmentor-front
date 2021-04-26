@@ -1,10 +1,5 @@
 <template>
-  <v-menu
-    transition="slide-y-transition"
-    bottom
-    offset-y
-    v-if="currentUser && currentUser.id"
-  >
+  <v-menu transition="slide-y-transition" bottom offset-y v-if="signedIn">
     <template v-slot:activator="{ on }">
       <v-btn fab dedpressed small text color="grey" v-on="on">
         <font-awesome-icon icon="user" />
@@ -41,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['signedIn'])
   }
 }
 </script>

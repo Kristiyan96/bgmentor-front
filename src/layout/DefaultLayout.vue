@@ -1,11 +1,11 @@
 <template>
   <div class="container-wrapper">
     <Header />
-    <SidebarLeft v-if="currentUser && currentUser.id" />
+    <SidebarLeft v-if="signedIn" />
     <v-main>
       <slot />
     </v-main>
-    <Footer v-if="!currentUser" />
+    <Footer v-if="!signedIn" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
     SidebarLeft
   },
   computed: {
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['signedIn'])
   }
 }
 </script>
