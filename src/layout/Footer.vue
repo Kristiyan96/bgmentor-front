@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="primary lighten-1" padless>
+  <v-footer color="primary lighten-1 pt-3 mt-3" padless>
     <v-layout justify-center row wrap>
       <ChooseLanguage />
       <v-divider class="mx-4" vertical></v-divider>

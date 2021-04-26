@@ -5,7 +5,7 @@
     <v-main>
       <slot />
     </v-main>
-    <Footer v-if="!signedIn" />
+    <Footer />
   </div>
 </template>
 
