@@ -11,7 +11,6 @@ import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
 import UserProfile from '@/views/Profile/Profile'
 import TeacherSearch from '@/views/Search/TeacherSearch'
-import Payments from '@/views/Landing/Payments'
 
 Vue.use(Router)
 
@@ -49,11 +48,6 @@ export default new Router({
           component: () => import('@/views/Account/Notifications')
         }
       ]
-    },
-    {
-      path: '/payments',
-      name: 'Payments',
-      component: Payments
     },
     {
       path: '/verify',

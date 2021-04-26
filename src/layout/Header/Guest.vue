@@ -6,8 +6,6 @@
 
     <v-btn text to="/signup" class="hidden-sm-and-down"> Регистрация </v-btn>
 
-    <v-btn text to="/payments" class="hidden-sm-and-down"> Плащания </v-btn>
-
     <div class="hidden-md-and-up">
       <v-menu left bottom>
         <template v-slot:activator="{ on }">

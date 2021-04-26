@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Payments from '../Landing/Payments'
+import Payments from './Payments'
 
 export default {
   name: 'TeacherHeader',
