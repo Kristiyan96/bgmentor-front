@@ -1,10 +1,12 @@
 <template>
   <div class="container-wrapper">
-    <Header />
     <SidebarLeft v-if="signedIn" />
-    <v-main>
-      <slot />
-    </v-main>
+    <Header />
+    <v-container fluid class="slot-wrapper">
+      <v-main>
+        <slot />
+      </v-main>
+    </v-container>
     <Footer />
   </div>
 </template>
@@ -33,4 +35,6 @@ export default {
   height: 100%
   display: flex
   flex-direction: column
+.slot-wrapper
+  margin-bottom: 100px
 </style>

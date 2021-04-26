@@ -9,8 +9,8 @@
     v-click-outside="handleClickOutside"
   >
     <v-layout column fill-height align-content-start>
-      <v-flex shrink>
-        <v-list dense shaped>
+      <v-list dense shaped class="fill-height justify-lg-space-between">
+        <div>
           <v-list-item to="/verify" v-if="!currentUser.verified">
             <v-list-item-action>
               <font-awesome-icon icon="sms" class="grey--text" />
@@ -21,6 +21,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
           <v-list-item :to="`/profile/${currentUser.id}`">
             <v-list-item-action>
               <font-awesome-icon icon="user" class="grey--text" />
@@ -31,7 +32,9 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item to="/me/general">
+        </div>
+        <div>
+          <v-list-item to="/me/general" class="mb-auto">
             <v-list-item-action>
               <font-awesome-icon icon="cog" class="grey--text" />
             </v-list-item-action>
@@ -41,7 +44,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item @click="logOut">
+          <v-list-item @click="logOut" class="mb-auto">
             <v-list-item-action>
               <font-awesome-icon icon="sign-out-alt" class="grey--text" />
             </v-list-item-action>
@@ -51,8 +54,8 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-list>
-      </v-flex>
+        </div>
+      </v-list>
     </v-layout>
   </v-navigation-drawer>
 </template>

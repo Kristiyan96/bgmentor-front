@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="primary lighten-1 pt-3 mt-3 pb-5" padless>
+  <v-footer app absolute color="primary lighten-1 pt-3 mt-5 pb-5" inset>
     <v-layout justify-center row wrap>
       <div class="bg-mentor">
         <ChooseLanguage />
