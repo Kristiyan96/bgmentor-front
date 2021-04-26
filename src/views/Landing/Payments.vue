@@ -61,6 +61,14 @@
             ></v-textarea>
           </v-col>
         </v-row>
+        <v-row v-if="note">
+          <v-col cols="4">
+            <v-subheader class="red--text">Бележка с плащането</v-subheader>
+          </v-col>
+          <v-col cols="8">
+            <v-textarea id="note" disabled :value="note"></v-textarea>
+          </v-col>
+        </v-row>
       </v-list-item-content>
     </v-list-item>
   </v-card>
@@ -68,7 +76,13 @@
 
 <script>
 export default {
-  components: {},
+  props: {
+    note: {
+      default: '',
+      type: String,
+      description: 'Payment note'
+    }
+  },
   data() {
     return {}
   }

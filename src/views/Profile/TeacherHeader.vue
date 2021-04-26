@@ -24,8 +24,12 @@
             <ProfileLocation :profile="teacher" />
           </v-col>
         </v-row>
-        <v-row class="d-flex align-end">
-          <v-btn :href="`tel:${teacher.phone_number}`" class="ml-auto info"
+        <v-row class="d-flex">
+          <TeacherPayment :teacher="teacher" />
+          <v-btn
+            :href="`tel:${teacher.phone_number}`"
+            class="ml-2 info"
+            v-if="teacher.role === 'teacher'"
             >{{ $t(`profile.actions.call`) }}
             <font-awesome-icon icon="phone" class="ml-2"
           /></v-btn>
@@ -40,6 +44,7 @@ import ProfileLocation from '@/views/Profile/ProfileLocation'
 import TeacherPricing from '@/views/Profile/TeacherPricing'
 import TeacherTitle from '@/views/Profile/TeacherTitle'
 import ProfileAvatar from '@/views/Profile/ProfileAvatar'
+import TeacherPayment from './TeacherPayment'
 
 export default {
   name: 'TeacherHeader',
@@ -47,7 +52,8 @@ export default {
     ProfileAvatar,
     ProfileLocation,
     TeacherPricing,
-    TeacherTitle
+    TeacherTitle,
+    TeacherPayment
   },
   props: {
     teacher: {

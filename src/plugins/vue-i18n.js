@@ -178,7 +178,8 @@ const messages = {
     },
     profile: {
       actions: {
-        call: 'Call'
+        call: 'Call',
+        pay: 'Pay'
       },
       titles: {
         change_address: 'Change your address',
@@ -272,6 +273,9 @@ const messages = {
         intermediate: 'Intermediate',
         professional: 'Professional'
       }
+    },
+    payment: {
+      chooseMethod: 'Choose a method'
     }
   },
   bg: {
@@ -448,7 +452,8 @@ const messages = {
     },
     profile: {
       actions: {
-        call: 'Обади се'
+        call: 'Обади се',
+        pay: 'Плати'
       },
       titles: {
         change_address: 'Промени адрес',
@@ -561,6 +566,9 @@ const messages = {
         outOfSize: 'Размерът на аватара е прекалено голям: ',
         lowestPx: 'Размерът на аватара е прекалено малък. Трябва да е поне: '
       }
+    },
+    payment: {
+      chooseMethod: 'Избери метод'
     }
   }
 }
