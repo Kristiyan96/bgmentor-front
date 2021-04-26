@@ -175,6 +175,9 @@ const messages = {
       preview: 'Preview'
     },
     profile: {
+      actions: {
+        call: 'Call'
+      },
       titles: {
         change_address: 'Change your address',
         change_pricing: 'Edit pricing',
@@ -440,6 +443,9 @@ const messages = {
       preview: 'Преглед'
     },
     profile: {
+      actions: {
+        call: 'Обади се'
+      },
       titles: {
         change_address: 'Промени адрес',
         change_pricing: 'Промени ценоразпис',

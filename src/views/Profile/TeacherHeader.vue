@@ -24,6 +24,12 @@
             <ProfileLocation :profile="teacher" />
           </v-col>
         </v-row>
+        <v-row class="d-flex align-end">
+          <v-btn :href="`tel:${teacher.phone_number}`" class="ml-auto info"
+            >{{ $t(`profile.actions.call`) }}
+            <font-awesome-icon icon="phone" class="ml-2"
+          /></v-btn>
+        </v-row>
       </v-card-text>
     </v-col>
   </v-row>
