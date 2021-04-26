@@ -31,6 +31,26 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item to="/me/general">
+            <v-list-item-action>
+              <font-awesome-icon icon="cog" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t('nav.settings') }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item @click="logOut">
+            <v-list-item-action>
+              <font-awesome-icon icon="sign-out-alt" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t('nav.logout') }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-flex>
     </v-layout>
@@ -52,6 +72,13 @@ export default {
     handleClickOutside() {
       if (this.sidebar && this.$isMobile()) {
         store.commit('toggleSidebar')
+      }
+    },
+    logOut() {
+      try {
+        store.dispatch('logOut')
+      } catch (error) {
+        console.log(error)
       }
     }
   }

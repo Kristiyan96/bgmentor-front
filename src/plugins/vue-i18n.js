@@ -161,7 +161,9 @@ const messages = {
       myStudents: 'Students',
       myLessons: 'Lessons',
       profile: 'Profile',
-      schedule: 'Schedule'
+      schedule: 'Schedule',
+      settings: 'Settings',
+      logout: 'Log out'
     },
     actions: {
       confirm: 'Confirm',
@@ -429,7 +431,9 @@ const messages = {
       myStudents: 'Ученици',
       myLessons: 'Уроци',
       profile: 'Профил',
-      schedule: 'Календар'
+      schedule: 'Календар',
+      settings: 'Настройки',
+      logout: 'Излез'
     },
     actions: {
       confirm: 'Потвърди',

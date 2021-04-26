@@ -8,8 +8,7 @@
     </span>
     <v-spacer />
     <Alerts />
-    <UserHeader v-if="signedIn" />
-    <GuestHeader v-else />
+    <GuestHeader v-if="!signedIn" />
   </v-app-bar>
 </template>
 
@@ -17,13 +16,11 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import Alerts from '../Alerts'
-import UserHeader from './User'
 import GuestHeader from './Guest'
 
 export default {
   components: {
     Alerts,
-    UserHeader,
     GuestHeader
   },
   data() {
