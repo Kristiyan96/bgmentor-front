@@ -9,7 +9,7 @@
     v-click-outside="handleClickOutside"
   >
     <v-layout column fill-height align-content-start>
-      <v-list dense shaped class="fill-height justify-lg-space-between">
+      <v-list dense shaped class="fill-height items">
         <div>
           <v-list-item to="/verify" v-if="!currentUser.verified">
             <v-list-item-action>
@@ -21,7 +21,6 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-
           <v-list-item :to="`/profile/${currentUser.id}`">
             <v-list-item-action>
               <font-awesome-icon icon="user" class="grey--text" />
@@ -98,4 +97,9 @@ export default {
   overflow-y: auto
 .pricing-icon
   height: 100%
+.items
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
 </style>
