@@ -9,11 +9,11 @@
     v-click-outside="handleClickOutside"
   >
     <v-layout column fill-height align-content-start>
-      <v-list dense shaped class="fill-height items">
+      <v-list dense shaped class="fill-height items font-weight-medium">
         <div>
           <v-list-item to="/verify" v-if="!currentUser.verified">
             <v-list-item-action>
-              <font-awesome-icon icon="sms" class="grey--text" />
+              <font-awesome-icon icon="sms" class="grey--text " />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
@@ -26,19 +26,19 @@
               <font-awesome-icon icon="user" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
+              <v-list-item-title class="font-weight-bold">
                 {{ $t('nav.profile') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </div>
         <div>
-          <v-list-item to="/me/general" class="mb-auto">
+          <v-list-item to="/me/general" class="mb-autos">
             <v-list-item-action>
               <font-awesome-icon icon="cog" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
+              <v-list-item-title class="font-weight-bold">
                 {{ $t('nav.settings') }}
               </v-list-item-title>
             </v-list-item-content>
@@ -48,7 +48,7 @@
               <font-awesome-icon icon="sign-out-alt" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>
+              <v-list-item-title class="font-weight-bold">
                 {{ $t('nav.logout') }}
               </v-list-item-title>
             </v-list-item-content>
