@@ -34,7 +34,7 @@ const messages = {
     account: {
       roles: {
         student: 'Student',
-        teacher: 'Teacher',
+        teacher: 'Mentor',
         parent: 'Parent',
         guardian: 'Parent',
         admin: 'Admin'
@@ -97,6 +97,7 @@ const messages = {
         firstName: 'First name',
         lastName: 'Last name',
         email: 'Email',
+        role: 'I am a',
         phoneNumber: 'Phone number',
         password: 'Password',
         remember_me: 'Remember me',
@@ -307,7 +308,7 @@ const messages = {
     account: {
       roles: {
         student: 'Ученик',
-        teacher: 'Учител',
+        teacher: 'Ментор',
         parent: 'Родител',
         guardian: 'Родител',
         admin: 'Админ'
@@ -370,6 +371,7 @@ const messages = {
       label: {
         firstName: 'Първо име',
         lastName: 'Фамилно име',
+        role: 'Аз съм',
         email: 'Имейл',
         phoneNumber: 'Мобилен номер',
         password: 'Парола',

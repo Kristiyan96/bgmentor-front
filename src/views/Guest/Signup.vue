@@ -16,6 +16,12 @@
         v-model="phoneNumber"
         class="mb-5"
       />
+      <v-select
+        v-model="role"
+        :items="roles"
+        :label="$t('auth.label.role')"
+        outlined
+      ></v-select>
       <v-text-field
         v-model="email"
         outlined
@@ -62,11 +68,22 @@ export default {
       loading: false,
       error: '',
       valid: false,
+      role: 'student',
       email: '',
       phoneNumber: '',
       formattedNumber: '',
       password: '',
-      password_confirmation: ''
+      password_confirmation: '',
+      roles: [
+        {
+          value: 'student',
+          text: this.$t('account.roles.student')
+        },
+        {
+          value: 'teacher',
+          text: this.$t('account.roles.teacher')
+        }
+      ]
     }
   },
   created() {
@@ -83,6 +100,7 @@ export default {
         await store.dispatch('register', {
           email: this.email,
           phone_number: this.formattedNumber,
+          role: this.role,
           password: this.password,
           password_confirmation: this.password_confirmation
         })
