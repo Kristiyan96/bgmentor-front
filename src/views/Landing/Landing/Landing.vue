@@ -4,10 +4,15 @@
     <v-container class="hidden-sm-and-down">
       <v-row class="pl-3">
         <v-col md="5" sm="5" xs="12" class="col-left pl-5">
-          <h1 class="mt-3 mb-3">Групово и индивидуално <br />обучение</h1>
-          <SearchFilters />
+          <h1 class="mt-3 mb-3">
+            Запази час с проверени ментори <br />по науки, езици и спорт
+          </h1>
+          <h5 class="grey--text">
+            БгМентор предлага бърз и удобен начин да намерите високооценени
+            учители, да запазите и платите вашия час онлайн.
+          </h5>
           <v-btn class="primary" rounded x-large depressed to="/search">
-            Намери учители
+            Намери ментори
           </v-btn>
         </v-col>
         <v-col md="7" sm="7" xs="12">
@@ -25,7 +30,6 @@
       </v-row>
       <v-row class="main-small justify-center text-center">
         <h1 class="mt-3 mb-3">Групово и индивидуално <br />обучение</h1>
-        <SearchFilters />
         <v-btn class="primary" rounded x-large depressed to="/search">
           Намери учители
         </v-btn>
