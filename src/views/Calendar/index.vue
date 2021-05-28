@@ -1,28 +1,17 @@
 <template>
   <v-container>
-    <v-row> </v-row>
     <v-row>
-      <div class="h2 pl-5">
-        {{ $t(`search.titles.results`) }}: {{ results.length }}
-      </div>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <v-list three-line>
-          <template v-for="(item, index) in results">
-            <v-subheader
-              v-if="item.header"
-              :key="item.header"
-              v-text="item.header"
-            ></v-subheader>
-
-            <v-divider
-              v-else-if="item.divider"
-              :key="index"
-              :inset="item.inset"
-            ></v-divider>
-          </template>
-        </v-list>
+      <v-col>
+        <v-sheet height="400">
+          <v-calendar
+            ref="calendar"
+            :now="today"
+            :value="today"
+            :events="events"
+            color="primary"
+            type="week"
+          ></v-calendar>
+        </v-sheet>
       </v-col>
     </v-row>
   </v-container>
@@ -32,14 +21,35 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'TeacherSearch',
+  name: 'Calendar',
   props: {},
   data() {
-    return {}
+    return {
+      today: '2019-01-08',
+      events: [
+        {
+          name: 'Weekly Meeting',
+          start: '2019-01-07 09:00',
+          end: '2019-01-07 10:00'
+        },
+        {
+          name: `Thomas' Birthday`,
+          start: '2019-01-10'
+        },
+        {
+          name: 'Mash Potatoes',
+          start: '2019-01-09 12:30',
+          end: '2019-01-09 15:30'
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.$refs.calendar.scrollToTime('08:00')
   },
   methods: {},
   computed: {
-    ...mapGetters(['results'])
+    ...mapGetters(['slots'])
   }
 }
 </script>
