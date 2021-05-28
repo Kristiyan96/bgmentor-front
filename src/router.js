@@ -11,6 +11,7 @@ import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
 import UserProfile from '@/views/Profile/Profile'
 import TeacherSearch from '@/views/Search/TeacherSearch'
+import Calendar from '@/views/Calendar/index'
 
 Vue.use(Router)
 
@@ -88,6 +89,11 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: TeacherSearch
+    },
+    {
+      path: '/calendar',
+      name: 'Calendar',
+      component: Calendar
     }
   ],
   scrollBehavior(to, from, savedPosition) {
