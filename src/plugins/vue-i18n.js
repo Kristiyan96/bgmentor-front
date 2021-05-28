@@ -164,7 +164,8 @@ const messages = {
       profile: 'Profile',
       schedule: 'Schedule',
       settings: 'Settings',
-      logout: 'Log out'
+      logout: 'Log out',
+      calendar: 'Calendar'
     },
     actions: {
       confirm: 'Confirm',
@@ -439,7 +440,8 @@ const messages = {
       profile: 'Профил',
       schedule: 'Календар',
       settings: 'Настройки',
-      logout: 'Излез'
+      logout: 'Излез',
+      calendar: 'Календар'
     },
     actions: {
       confirm: 'Потвърди',

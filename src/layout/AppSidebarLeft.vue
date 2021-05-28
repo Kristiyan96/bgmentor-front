@@ -13,11 +13,21 @@
         <div>
           <v-list-item to="/verify" v-if="!currentUser.verified">
             <v-list-item-action>
-              <font-awesome-icon icon="sms" class="grey--text " />
+              <font-awesome-icon icon="sms" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title>
                 {{ $t('nav.verify') }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item to="/calendar">
+            <v-list-item-action>
+              <font-awesome-icon icon="calendar-alt" class="grey--text" />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ $t('nav.calendar') }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -101,5 +111,4 @@ export default {
   display: flex
   flex-direction: column
   justify-content: space-between
-
 </style>
