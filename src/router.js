@@ -11,7 +11,7 @@ import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
 import UserProfile from '@/views/Profile/Profile'
 import TeacherSearch from '@/views/Search/TeacherSearch'
-import Calendar from '@/views/Calendar/index'
+import Calendar from '@/views/Calendar/Calendar'
 
 Vue.use(Router)
 

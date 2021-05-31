@@ -15,7 +15,6 @@
       <v-spacer></v-spacer>
       <DeleteButton @confirm="deleteLesson" tooltip="Delete event" />
     </v-toolbar>
-    <GroupMemberships :group="lesson.group" :calendar="true" :lesson="lesson" />
     <v-card-actions>
       <v-btn text color="secondary" @click="$emit('onClose')"> Затвори </v-btn>
       <v-spacer />
@@ -32,14 +31,12 @@
 </template>
 
 <script>
-import GroupMemberships from '@/views/Groups/GroupMemberships'
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import DeleteButton from '@/views/components/DeleteButton'
+import DeleteButton from '@/components/DeleteButton'
 
 export default {
   components: {
-    GroupMemberships,
     DeleteButton
   },
   props: {
