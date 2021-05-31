@@ -36,7 +36,7 @@
               <font-awesome-icon icon="user" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">
+              <v-list-item-title>
                 {{ $t('nav.profile') }}
               </v-list-item-title>
             </v-list-item-content>
@@ -48,7 +48,7 @@
               <font-awesome-icon icon="cog" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">
+              <v-list-item-title>
                 {{ $t('nav.settings') }}
               </v-list-item-title>
             </v-list-item-content>
@@ -58,7 +58,7 @@
               <font-awesome-icon icon="sign-out-alt" class="grey--text" />
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">
+              <v-list-item-title>
                 {{ $t('nav.logout') }}
               </v-list-item-title>
             </v-list-item-content>
@@ -111,4 +111,6 @@ export default {
   display: flex
   flex-direction: column
   justify-content: space-between
+.v-list-item__title
+  font-weight: bold !important
 </style>
