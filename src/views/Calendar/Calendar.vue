@@ -22,12 +22,6 @@
       @click:time="newEvent"
       @change="updateRange"
     ></v-calendar>
-    <LessonDialog
-      :lesson="selectedEvent"
-      :open="eventDialogOpen"
-      :start="new_event_start"
-      @closeDialog="eventDialogOpen = false"
-    />
     <v-menu
       v-if="selectedEvent && selectedEvent.id"
       v-model="selectedOpen"
@@ -60,14 +54,12 @@
 <script>
 import LessonPreview from './LessonPreview'
 import LessonInfo from './LessonInfo'
-import LessonDialog from './LessonDialog'
 import { mapGetters } from 'vuex'
 import store from '@/store'
 export default {
   components: {
     LessonPreview,
-    LessonInfo,
-    LessonDialog
+    LessonInfo
   },
   props: {
     focus: {
@@ -192,5 +184,8 @@ export default {
 }
 >>> .v-calendar.v-calendar-daily {
   background-color: rgba(0, 0, 0, 0) !important;
+}
+.v-calendar-daily {
+  border: 0px;
 }
 </style>
