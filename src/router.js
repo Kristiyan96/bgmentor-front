@@ -10,9 +10,7 @@ import UserEdit from '@/views/admin/users/Edit'
 import Account from '@/views/Account'
 import Landing from '@/views/Landing/index'
 import UserProfile from '@/views/Profile/Profile'
-import TeacherSearch from '@/views/Search/TeacherSearch'
-import Calendar from '@/views/Calendar/Calendar'
-
+import PropertySearch from '@/views/Search/PropertySearch'
 Vue.use(Router)
 
 export default new Router({
@@ -88,13 +86,8 @@ export default new Router({
     {
       path: '/search',
       name: 'Search',
-      component: TeacherSearch
+      component: PropertySearch
     },
-    {
-      path: '/calendar',
-      name: 'Calendar',
-      component: Calendar
-    }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

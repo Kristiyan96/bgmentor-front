@@ -12,12 +12,6 @@ const getters = {
   isAdmin(state) {
     return state.user && state.user.role === 'admin'
   },
-  isTeacher(state) {
-    return state.user && state.user.role === 'teacher'
-  },
-  isStudent(state) {
-    return state.user && state.user.role === 'student'
-  },
   currentUserId(state) {
     return state.user ? state.user.id : null
   },
@@ -25,8 +19,6 @@ const getters = {
     return {
       ...state.user,
       isAdmin: getters.isAdmin,
-      isTeacher: getters.isTeacher,
-      isStudent: getters.isStudent
     }
   },
   signedIn(state) {

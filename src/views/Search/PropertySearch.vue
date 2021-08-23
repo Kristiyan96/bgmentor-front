@@ -1,11 +1,12 @@
 <template>
   <v-container>
     <v-row>
+      Hello
       <SearchFilters />
     </v-row>
     <v-row>
       <div class="h2 pl-5">
-        {{ $t(`search.titles.results`) }}: {{ results.length }}
+        {{ $t(`search.titles.results`) }}: {{ results.length }} 12
       </div>
     </v-row>
     <v-row>
@@ -38,7 +39,7 @@ import TeacherItem from './TeacherItem'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'TeacherSearch',
+  name: 'PropertySearch',
   components: { SearchFilters, TeacherItem },
   props: {},
   data() {
