@@ -226,6 +226,55 @@ const messages = {
       titles: {
         results: 'Results'
       },
+      labels: {
+        location: 'Lesson location',
+        subject: 'Subjects',
+        level: 'Knowledge level',
+        city: 'City',
+        country: 'Country',
+        from_input: 'Suggestions',
+        suggestions: 'Most popular'
+      },
+      locations: {
+        online: 'Online',
+        teacher_place: "Teacher's place",
+        student_place: "Student's place",
+        bgmentor_office: "BgMentor's office"
+      },
+      city: {
+        sofia: 'Sofia',
+        varna: 'Varna',
+        burgas: 'Bourgas',
+        plovdiv: 'Plovdiv'
+      },
+      country: {
+        bulgaria: 'Bulgaria'
+      },
+      subjects: {
+        maths: 'Maths',
+        bulgarian: 'Bulgarian',
+        programming: 'Programming',
+        english: 'English',
+        biology: 'Biology',
+        piano: 'Piano'
+      },
+      levels: {
+        _1_grade: '1st grade',
+        _2_grade: '2nd grade',
+        _3_grade: '3rd grade',
+        _4_grade: '4th grade',
+        _5_grade: '5th grade',
+        _6_grade: '6th grade',
+        _7_grade: '7th grade',
+        _8_grade: '8th grade',
+        _9_grade: '9th grade',
+        _10_grade: '10th grade',
+        _11_grade: '11th grade',
+        _12_grade: '12th grade',
+        beginner: 'Beginner',
+        intermediate: 'Intermediate',
+        professional: 'Professional'
+      }
     },
     payment: {
       chooseMethod: 'Choose a method'
