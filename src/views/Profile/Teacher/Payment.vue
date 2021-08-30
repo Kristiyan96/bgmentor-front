@@ -13,7 +13,7 @@
       </v-card-title>
 
       <v-card-text>
-        <Payments :note="`User id: ${teacher.id}`" />
+        <Payments :note="`User id: ${profile.id}`" />
       </v-card-text>
 
       <v-divider></v-divider>
@@ -37,10 +37,10 @@ export default {
     Payments
   },
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'Proifle being displayed'
     }
   },
   data() {

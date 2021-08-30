@@ -3,33 +3,31 @@
     <v-col cols="12" md="4">
       <div class="mb-5">
         <v-row class="absolute-center">
-          <ProfileAvatar :teacher="teacher" />
+          <Avatar :profile="profile" />
         </v-row>
       </div>
     </v-col>
     <v-col cols="12" md="8">
       <v-card-title>
         <span class="h2">
-          {{ teacher.first_name }}
+          {{ profile.first_name }}
         </span>
         <v-spacer />
-        <TeacherPricing :teacher="teacher" />
       </v-card-title>
       <v-card-text>
         <v-row class="mx-0">
           <v-col cols="12" md="8">
-            <TeacherTitle :teacher="teacher" />
+            <Title :profile="profile" />
           </v-col>
           <v-col class="text-right" cols="12" md="4">
-            <ProfileLocation :profile="teacher" />
+            <Location :profile="profile" />
           </v-col>
         </v-row>
         <v-row class="d-flex">
-          <TeacherPayment :teacher="teacher" />
           <v-btn
-            :href="`tel:${teacher.phone_number}`"
+            :href="`tel:${profile.phone_number}`"
             class="ml-2 info"
-            v-if="teacher.role === 'teacher'"
+            v-if="profile.role === 'teacher'"
             >{{ $t(`profile.actions.call`) }}
             <font-awesome-icon icon="phone" class="ml-2"
           /></v-btn>
@@ -40,26 +38,22 @@
 </template>
 
 <script>
-import ProfileLocation from '@/views/Profile/ProfileLocation'
-import TeacherPricing from '@/views/Profile/TeacherPricing'
-import TeacherTitle from '@/views/Profile/TeacherTitle'
-import ProfileAvatar from '@/views/Profile/ProfileAvatar'
-import TeacherPayment from './TeacherPayment'
+import Location from '@/views/Profile/Location'
+import Title from '@/views/Profile/Title'
+import Avatar from '@/views/Profile/Avatar'
 
 export default {
   name: 'TeacherHeader',
   components: {
-    ProfileAvatar,
-    ProfileLocation,
-    TeacherPricing,
-    TeacherTitle,
-    TeacherPayment
+    Avatar,
+    Location,
+    Title
   },
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'Student being displayed'
     }
   },
   data() {

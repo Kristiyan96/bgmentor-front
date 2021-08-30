@@ -1,44 +1,21 @@
 <template>
   <v-container class="grey lighten-5">
-    <!-- <AddRating /> -->
-    <TeacherHeader :teacher="profile" />
-    <v-row class="mt-2">
-      <v-col cols="12" md="4">
-        <TeacherTagsSection
-          v-for="model in ['subject', 'level', 'location']"
-          :key="model"
-          :model="model"
-        />
-      </v-col>
-      <v-col cols="12" md="8">
-        <TeacherTextSection
-          v-for="model in ['cv', 'experience']"
-          :key="model"
-          :model="model"
-        />
-        <TeacherPricing />
-      </v-col>
-    </v-row>
+    <TeacherProfile v-if="isTeacher" :profile="profile" />
+    <StudentProfile v-else :profile="profile" />
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import store from '@/store'
-import TeacherHeader from '@/views/Profile/TeacherHeader'
-import TeacherTagsSection from './TeacherTagsSection'
-import TeacherTextSection from './TeacherTextSection'
-import TeacherPricing from './TeacherPricingSection'
-import AddRating from './AddRating'
+import TeacherProfile from "@/views/Profile/Teacher/Profile"
+import StudentProfile from "@/views/Profile/Student/Profile"
 
 export default {
   name: 'Profile',
   components: {
-    AddRating,
-    TeacherHeader,
-    TeacherTagsSection,
-    TeacherTextSection,
-    TeacherPricing
+    TeacherProfile,
+    StudentProfile
   },
   data() {
     return {
@@ -64,6 +41,9 @@ export default {
     ...mapGetters(['currentUser', 'profile']),
     profileId() {
       return this.$route.params.id
+    },
+    isTeacher() {
+      return this.profile.role === "teacher"
     }
   },
   watch: {

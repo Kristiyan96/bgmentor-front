@@ -24,7 +24,7 @@
               :inset="item.inset"
             ></v-divider>
 
-            <TeacherItem :key="item.id" :teacher="item" />
+            <TeacherItem :key="item.id" :profile="item" />
           </template>
         </v-list>
       </v-col>

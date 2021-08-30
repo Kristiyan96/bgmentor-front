@@ -21,15 +21,15 @@ import { mapGetters } from 'vuex'
 import { API_URL } from '@/backend/axios/config'
 
 export default {
-  name: 'TeacherImage',
+  name: 'ProfileImage',
   components: {
     MyUpload
   },
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'User being displayed'
     },
     gradient: {
       type: Boolean,
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     resetImage() {
-      this.avatar = this.teacher.avatar
+      this.avatar = this.profile.avatar
     },
     showEdit() {
       if (this.editable) {
@@ -87,8 +87,8 @@ export default {
       return this.profile.id === this.currentUser.id
     },
     imageSrc() {
-      return this.teacher.avatar_url
-        ? `${this.urlBase}${this.teacher.avatar_url}`
+      return this.profile.avatar_url
+        ? `${this.urlBase}${this.profile.avatar_url}`
         : 'https://picsum.photos/200/200'
     }
   }

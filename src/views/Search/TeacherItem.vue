@@ -1,74 +1,74 @@
 <template>
   <div>
     <!-- desktop version -->
-    <v-list-item :to="`/profile/${teacher.id}`" class="d-none d-md-flex link">
+    <v-list-item :to="`/profile/${profile.id}`" class="d-none d-md-flex link">
       <v-list-item-avatar size="190" rounded>
-        <ProfileAvatar :teacher="teacher" />
+        <Avatar :profile="profile" />
       </v-list-item-avatar>
       <v-list-item-content>
         <v-card-title>
           <span class="h2">
-            {{ teacher.first_name }}
+            {{ profile.first_name }}
           </span>
           <v-spacer />
           <v-chip class="ma-2" color="primary" label text-color="white">
             <font-awesome-icon icon="dollar-sign" class="mr-2" />
-            <TeacherPricing :teacher="teacher" dontEdit />
+            <Pricing :profile="profile" dontEdit />
           </v-chip>
         </v-card-title>
         <v-card-text>
           <v-row>
             <v-col>
-              <TeacherTitle :teacher="teacher" />
+              <Title :profile="profile" />
             </v-col>
             <v-col>
-              <ProfileLocation :profile="teacher" />
+              <Location :profile="profile" />
             </v-col>
           </v-row>
         </v-card-text>
       </v-list-item-content>
     </v-list-item>
     <!-- mobile version -->
-    <v-card class="mx-auto my-12 d-md-none link" :to="`/profile/${teacher.id}`">
+    <v-card class="mx-auto my-12 d-md-none link" :to="`/profile/${profile.id}`">
       <div class="mobile-image-wrapper">
-        <ProfileAvatar :teacher="teacher" gradient />
+        <Avatar :profile="profile" gradient />
 
         <div class="h2 teacher-title">
-          <span>{{ teacher.first_name }}</span>
+          <span>{{ profile.first_name }}</span>
           <v-spacer />
           <v-chip class="ma-2" color="primary" label text-color="white">
             <font-awesome-icon icon="dollar-sign" class="mr-2" />
-            <TeacherPricing :teacher="teacher" dontEdit />
+            <Pricing :profile="profile" dontEdit />
           </v-chip>
         </div>
       </div>
 
       <v-card-text>
-        <TeacherTitle :teacher="teacher" />
+        <Title :profile="profile" />
       </v-card-text>
     </v-card>
   </div>
 </template>
 
 <script>
-import ProfileLocation from '@/views/Profile/ProfileLocation'
-import TeacherPricing from '@/views/Profile/TeacherPricing'
-import TeacherTitle from '@/views/Profile/TeacherTitle'
-import ProfileAvatar from '@/views/Profile/ProfileAvatar'
+import Location from '@/views/Profile/Location'
+import Pricing from '@/views/Profile/Teacher/Pricing'
+import Title from '@/views/Profile/Title'
+import Avatar from '@/views/Profile/Avatar'
 
 export default {
   name: 'TeacherItem',
   components: {
-    ProfileAvatar,
-    ProfileLocation,
-    TeacherPricing,
-    TeacherTitle
+    Avatar,
+    Location,
+    Pricing,
+    Title
   },
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'Profile being displayed'
     }
   },
   data() {

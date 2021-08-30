@@ -1,7 +1,7 @@
 <template>
   <div class="my-1 mb-3 subtitle-1 flex-end d-flex">
     <span>
-      <SetTeacherLocation v-if="editable" :profile="profile" />
+      <SetLocation v-if="editable" :profile="profile" />
       <font-awesome-icon icon="map-marker-alt" class="mr-2" />
       {{ city }},
       {{ country }}
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import SetTeacherLocation from './SetTeacherLocation'
+import SetLocation from '@/views/Profile/SetLocation'
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'TeacherLocation',
+  name: 'ProfileLocation',
   components: {
-    SetTeacherLocation
+    SetLocation
   },
   props: {
     profile: {

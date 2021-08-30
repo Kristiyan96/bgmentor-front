@@ -10,7 +10,7 @@
       <font-awesome-icon icon="edit" />
     </v-btn>
     <span>{{
-      teacher.title ? teacher.title : editable ? 'Empty title' : ''
+      profile.title ? profile.title : editable ? 'Empty title' : ''
     }}</span>
     <DialogForm
       :open="open"
@@ -33,13 +33,14 @@ import store from '@/store'
 import DialogForm from '@/components/DialogForm'
 
 export default {
-  name: 'TeacherTitle',
+  name: 'Title',
   components: {
     DialogForm
   },
   props: {
-    teacher: {
-      type: Object
+    profile: {
+      type: Object,
+      default: () => {}
     }
   },
   data() {
@@ -66,7 +67,7 @@ export default {
 
       try {
         await store.dispatch('updateProfile', {
-          id: this.teacher.id,
+          id: this.profile.id,
           title: this.title
         })
         this.error = null
@@ -78,13 +79,13 @@ export default {
       }
     },
     resetEditing() {
-      this.title = this.teacher.title
+      this.title = this.profile.title
     }
   },
   computed: {
     ...mapGetters(['currentUser']),
     editable() {
-      return this.teacher.id === this.currentUser.id
+      return this.profile.id === this.currentUser.id
     }
   }
 }

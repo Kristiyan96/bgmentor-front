@@ -26,7 +26,7 @@
 import { mapGetters } from 'vuex'
 import store from '@/store'
 import DialogForm from '@/components/DialogForm'
-import AddTag from '@/views/Profile/AddTeacherTag'
+import AddTag from '@/views/Profile/Teacher/AddTeacherTag'
 
 export default {
   name: 'TeacherTags',

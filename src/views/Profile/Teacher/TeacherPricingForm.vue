@@ -66,10 +66,10 @@ export default {
     DialogForm
   },
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'Profile being displayed'
     }
   },
   data() {
@@ -113,7 +113,7 @@ export default {
       }
     },
     resetEditing() {
-      this.pricings = [...this.teacher.pricings]
+      this.pricings = [...this.profile.pricings]
     },
     deletePricing(pr) {
       const idx = this.pricings.findIndex(

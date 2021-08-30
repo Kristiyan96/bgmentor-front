@@ -1,6 +1,6 @@
 <template>
   <span>
-    <TeacherPricingForm v-if="!dontEdit" :teacher="teacher" />
+    <TeacherPricingForm v-if="!dontEdit" :profile="profile" />
     <span class="h5 font-weight-bold">
       {{ price }}
     </span>
@@ -10,7 +10,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import DialogForm from '@/components/DialogForm'
-import TeacherPricingForm from '@/views/Profile/TeacherPricingForm'
+import TeacherPricingForm from '@/views/Profile/Teacher/TeacherPricingForm'
 
 export default {
   name: 'TeacherPricing',
@@ -24,10 +24,10 @@ export default {
       default: false,
       description: 'Should we display edit button'
     },
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
-      description: 'Teacher being displayed'
+      description: 'Profile being displayed'
     }
   },
   data() {
@@ -63,8 +63,8 @@ export default {
         : this.$t(`profile.titles.negotiate`)
     },
     lowestPricing() {
-      return this.teacher.pricings.length
-        ? this.teacher.pricings.reduce((prev, curr) =>
+      return this.profile.pricings.length
+        ? this.profile.pricings.reduce((prev, curr) =>
             prev.price < curr.price ? prev : curr
           )
         : null

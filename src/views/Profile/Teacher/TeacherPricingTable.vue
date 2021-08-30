@@ -23,7 +23,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'PricingTable',
   props: {
-    teacher: {
+    profile: {
       type: Object,
       default: () => {},
       description: 'Teacher being displayed'
@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    this.user = this.teacher ? this.teacher : this.profile
+    this.user = this.profile ? this.profile : this.profile
   },
   computed: {
     ...mapGetters(['currentUser', 'profile']),

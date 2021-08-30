@@ -36,7 +36,7 @@ import DialogForm from '@/components/DialogForm'
 import TagField from '@/components/TagField'
 
 export default {
-  name: 'TeacherLocation',
+  name: 'ProfileLocation',
   components: {
     DialogForm,
     TagField
