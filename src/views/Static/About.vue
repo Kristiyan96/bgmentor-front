@@ -1,15 +1,8 @@
 <template>
   <section id="about">
-    <h2 class="text-center">За нас</h2>
+    <h2 class="text-center">Екип</h2>
     <v-container>
       <v-row class="short-description">
-        <v-col md="6" sm="8" xs="10" class="about-us">
-          Екипът на БгМентор се стреми да подобри условията на преподаване като
-          предоставя решения на проблеми като намирането на правилния за Вас
-          учител, разплащане онлайн, намирането на удобна локация за Вашите
-          уроци.
-          <br /><br /><br />
-        </v-col>
         <v-col lg="12">
           <v-row class="teachers">
             <v-col

@@ -5,13 +5,12 @@
       <v-row class="pl-3">
         <v-col md="5" sm="5" xs="12" class="col-left pl-5">
           <h1 class="mt-3 mb-3">
-            Запази час с проверени ментори <br />по науки, езици и спорт
+            По-ценни с един урок
           </h1>
-          <h5 class="grey--text">
-            БгМентор предлага бърз и удобен начин да намерите високооценени
-            учители, да запазите и платите вашия час онлайн.
+          <h5 class="grey--text mb-5 mt-5">
+            Намерете високооценени ментори, учители и треньори. Запазете час и платете <b>онлайн</b>.
           </h5>
-          <v-btn class="primary" rounded x-large depressed to="/search">
+          <v-btn class="primary mt-5" rounded x-large depressed to="/search">
             Намери ментори
           </v-btn>
         </v-col>
@@ -29,9 +28,9 @@
         <img class="bg-image-small" src="@/assets/images/bg.png" />
       </v-row>
       <v-row class="main-small justify-center text-center">
-        <h1 class="mt-3 mb-3">Групово и индивидуално <br />обучение</h1>
+        <h1 class="mt-3 mb-3">Станете по-ценни с един урок</h1>
         <v-btn class="primary" rounded x-large depressed to="/search">
-          Намери учители
+          Намери ментори
         </v-btn>
       </v-row>
     </v-container>
@@ -71,7 +70,7 @@ export default {
   .bg-image-small
     width: 100%
 h1
-  font-size: 1.6em
+  font-size: 3.4em
 .hidden-md-and-up
   h1
     width: 100% !important

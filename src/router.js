@@ -8,10 +8,11 @@ import ResetPassword from '@/views/Guest/ResetPassword'
 import UsersList from '@/views/admin/users/List'
 import UserEdit from '@/views/admin/users/Edit'
 import Account from '@/views/Account'
-import Landing from '@/views/Landing/index'
+import Landing from '@/views/Static/index'
 import UserProfile from '@/views/Profile/Profile'
 import TeacherSearch from '@/views/Search/TeacherSearch'
 import Calendar from '@/views/Calendar/Calendar'
+import About from '@/views/Static/About'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ export default new Router({
       path: '/calendar',
       name: 'Calendar',
       component: Calendar
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
     }
   ],
   scrollBehavior(to, from, savedPosition) {

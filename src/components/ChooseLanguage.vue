@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-btn
+      small
       color="white"
-      class="my-2"
       v-for="lang in langs"
       :key="lang.value"
       rounded
